@@ -1,9 +1,29 @@
 <script>
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+  /**
+   * @type {string[]}
+   */
+  let reversed;
+  /**
+   * @param {string} str
+   */
+  function reverseArrayStrings(str) {
+    reversed = str.split(" ").map((word) => word.split("").reverse().join(""));
+  }
+  let str = "Sometimes in life the Gods smile upon you my friend!";
+
+  // console.log(split);
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+  <title>Home</title>
+  <meta name="description" content="Svelte demo app" />
 </svelte:head>
+
+<div class="text-column">
+  <h1>Planet of The Bugs</h1>
+
+  <p>{str}</p>
+
+  <p>{reversed?.length > 0 ? reversed : null}</p>
+  <button on:click={() => reverseArrayStrings(str)}>Reverse String</button>
+</div>
