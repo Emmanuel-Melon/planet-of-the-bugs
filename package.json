@@ -22,12 +22,15 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@apollo/client": "^3.7.10",
 		"@svelteuidev/composables": "^0.10.0",
 		"@svelteuidev/core": "^0.10.0",
 		"@svelteuidev/dates": "^0.10.0",
 		"@svelteuidev/motion": "^0.10.0",
 		"@svelteuidev/preprocessors": "^0.10.0",
 		"@svelteuidev/prism": "^0.10.0",
-		"dayjs": "^1.11.7"
+		"dayjs": "^1.11.7",
+		"graphql": "^16.6.0",
+		"svelte-apollo": "^0.5.0"
 	}
 }

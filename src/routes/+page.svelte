@@ -1,3 +1,5 @@
+
+
 <script>
   /**
    * @type {string[]}
@@ -10,8 +12,11 @@
     reversed = str.split(" ").map((word) => word.split("").reverse().join(""));
   }
   let str = "Sometimes in life the Gods smile upon you my friend!";
+  //export let client;
+  //console.log(client);
 
-  // console.log(split);
+
+
 </script>
 
 <svelte:head>
