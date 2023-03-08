@@ -1,22 +1,4 @@
-
-
 <script>
-  /**
-   * @type {string[]}
-   */
-  let reversed;
-  /**
-   * @param {string} str
-   */
-  function reverseArrayStrings(str) {
-    reversed = str.split(" ").map((word) => word.split("").reverse().join(""));
-  }
-  let str = "Sometimes in life the Gods smile upon you my friend!";
-  //export let client;
-  //console.log(client);
-
-
-
 </script>
 
 <svelte:head>
@@ -24,11 +6,16 @@
   <meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<div class="text-column">
-  <h1>Planet of The Bugs</h1>
+<section class="code">
+  <textarea class="editor" spellcheck="false" data-editor />
+</section>
 
-  <p>{str}</p>
-
-  <p>{reversed?.length > 0 ? reversed : null}</p>
-  <button on:click={() => reverseArrayStrings(str)}>Reverse String</button>
-</div>
+<section class="result">
+  <div class="output">
+    <iframe data-iframe title="output">
+      <h3>Hello</h3>
+    </iframe>
+    <div class="errors" data-errors />
+  </div>
+  <div class="source" data-source />
+</section>
