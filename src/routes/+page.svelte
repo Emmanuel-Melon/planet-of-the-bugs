@@ -1,4 +1,6 @@
 <script>
+  import IframeComponent from '../core/iframe/IframeComponent.svelte';
+  const htmlCode = '<h1>Hello, world!</h1>';
 </script>
 
 <svelte:head>
@@ -11,11 +13,6 @@
 </section>
 
 <section class="result">
-  <div class="output">
-    <iframe data-iframe title="output">
-      <h3>Hello</h3>
-    </iframe>
-    <div class="errors" data-errors />
-  </div>
-  <div class="source" data-source />
+
+  <IframeComponent code={htmlCode} />
 </section>
