@@ -1,6 +1,6 @@
 <script>
   import IframeComponent from "../core/iframe/IframeComponent.svelte";
-  const htmlCode = "<h1>Hello, world!</h1>";
+  let htmlCode = "<h1>Hello, world!</h1>";
 </script>
 
 <svelte:head>
@@ -14,7 +14,7 @@
     <p>What are bugs?</p>
   </section>
   <section class="code">
-    <textarea class="editor" spellcheck="false" data-editor />
+    <textarea class="editor" spellcheck="false" data-editor bind:value={htmlCode}/>
   </section>
 
   <section class="result">
