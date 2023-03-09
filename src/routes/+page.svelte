@@ -1,17 +1,6 @@
 <script>
-  /**
-   * @type {string[]}
-   */
-  let reversed;
-  /**
-   * @param {string} str
-   */
-  function reverseArrayStrings(str) {
-    reversed = str.split(" ").map((word) => word.split("").reverse().join(""));
-  }
-  let str = "Sometimes in life the Gods smile upon you my friend!";
-
-  // console.log(split);
+  import IframeComponent from "../core/iframe/IframeComponent.svelte";
+  let htmlCode = "<h1>Hello, world!</h1>";
 </script>
 
 <svelte:head>
@@ -19,11 +8,33 @@
   <meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<div class="text-column">
-  <h1>Planet of The Bugs</h1>
+<main class="wrapper">
+  <section class="code">
+    <textarea class="editor" spellcheck="false" data-editor bind:value={htmlCode}/>
+  </section>
 
-  <p>{str}</p>
+  <section class="result">
+    <IframeComponent code={htmlCode} />
+  </section>
+</main>
 
-  <p>{reversed?.length > 0 ? reversed : null}</p>
-  <button on:click={() => reverseArrayStrings(str)}>Reverse String</button>
-</div>
+<style>
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    height: 600px;
+  }
+
+  .code, .result {
+    
+    flex: 1;
+  }
+
+  .editor {
+    height: 100%;
+    width: 100%;
+    flex: 1;
+  }
+
+
+</style>
