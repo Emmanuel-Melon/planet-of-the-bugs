@@ -9,10 +9,6 @@
 </svelte:head>
 
 <main class="wrapper">
-  <section>
-    <h3>Lesson 1</h3>
-    <p>What are bugs?</p>
-  </section>
   <section class="code">
     <textarea class="editor" spellcheck="false" data-editor bind:value={htmlCode}/>
   </section>
@@ -25,9 +21,20 @@
 <style>
   .wrapper {
     display: flex;
+    justify-content: space-between;
+    height: 600px;
   }
 
-  section {
+  .code, .result {
+    
     flex: 1;
   }
+
+  .editor {
+    height: 100%;
+    width: 100%;
+    flex: 1;
+  }
+
+
 </style>

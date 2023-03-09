@@ -5,6 +5,7 @@
 
 <iframe
   title="editor"
+  id="iframe"
   srcdoc={`<!DOCTYPE html>
     <html>
       <head></head>
@@ -13,3 +14,11 @@
       </body>
     </html>`}
 />
+
+<style>
+  #iframe {
+    background: #eee;
+    height: 100%;
+    width: 100%;
+  }
+</style>
