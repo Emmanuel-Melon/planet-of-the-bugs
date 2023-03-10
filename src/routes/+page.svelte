@@ -1,5 +1,5 @@
 <script>
-  import { PUBLIC_HASURA_ADMIN_SECRET } from '$env/static/public'
+  import { PUBLIC_HASURA_ADMIN_SECRET } from "$env/static/public";
   import {
     ApolloClient,
     InMemoryCache,
@@ -29,7 +29,7 @@
 
   const LANGUAGES_QUERY = gql`
     query fetchLanguages {
-      languagues {
+      languages {
         created_at
         id
         name
@@ -44,7 +44,6 @@
     languages.refetch();
   }
   $: languages.refetch();
-
 </script>
 
 <svelte:head>
@@ -55,5 +54,4 @@
 <div class="text-column">
   <h1>Planet of The Bugs</h1>
   <button on:click={reload}>Fetch</button>
-
 </div>
