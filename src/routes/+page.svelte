@@ -6,7 +6,8 @@
     gql,
     createHttpLink,
     HttpLink,
-  } from "@apollo/client/core";
+  // @ts-ignore
+  } from "@apollo/client/core/core.cjs";
   import { setClient, query, mutation } from "svelte-apollo";
 
   const httpLink = new HttpLink({
