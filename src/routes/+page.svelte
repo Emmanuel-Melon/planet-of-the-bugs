@@ -1,22 +1,48 @@
-
-
 <script>
-  /**
-   * @type {string[]}
-   */
-  let reversed;
-  /**
-   * @param {string} str
-   */
-  function reverseArrayStrings(str) {
-    reversed = str.split(" ").map((word) => word.split("").reverse().join(""));
+  import { PUBLIC_HASURA_ADMIN_SECRET } from "$env/static/public";
+  import {
+    ApolloClient,
+    InMemoryCache,
+    gql,
+    createHttpLink,
+    HttpLink,
+  // @ts-ignore
+  } from "@apollo/client/core/core.cjs";
+  import { setClient, query, mutation } from "svelte-apollo";
+
+  const httpLink = new HttpLink({
+    uri: "https://planet-of-the-bugs.hasura.app/v1/graphql",
+    credentials: "include",
+    headers: {
+      "x-hasura-admin-secret": PUBLIC_HASURA_ADMIN_SECRET,
+    },
+  });
+
+  const client = new ApolloClient({
+    cache: new InMemoryCache(),
+    credentials: "include",
+    link: httpLink,
+  });
+
+  setClient(client);
+
+  const LANGUAGES_QUERY = gql`
+    query fetchLanguages {
+      languages {
+        created_at
+        id
+        name
+        updated_at
+      }
+    }
+  `;
+
+  const languages = query(LANGUAGES_QUERY);
+
+  function reload() {
+    languages.refetch();
   }
-  let str = "Sometimes in life the Gods smile upon you my friend!";
-  //export let client;
-  //console.log(client);
-
-
-
+  $: languages.refetch();
 </script>
 
 <svelte:head>
@@ -26,9 +52,5 @@
 
 <div class="text-column">
   <h1>Planet of The Bugs</h1>
-
-  <p>{str}</p>
-
-  <p>{reversed?.length > 0 ? reversed : null}</p>
-  <button on:click={() => reverseArrayStrings(str)}>Reverse String</button>
+  <button on:click={reload}>Fetch</button>
 </div>

@@ -30,6 +30,7 @@
 		"@svelteuidev/preprocessors": "^0.10.0",
 		"@svelteuidev/prism": "^0.10.0",
 		"dayjs": "^1.11.7",
+		"gql": "^1.1.2",
 		"graphql": "^16.6.0",
 		"svelte-apollo": "^0.5.0"
 	}
