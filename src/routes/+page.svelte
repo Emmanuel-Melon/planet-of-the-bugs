@@ -9,8 +9,6 @@
   } from "@apollo/client/core";
   import { setClient, query, mutation } from "svelte-apollo";
 
-  export let authToken;
-
   const httpLink = new HttpLink({
     uri: "https://planet-of-the-bugs.hasura.app/v1/graphql",
     credentials: "include",
