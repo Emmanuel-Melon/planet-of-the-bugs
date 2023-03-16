@@ -1,0 +1,1 @@
+<h1>Course Details Page</h1>
