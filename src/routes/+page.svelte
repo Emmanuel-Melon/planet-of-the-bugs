@@ -1,4 +1,7 @@
 <script>
+// @ts-nocheck
+
+  import {onMount} from 'svelte';
   import { PUBLIC_HASURA_ADMIN_SECRET } from "$env/static/public";
   import {
     ApolloClient,
@@ -26,23 +29,23 @@
 
   setClient(client);
 
-  const LANGUAGES_QUERY = gql`
-    query fetchLanguages {
-      languages {
-        created_at
-        id
-        name
-        updated_at
-      }
-    }
-  `;
-
-  const languages = query(LANGUAGES_QUERY);
-
-  function reload() {
-    languages.refetch();
+  const FETCH_COURSES = gql`query fetchCourses {
+  courses {
+    id
+    name
+    description
+    creator
+    complexity
   }
-  $: languages.refetch();
+}`;
+
+  const courses = query(FETCH_COURSES);
+
+  onMount(async () => {
+		courses.refetch();
+	});
+
+  $: courses.refetch();
 </script>
 
 <svelte:head>
@@ -52,5 +55,19 @@
 
 <div class="text-column">
   <h1>Planet of The Bugs</h1>
-  <button on:click={reload}>Fetch</button>
+  
+  <div class='list'>
+    {#if $courses.data}
+    {#each $courses.data.courses as course}
+      <div class='course'>
+        <h3>{course.name}</h3>
+        <p>Complexity: {course.complexity}</p>
+        <p>{course.description}</p>
+        <p>Creator: {course.creator}</p>
+      </div>
+    {/each}
+  {:else}
+    <p>Loading...</p>
+  {/if}
+  </div>
 </div>
