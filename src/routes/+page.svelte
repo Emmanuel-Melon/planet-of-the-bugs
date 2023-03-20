@@ -1,18 +1,14 @@
 <script>
   // @ts-nocheck
-
   import { onMount } from "svelte";
-  import { PUBLIC_HASURA_ADMIN_SECRET } from "$env/static/public";
   import { FETCH_COURSES } from "$lib/queries/courses";
   import { query, mutation } from "svelte-apollo";
-  // setClient(client);
 
   const courses = query(FETCH_COURSES);
 
   onMount(async () => {
     courses.refetch();
   });
-
   $: courses.refetch();
 </script>
 
@@ -23,7 +19,6 @@
 
 <div class="text-column">
   <h1>Planet of The Bugs</h1>
-
   <div class="list">
     {#if $courses.data}
       {#each $courses.data.courses as course}
