@@ -1,26 +1,17 @@
 <script>
-// @ts-nocheck
+  // @ts-nocheck
 
-  import {onMount} from 'svelte';
+  import { onMount } from "svelte";
   import { PUBLIC_HASURA_ADMIN_SECRET } from "$env/static/public";
-
-  setClient(client);
-
-  const FETCH_COURSES = gql`query fetchCourses {
-  courses {
-    id
-    name
-    description
-    creator
-    complexity
-  }
-}`;
+  import { FETCH_COURSES } from "$lib/queries/courses";
+  import { query, mutation } from "svelte-apollo";
+  // setClient(client);
 
   const courses = query(FETCH_COURSES);
 
   onMount(async () => {
-		courses.refetch();
-	});
+    courses.refetch();
+  });
 
   $: courses.refetch();
 </script>
@@ -32,19 +23,19 @@
 
 <div class="text-column">
   <h1>Planet of The Bugs</h1>
-  
-  <div class='list'>
+
+  <div class="list">
     {#if $courses.data}
-    {#each $courses.data.courses as course}
-      <div class='course'>
-        <h3>{course.name}</h3>
-        <p>Complexity: {course.complexity}</p>
-        <p>{course.description}</p>
-        <p>Creator: {course.creator}</p>
-      </div>
-    {/each}
-  {:else}
-    <p>Loading...</p>
-  {/if}
+      {#each $courses.data.courses as course}
+        <div class="course">
+          <h3>{course.name}</h3>
+          <p>Complexity: {course.complexity}</p>
+          <p>{course.description}</p>
+          <p>Creator: {course.creator}</p>
+        </div>
+      {/each}
+    {:else}
+      <p>Loading...</p>
+    {/if}
   </div>
 </div>
