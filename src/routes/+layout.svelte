@@ -3,8 +3,6 @@
   import "./styles.css";
   import { setClient } from "svelte-apollo";
   import apolloClient from "$lib/apollo";
-  import { onMount } from "svelte";
-  console.log(apolloClient);
   setClient(apolloClient);
 </script>
 
