@@ -6,7 +6,6 @@ import {
   HttpLink,
   // @ts-ignore
 } from "@apollo/client/core/core.cjs";
-import { setClient } from "svelte-apollo";
 
 const httpLink = new HttpLink({
   uri: "https://planet-of-the-bugs.hasura.app/v1/graphql",
@@ -16,12 +15,10 @@ const httpLink = new HttpLink({
   },
 });
 
-const apolloClient = setClient(
-  new ApolloClient({
-    cache: new InMemoryCache(),
-    credentials: "include",
-    link: httpLink,
-  })
-);
+const apolloClient = new ApolloClient({
+  cache: new InMemoryCache(),
+  credentials: "include",
+  link: httpLink,
+});
 
 export default apolloClient;

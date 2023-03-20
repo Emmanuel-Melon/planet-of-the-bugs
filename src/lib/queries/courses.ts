@@ -1,13 +1,10 @@
 import {
-    ApolloClient,
-    InMemoryCache,
-    gql,
-    createHttpLink,
-    HttpLink,
+  gql,
   // @ts-ignore
-  } from "@apollo/client/core/core.cjs";
+} from "@apollo/client/core/core.cjs";
 
-export const FETCH_COURSES = gql`query fetchCourses {
+export const FETCH_COURSES = gql`
+  query fetchCourses {
     courses {
       id
       name
@@ -15,4 +12,5 @@ export const FETCH_COURSES = gql`query fetchCourses {
       creator
       complexity
     }
-  }`;
+  }
+`;
