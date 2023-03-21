@@ -3,27 +3,37 @@
   // @ts-ignore
   import { gql } from "@apollo/client/core/core.cjs";
   import { query } from "svelte-apollo";
-  import { page } from '$app/stores';
+  import { page } from "$app/stores";
   import { FETCH_COURSE_BY_SLUG } from "$lib/queries/courses";
+  export let data;
+  const { slug } = data;
 
-  let slug;
+  const course = query(FETCH_COURSE_BY_SLUG, {
+    variables: { slug },
+  });
 
-
-  const course = query(FETCH_COURSE_BY_SLUG);
+  console.log(course?.data);
 
   onMount(async () => {
-		course.refetch();
-	});
+    course.refetch();
+  });
 
   $: course.refetch();
 
+  console.log(course?.data);
 
-onMount(() => {
-  // Get the slug from the $page.params store
-  slug = $page.params.slug;
-});
-  
 </script>
 
-<h1>Course Details Page</h1>
-<p>The current slug is: {slug}</p>
+
+{#if $course.data}
+  <div>
+    {#each $course.data.courses as course}
+      <div>
+        <h1>{course.name}</h1>
+        <p>{course.description}</p>
+      </div>
+    {/each}
+  </div>
+{:else}
+  <p>Loading...</p>
+{/if}
