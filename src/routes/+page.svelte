@@ -21,6 +21,7 @@
   <h1>Planet of The Bugs</h1>
   <div class="list">
     {#if $courses.data}
+<<<<<<< HEAD
       {#each $courses.data.courses as course}
         <div class="course">
           <h3>{course.name}</h3>
@@ -32,5 +33,19 @@
     {:else}
       <p>Loading...</p>
     {/if}
+=======
+    {#each $courses.data.courses as course}
+      <div class='course'>
+        <h3>{course.name}</h3>
+        <p>Complexity: {course.complexity}</p>
+        <p>{course.description}</p>
+        <p>Creator: {course.creator}</p>
+        <button class="btn btn-primary">Join Course</button>
+      </div>
+    {/each}
+  {:else}
+    <p>Loading...</p>
+  {/if}
+>>>>>>> 3f93b0a (Added Daisy-UI & tailwind)
   </div>
 </div>

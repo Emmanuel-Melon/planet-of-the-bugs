@@ -4,6 +4,8 @@
   import { setClient } from "svelte-apollo";
   import apolloClient from "$lib/apollo";
   setClient(apolloClient);
+	import './styles.css';
+	import "../app.css";
 </script>
 
 <div class="app">
