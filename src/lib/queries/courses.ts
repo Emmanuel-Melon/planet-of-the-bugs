@@ -14,3 +14,17 @@ export const FETCH_COURSES = gql`
     }
   }
 `;
+
+export const FETCH_COURSE_BY_SLUG = gql`
+  query fetchCourseBySlug($slug: String) {
+    courses(where: { slug: { _eq: $slug } }) {
+      complexity
+      created_at
+      creator
+      description
+      id
+      name
+      updated_at
+    }
+  }
+`;

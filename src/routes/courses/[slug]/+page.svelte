@@ -4,22 +4,11 @@
   import { gql } from "@apollo/client/core/core.cjs";
   import { query } from "svelte-apollo";
   import { page } from '$app/stores';
+  import { FETCH_COURSE_BY_SLUG } from "$lib/queries/courses";
 
   let slug;
 
-  const FETCH_COURSE_BY_SLUG = gql`
-    query fetchCourseBySlug {
-      courses(where: { name: { _eq: ${slug} } }) {
-        complexity
-        created_at
-        creator
-        description
-        id
-        name
-        updated_at
-      }
-    }
-  `;
+
   const course = query(FETCH_COURSE_BY_SLUG);
 
   onMount(async () => {
