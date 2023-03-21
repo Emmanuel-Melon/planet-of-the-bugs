@@ -26,10 +26,10 @@
 {#if $course.data}
   <div>
     {#each $course.data.courses as course}
-      <div>
+      <div> 
         <h1>{course.name}</h1>
         <p>{course.description}</p>
-        <button class="btn">Join Course</button>
+        <StartCourseButton />
       </div>
     {/each}
   </div>
