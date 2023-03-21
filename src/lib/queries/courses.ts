@@ -3,6 +3,17 @@ import {
   // @ts-ignore
 } from "@apollo/client/core/core.cjs";
 
+const COURSE_FIELDS_FRAGMENT = gql`
+  fragment CourseFields on Course {
+    id
+    name
+    description
+    creator
+    complexity
+    slug
+  }
+`;
+
 export const FETCH_COURSES = gql`
   query fetchCourses {
     courses {
@@ -26,6 +37,25 @@ export const FETCH_COURSE_BY_SLUG = gql`
       id
       name
       updated_at
+    }
+  }
+`;
+
+export const FETCH_COURSE_BY_COMPOSITE = gql`
+  query fetchCourseByUserAndCourseId($userId: uuid, $courseId: uuid) {
+    user_courses(
+      where: { user_id: { _eq: $userId }, course_id: { _eq: $courseId } }
+    ) {
+      progress
+      completion_date
+      course {
+        id
+        name
+        description
+        creator
+        complexity
+        slug
+      }
     }
   }
 `;
