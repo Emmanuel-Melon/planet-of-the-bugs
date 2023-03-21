@@ -64,6 +64,7 @@
         <p>Complexity: {course.complexity}</p>
         <p>{course.description}</p>
         <p>Creator: {course.creator}</p>
+        <button class="btn btn-primary">Join Course</button>
       </div>
     {/each}
   {:else}
