@@ -23,7 +23,7 @@
     {#if $courses.data}
       {#each $courses.data.courses as course}
         <div class="course">
-          <h3><a href={`/courses/${course.slug}`}>{course.name}</a></h3>
+          <h3><a  className="link" href={`/courses/${course.slug}`}>{course.name}</a></h3>
           <p>Complexity: {course.complexity}</p>
           <p>{course.description}</p>
           <p>Creator: {course.creator}</p>

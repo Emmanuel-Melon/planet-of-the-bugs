@@ -5,6 +5,7 @@
   import { query } from "svelte-apollo";
   import { page } from "$app/stores";
   import { FETCH_COURSE_BY_SLUG } from "$lib/queries/courses";
+  import StartCourseButton from "../../../components/StartCourseButton.svelte";
   
   export let data;
   const { slug } = data;
