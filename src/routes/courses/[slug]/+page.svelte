@@ -5,6 +5,7 @@
   import { query } from "svelte-apollo";
   import { page } from "$app/stores";
   import { FETCH_COURSE_BY_SLUG } from "$lib/queries/courses";
+  
   export let data;
   const { slug } = data;
 
@@ -12,15 +13,11 @@
     variables: { slug },
   });
 
-  console.log(course?.data);
-
   onMount(async () => {
     course.refetch();
   });
 
   $: course.refetch();
-
-  console.log(course?.data);
 
 </script>
 
@@ -31,6 +28,7 @@
       <div>
         <h1>{course.name}</h1>
         <p>{course.description}</p>
+        <button class="btn">Join Course</button>
       </div>
     {/each}
   </div>

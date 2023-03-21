@@ -11,6 +11,7 @@ export const FETCH_COURSES = gql`
       description
       creator
       complexity
+      slug
     }
   }
 `;
