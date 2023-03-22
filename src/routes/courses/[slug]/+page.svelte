@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
   import { onMount } from "svelte";
   // @ts-ignore
   import { gql } from "@apollo/client/core/core.cjs";
