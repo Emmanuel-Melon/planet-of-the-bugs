@@ -26,6 +26,8 @@
 	"type": "module",
 	"dependencies": {
 		"@apollo/client": "^3.7.10",
+		"@auth/core": "^0.5.1",
+		"@auth/sveltekit": "^0.3.0",
 		"@svelteuidev/composables": "^0.10.0",
 		"@svelteuidev/core": "^0.10.0",
 		"@svelteuidev/dates": "^0.10.0",
