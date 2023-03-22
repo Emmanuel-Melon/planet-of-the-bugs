@@ -21,17 +21,16 @@
   <h1>Planet of The Bugs</h1>
   <div class="list">
     {#if $courses.data}
-    {#each $courses.data.courses as course}
-      <div class="course">
-        <h3>{course.name}</h3>
-        <p>Complexity: {course.complexity}</p>
-        <p>{course.description}</p>
-        <p>Creator: {course.creator}</p>
-        <button class="btn btn-primary">Join Course</button>
-      </div>
-    {/each}
-  {:else}
-    <p>Loading...</p>
-  {/if}
+      {#each $courses.data.courses as course}
+        <div class="course">
+          <h3><a  class="link" href={`/courses/${course.slug}`}>{course.name}</a></h3>
+          <p>Complexity: {course.complexity}</p>
+          <p>{course.description}</p>
+          <p>Creator: {course.creator}</p>
+        </div>
+      {/each}
+    {:else}
+      <p>Loading...</p>
+    {/if}
   </div>
 </div>
