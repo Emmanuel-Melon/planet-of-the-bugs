@@ -2,7 +2,7 @@
 // @ts-nocheck
     export let course;
 
-    import StartCourseButton from "./StartCourseButton.svelte";    
+    import StartCourseButton from "$components/StartCourseButton.svelte";    
 </script>
 
 <div class="card h-96 w-96 bg-base-100 shadow-xl"> 
