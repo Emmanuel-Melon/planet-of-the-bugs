@@ -20,7 +20,7 @@
     <div> 
       <h1>{course.name}</h1>
       <p>{course.description}</p>
-      <StartCourseButton status={active?.status === "Subscribed" ? true : false} course_id={course.id} slug={course.slug} />
+      <StartCourseButton status={active?.status} course_id={course.id} slug={course.slug} />
     </div>
 </div>
 

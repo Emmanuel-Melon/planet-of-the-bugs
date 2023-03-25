@@ -2,7 +2,7 @@
 // @ts-nocheck
   export let course_id
   export let slug
-  export let status = false
+  export let status = "Unsubscribed"
 
   import { mutation } from "svelte-apollo";
   import { START_COURSE } from "$lib/mutations/courses";
@@ -35,8 +35,25 @@
   }
 
   function handleContinue() {}
+  function handleCompleted() {}
+
+  const buttons = {
+    Completed: {
+      text: "Course Completed",
+      style: "btn btn-success",
+      logic: handleCompleted
+    },
+    Unsubscribed: {
+      text: "Start Course",
+      style: "btn btn-primary",
+      logic: handleStart
+    },
+    Subscribed: {
+      text: "Continue Course",
+      style: "btn btn-secondary",
+      logic: handleContinue
+    }
+  }
 </script>
 
-
-<button class="btn btn-primary" on:click={status === "Subscribed" ? handleContinue : handleStart}>{status ? 'Continue Course' : 'Start Course'}</button>
-
+<button class={buttons[status].style} on:click|preventDefault={buttons[status].logic}>{buttons[status].text}</button>
