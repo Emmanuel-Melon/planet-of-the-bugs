@@ -15,7 +15,7 @@
       const result = await startCourse({
         variables: {
           user_id: "a4f9150e-4619-4b18-807d-2f273b75c12f",
-          course_id: course_id,
+          course_id,
         },
       });
 
@@ -38,5 +38,5 @@
 </script>
 
 
-<button class="btn btn-primary" on:click={status ? handleContinue : handleStart}>{status ? 'Continue Course' : 'Start Course'}</button>
+<button class="btn btn-primary" on:click={status === "Subscribed" ? handleContinue : handleStart}>{status ? 'Continue Course' : 'Start Course'}</button>
 
