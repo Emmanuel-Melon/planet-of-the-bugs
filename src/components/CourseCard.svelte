@@ -15,7 +15,6 @@
         <p>Creator: {course.creator}</p>
         <div class="card-actions justify-end">
             <StartCourseButton
-                cta="Start"
                 course_id={course.id}
                 slug={course.slug}
                 />
