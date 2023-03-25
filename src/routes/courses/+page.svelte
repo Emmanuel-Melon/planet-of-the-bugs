@@ -3,7 +3,7 @@
   import { onMount } from "svelte";
   import { FETCH_COURSES } from "$lib/queries/courses";
   import { query, mutation } from "svelte-apollo";
-  import CourseCard from "../../components/CourseCard.svelte";
+  import CourseCard from "$components/CourseCard.svelte";
 
   const courses = query(FETCH_COURSES);
 
