@@ -2,7 +2,7 @@
 // @ts-nocheck
   export let course_id
   export let slug
-  export let cta
+  export let status = false
 
   import { mutation } from "svelte-apollo";
   import { START_COURSE } from "$lib/mutations/courses";
@@ -38,5 +38,5 @@
 </script>
 
 
-<button class="btn btn-primary" on:click={handleStart}>{cta}</button>
+<button class="btn btn-primary" on:click={status ? handleContinue : handleStart}>{status ? 'Continue Course' : 'Start Course'}</button>
 
