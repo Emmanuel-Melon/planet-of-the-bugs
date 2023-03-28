@@ -1,14 +1,13 @@
 import {
   gql,
   // @ts-ignore
-} from '@apollo/client/core/core.cjs';
+} from "@apollo/client/core/core.cjs";
 
 const COURSE_FIELDS_FRAGMENT = gql`
   fragment CourseFields on Course {
     id
-    name
+    title
     description
-    creator
     complexity
     slug
   }
@@ -18,9 +17,8 @@ export const FETCH_COURSES = gql`
   query fetchCourses {
     courses {
       id
-      name
+      title
       description
-      creator
       complexity
       slug
     }
@@ -32,10 +30,9 @@ export const FETCH_COURSE_BY_SLUG = gql`
     courses(where: { slug: { _eq: $slug } }) {
       complexity
       created_at
-      creator
       description
       id
-      name
+      title
       updated_at
     }
   }
@@ -50,7 +47,7 @@ export const FETCH_COURSE_BY_COMPOSITE = gql`
       completion_date
       course {
         id
-        name
+        title
         description
         creator
         complexity
