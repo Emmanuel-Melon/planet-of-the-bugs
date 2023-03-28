@@ -1,4 +1,5 @@
 <script>
+
   import { signIn, signOut } from "@auth/sveltekit/client"
   import { page } from "$app/stores"
 
@@ -11,6 +12,8 @@
 </svelte:head>
 
 <h1>Planet of The Bugs</h1>
+
+
 <p>
   {#if $page.data.session}
     {#if $page.data.session.user?.image}
@@ -26,3 +29,4 @@
     <button on:click={() => signOut()} class="btn">Sign out</button>
   {/if}
 </p>
+
