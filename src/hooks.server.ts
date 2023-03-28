@@ -74,4 +74,7 @@ export const handle = SvelteKitAuth({
     },
   },
   debug: true,
+  pages: {
+    newUser: '/auth/new-user'
+  }
 });
