@@ -13,9 +13,6 @@
   $: courses.refetch();
 </script>
 
-
-<h1>Courses!</h1>
-
 <div class="grid place-items-center grid-cols-1 mt-8 gap-8 lg:grid-cols-2">
     {#if $courses.data}
     {#each $courses.data.courses as course}

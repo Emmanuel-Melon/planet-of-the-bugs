@@ -12,7 +12,7 @@
 </script>
 
 <div>
-  <h1>{course.title}</h1>
+  <h1 class="prose lg:prose-xl">{course.title}</h1>
   <p>{course.description}</p>
   <StartCourseButton
     status={active?.status}

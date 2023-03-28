@@ -1,8 +1,8 @@
 <script>
   import ChapterOverview from "./ChapterOverview.svelte";
   import "iconify-icon";
-  export let data;
-  let { slug } = data;
+  // export let data;
+  //let { slug } = data;
 
   const chapters = [
     {
@@ -46,7 +46,7 @@
               <span class="bg-black rounded-full px-1 text-white">
                 <iconify-icon icon="heroicons:document-text" />
               </span>
-              <a class="link" href={`/courses/${slug}/${lesson.id}`}
+              <a class="link" href={`/courses/introduction_to_debugging/${lesson.id}`}
                 >{lesson.title}</a
               >
             </div>
