@@ -1,0 +1,4 @@
+## Lesson Overview
+
+- [ ] Add support for inline and external stylesheets.
+- [ ] Consider using a UI library such as Tailwind or DaisyUI

@@ -3,6 +3,8 @@
   export let data;
   let { lesson } = data;
   import CodeEditor from "$components/CodeEditor/CodeEditor.svelte";
+  import CodeOutput from "$components/CodeEditor/CodeOutput.svelte";
+  import MarkdownView from "$components/CodeEditor/MarkdownView.svx";
   import { query, mutation } from "svelte-apollo";
   import { FETCH_COURSE_BY_PK } from "$lib/queries/lessons";
   import LessonOverview from "$components/Lessons/LessonOverview.svelte";
@@ -29,4 +31,5 @@
     <p>Loading...</p>
   {/if}
   </div>
+  <MarkdownView />
 </section>
