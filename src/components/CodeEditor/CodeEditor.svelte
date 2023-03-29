@@ -1,4 +1,5 @@
 <script>
+  import type monaco from 'monaco-editor';
   let code = "";
 </script>
 
