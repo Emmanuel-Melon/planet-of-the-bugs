@@ -85,6 +85,7 @@
                 required
                 />
         </div>
+        {#if !email}
         <div>
             <label for="email" class="label">
                 <span class="label-text">Email Address</span>
@@ -98,6 +99,7 @@
                 required
                 />
         </div>
+        {/if}
         <button class="btn btn-primary" on:click={handleSubmit}>Submit</button>
     </form>
 </div>
