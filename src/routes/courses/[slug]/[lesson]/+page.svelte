@@ -23,13 +23,22 @@
   console.log(course);
 </script>
 
-<section class="border border-#efefef p-2 rounded-sm card bg-base-100 shadow-md">
-  <div class="p-2">
-    {#if $course.data}
-    <LessonOverview lesson={$course.data.lessons_by_pk} />
-  {:else}
-    <p>Loading...</p>
-  {/if}
+<section
+  class="border border-#efefef rounded-sm card bg-base-100 shadow-md"
+>
+  <div class="flex">
+    <div class="flex-1 p-4">
+      {#if $course.data}
+        <LessonOverview lesson={$course.data.lessons_by_pk} />
+        <MarkdownView />
+      {:else}
+        <p>Loading...</p>
+      {/if}
+    </div>
+    <div class="flex-1">
+      <CodeEditor />
+      <CodeOutput />
+    </div>
   </div>
-  <MarkdownView />
+
 </section>
