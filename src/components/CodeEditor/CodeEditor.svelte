@@ -47,6 +47,7 @@
 </script>
 
 <section class="code">
+
   <div bind:this={divEl} class="h-screen" style="min-height: 200px;" />
 </section>
 
