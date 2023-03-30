@@ -4,5 +4,4 @@
   let { lesson } = data;
 </script>
 
-<h1>Hello, {lesson}</h1>
 <CodeEditor />
