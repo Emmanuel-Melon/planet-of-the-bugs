@@ -1,8 +1,35 @@
 <script>
+  import { onMount } from "svelte";
   export let data;
-  import CodeEditor from '$components/CodeEditor/CodeEditor.svelte';
   let { lesson } = data;
+  import CodeEditor from "$components/CodeEditor/CodeEditor.svelte";
+  import CodeOutput from "$components/CodeEditor/CodeOutput.svelte";
+  import MarkdownView from "$components/CodeEditor/MarkdownView.svx";
+  import { query, mutation } from "svelte-apollo";
+  import { FETCH_COURSE_BY_PK } from "$lib/queries/lessons";
+  import LessonOverview from "$components/Lessons/LessonOverview.svelte";
+
+  const course = query(FETCH_COURSE_BY_PK, {
+    variables: {
+      id: lesson,
+    },
+  });
+
+  onMount(async () => {
+    course.refetch();
+  });
+  $: course.refetch();
+
+  console.log(course);
 </script>
 
-<h1>Hello, {lesson}</h1>
-<CodeEditor />
+<section class="border border-#efefef p-2 rounded-sm card bg-base-100 shadow-md">
+  <div class="p-2">
+    {#if $course.data}
+    <LessonOverview lesson={$course.data.lessons_by_pk} />
+  {:else}
+    <p>Loading...</p>
+  {/if}
+  </div>
+  <MarkdownView />
+</section>
