@@ -1,6 +1,5 @@
 <script>
 // @ts-nocheck
-
     import { page } from "$app/stores";
     import welcome from '$lib/images/svelte-welcome.png'
     import { ADD_NEW_USER } from "$lib/mutations/users";
@@ -85,6 +84,7 @@
                 required
                 />
         </div>
+
         {#if !email}
         <div>
             <label for="email" class="label">
@@ -100,6 +100,7 @@
                 />
         </div>
         {/if}
+        
         <button class="btn btn-primary" on:click={handleSubmit}>Submit</button>
     </form>
 </div>
