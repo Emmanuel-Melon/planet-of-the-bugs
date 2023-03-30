@@ -47,7 +47,6 @@
 </script>
 
 <section class="code">
-
-  <div bind:this={divEl}  style="min-height: 200px;" />
+  <div bind:this={divEl} style="min-height: 350px;" />
 </section>
 
