@@ -8,6 +8,7 @@
   import { query, mutation } from "svelte-apollo";
   import { FETCH_COURSE_BY_PK } from "$lib/queries/lessons";
   import LessonOverview from "$components/Lessons/LessonOverview.svelte";
+  import Tabs from "$components/Tabs.svelte";
 
   const course = query(FETCH_COURSE_BY_PK, {
     variables: {
@@ -21,6 +22,19 @@
   $: course.refetch();
 
   console.log(course);
+
+  const items = [
+    {
+      label: "Overview",
+      value: 1,
+      content: ""
+    },
+    {
+      label: "Exercises",
+      value: 2,
+      content: ""
+    }
+  ]
 </script>
 
 <section
@@ -28,6 +42,7 @@
 >
   <div class="flex">
     <div class="flex-1 p-4">
+      <Tabs {items} />
       {#if $course.data}
         <LessonOverview lesson={$course.data.lessons_by_pk} />
         <MarkdownView />
