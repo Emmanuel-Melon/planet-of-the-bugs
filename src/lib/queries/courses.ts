@@ -1,7 +1,7 @@
 import {
   gql,
   // @ts-ignore
-} from "@apollo/client/core/core.cjs";
+} from '@apollo/client/core/core.cjs';
 
 const COURSE_FIELDS_FRAGMENT = gql`
   fragment CourseFields on Course {
@@ -34,6 +34,20 @@ export const FETCH_COURSE_BY_SLUG = gql`
       id
       title
       updated_at
+      course_chapters {
+        id
+        index
+        description
+        title
+        lessons {
+          XP
+          description
+          id
+          index
+          title
+          type
+        }
+      }
     }
   }
 `;

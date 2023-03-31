@@ -19,5 +19,5 @@
     course_id={course.id}
     slug={course.slug}
   />
-  <LessonOutline />
+  <LessonOutline chapters={course.course_chapters} />
 </div>
