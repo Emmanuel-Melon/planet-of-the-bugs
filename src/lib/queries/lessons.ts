@@ -20,9 +20,9 @@ export const FETCH_LESSON_BY_PK = gql`
 `;
 
 export const FETCH_LESSON_BY_INDEX = gql`
-  query fetchLessonByIndex($chapter_id: uuid, $index: Int) {
+  query fetchLessonByIndex($chapter_id: uuid, $new_index: Int) {
     lessons(
-      where: { chapter_id: { _eq: $chapter_id }, index: { _eq: $index } }
+      where: { chapter_id: { _eq: $chapter_id }, index: { _eq: $new_index } }
     ) {
       id
       title
