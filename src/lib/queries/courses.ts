@@ -34,12 +34,12 @@ export const FETCH_COURSE_BY_SLUG = gql`
       id
       title
       updated_at
-      course_chapters {
+      course_chapters(order_by: { index: asc }) {
         id
         index
         description
         title
-        lessons {
+        lessons(order_by: { index: asc }) {
           XP
           description
           id
