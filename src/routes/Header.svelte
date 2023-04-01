@@ -6,7 +6,6 @@
   import { signOut } from '@auth/sveltekit/client';
   import "iconify-icon";
 
-
   let user;
   $: current = $page.url.pathname
   $: menuLinks = [
@@ -22,7 +21,6 @@
   onDestroy(() => {
     user = null;
     current = null;
-    isMenuOpen = false;
     menuLinks = [];
   });
 
@@ -33,7 +31,7 @@
       <a href='/' class="btn btn-ghost normal-case text-xl">Planet Of The Bugs</a>
     </div>
 
-    <ul class="navbar-center hidden lg:flex justify-between items-center w-1/3 text-lg font-bold ml-8">
+    <ul class="navbar-center hidden lg:flex justify-between items-center w-1/5 text-lg font-bold">
       {#each menuLinks as { text, path }}
         <li class={path === current ? "hidden lg:flex transition-all underline-offset-8 decoration-primary hover:underline underline" : "hidden lg:flex transition-all underline-offset-8 decoration-primary hover:underline"}>
           <a href={path}>{text}</a>
