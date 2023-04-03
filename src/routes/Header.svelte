@@ -9,8 +9,10 @@
   let user;
   $: current = $page.url.pathname;
   $: menuLinks = [
-    { text: "Courses", path: "/courses" },
-    { text: "Explore Bugs", path: "/explore" },
+    { text: 'Home', path: '/' },
+    { text: 'Courses', path: '/courses' },
+    { text: 'About', path: '/about' },
+    { text: 'Explore Bugs', path: '/explore' }
   ];
 
   onMount(() => {
