@@ -5,8 +5,8 @@
   import apolloClient from "$lib/apollo";
   import CodeEditor from "$components/CodeEditor/CodeEditor.svelte";
   import CodeOutput from "$components/CodeEditor/CodeOutput.svelte";
-  import MarkdownView from "$components/CodeEditor/MarkdownView.svx";
-  import { FETCH_LESSON_BY_INDEX } from '$lib/queries/lessons';
+  import { query, mutation } from "svelte-apollo";
+  import { FETCH_COURSE_BY_PK } from "$lib/queries/lessons";
   import LessonOverview from "$components/Lessons/LessonOverview.svelte";
   
   export let data;
@@ -54,31 +54,9 @@
   class="border border-#efefef rounded-sm card bg-base-100 shadow-md"
 >
   <div class="flex">
-    <div class="flex-1 p-4 relative">
-      {#if lesson}
-        <LessonOverview lesson={lesson} />
-        <MarkdownView />
-        <div class="absolute bottom-0 right-0 left-0 flex justify-between">
-          {#if prev.id !== null}
-          <button 
-            on:click={handleNavigate(prev.id)} 
-            class="btn capitalize" 
-            disabled={prev.id === null ? true : false}
-          >
-            {`Previous: ${prev.title}`}
-          </button>
-          {/if}
-
-          {#if next.id !== null}
-          <button 
-            on:click={handleNavigate(next.id)} 
-            class="btn capitalize" 
-            disabled={next.id === null ? true : false}
-          >
-            {`Next: ${next.title}`}
-          </button>
-          {/if}
-        </div>
+    <div class="flex-1 p-4">
+      {#if $course.data}
+        <LessonOverview lesson={$course.data.lessons_by_pk} />
       {:else}
         <p>Loading...</p>
       {/if}
