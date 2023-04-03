@@ -11,7 +11,8 @@
   $: menuLinks = [
     { text: 'Home', path: '/' },
     { text: 'Courses', path: '/courses' },
-    { text: 'About', path: '/about' }
+    { text: 'About', path: '/about' },
+    { text: 'Explore Bugs', path: '/explore' }
   ];
 
   onMount(() => {
