@@ -1,9 +1,9 @@
 import {
   FETCH_COURSE_BY_SLUG,
-  FETCH_COURSE_BY_COMPOSITE,
   FETCH_USER_COURSE_PROGRESS,
 } from '$lib/queries/courses';
 import apolloClient from '$lib/apollo';
+import { error } from '@sveltejs/kit';
 
 export const load = async ({ params }) => {
   const { slug } = params;
@@ -14,6 +14,12 @@ export const load = async ({ params }) => {
   });
 
   const course = data.courses[0];
+
+  if (!course) {
+    throw error(404, {
+      message: 'Course not found!',
+    });
+  }
 
   const activeCourse = await apolloClient.query({
     query: FETCH_USER_COURSE_PROGRESS,
