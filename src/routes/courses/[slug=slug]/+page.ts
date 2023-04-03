@@ -16,9 +16,8 @@ export const load = async ({ params }) => {
   const course = data.courses[0];
 
   if (!course) {
-    throw error(404, {
-      message: 'Course not found!',
-    });
+    const error = new Error('Course not found!');
+    throw error;
   }
 
   const activeCourse = await apolloClient.query({
