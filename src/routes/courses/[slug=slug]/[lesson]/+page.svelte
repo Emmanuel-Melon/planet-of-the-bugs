@@ -28,19 +28,23 @@
 </script>
 
 <section
-  class="border border-#efefef rounded-sm card bg-base-100 shadow-md"
+  class="border border-#efefef rounded-sm card bg-base-100 shadow-md box-border"
 >
   <div class="flex">
-    <div class="flex-1 p-4">
+    
+    <div class={isExpanded ? "hidden" : "flex-1 p-4"}>
       {#if $course.data}
         <LessonOverview lesson={$course.data.lessons_by_pk} />
       {:else}
         <p>Loading...</p>
       {/if}
     </div>
-    <div class="flex-1">
-      <CodeEditor handleExpand={handleExpand}/>
+
+    <div class="flex-1 w-full">
+      <CodeEditor handleExpand={handleExpand} isExpanded={isExpanded}/>
+      {#if !isExpanded}
       <CodeOutput />
+      {/if}
     </div>
   </div>
 
