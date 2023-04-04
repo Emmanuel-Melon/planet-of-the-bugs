@@ -20,7 +20,12 @@
   });
   $: course.refetch();
 
-  console.log(course);
+  $: isExpanded = false;
+
+  const handleExpand = () => {
+    isExpanded = !isExpanded;
+    console.log(isExpanded)
+  }
 </script>
 
 <section
@@ -36,7 +41,7 @@
       {/if}
     </div>
     <div class="flex-1">
-      <CodeEditor />
+      <CodeEditor handleExpand={handleExpand}/>
       <CodeOutput />
     </div>
   </div>
