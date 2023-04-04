@@ -1258,6 +1258,11 @@
     svelte-hmr "^0.15.1"
     vitefu "^0.2.4"
 
+"@sveltestack/svelte-query@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@sveltestack/svelte-query/-/svelte-query-1.6.0.tgz#d175863557a7abe6a8dcb0da2080a9f43ae8d1d1"
+  integrity sha512-C0wWuh6av1zu3Pzwrg6EQmX3BhDZQ4gMAdYu6Tfv4bjbEZTB00uEDz52z92IZdONh+iUKuyo0xRZ2e16k2Xifg==
+
 "@svelteuidev/composables@^0.10.0":
   version "0.10.0"
   resolved "https://registry.npmjs.org/@svelteuidev/composables/-/composables-0.10.0.tgz"
