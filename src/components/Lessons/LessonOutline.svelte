@@ -46,7 +46,7 @@
               <span class="bg-black rounded-full px-1 text-white">
                 <iconify-icon icon="heroicons:document-text" />
               </span>
-              <a class="link" href={`/courses/introduction_to_debugging/${lesson.id}`}
+              <a class="link" href={`/courses/introduction-to-debugging/${lesson.id}`}
                 >{lesson.title}</a
               >
             </div>
