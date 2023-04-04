@@ -45,7 +45,6 @@
         "\n"
       ),
       language: "javascript",
-      automaticLayout: true,
     });
 
     return () => {
@@ -54,10 +53,10 @@
   });
 </script>
 
-<section class="code relative">
+<section class="code w-full">
   <div class="bg-slate-600 p-1 text-white flex justify-between items-center">
     <h3>Code Editor</h3>
-    <div class="w-1/3 flex justify-evenly">
+    <div class="w-2/5 flex justify-evenly">
       <div class="dropdown dropdown-hover">
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <!-- svelte-ignore a11y-label-has-associated-control -->
@@ -76,6 +75,10 @@
         </ul>
       </div>
 
+      <button >
+        <iconify-icon icon="heroicons:play-solid" />
+      </button>
+
       <button on:click|preventDefault={() => handleExpand()}>
         <iconify-icon icon="heroicons:arrows-pointing-out-20-solid" />
       </button>
@@ -85,7 +88,7 @@
       </button>
     </div>
   </div>
-  <div bind:this={divEl} class="min-h-[350px]" />
-  <button class="btn absolute bottom-0 right-4">Run</button>
+  <div bind:this={divEl} class="min-h-[350px] w-full"/>
+  
 </section>
 
