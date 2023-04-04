@@ -1,11 +1,6 @@
 import { PUBLIC_HASURA_ADMIN_SECRET } from "$env/static/public";
-import {
-  ApolloClient,
-  InMemoryCache,
-  createHttpLink,
-  HttpLink,
-  // @ts-ignore
-} from "@apollo/client/core/core.cjs";
+import { ApolloClient, InMemoryCache } from "@apollo/client/core/core.cjs";
+import { HttpLink } from "@apollo/client/link/http/http.cjs";
 
 const httpLink = new HttpLink({
   uri: "https://planet-of-the-bugs.hasura.app/v1/graphql",
