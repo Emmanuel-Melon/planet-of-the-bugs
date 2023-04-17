@@ -42,6 +42,7 @@
 		"@svelteuidev/preprocessors": "^0.10.0",
 		"@svelteuidev/prism": "^0.10.0",
 		"@tailwindcss/typography": "^0.5.9",
+		"cors": "^2.8.5",
 		"daisyui": "^2.51.4",
 		"dayjs": "^1.11.7",
 		"gql": "^1.1.2",
