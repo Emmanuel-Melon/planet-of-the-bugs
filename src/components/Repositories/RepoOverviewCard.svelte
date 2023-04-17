@@ -1,7 +1,6 @@
 <script>
   export let repo;
   import "iconify-icon";
-  console.log(repo);
 </script>
 
 <div class="card w-80 bg-base-100 shadow-md">

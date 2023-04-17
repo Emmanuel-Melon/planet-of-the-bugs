@@ -38,6 +38,8 @@ export const FETCH_REPOSITORIES_BY_TOPIC = gql`
             homepageUrl
             sshUrl
             url
+            forkCount
+            stargazerCount
           }
         }
       }
