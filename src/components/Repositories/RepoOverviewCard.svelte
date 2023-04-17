@@ -1,0 +1,28 @@
+<script>
+  export let repo;
+  import "iconify-icon";
+</script>
+
+<div class="card w-80 bg-base-100 shadow-md">
+  <div class="card-body">
+    <div class="flex justify-between">
+      <div>
+        <h2 class="card-title">{repo.name}</h2>
+        <a class="link" href={repo.url}>{repo.name}</a>
+      </div>
+      <div>
+        <div class="badge badge-accent badge-outline gap-2">
+          <iconify-icon icon="heroicons:star" />
+          {repo.stargazerCount.toLocaleString()}
+        </div>
+      </div>
+    </div>
+    <p>{repo.description}</p>
+    <div class="card-actions justify-end">
+      <button class="btn btn-sm btn-primary gap-2">
+        Follow
+        <iconify-icon icon="heroicons:folder-plus" />
+      </button>
+    </div>
+  </div>
+</div>
