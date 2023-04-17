@@ -1,8 +1,11 @@
 <script>
-
-export let data;
-
-console.log(data.user.viewer);
+  export let data;
+  import UserGithubStats from "$components/User/UserGithubStats.svelte";
+  import UserProfileCard from "$components/User/UserProfileCard.svelte";
+  console.log(data.user.viewer);
 </script>
 
-<h1>{data.user.viewer.name}</h1>
+<div class="flex gap-4">
+  <UserProfileCard user={data.user.viewer} image={data.session?.user?.image} />
+  <UserGithubStats />
+</div>
