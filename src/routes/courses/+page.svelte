@@ -13,7 +13,7 @@
   $: courses.refetch();
 </script>
 
-<div class="grid place-items-center grid-cols-1 mt-8 gap-8 lg:grid-cols-2">
+<div class="flex gap-4">
     {#if $courses.data}
     {#each $courses.data.courses as course}
     <CourseCard course={course} />

@@ -87,6 +87,9 @@
         <li>
           <a href="/profile">Profile</a>
         </li>
+        <li>
+          <a href="/courses/authored">My Courses</a>
+        </li>
           <li>
             <a href="/about">About</a>
           </li>
