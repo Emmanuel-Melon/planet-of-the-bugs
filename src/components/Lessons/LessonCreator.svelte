@@ -43,7 +43,7 @@
 	}
 	
 	.markdown-editor__textarea {
-		margin: 0;
+		margin: 15;
 	}
 	
 	.markdown-editor__result-html {
@@ -53,7 +53,10 @@
 
 <div class="markdown-editor">
 	<div class="markdown-editor__panel">
-		<span class="markdown-editor__panel__label">Markdown</span>
+		<div class="flex justify-between">
+			<span class="markdown-editor__panel__label">Markdown</span>
+			<button class="btn btn-sm">Submit Lesson</button>
+		</div>
 		<textarea class="markdown-editor__textarea" bind:value={markdown} />
 	</div>
 	<div class="markdown-editor__panel">

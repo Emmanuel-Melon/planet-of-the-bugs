@@ -57,6 +57,19 @@ export const FETCH_COURSE_BY_COMPOSITE = gql`
   }
 `;
 
+export const FETCH_AUTHORED_COURSES = gql`
+  query fetchCourseByAuthor($creator: uuid) {
+    courses(where: { creator: { _eq: $creator } }) {
+      id
+      title
+      description
+      creator
+      complexity
+      slug
+    }
+  }
+`;
+
 export const FETCH_USER_COURSE_PROGRESS = gql`
   query fetchUserCourseProgress($courseId: uuid, $userId: uuid) {
     user_courses(
