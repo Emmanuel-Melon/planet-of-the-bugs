@@ -71,7 +71,7 @@
       </ul>
     </div>
 
-    <div class="dropdown dropdown-end lg:block hidden text-3xl btn-ghost mr-4">
+    <div class="dropdown dropdown-end lg:block hidden text-3xl btn-ghost mr-4 rounded">
       {#if user}
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <div tabindex="0" class="btn btn-ghost btn-circle avatar">
