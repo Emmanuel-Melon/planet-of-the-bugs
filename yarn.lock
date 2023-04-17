@@ -2063,7 +2063,6 @@ dset@^3.1.2:
   resolved "https://registry.yarnpkg.com/dset/-/dset-3.1.2.tgz#89c436ca6450398396dc6538ea00abc0c54cd45a"
   integrity sha512-g/M9sqy3oHe477Ar4voQxWtaPIFw1jTdKZuomOjhCcBx9nHUNn0pu6NopuFFrTh/TRZIKEj+76vLWFu9BNKk+Q==
 
-electron-to-chromium@^1.4.284:
   version "1.4.366"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.366.tgz#48d400f9c4af8e80f7bbad0d18730c165d43155e"
   integrity sha512-XjC4pyf1no8kJe24nUfyexpWwiGRbZWXU/KbprSEvXcTXUlr3Zr5vK3lQt2to0ttpMhAc3iENccwPSKbnEW2Fg==
@@ -3510,6 +3509,7 @@ rimraf@^2.5.2:
   dependencies:
     glob "^7.1.3"
 
+
 rollup-plugin-svelte@^6.1.0:
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/rollup-plugin-svelte/-/rollup-plugin-svelte-6.1.1.tgz#66362cf0500fb7a848283ebcf19d289a60ef0871"
@@ -3525,6 +3525,7 @@ rollup-pluginutils@^2.8.2:
   integrity sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==
   dependencies:
     estree-walker "^0.6.1"
+
 
 rollup@^3.18.0:
   version "3.20.4"
@@ -3809,6 +3810,7 @@ svelte-hmr@^0.11.3:
   version "0.11.6"
   resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.11.6.tgz#67f0498e2cdce9e1039631d820c1951bd01caa3f"
   integrity sha512-XUYcp7W26q/fF8tABZfCYGklwL4TDH48gc1KOjuBQNlTiMW63l/+rRqmfVOE/qKG5vns0J2NPo3zFjdahkwoHA==
+
 
 svelte-hmr@^0.15.1:
   version "0.15.1"
