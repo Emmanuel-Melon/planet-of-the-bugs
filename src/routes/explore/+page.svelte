@@ -1,6 +1,7 @@
 <script>
   export let data;
   import RepoOverviewCard from "$components/Repositories/RepoOverviewCard.svelte";
+  import LessonCreator from "$components/Lessons/LessonCreator.svelte"
 </script>
 
 <h1>Explore The Planet</h1>
