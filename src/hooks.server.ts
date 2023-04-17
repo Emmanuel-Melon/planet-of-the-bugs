@@ -32,9 +32,6 @@ export const handle = SvelteKitAuth({
       };
     },
     async session(data) {
-      console.log("got data");
-      console.log(data);
-
       const { session, token } = data;
   
       // custom jwt
@@ -54,21 +51,15 @@ export const handle = SvelteKitAuth({
         // token.accessToken = account.access_token
         // token.id = profile.id
         // token.id_token = account.id_token
-        console.log("got account");
-        console.log(account);
       }
 
       if(user) {
         // token.user = user
-        console.log("got user");
-        console.log(user);
       }
 
 
       if(profile) {
         // token.profile = profile
-        console.log("got profile");
-        console.log(profile);
       }
       return token;
     },
