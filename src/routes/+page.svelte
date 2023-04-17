@@ -1,8 +1,6 @@
 <script>
-
-  import { signIn, signOut } from "@auth/sveltekit/client"
-  import { page } from "$app/stores"
-
+  import { signIn, signOut } from "@auth/sveltekit/client";
+  import { page } from "$app/stores";
 </script>
 
 <svelte:head>
@@ -12,20 +10,21 @@
 
 <h1>Planet of The Bugs</h1>
 
-
-<p>
-  {#if $page.data.session}
-    {#if $page.data.session.user?.image}
-      <span
-        style="background-image: url('{$page.data.session.user.image}')"
-        class="avatar"
-      />
+<main>
+  <p>
+    {#if $page.data.session}
+      <span class="signedInText">
+        <small>Signed in as</small>
+        <strong>{$page.data.session.user?.name ?? "User"}</strong>
+      </span>
     {/if}
-    <span class="signedInText">
-      <small>Signed in as</small><br />
-      <strong>{$page.data.session.user?.name ?? "User"}</strong>
-    </span>
-    <button on:click={() => signOut()} class="btn">Sign out</button>
-  {/if}
-</p>
-
+  </p>
+  <div class="flex">
+    <div>
+      <h3>Active Courses</h3>
+    </div>
+    <div>
+      <h3>Active Courses</h3>
+    </div>
+  </div>
+</main>
