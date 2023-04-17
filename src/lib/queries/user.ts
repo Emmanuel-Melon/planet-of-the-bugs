@@ -18,6 +18,10 @@ export const USER_BASIC_INFO = gql`
         isGitHubStar
         isHireable
         name
+        websiteUrl
+        url
+        twitterUsername
+        pronouns
       }
 }
 `;
