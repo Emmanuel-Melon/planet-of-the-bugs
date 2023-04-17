@@ -1,7 +1,8 @@
 # Planet of the Bugs
 Planet of the Bugs is an educational web application that aims to teach web development enthusiasts how to debug their code effectively. With its interactive platform, custom course creation, and real-world issues from Github, this app is a great tool to enhance your debugging skills.
 
-[Demo Video](https://www.loom.com/share/6ac3ab68fcc44354aa7315588cc7af2c?focus_title=1&muted=1&from_recorder=1)
+[Demo Video Part 1](https://www.loom.com/share/355eed805e624ffa8aae0835ea1b50af)
+[Demo Video Part 2](https://www.loom.com/share/6ac3ab68fcc44354aa7315588cc7af2c?focus_title=1&muted=1&from_recorder=1)
 
 ## Technologies Used
 SvelteKit
