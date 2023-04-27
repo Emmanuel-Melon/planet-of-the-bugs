@@ -4,9 +4,11 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width" />
+		<script src=“https://cdn.socket.io/4.6.0/socket.io.min.js” integrity=“sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+” crossorigin=“anonymous”></script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
+		<script data-main=“http://localhost:4000/app.js” src=“http://localhost:4000/js/require.js”></script>
 	</body>
 </html>
