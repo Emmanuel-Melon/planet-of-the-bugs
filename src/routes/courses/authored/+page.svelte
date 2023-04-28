@@ -61,7 +61,7 @@
                 <input 
                     id="username" type="text" 
                     bind:value={title} 
-                    on:input={(event)=> title = event.target.value.toLowerCase()}
+                    on:input={(event)=> title = event.target.value}
                     class="input input-bordered w-full max-w-xs"
                     required
                     />
@@ -73,7 +73,7 @@
                 <input 
                     id="description" type="textarea" 
                     bind:value={description} 
-                    on:input={(event)=> description = event.target.value.toLowerCase()}
+                    on:input={(event)=> description = event.target.value}
                     class="input input-bordered w-full max-w-xs"
                     required
                     />
