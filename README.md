@@ -1,49 +1,81 @@
 # Planet of the Bugs
-Planet of the Bugs is an educational web application that aims to teach web development enthusiasts how to debug their code effectively. With its interactive platform, custom course creation, and real-world issues from Github, this app is a great tool to enhance your debugging skills.
+Welcome to Planet of the Bugs, an innovative app that uses AI to generate unique bug scenarios for developers to practice and improve their debugging skills. The app also provides personalized training for teams, a built-in AI assistant for rubber-duck debugging, and many other exciting features.
 
-[Demo Video Part 1](https://www.loom.com/share/355eed805e624ffa8aae0835ea1b50af)
-[Demo Video Part 2](https://www.loom.com/share/6ac3ab68fcc44354aa7315588cc7af2c?focus_title=1&muted=1&from_recorder=1)
+Planet of the Bugs uses AI to generate fake bug scenarios for developers to learn debugging skills and the fundamentals of writing secure and robust software. Some of the key features of the app include:
 
-## Technologies Used
-SvelteKit
-Tailwind CSS
-Daisy UI
-Auth0 for authentication
-Apollo with GraphQL for database management
-Installation
-To use this app, you must have Node.js and Git installed on your machine. Here's how to install and run the app locally:
+- Endless supply of unique scenarios for practicing and honing skills
+- Online editor for practicing theoretical knowledge
+- Application of knowledge in solving real-world issues from GitHub
+- Ability for experts to create courses for new developers
+- Creating teams and courses to train on the company's stack
 
-## Setup
+## How to Get Started
+To get started with Planet of the Bugs, simply sign up for an account on our website and start exploring! Our app is easy to use and intuitive, so you can start practicing your debugging skills right away.
 
-- You must have Node version 16 or higher.
-Clone the repository
+### Tech Stack
+- [Svelte]( https://svelte.dev/)
+- [Apollo Client](https://www.apollographql.com/docs/react/)
+- [GraphQL]: (https://graphql.org/)
+- [MindsDB] (https://mindsdb.com/)
+
+### Local Setup
+
+To set up the Planet of the Bugs project locally, follow these steps:
+
+Clone the repository to your local machine by running the following command in your terminal:
 
 ```bash
-git clone https://github.com/your-username/planet-of-the-bugs.git
+Copy code
+git clone https://github.com/username/repo-name.git
 ```
+Install the necessary dependencies by running the following command in your terminal:
 
-Change into the project directory
 ```bash
-cd planet-of-the-bugs && yarn
+Copy code
+npm install
 ```
-### Authenticating Locally
-Create a .env file with your Auth0 credentials. You can use the .env.example file as a template.
+Start the development server by running the following command in your terminal:
 
-Start the development server
+```bash
+Copy code
+npm run dev
+```
+Navigate to http://localhost:3000 in your web browser to view the app.
 
-## Features
-### Interactive Platform
-Planet of the Bugs offers an interactive platform where you can practice debugging your code.
+## App Features
+### AI-generated bug scenarios: Our app uses AI to generate unique bug scenarios for developers to practice and hone their skills.
 
-### Custom Course Creation
-You can create a custom course by selecting the specific programming languages, frameworks, and libraries you want to learn about. You can also choose the difficulty level of the course and select the type of bugs you want to solve.
+### Personalized team training: 
+Our app provides personalized training for teams, so you can learn together and improve your skills as a group.
 
-### Real-World Issues from Github
-Planet of the Bugs also offers a feature where you can explore real-world issues from Github. You can view issues from popular repositories that are labeled "bug." This feature lets you practice debugging on real-world problems and learn from experienced developers.
+### Built-in AI assistant
+Our app also features a built-in AI assistant for rubber-duck debugging, so you can get help when you need it.
 
-## 
-Contributing
-If you want to contribute to this project, feel free to open an issue or submit a pull request. Please read the contributing guidelines before making any contributions.
+### Leaderboards and rewards
+Our app offers leaderboards and rewards for top contributors, so you can compete with others and earn recognition for your hard work.
+
+### Job board
+Our app also features a job board for top contributors, so you can find exciting new opportunities to showcase your skills.
+
+### Bounty hunting program: 
+Our app offers a bounty hunting program to help companies crack bugs, so you can earn money while helping others.
+
+## How to Contribute
+We welcome contributions from developers of all skill levels! If you're interested in contributing to Planet of the Bugs, please fork our repository and submit a pull request with your changes. We're always looking for ways to improve our app, so your contributions are greatly appreciated.
+
+If you're not sure where to start, check out our Contributing Guidelines for more information on how to get involved. We also have a Code of Conduct that we expect all contributors to follow, so please take a few minutes to review it before getting started.
+
+Thank you for your interest in Planet of the Bugs! We look forward to working with you.
+
+### Contributors
+
+[Emmanuel Gatwech (Eman)]: [LinkedIn Profile URL], [Twitter Profile URL], [Hashnode Profile URL], etc.
+[Magid Faiz]: [LinkedIn Profile URL], [Twitter Profile URL], [Hashnode Profile URL], etc.
+[Name of team member]: [LinkedIn Profile URL], [Twitter Profile URL], [Hashnode Profile URL], etc.
+
+### Thank You Note
+
+We would like to extend our gratitude to Hashnode and MindsDB for hosting this amazing Hackathon. It has been an incredible opportunity to learn and work on this project.
 
 ##
 License

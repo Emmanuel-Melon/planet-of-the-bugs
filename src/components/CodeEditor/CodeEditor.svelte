@@ -7,6 +7,7 @@
   import htmlWorker from "monaco-editor/esm/vs/language/html/html.worker?worker";
   import tsWorker from "monaco-editor/esm/vs/language/typescript/ts.worker?worker";
   import "iconify-icon";
+  import { transform } from "@babel/standalone";
 
   export let handleExpand: Function;
 
@@ -16,7 +17,7 @@
   let editor: monaco.editor.IStandaloneCodeEditor;
   let Monaco;
 
-  let languages = ["JavaScript", "Java", "Python"]
+  let languages = ["JavaScript", "Java", "Python"];
   $: currentLang = 0;
 
   onMount(async () => {
@@ -41,16 +42,41 @@
 
     Monaco = await import("monaco-editor");
     editor = Monaco.editor.create(divEl, {
-      value: ["function x() {", '\tconsole.log("Hello world!");', "}"].join(
+      value: ["const x = () => {", '\tconsole.log("Hello world!");', "}"].join(
         "\n"
       ),
       language: "javascript",
+      theme: "vs-dark",
     });
 
     return () => {
       editor.dispose();
     };
   });
+
+  type StateType = "editing" | "error";
+  type ErrorMessageType = string;
+
+  interface TranspiledCodeType {
+    iframeCode: string;
+    sourceCode: string;
+  }
+
+  const transpileCode = (code: string) => {
+    const options = { presets: ['es2015-loose', 'react']};
+    const { code: transpiledCode } = transform(code, options)
+    console.log(transpiledCode);
+  }
+
+  const executeCode = () => {
+    try {
+      const code = editor.getValue();
+      const transpiled = transpileCode(code);
+      console.log(code);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 </script>
 
 <section class="code w-full">
@@ -66,16 +92,21 @@
         </label>
 
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+        <ul
+          tabindex="0"
+          class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+        >
           {#each languages as lang, index}
-          <li>
-            <button on:click|preventDefault={() => currentLang = index}>{lang}</button>
-          </li>
+            <li>
+              <button on:click|preventDefault={() => (currentLang = index)}
+                >{lang}</button
+              >
+            </li>
           {/each}
         </ul>
       </div>
 
-      <button >
+      <button on:click={executeCode}>
         <iconify-icon icon="heroicons:play-solid" />
       </button>
 
@@ -88,7 +119,5 @@
       </button>
     </div>
   </div>
-  <div bind:this={divEl} class="min-h-[350px] w-full"/>
-  
+  <div bind:this={divEl} class="min-h-[350px] w-full" />
 </section>
-
