@@ -4,7 +4,7 @@
   console.log(repo);
 </script>
 
-<div class="card w-80 bg-base-100 shadow-md">
+<div class="card w-96 bg-gray-100 shadow-lg">
   <div class="card-body">
     <div class="flex justify-between">
       <div>
@@ -12,7 +12,7 @@
         <a class="link" href={repo.url}>{repo.name}</a>
       </div>
       <div>
-        <div class="badge badge-accent badge-outline gap-2">
+        <div class="badge badge-accent gap-2">
           <iconify-icon icon="heroicons:star" />
           {repo.stargazerCount.toLocaleString()}
         </div>

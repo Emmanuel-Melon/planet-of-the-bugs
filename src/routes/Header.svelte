@@ -46,7 +46,7 @@
   </nav>
 
   <div class="navbar-end relative">
-    <div class="dropdown dropdown-end lg:hidden">
+    <div class="dropdown dropdown-end lg:hidden ">
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
       <div tabindex="0" class="btn btn-ghost btn-circle text-3xl">
         <iconify-icon icon="heroicons:bars-3-bottom-right-20-solid" />
@@ -54,7 +54,7 @@
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
       <ul
         tabindex="0"
-        class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+        class="menu menu-compact dropdown-content mt-3 p-2 shadow-lg rounded-box w-52 "
       >
         {#each menuLinks as { text, path }}
           <li>
@@ -82,7 +82,7 @@
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <ul
           tabindex="0"
-          class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+          class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52"
         >
         <li>
           <a href="/profile">Profile</a>

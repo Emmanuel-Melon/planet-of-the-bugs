@@ -18,7 +18,7 @@
 
   <div class="flex-1">
     <h3>Latest Issues</h3>
-    <div class="card bg-base-100 shadow-md">
+    <div class="card bg-gray-100 shadow-md">
       <div class="card-body">
         <h3>Suggested Repositories</h3>
 
