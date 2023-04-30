@@ -91,9 +91,8 @@ Thank you for your interest in Planet of the Bugs! We look forward to working wi
 
 ### Contributors
 
-[Emmanuel Gatwech (Eman)]: [LinkedIn Profile URL], [Twitter Profile URL], [Hashnode Profile URL], etc.
-[Magid Faiz]: [LinkedIn Profile URL], [Twitter Profile URL], [Hashnode Profile URL], etc.
-[Name of team member]: [LinkedIn Profile URL], [Twitter Profile URL], [Hashnode Profile URL], etc.
+- **Emmanuel Gatwech (Eman)**: [LinkedIn Profile](https://www.linkedin.com/in/emmanuel-gatwech/), [Twitter](https://twitter.com/junubiman), [Hashnode](https://eman.hashnode.dev/), [Portfolio](https://e-man.vercel.app/).
+- **Magid Faiz**: [LinkedIn Profile](https://www.linkedin.com/in/maiz27/), [Hashnode Profile](https://hashnode.com/@Maiz), [Portfolio](https://maged-faiz.web.app/).
 
 ### Thank You Note
 
