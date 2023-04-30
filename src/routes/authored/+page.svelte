@@ -21,7 +21,8 @@
   let slug = "";
   let title = "";
   let description = "";
-  let creator = "0c6cd039-b8ed-4d8d-bdca-1173ad79b028";
+  let creator = "";
+  let complexity = "Beginner";
 
   const handleSubmit = async () => {
     try {
@@ -32,6 +33,7 @@
             title,
             description,
             creator,
+            complexity
           },
         },
       });
@@ -81,7 +83,9 @@
             />
           </div>
           <div>
-            <select class="select w-full max-w-lg bg-secondary">
+            <select bind:value={complexity} class="select w-full max-w-lg bg-accent"
+            on:change="{(e) => complexity = event.target.value}"
+            >
               <option disabled selected>Pick course complexity</option>
               <option>Beginner</option>
               <option>Intermediate</option>
@@ -89,7 +93,7 @@
             </select>
           </div>
           <div class="modal-action">
-            <label for="my-modal" class="btn" on:click={handleSubmit}
+            <label for="my-modal" class="btn btn-primary" on:click={handleSubmit}
               >Submit Course</label
             >
           </div>
