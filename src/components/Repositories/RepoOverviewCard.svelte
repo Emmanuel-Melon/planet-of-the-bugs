@@ -1,7 +1,6 @@
 <script>
   export let repo;
   import "iconify-icon";
-  console.log(repo);
 </script>
 
 <div class="card w-96 bg-gray-100 shadow-lg">
@@ -18,6 +17,7 @@
         </div>
       </div>
     </div>
+    <div class="divider">Description</div>
     <p>{repo.description}</p>
     <div class="card-actions justify-end">
       <button class="btn btn-sm btn-primary gap-2">
