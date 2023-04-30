@@ -1,4 +1,5 @@
 # Planet of the Bugs
+
 Welcome to Planet of the Bugs, an innovative app that uses AI to generate unique bug scenarios for developers to practice and improve their debugging skills. The app also provides personalized training for teams, a built-in AI assistant for rubber-duck debugging, and many other exciting features.
 
 Planet of the Bugs uses AI to generate fake bug scenarios for developers to learn debugging skills and the fundamentals of writing secure and robust software. Some of the key features of the app include:
@@ -18,9 +19,11 @@ To get started with Planet of the Bugs, simply sign up for an account on our web
 - [GraphQL]: (https://graphql.org/)
 - [MindsDB] (https://mindsdb.com/)
 
-### Local Setup
+### Installation
 
 To set up the Planet of the Bugs project locally, follow these steps:
+
+Clone the project from the GitHub repository.
 
 Clone the repository to your local machine by running the following command in your terminal:
 
@@ -41,6 +44,16 @@ Copy code
 npm run dev
 ```
 Navigate to http://localhost:3000 in your web browser to view the app.
+
+### Local Setup
+
+To get started, copy the .example.env file to .env by running the following command in your terminal:
+
+```bash
+cp .example.env .env
+```
+
+
 
 ## App Features
 ### AI-generated bug scenarios: Our app uses AI to generate unique bug scenarios for developers to practice and hone their skills.

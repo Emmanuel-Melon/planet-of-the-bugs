@@ -28,9 +28,6 @@ const config = {
 export default defineConfig({
   plugins: [
     sveltekit(),
-    monacoEditorPlugin({
-      languageWorkers: ["editorWorkerService", "typescript"],
-    }),
   ],
   ...config,
 });
