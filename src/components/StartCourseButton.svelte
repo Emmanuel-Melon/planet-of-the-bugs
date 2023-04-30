@@ -1,12 +1,12 @@
 <script>
-// @ts-nocheck
-  export let course_id
-  export let slug
-  export let status = "Unsubscribed"
+  // @ts-nocheck
+  export let course_id;
+  export let slug;
+  export let status = "Unsubscribed";
 
   import { mutation } from "svelte-apollo";
   import { START_COURSE } from "$lib/mutations/courses";
-
+  import "iconify-icon";
 
   const startCourse = mutation(START_COURSE);
 
@@ -20,14 +20,12 @@
       });
 
       if (result.data.insert_user_courses.affected_rows === 1) {
-      console.log('Mutation successful!');
-      //  Change the URL to the Svelte page
-      window.location.href = `/courses/${slug}`;
-    } else {
-      console.log('Mutation failed');
-    }
-
-      
+        console.log("Mutation successful!");
+        //  Change the URL to the Svelte page
+        window.location.href = `/courses/${slug}`;
+      } else {
+        console.log("Mutation failed");
+      }
     } catch (error) {
       console.log(error);
       // TODO
@@ -41,19 +39,23 @@
     Completed: {
       text: "Course Completed",
       style: "btn btn-success",
-      logic: handleCompleted
+      logic: handleCompleted,
     },
     Unsubscribed: {
       text: "Start Course",
       style: "btn btn-primary",
-      logic: handleStart
+      logic: handleStart,
     },
     Subscribed: {
       text: "Continue Course",
-      style: "btn btn-secondary",
-      logic: handleContinue
-    }
-  }
+      style: "btn btn-primary",
+      logic: handleContinue,
+    },
+  };
 </script>
 
-<button class={buttons[status].style} on:click|preventDefault={buttons[status].logic}>{buttons[status].text}</button>
+<button
+  class={` btn-sm gap-2 ${buttons[status].style}` }
+  on:click|preventDefault={buttons[status].logic}
+  >{buttons[status].text} <iconify-icon icon="heroicons:check-circle" /></button
+>
