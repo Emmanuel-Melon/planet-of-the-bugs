@@ -1,5 +1,5 @@
 import {
-    USER_BASIC_INFO 
+    GITHUB_USER_BASIC_INFO 
   } from '$lib/queries/user';
   import {githubClient} from '$lib/apollo';
   import { error } from '@sveltejs/kit';
@@ -8,7 +8,7 @@ import {
     
   
     const { data } = await githubClient.query({
-      query: USER_BASIC_INFO
+      query: GITHUB_USER_BASIC_INFO
     });
   
     return {

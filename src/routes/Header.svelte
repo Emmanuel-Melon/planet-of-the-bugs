@@ -13,6 +13,12 @@
     { text: "Explore Bugs", path: "/explore" },
   ];
 
+  $: dropdownLinks = [
+    { text: "Profile", path: "/profile" },
+    { text: "My Courses", path: "/authored" },
+    { text: "About", path: "/about" },
+  ];
+
   onMount(() => {
     user = $page.data.session?.user;
   });
@@ -21,18 +27,26 @@
     user = null;
     current = null;
     menuLinks = [];
+    dropdownLinks = [];
   });
+
+  let theme = "light";
 </script>
 
 <header class="navbar bg-white shadow-sm">
   <div class="navbar-start">
     <a href="/" class="btn btn-ghost normal-case text-xl">Planet Of The Bugs</a>
+    <input
+      type="checkbox"
+      class={`toggle toggle-md ${
+        theme === "light" ? "toggle-bg-green-100" : "toggle-bg-blue-100"
+      }`}
+      checked
+    />
   </div>
 
   <nav>
-    <ul
-      class="navbar-center hidden lg:flex items-center gap-4 text-md"
-    >
+    <ul class="navbar-center hidden lg:flex items-center gap-4 text-md">
       {#each menuLinks as { text, path }}
         <li
           class={path === current
@@ -45,8 +59,8 @@
     </ul>
   </nav>
 
-  <div class="navbar-end relative">
-    <div class="dropdown dropdown-end lg:hidden ">
+  <div class="navbar-end relative gap-2 items-center">
+    <div class="dropdown dropdown-end lg:hidden">
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
       <div tabindex="0" class="btn btn-ghost btn-circle text-3xl">
         <iconify-icon icon="heroicons:bars-3-bottom-right-20-solid" />
@@ -54,7 +68,7 @@
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
       <ul
         tabindex="0"
-        class="menu menu-compact dropdown-content mt-3 p-2 shadow-lg rounded-box w-52 "
+        class="menu menu-compact dropdown-content mt-3 p-2 shadow-lg rounded-box w-52"
       >
         {#each menuLinks as { text, path }}
           <li>
@@ -71,10 +85,10 @@
       </ul>
     </div>
 
-    <div class="dropdown dropdown-end lg:block hidden text-3xl btn-ghost mr-4 rounded">
+    <div class="dropdown dropdown-bottom dropdown-end">
       {#if user}
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-        <div tabindex="0" class="btn btn-ghost btn-circle avatar">
+        <div tabindex="0" class="btn btn-accent btn-circle avatar">
           <div class="w-10 rounded-full">
             <img src={user.image} alt={user.name} />
           </div>
@@ -84,15 +98,11 @@
           tabindex="0"
           class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52"
         >
-        <li>
-          <a href="/profile">Profile</a>
-        </li>
-        <li>
-          <a href="/authored">My Courses</a>
-        </li>
-          <li>
-            <a href="/about">About</a>
-          </li>
+          {#each dropdownLinks as { text, path }}
+            <li>
+              <a href={path}>{text}</a>
+            </li>
+          {/each}
           <li>
             <button on:click|preventDefault={() => signOut()}>Sign Out</button>
           </li>

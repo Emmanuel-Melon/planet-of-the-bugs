@@ -26,8 +26,6 @@
     console.log(isExpanded)
   }
 
-  console.log("what!")
-
   // http://localhost:5173/courses/introduction-to-debugging/85ceb7ff-c4a9-449e-b6fb-572afecec604
 
   // http://localhost:5173/courses/introduction_to_debugging/8bc28676-19ef-41bd-89f4-a27bef045eb0
