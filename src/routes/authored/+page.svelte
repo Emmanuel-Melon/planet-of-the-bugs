@@ -1,14 +1,25 @@
-<script>
+<script lang="ts">
   // @ts-nocheck
-  import { onMount } from "svelte";
-  import { FETCH_AUTHORED_COURSES } from "$lib/queries/courses";
-  import { CREATE_COURSE } from "$lib/mutations/courses";
   import { query, mutation } from "svelte-apollo";
+  import { page } from "$app/stores";
+  import { onMount } from "svelte";
+  import { CREATE_COURSE } from "$lib/mutations/courses";
+  import { FETCH_AUTHORED_COURSES } from "$lib/queries/courses";
   import AuthoredCourseCard from "$components/AuthoredCourseCard.svelte";
+
+  const { data: { session, github_user, user } } = $page;
+
+
+  console.log(session);
+  console.log(github_user);
+  
+
+  console.log(user);
+
 
   const courses = query(FETCH_AUTHORED_COURSES, {
     variables: {
-      creator: "0c6cd039-b8ed-4d8d-bdca-1173ad79b028",
+      creator: user?.id,
     },
   });
 
@@ -24,19 +35,27 @@
   let creator = "";
   let complexity = "Beginner";
 
+  function createSlug(str) {
+    return str.toLowerCase().replace(/\s+/g, "_");
+  }
+
   const handleSubmit = async () => {
     try {
-      const result = await createCourse({
-        variables: {
-          courseInput: {
-            slug: title.toLowerCase(),
-            title,
-            description,
-            creator,
-            complexity
+      if ($page.data.session) {
+        const result = await createCourse({
+          variables: {
+            courseInput: {
+              creator: user?.id,
+              slug: createSlug(title),
+              title,
+              description,
+              creator,
+              complexity,
+            },
           },
-        },
-      });
+        });
+      }
+
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -83,8 +102,10 @@
             />
           </div>
           <div>
-            <select bind:value={complexity} class="select w-full max-w-lg bg-accent"
-            on:change="{(e) => complexity = event.target.value}"
+            <select
+              bind:value={complexity}
+              class="select w-full max-w-lg bg-accent"
+              on:change={(e) => (complexity = event.target.value)}
             >
               <option disabled selected>Pick course complexity</option>
               <option>Beginner</option>
@@ -93,8 +114,10 @@
             </select>
           </div>
           <div class="modal-action">
-            <label for="my-modal" class="btn btn-primary" on:click={handleSubmit}
-              >Submit Course</label
+            <button
+              for="my-modal"
+              class="btn btn-primary"
+              on:click={handleSubmit}>Submit Course</button
             >
           </div>
         </div>
