@@ -40,23 +40,19 @@ Clone the project from the GitHub repository.
 
 Clone the repository to your local machine by running the following command in your terminal:
 
-```bash
-Copy code
-git clone https://github.com/username/repo-name.git
-```
+<pre>
+<code data-prompt="Copy this command:">$ git clone https://github.com/Emmanuel-Melon/planet-of-the-bugs/ && git checkout dev</code>
+</pre>
+
 Install the necessary dependencies by running the following command in your terminal:
 
-```bash
-Copy code
-npm install
-```
+<pre>
+<code data-prompt="Copy this command:">$ yarn install && yarn dev</code>
+</pre>
+
 Start the development server by running the following command in your terminal:
 
-```bash
-Copy code
-npm run dev
-```
-Navigate to http://localhost:3000 in your web browser to view the app.
+Navigate to [http://localhost:3000](http://localhost:3000) in your web browser to view the app.
 
 ### Local Setup
 
