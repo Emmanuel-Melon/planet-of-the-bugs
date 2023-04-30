@@ -2,10 +2,24 @@
   export let data;
   import UserGithubStats from "$components/User/UserGithubStats.svelte";
   import UserProfileCard from "$components/User/UserProfileCard.svelte";
-  console.log(data.user.viewer);
+
+
+
+  import { page } from "$app/stores";
+  import { onMount, onDestroy } from "svelte";
+
+  let user;
+
+onMount(() => {
+  user = $page.data.session?.user;
+});
 </script>
 
-<div class="flex gap-4">
-  <UserProfileCard user={data.user.viewer} image={data.session?.user?.image} />
-  <UserGithubStats />
-</div>
+<main>
+  <div class="flex gap-4">
+    <UserProfileCard user={data.user.viewer} image={data.session?.user?.image} />
+ 
+
+  </div>
+  
+</main>
