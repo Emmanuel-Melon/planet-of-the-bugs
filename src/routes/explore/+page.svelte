@@ -1,19 +1,55 @@
 <script>
   export let data;
+  import { page } from "$app/stores";
+  import { onMount, onDestroy } from "svelte";
   import RepoOverviewCard from "$components/Repositories/RepoOverviewCard.svelte";
-  import LessonCreator from "$components/Lessons/LessonCreator.svelte"
+  import LessonCreator from "$components/Lessons/LessonCreator.svelte";
+  import ContributionsStats from "$components/User/ContributionsStats.svelte";
+
+  let user;
+
+  onMount(() => {
+    user = $page.data.session?.user;
+  });
 </script>
 
-<h1>Explore The Planet</h1>
+<main class="p-4">
+  <div class="flex card bg-primary shadow-lg mb-4 p-4">
 
-<div class="flex">
-  <div class="flex-wrap">
-    <h3>Suggested Repositories</h3>
-    <div class="flex gap-2 flex-wrap">
-      {#each data?.pullRequests?.edges as edge}
-        <RepoOverviewCard repo={edge?.node} />
-      {/each}
+    <div class="avatar">
+      <div
+        class="w-16 rounded-xl ring ring-accent ring-offset-base-100 ring-offset-2"
+      >
+        <img src="https://res.cloudinary.com/dwacr3zpp/image/upload/v1682868697/Planet%20of%20The%20Bugs/Untitled_design_4.png" alt="github logo" />
+      </div>
+    </div>
+    <h1 class="prose lg:prose-xl">Explore The Planet</h1>
+    <p>
+      Storybook is a frontend workshop for building UI components and pages in
+      isolation. Made for UI development, testing, and documentation.
+    </p>
+  </div>
+  <section>
+    <div class="flex gap-2">
+      <div class="min-h-full flex-1">
+        <ContributionsStats user={user} />
+      </div>
+      <div class="flex-2 flex-wrap">
+        {#each data?.pullRequests?.edges as edge}
+          <RepoOverviewCard repo={edge?.node} />
+        {/each}
+      </div>
+    </div>
+  </section>
+  <div class="flex items-center justify-center">
+    <div class="bg-primary btn-group mt-2">
+      <button class="btn">1</button>
+      <button class="btn btn-active">2</button>
+      <button class="btn">3</button>
+      <button class="btn">4</button>
+      <button class="btn">5</button>
+      <button class="btn">...</button>
+      <button class="btn">90</button>
     </div>
   </div>
-
-</div>
+</main>

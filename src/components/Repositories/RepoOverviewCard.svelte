@@ -3,27 +3,30 @@
   import "iconify-icon";
 </script>
 
-<div class="card w-96 bg-gray-100 shadow-lg">
+<div class="card bg-gray-100 shadow-lg mb-2 basis-1/4">
   <div class="card-body">
-    <div class="flex justify-between">
-      <div>
-        <h2 class="card-title">{repo.name}</h2>
-        <a class="link" href={repo.url}>{repo.name}</a>
+    <div class="flex gap-4 items-center">
+      <div class="flex gap-2">
+        <h2 class="card-title">{repo.name.toLocaleUpperCase()}</h2>
+        <a class="link link-secondary" href={repo.url}>{repo.name}</a>
       </div>
       <div>
-        <div class="badge badge-accent gap-2">
+        <div class="badge badge-primary gap-2">
           <iconify-icon icon="heroicons:star" />
           {repo.stargazerCount.toLocaleString()}
         </div>
       </div>
     </div>
-    <div class="divider">Description</div>
+
     <p>{repo.description}</p>
-    <div class="card-actions justify-end">
-      <button class="btn btn-sm btn-primary gap-2">
-        Follow
-        <iconify-icon icon="heroicons:folder-plus" />
-      </button>
+    <div class="card-actions">
+      <div class="bg-base-10 flex gap-2 p-1 items-center">
+        <p>Never miss an update from your favorite GitHub repositories</p>
+        <button class="btn btn-sm btn-accent gap-2">
+          Watch Repo!
+          <iconify-icon icon="heroicons:eye" />
+        </button>
+        </div>
     </div>
   </div>
 </div>

@@ -34,8 +34,8 @@
 </script>
 
 <header class="navbar bg-white shadow-sm">
-  <div class="navbar-start">
-    <a href="/" class="btn btn-ghost normal-case text-xl">Planet Of The Bugs</a>
+  <div class="navbar-start gap-4">
+    <a href="/" class="normal-case text-xl">Planet Of The Bugs</a>
     <input
       type="checkbox"
       class={`toggle toggle-md ${
