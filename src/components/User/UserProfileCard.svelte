@@ -84,6 +84,12 @@
     <div class="divider">Basic Info</div>
     <h1>{user.bio}</h1>
 
+    <ul>
+      <li class="gap-2 items-center"><iconify-icon icon="heroicons:user-plus-solid" />  {user.company}</li>
+      <li class="gap-2 items-center"><iconify-icon icon="heroicons:user-plus-solid" /> {user.location}</li>
+      <li class="gap-2 items-center"><iconify-icon icon="heroicons:user-plus-solid" /> Joined {user.createdAt}</li>
+    </ul>
+
     <div>
       <a class="link link-primary" href={user.websiteUrl}>Website</a>
       <div class="divider divider-horizontal" />
