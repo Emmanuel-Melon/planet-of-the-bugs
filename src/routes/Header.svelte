@@ -9,14 +9,16 @@
   let user;
   $: current = $page.url.pathname;
   $: menuLinks = [
-    { text: "Courses", path: "/courses" },
-    { text: "Explore Bugs", path: "/explore" },
+    { text: "Courses", path: "/courses", icon: "heroicons:academic-cap-20-solid" },
+    { text: "Explore Bugs", path: "/explore", icon: "heroicons:bug-ant-20-solid" },
+    { text: "Messages", path: "/messages", icon: "heroicons:chat-bubble-bottom-center-text-20-solid" },
+    { text: "Notifications", path: "/notifications", icon: "heroicons:bell-alert-20-solid" },
   ];
 
   $: dropdownLinks = [
-    { text: "Profile", path: "/profile" },
-    { text: "My Courses", path: "/authored" },
-    { text: "About", path: "/about" },
+    { text: "Profile", path: "/profile", icon: "heroicons:user-20-solid" },
+    { text: "My Courses", path: "/authored", icon: "heroicons:book-open-solid" },
+    { text: "About", path: "/about", icon: "heroicons:information-circle-20-solid" },
   ];
 
   onMount(() => {
@@ -47,13 +49,13 @@
 
   <nav>
     <ul class="navbar-center hidden lg:flex items-center gap-4 text-md">
-      {#each menuLinks as { text, path }}
+      {#each menuLinks as { icon, text, path }}
         <li
           class={path === current
-            ? "hidden lg:flex transition-all underline-offset-8 decoration-primary hover:underline underline"
-            : "hidden lg:flex transition-all underline-offset-8 decoration-accent hover:underline"}
+            ? "p-1 hidden bg-primary lg:flex transition-all  decoration-primary hover:bg-primary-focus"
+            : "p-1 hidden lg:flex transition-all underline-offset-8 decoration-primary-focus hover:bg-primary-focus"}
         >
-          <a href={path}>{text}</a>
+          <a href={path} class="flex items-center gap-2"><iconify-icon icon={icon}/> {text}</a>
         </li>
       {/each}
     </ul>
@@ -98,13 +100,13 @@
           tabindex="0"
           class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52"
         >
-          {#each dropdownLinks as { text, path }}
-            <li>
-              <a href={path}>{text}</a>
+          {#each dropdownLinks as { text, path, icon }}
+            <li class="hover:bg-primary-focus">
+              <a href={path}><iconify-icon icon={icon}/> {text}</a>
             </li>
           {/each}
           <li>
-            <button on:click|preventDefault={() => signOut()}>Sign Out</button>
+            <button class="hover:bg-primary-focus" on:click|preventDefault={() => signOut()}><iconify-icon icon="heroicons:arrow-right-on-rectangle-20-solid" /> Sign Out</button>
           </li>
         </ul>
       {:else}
