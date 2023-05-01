@@ -1,16 +1,103 @@
 <script>
+  import { onMount } from "svelte";
   export let repositories;
-  console.log(repositories.nodes[0]);
+  import "iconify-icon";
+
+  function hexToHSL(hexColor) {
+    // Remove the # if present
+    hexColor = hexColor.replace("#", "");
+
+    // Convert hex to RGB
+    const r = parseInt(hexColor.substring(0, 2), 16) / 255;
+    const g = parseInt(hexColor.substring(2, 4), 16) / 255;
+    const b = parseInt(hexColor.substring(4, 6), 16) / 255;
+
+    // Find the maximum and minimum values of RGB
+    const cmax = Math.max(r, g, b);
+    const cmin = Math.min(r, g, b);
+    const delta = cmax - cmin;
+
+    // Calculate hue
+    let hue = 0;
+    if (delta !== 0) {
+      if (cmax === r) {
+        hue = ((g - b) / delta) % 6;
+      } else if (cmax === g) {
+        hue = (b - r) / delta + 2;
+      } else {
+        hue = (r - g) / delta + 4;
+      }
+    }
+    hue = Math.round(hue * 60);
+
+    // Calculate lightness
+    const lightness = (cmax + cmin) / 2;
+
+    // Calculate saturation
+    let saturation = 0;
+    if (delta !== 0) {
+      saturation = delta / (1 - Math.abs(2 * lightness - 1));
+    }
+    saturation = Math.round(saturation * 100);
+
+    return `(${hue}, ${saturation}, ${lightness})`;
+  }
+
+  onMount(() => {
+    return () => {};
+  });
 </script>
 
-<h3>Hello</h3>
-<div class="flex-wrap">
+<section class="flex gap-2 flex-wrap mt-2 grow w-full">
   {#each repositories.nodes as node}
-    <div class="card w-96 bg-gray-100 shadow-lg">
+    <div class="card basis-1/4 bg-gray-100 shadow-lg">
       <div class="card-body">
-        <h3>{node?.name}</h3>
-        <h3>{node?.description}</h3>
+        <div class="flex gap-4">
+          <div class="w-full">
+            <div class="flex justify-between w-ful">
+              <h3 class="card-title">
+                <a class="link" href={node.url}>
+                  {`${node.nameWithOwner}`}
+                </a>
+              </h3>
+              <a class="link flex items-center gap-2" href={node.homepageUrl}>
+                <iconify-icon icon="heroicons:globe-alt-solid" />
+                Website</a
+              >
+            </div>
+            <p>{node?.description}</p>
+          </div>
+        </div>
+        <div class="divider">Contributions</div>
+        <div class="stats bg-white text-primary-content">
+          <div class="stat">
+            <div class="stat-title">Pull Requests</div>
+            <div class="stat-value">89</div>
+            <div class="stat-actions">
+              <div class="badge badge-md bg-accent">57 Merged</div>
+              <div class="badge badge-md badge-error">23 Closed</div>
+            </div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-title">Issues</div>
+            <div class="stat-value">40</div>
+            <div class="stat-actions">
+              <div class="badge badge-md bg-green-500">23 Open</div>
+              <div class="badge badge-md bg-red-500">23 Closed</div>
+            </div>
+          </div>
+        </div>
+        <h3>Tech Stack</h3>
+        <div class="flex gap-2 flex-wrap">
+          {#each node.languages.nodes as language}
+            <div class={`badge badge-outline badge-lg gap-2`}>
+              <iconify-icon icon="heroicons:code-bracket-square-20-solid" />
+              {language.name}
+            </div>
+          {/each}
+        </div>
       </div>
     </div>
   {/each}
-</div>
+</section>

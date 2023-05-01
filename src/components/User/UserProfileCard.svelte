@@ -34,10 +34,6 @@
         const label = prop
           .replace(/^is/, "")
           .replace(/([a-z])([A-Z])/g, "$1 $2");
-
-        const randomIndex = Math.floor(Math.random() * colors.length);
-
-        console.log(colorMap[prop]);
         booleanObjects.push({
           name: prop,
           value: user[prop],
@@ -47,7 +43,6 @@
         });
       }
     }
-
     return booleanObjects;
   }
   const booleanObjects = extractBooleanProps(user);
@@ -85,19 +80,17 @@
     <h1>{user.bio}</h1>
 
     <ul>
-      <li class="gap-2 items-center"><iconify-icon icon="heroicons:user-plus-solid" />  {user.company}</li>
-      <li class="gap-2 items-center"><iconify-icon icon="heroicons:user-plus-solid" /> {user.location}</li>
-      <li class="gap-2 items-center"><iconify-icon icon="heroicons:user-plus-solid" /> Joined {user.createdAt}</li>
+      <li><a class="link link-ghost gap-2 flex items-center" href={user.websiteUrl}>
+        <iconify-icon icon="heroicons:globe-alt-solid" />Website</a></li>
+      <li class="gap-2 items-center"><iconify-icon icon="heroicons:briefcase-solid" />  {user.company}</li>
+      <li class="gap-2 items-center"><iconify-icon icon="heroicons:map-pin-20-solid" /> {user.location}</li>
+      <li class="gap-2 items-center"><iconify-icon icon="heroicons:clock-solid" /> Joined {user.createdAt}</li>
+      <li><a
+        class="link link-ghost gap-2 flex items-center"
+        href={`https://twitter.com/${user.twitterUsername}`}>
+        <iconify-icon icon="ri:twitter-fill" />Twitter</a
+      ></li>
     </ul>
-
-    <div>
-      <a class="link link-primary" href={user.websiteUrl}>Website</a>
-      <div class="divider divider-horizontal" />
-      <a
-        class="link link-primary"
-        href={`https://twitter.com/${user.twitterUsername}`}>Twitter</a
-      >
-    </div>
 
     <div class="card-actions" />
     <div class="divider">Background Info</div>
