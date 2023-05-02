@@ -11,6 +11,76 @@ export const FOLLOW_REPO = gql`
   }
 `;
 
+export const GET_USER_PULL_REQUEST_CONTRIBUTIONS = gql`
+query getUserPullRequests($author: String!) {
+  user(login: $author) {
+    pullRequests(first: 10, states: [OPEN, CLOSED, MERGED]) {
+      totalCount
+      nodes {
+        state
+        title
+        url
+        createdAt
+        closedAt
+        id
+        number
+        mergeCommit {
+          oid
+        }
+      }
+    }
+  }
+}
+`
+
+export const GET_CONTRIBUTIONS_BY_REPO = gql`
+  query getContributionsByRepo(
+    $owner: String!
+    $name: String!
+    $author: String!
+  ) {
+    repository(owner: $owner, name: $name) {
+      pullRequests(
+        states: [OPEN, CLOSED, MERGED]
+        last: 10
+
+      ) {
+        totalCount
+        nodes {
+          state
+          title
+          url
+          createdAt
+          closedAt
+          id
+          number
+          viewerDidAuthor
+        }
+      }
+      issues(
+        states: [OPEN, CLOSED]
+        last: 10
+        filterBy: { assignee: $author, createdBy: $author }
+      ) {
+        totalCount
+        nodes {
+          state
+          title
+          url
+          createdAt
+          closedAt
+        }
+      }
+      openedIssues: issues(states: [OPEN], filterBy: { assignee: $author, createdBy: $author }) {
+        totalCount
+      }
+      closedIssues: issues(states: [CLOSED], filterBy: { assignee: $author, createdBy: $author }) {
+        totalCount
+      }
+    }
+  }
+`;
+
 export const GET_FOLLOWED_REPOS = gql`
   query GetFollowedRepos {
     user(username: $username) {

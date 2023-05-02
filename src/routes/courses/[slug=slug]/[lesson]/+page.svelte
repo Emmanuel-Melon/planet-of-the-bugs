@@ -34,7 +34,7 @@
 <section
   class="border border-#efefef rounded-sm card bg-base-100 shadow-md box-border"
 >
-  <div class="flex">
+  <div class="flex bg-white">
     
     <div class={isExpanded ? "hidden" : "flex-1 p-4"}>
       {#if $course.data}

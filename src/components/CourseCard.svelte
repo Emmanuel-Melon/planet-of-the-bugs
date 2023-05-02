@@ -6,7 +6,7 @@
     import "iconify-icon";
 </script>
 
-<div class="card w-96 bg-gray-100 shadow-lg">
+<div class="card basis-1/4 grow bg-gray-100 shadow-lg border-solid border-e border-accent">
   <div class="card-body">
     <div class="flex gap-4">
       <div class="avatar">

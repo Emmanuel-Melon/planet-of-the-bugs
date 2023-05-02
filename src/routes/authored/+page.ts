@@ -1,7 +1,19 @@
 import { GITHUB_USER_BASIC_INFO, USER_BASIC_INFO } from "$lib/queries/user";
 import apolloClient, { githubClient } from "$lib/apollo";
-import { error } from "@sveltejs/kit";
+import * as kit from "@sveltejs/kit";
+
 import { destructureQueryResults } from "./helpers";
+
+
+
+
+console.log("got kit");;
+console.log(Object.keys(kit));
+console.log(kit.json)
+
+
+
+
 
 export const load = async ({ params }) => {
   const [githubUser, user] = await Promise.all([
@@ -11,7 +23,7 @@ export const load = async ({ params }) => {
     apolloClient.query({
       query: USER_BASIC_INFO,
       variables: {
-        email: "emmanuelgatwech@gmail.com",
+        email: "emmanuelgatwech@gmail.com", // make it dybanuc
       },
     }),
   ]);
@@ -21,7 +33,6 @@ export const load = async ({ params }) => {
   } = user;
 
   const output = destructureQueryResults(githubUser);
-  console.log(output);
 
   const { result: destructuredGithubUser, loading: gitHubrofileLoading } = output;
 

@@ -3,5 +3,5 @@
 </script>
 
 <main>
-    <LessonCreator />
+    <h1>Hello</h1>
 </main>

@@ -41,41 +41,41 @@ export const GITHUB_USER_BASIC_INFO = gql`
   }
 `;
 
-export const TOP_REPOS = gql`
-  {
-    viewer {
-      topRepositories(
-        orderBy: { field: CREATED_AT, direction: ASC }
-        first: 6
-      ) {
-        nodes {
-          createdAt
-          description
-          forkCount
-          homepageUrl
+export const GET_PINNED_ITEMS = gql`
+query getPinnedItems($login: String!) {
+  user(login: $login) {
+    pinnedItems(first: 2) {
+      totalCount
+      nodes {
+        ... on Repository {
           name
-          forkingAllowed
-          id
+          description
           stargazerCount
+          forks {
+            totalCount
+          }
           url
-          repositoryTopics(first: 10) {
-            nodes {
-              url
-              topic {
-                name
-              }
-            }
+          owner {
+            login
           }
-          pullRequests {
+        }
+        ... on Gist {
+          name
+          description
+          stargazerCount
+          forks {
             totalCount
           }
-          issues {
-            totalCount
+          url
+          owner {
+            login
           }
         }
       }
     }
   }
+}
+
 `;
 
 export const REPOS_CONTRIBUTED_TO = gql`

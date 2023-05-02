@@ -6,12 +6,14 @@
   import PaginationComponent from "$components/PaginationComponent.svelte";
   import { page } from "$app/stores";
   import { onMount, onDestroy } from "svelte";
+  import ContributionsByRepo from "$components/User/ContributionsByRepo.svelte";
 
   let user;
 
   onMount(() => {
     user = $page.data.session?.user;
   });
+
 
 </script>
 
@@ -24,40 +26,12 @@
       />
     </div>
     <div class="flex-2">
-      <div class="stats shadow bg-white w-full">
-        <div class="stat place-items-center">
-          <div class="stat-title">Contributed To</div>
-          <div class="stat-value">
-            {data.user.viewer.repositories.totalCount}
-          </div>
-        </div>
-
-        <div class="stat place-items-center">
-          <div class="stat-title">Owned Repositories</div>
-          <div class="stat-value">
-            {data.user.viewer.repositories.totalCount}
-          </div>
-        </div>
-
-        <div class="stat place-items-center">
-          <div class="stat-title">Pull Requests</div>
-          <div class="stat-value text-secondary">
-            {data.user.viewer.pullRequests.totalCount}
-          </div>
-        </div>
-
-        <div class="stat place-items-center">
-          <div class="stat-title">Followers</div>
-          <div class="stat-value">{data.user.viewer.followers.totalCount}</div>
-        </div>
-        <div class="stat place-items-center">
-          <div class="stat-title">Starred Repositories</div>
-          <div class="stat-value">
-            {data.user.viewer.starredRepositories.totalCount}
-          </div>
-        </div>
-      </div>
-      <RepositoriesContributedTo repositories={data.contributedTo} />
+      <UserGithubStats user={data.user.viewer}/>
+      
+      <RepositoriesContributedTo
+        repositories={data.contributedTo}
+        user={data.user.viewer}
+      />
     </div>
   </div>
   <PaginationComponent />
