@@ -1,7 +1,7 @@
 import {
     GITHUB_USER_BASIC_INFO,
     REPOS_CONTRIBUTED_TO,
-    TOP_REPOS
+    GET_PINNED_ITEMS
   } from '$lib/queries/user';
   import {githubClient} from '$lib/apollo';
   import { error } from '@sveltejs/kit';
@@ -12,20 +12,25 @@ import {
       query: GITHUB_USER_BASIC_INFO
     });
     
-    const [contributedTo, topRepos] = await Promise.all([
+    const [contributedTo, pinnedItems] = await Promise.all([
 
       await githubClient.query({
         query: REPOS_CONTRIBUTED_TO
       }),
       await githubClient.query({
-        query: TOP_REPOS
+        query: GET_PINNED_ITEMS,
+        variables: {
+          login: "Emmanuel-Melon"
+        }
       })
     ]);
 
 
    
     const { data: contributionData } = contributedTo;
-    const { data: topRepoData } = topRepos;
+    const { data: topRepoData } = pinnedItems;
+
+    console.log(topRepoData.user.pinnedItems)
   
     return {
       user: {
@@ -33,7 +38,7 @@ import {
       },
       contributedTo: { ...contributionData.viewer.repositoriesContributedTo
       }, 
-      topRepos: { ...topRepoData.viewer.topRepositories }
+      pinnedItems: topRepoData.user.pinnedItems
     };
   };
   

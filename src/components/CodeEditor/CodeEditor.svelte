@@ -80,13 +80,13 @@
 </script>
 
 <section class="code w-full">
-  <div class="bg-slate-600 p-1 text-white flex justify-between items-center">
+  <div class="bg-accent p-2 text-white flex justify-between items-center">
     <h3>Code Editor</h3>
     <div class="w-2/5 flex justify-evenly">
       <div class="dropdown dropdown-hover">
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <!-- svelte-ignore a11y-label-has-associated-control -->
-        <label tabindex="0" class="btn">
+        <label tabindex="0" class="btn btn-sm">
           <p>{languages[currentLang]}</p>
           <iconify-icon icon="heroicons:chevron-down-20-solid" />
         </label>

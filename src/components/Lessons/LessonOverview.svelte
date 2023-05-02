@@ -2,4 +2,6 @@
     export let lesson;
 </script>
 
-<h1>{lesson.title}</h1>
+<section class="bg-white">
+    <h1>{lesson.title}</h1>
+</section>

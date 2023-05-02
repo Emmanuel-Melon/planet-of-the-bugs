@@ -1,7 +1,11 @@
 <script>
   import { onMount } from "svelte";
   export let repositories;
+  export let user;
   import "iconify-icon";
+  import ContributionsByRepo from "./ContributionsByRepo.svelte";
+  import { githubClient } from "$lib/apollo";
+  let contributions;
 
   function hexToHSL(hexColor) {
     // Remove the # if present
@@ -48,13 +52,13 @@
   });
 </script>
 
-<section class="flex gap-2 flex-wrap mt-2 grow w-full">
+<section class="flex gap-2 flex-wrap mt-2 grow w-full ">
   {#each repositories.nodes as node}
-    <div class="card basis-1/4 bg-gray-100 shadow-lg">
+    <div class="card basis-1/4 grow bg-gray-100 shadow-lg border-solid border-e border-accent">
       <div class="card-body">
         <div class="flex gap-4">
           <div class="w-full">
-            <div class="flex justify-between w-ful">
+            <div class="flex justify-between w-ful mb-2">
               <h3 class="card-title">
                 <a class="link" href={node.url}>
                   {`${node.nameWithOwner}`}
@@ -68,26 +72,9 @@
             <p>{node?.description}</p>
           </div>
         </div>
-        <div class="divider">Contributions</div>
-        <div class="stats bg-white text-primary-content">
-          <div class="stat">
-            <div class="stat-title">Pull Requests</div>
-            <div class="stat-value">89</div>
-            <div class="stat-actions">
-              <div class="badge badge-md bg-accent">57 Merged</div>
-              <div class="badge badge-md badge-error">23 Closed</div>
-            </div>
-          </div>
-
-          <div class="stat">
-            <div class="stat-title">Issues</div>
-            <div class="stat-value">40</div>
-            <div class="stat-actions">
-              <div class="badge badge-md bg-green-500">23 Open</div>
-              <div class="badge badge-md bg-red-500">23 Closed</div>
-            </div>
-          </div>
-        </div>
+        <slot>
+          <ContributionsByRepo repository={node} {user} />
+        </slot>
         <h3>Tech Stack</h3>
         <div class="flex gap-2 flex-wrap">
           {#each node.languages.nodes as language}

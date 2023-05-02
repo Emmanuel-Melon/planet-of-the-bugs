@@ -19,7 +19,7 @@
       </div>
       <div>
         <h3 class="card-title">
-          <a class="link" href={`/courses/authored/${course.slug}`}
+          <a class="link" href={`/courses/authored/edit`}
             >{course.title}</a
           >
         </h3>

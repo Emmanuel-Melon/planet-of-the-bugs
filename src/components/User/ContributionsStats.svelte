@@ -2,7 +2,7 @@
   export let user;
 </script>
 
-<div class="stats stats-vertical shadow bg-secondary min-w-max">
+<div class="stats stats-vertical shadow bg-secondary min-w-max ">
   {#if user}
     <div class="flex items-center gap-2 p-4 bg-white">
       <div class="avatar">
