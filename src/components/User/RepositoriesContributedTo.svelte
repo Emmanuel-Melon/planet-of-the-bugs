@@ -54,7 +54,7 @@
 
 <section class="flex gap-2 flex-wrap mt-2 grow w-full ">
   {#each repositories.nodes as node}
-    <div class="card basis-1/4 grow bg-gray-100 shadow-lg border-solid border-e border-accent">
+    <div class="card basis-2/5 bg-gray-100 shadow-lg border-solid border-e border-accent">
       <div class="card-body">
         <div class="flex gap-4">
           <div class="w-full">

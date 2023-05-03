@@ -3,13 +3,17 @@ import {
   // @ts-ignore
 } from "@apollo/client/core/core.cjs";
 
-export const FOLLOW_REPO = gql`
-  mutation AddRepoToFavorites($repositoryId: ID!) {
-    followRepository(input: { repositoryId: $repositoryId }) {
-      clientMutationId
+export const GET_SUBSCRIBED_REPOS = gql`
+  query SubscribedRepos($user_id: uuid) {
+    user_subscribed_repos(where: { user_id: { _eq: $user_id } }) {
+      id
+      repo_name
+      repo_owner
+      repo_url
     }
   }
 `;
+
 
 export const GET_USER_PULL_REQUEST_CONTRIBUTIONS = gql`
 query getUserPullRequests($author: String!) {
@@ -81,20 +85,6 @@ export const GET_CONTRIBUTIONS_BY_REPO = gql`
   }
 `;
 
-export const GET_FOLLOWED_REPOS = gql`
-  query GetFollowedRepos {
-    user(username: $username) {
-      followedRepos {
-        id
-        name
-        owner
-        createdAt
-        updatedAt
-      }
-    }
-  }
-`;
-
 export const FETCH_REPOSITORIES_BY_TOPIC = gql`
   query MyQuery {
     search(query: "topic:react", type: REPOSITORY, first: 10) {
@@ -110,6 +100,9 @@ export const FETCH_REPOSITORIES_BY_TOPIC = gql`
             url
             forkCount
             stargazerCount
+            owner {
+              login
+            }
           }
         }
       }

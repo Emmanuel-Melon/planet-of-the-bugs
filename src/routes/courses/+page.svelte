@@ -6,6 +6,7 @@
   import CourseCard from "$components/CourseCard.svelte";
   import SearchBar from "$components/SearchBar.svelte";
   import PaginationComponent from "$components/PaginationComponent.svelte";
+  import SidebarFilter from "$components/SidebarFilter.svelte";
 
   const courses = query(FETCH_COURSES);
 
@@ -26,10 +27,23 @@
   "Django",
   "Flask",
 ];
+
+const criteria = [
+    {
+      id: 1,
+      title: "By Difficulty",
+      icon: ""
+    },
+    {
+      id: 2,
+      title: "By Duration",
+      icon: ""
+    }
+  ];
 </script>
 
 <section class="h-max min-h-ful">
-  <div class="card bg-white w-full p-4 border-e shadow-sm border-2 border-secondary mb-2">
+  <div class="card bg-white w-full p-4 border-e shadow-lg border-2 border-secondary mb-2">
     <div class="bg-white mb-2 mx-auto text-center w-4/5">
       <h1 class="text-xl">Explore the Planet of Bugs</h1>
       <p>Discover a world of software defects, debugging techniques, and programming pitfalls. Join our community of curious developers and learn how to track down and squash those pesky bugs.</p>
@@ -49,43 +63,10 @@
     </div>
   </div>
   <div class="flex gap-2">
-    <div class="flex-1 gap-2">
-      <div
-        class="card p-4 bg-white shadow-lg border-solid border-e border-accent"
-      >
-      <div class="divider">Filter Courses</div>
-        <div>
-          <div class="form-control">
-            <label class="cursor-pointer label">
-              <span class="label-text">Beginner Courses</span>
-              <input
-                type="checkbox"
-                class="checkbox checkbox-primary"
-              />
-            </label>
-          </div>
-          <div class="form-control">
-            <label class="cursor-pointer label">
-              <span class="label-text">Intermediate Courses</span>
-              <input
-                type="checkbox"
-                class="checkbox checkbox-primary"
-              />
-            </label>
-          </div>
-          <div class="form-control">
-            <label class="cursor-pointer label">
-              <span class="label-text">Advanced Courses</span>
-              <input
-                type="checkbox"
-                class="checkbox checkbox-primary"
-              />
-            </label>
-          </div>
-        </div>
-      </div>
+    <div class="gap-2 grow">
+      <SidebarFilter {criteria} CTA="Filter Courses" />
     </div>
-    <div class="flex gap-2 flex-wrap">
+    <div class="flex gap-2 flex-wrap basis-4/5">
       {#if $courses.data}
         {#each $courses.data.courses as course}
           <CourseCard {course} />

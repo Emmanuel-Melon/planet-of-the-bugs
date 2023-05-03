@@ -1,9 +1,13 @@
 <script>
   export let user;
+  export let showUser;
+  export let orientation = "stats-vertical";
+
+console.log(user);
 </script>
 
-<div class="stats stats-vertical shadow bg-secondary min-w-max ">
-  {#if user}
+<div class={`stats ${orientation} bg-white w-full shadow-lg border-solid border-e border-accent`}>
+  {#if user && showUser}
     <div class="flex items-center gap-2 p-4 bg-white">
       <div class="avatar">
         <div
