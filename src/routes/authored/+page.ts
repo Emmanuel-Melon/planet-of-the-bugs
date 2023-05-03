@@ -5,16 +5,6 @@ import * as kit from "@sveltejs/kit";
 import { destructureQueryResults } from "./helpers";
 
 
-
-
-console.log("got kit");;
-console.log(Object.keys(kit));
-console.log(kit.json)
-
-
-
-
-
 export const load = async ({ params }) => {
   const [githubUser, user] = await Promise.all([
     githubClient.query({
