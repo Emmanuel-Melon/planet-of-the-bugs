@@ -29,5 +29,4 @@ export default defineConfig({
   plugins: [
     sveltekit(),
   ],
-  ...config,
 });

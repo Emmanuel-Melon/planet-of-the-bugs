@@ -37,6 +37,12 @@ console.log('data:', pageData);
         login: "Emmanuel-Melon",
       },
     }),
+    await githubClient.query({
+      query: GET_PINNED_ITEMS,
+      variables: {
+        login: "Emmanuel-Melon"
+      }
+    })
   ]);
 
   const { data: contributionData } = contributedTo;

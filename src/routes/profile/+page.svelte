@@ -10,6 +10,7 @@
   import Tabs from "$components/Tabs.svelte";
   import OwnedRepositories from "$components/Repositories/OwnedRepositories.svelte";
   import SubscrbedRepositories from "$components/Repositories/SubscrbedRepositories.svelte";
+  import UserPinnedItems from "$components/User/UserPinnedItems.svelte";
   let user;
 
   onMount(() => {
@@ -50,10 +51,9 @@
     {
       label: "Pinned Repositories",
       value: 4,
-      component: RepositoriesContributedTo,
+      component: UserPinnedItems,
       props: {
-        repositories: data.contributedTo,
-        user: data.user.viewer,
+        pinnedItems: data.pinnedItems
       },
       icon: "fluent-mdl2:pinned-solid"
     },

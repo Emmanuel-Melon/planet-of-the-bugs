@@ -1,4 +1,7 @@
-import { gql } from "@apollo/client/core";
+import {
+  gql,
+  // @ts-ignore
+} from "@apollo/client/core/core.cjs";
 
 export const SUBSCRIBE_TO_REPO = gql`
   mutation subscribeToRepo(
