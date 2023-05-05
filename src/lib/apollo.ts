@@ -1,12 +1,9 @@
+
 import { PUBLIC_HASURA_ADMIN_SECRET } from "$env/static/public";
-import {
-  ApolloClient,
-  InMemoryCache,
-  HttpLink,
-  concat,
-  ApolloLink
-  // @ts-ignore
-} from "@apollo/client/core/core.cjs";
+import { HttpLink, InMemoryCache, ApolloClient } from '@apollo/client/core';
+import { page } from "$app/stores"
+import { signIn, signOut } from "@auth/sveltekit/client"
+
 
 const httpLink = new HttpLink({
   uri: "https://planet-of-the-bugs.hasura.app/v1/graphql",
@@ -20,7 +17,7 @@ const githubHttpLink = new HttpLink({
   uri: "https://api.github.com/graphql",
   credentials: "omit",
   headers: {
-    Authorization: process.env.GITHUB_ACCESS_TOKEN || null,
+    Authorization: null,
   }
 })
 
