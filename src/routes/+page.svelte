@@ -3,13 +3,9 @@
   import { page } from "$app/stores";
   import { onMount, onDestroy } from "svelte";
   import ContributionsStats from "$components/User/ContributionsStats.svelte";
-  import UserPinnedItems from "$components/User/UserPinnedItems.svelte";
   let user;
   export let data;
   let githubClient;
-
-
-
 
  
 
@@ -31,7 +27,7 @@ onMount(() => {
       <ContributionsStats user={user} />
     </div>
     <div class="flex-1 p-0">
-      <UserPinnedItems pinnedItems={data.pinnedItems} />
+      
     </div>
   </div>
 </main>
