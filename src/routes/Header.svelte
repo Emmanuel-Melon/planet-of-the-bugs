@@ -9,8 +9,9 @@
   let user;
   $: current = $page.url.pathname;
   $: menuLinks = [
-    { text: "Courses", path: "/courses", icon: "heroicons:academic-cap-20-solid" },
-    { text: "Explore Bugs", path: "/explore", icon: "heroicons:bug-ant-20-solid" },
+    { text: "Learn", path: "/courses", icon: "heroicons:academic-cap-20-solid" },
+    { text: "Train", path: "/train", icon: "material-symbols:exercise" },
+    { text: "Explore Courses", path: "/explore", icon: "heroicons:bug-ant-20-solid" },
     { text: "Messages", path: "/messages", icon: "heroicons:chat-bubble-bottom-center-text-20-solid" },
     { text: "Notifications", path: "/notifications", icon: "heroicons:bell-alert-20-solid" },
   ];
@@ -52,7 +53,7 @@
       {#each menuLinks as { icon, text, path }}
         <li
           class={path === current
-            ? "p-1 hidden bg-primary lg:flex transition-all  decoration-primary hover:bg-primary-focus"
+            ? "p-1 hidden bg-secondary lg:flex transition-all  decoration-secondary hover:bg-secondary-focus"
             : "p-1 hidden lg:flex transition-all underline-offset-8 decoration-primary-focus hover:bg-primary-focus"}
         >
           <a href={path} class="flex items-center gap-2"><iconify-icon icon={icon}/> {text}</a>

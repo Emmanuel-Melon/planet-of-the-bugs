@@ -6,6 +6,7 @@
   let user;
   export let data;
   let githubClient;
+  import ChoicesPane from "$components/ChoicesPane.svelte";
 
  
 
@@ -22,12 +23,5 @@ onMount(() => {
 
 <main>
 
-  <div class="flex gap-2">
-    <div class="flex-2">
-      <ContributionsStats user={user} />
-    </div>
-    <div class="flex-1 p-0">
-      
-    </div>
-  </div>
+  <ChoicesPane />
 </main>
