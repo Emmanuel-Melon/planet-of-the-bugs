@@ -1,5 +1,5 @@
 
-import { PUBLIC_HASURA_ADMIN_SECRET, PUBLIC_GITHUB_ACCESS_CODE } from "$env/static/public";
+import { PUBLIC_HASURA_ADMIN_SECRET, PUBLIC_GITHUB_ACCESS_CODE, PUBLIC_GITHUB_API_ENDPOINT } from "$env/static/public";
 import { HttpLink, InMemoryCache, ApolloClient } from '@apollo/client/core';
 import { page } from "$app/stores"
 import { signIn, signOut } from "@auth/sveltekit/client"
@@ -10,15 +10,13 @@ const httpLink = new HttpLink({
   credentials: "include",
   headers: {
     "x-hasura-admin-secret": PUBLIC_HASURA_ADMIN_SECRET,
+    "Authorization": ""
   },
 });
 
 const githubHttpLink = new HttpLink({
-  uri: "https://api.github.com/graphql",
+  uri: PUBLIC_GITHUB_API_ENDPOINT,
   credentials: "omit",
-  headers: {
-    Authorization: `Bearer ${PUBLIC_GITHUB_ACCESS_CODE}`,
-  }
 })
 
 const apolloClient = new ApolloClient({

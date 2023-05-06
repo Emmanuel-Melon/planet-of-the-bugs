@@ -3,9 +3,6 @@
   export let user;
   import "iconify-icon";
 
-
-  console.log(user);
-
   import { SUBSCRIBE_TO_REPO } from "$lib/mutations/repositories";
   import { mutation } from "svelte-apollo";
   const subscribeToRepo = mutation(SUBSCRIBE_TO_REPO);

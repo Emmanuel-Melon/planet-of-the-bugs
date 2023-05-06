@@ -60,6 +60,12 @@
   ];
 </script>
 
+<svelte:head>
+  <title>Profile</title>
+  <meta name="description" content="Planet of the Bugs uses AI to generate fake bug scenarios for developers to learn debugging skills and the fundamentals of writing secure and robust software. By using AI, the app can provide an endless supply of unique scenarios, allowing developers to practice and hone their skills." />
+
+</svelte:head>
+
 <main class="w-full">
   <div class="flex gap-1">
     <div class="basis-1/4">
