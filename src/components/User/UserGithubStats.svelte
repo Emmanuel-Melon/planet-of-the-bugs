@@ -1,7 +1,5 @@
 <script>
   export let user;
-
-  console.log(user);
 </script>
 
 <section class="bg-white w-full p-4 border-e shadow-sm border-2 border-secondary">

@@ -1,7 +1,9 @@
+
 import { SvelteKitAuth } from "@auth/sveltekit";
 import GitHub from "@auth/core/providers/github";
 import Google from "@auth/core/providers/google";
 import { sequence } from '@sveltejs/kit/hooks';
+
 
 
 import {
@@ -13,24 +15,27 @@ import {
   PUBLIC_GITHUB_API_ENDPOINT
 } from "$env/static/public";
 
-export const handleGitHubAuth = async (data) => {
-  console.log("master");
-  console.log(Object.keys(data.event));
+/** @type {import('@sveltejs/kit').HandleFetch} */
+export async function handleFetch({ request, fetch }) {
+  request.headers.set('x-secure', 'Test')
 
-  const f = await data.event.getClientAddress();
-  console.log(data.event.request.isDataRequest);
+
+  return fetch(request)
+}
+
+
+export const handleGitHubAuth = async (data) => {
+
+
 
   const { resolve, event } = data;
   const response = await resolve(event);
+  
 
-  console.log("I got an event!")
-  // console.log(event);
-  // console.log(event.request);
+
+
   const sess = await event.locals.getSession();
 
-  response.headers.append('Authorization', `Bearer ${sess?.token?.accessToken}`);
-
-  // console.log(resolve);
 
   return response;
 }
@@ -39,9 +44,8 @@ export const handleCors = async (data) => {
   const { resolve, event } = data;
   const response = await resolve(event);
 
-  const sess = await event.locals.getSession();
 
-  response.headers.append('Authorization', `Bearer ${sess?.token?.accessToken}`);
+
   response.headers.append('Access-Control-Allow-Methods', `GET, POST, PUT, DELETE, PATCH, OPTIONS`);
   response.headers.append('Access-Control-Allow-Origin', `*`);
   response.headers.append('Access-Control-Allow-Headers', `*`);
@@ -111,4 +115,4 @@ export const handleAuth = SvelteKitAuth({
   }
 });
 
-export const handle = sequence(handleAuth, handleCors);
+export const handle = sequence(handleAuth, handleCors, handleGitHubAuth);

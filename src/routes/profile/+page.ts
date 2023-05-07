@@ -9,20 +9,8 @@ import { githubClient } from "$lib/apollo";
 import { error } from "@sveltejs/kit";
 
 export const load = async (info) => {
-  console.log("I got info!");
-  console.log(info);
+
   const { params, url, setHeaders, route, parent, fetch, depends, data: pageData } = info;
-
-  console.log('params:', params);
-console.log('url:', url);
-console.log('setHeaders:', setHeaders);
-console.log('route:', route);
-console.log('parent:', parent);
-console.log('fetch:', fetch);
-console.log('depends:', depends);
-console.log('data:', pageData);
-
-
   const { data } = await githubClient.query({
     query: GITHUB_USER_BASIC_INFO,
   });
@@ -47,8 +35,6 @@ console.log('data:', pageData);
 
   const { data: contributionData } = contributedTo;
   const { data: topRepoData } = pinnedItems;
-
-  console.log(topRepoData.user.pinnedItems);
 
   return {
     user: {

@@ -5,6 +5,7 @@
   import { onMount, onDestroy } from "svelte";
   import { signOut } from "@auth/sveltekit/client";
   import "iconify-icon";
+  import github from '$lib/images/github.svg';
 
   let user;
   $: current = $page.url.pathname;
@@ -113,6 +114,11 @@
       {:else}
         <a href="/auth" class="btn btn-outline btn-primary">Sign In</a>
       {/if}
+    </div>
+    <div class="corner">
+      <a href="https://github.com/sveltejs/kit">
+        <img src={github} alt="GitHub" />
+      </a>
     </div>
   </div>
 </header>
