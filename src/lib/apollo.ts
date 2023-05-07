@@ -17,6 +17,9 @@ const httpLink = new HttpLink({
 const githubHttpLink = new HttpLink({
   uri: PUBLIC_GITHUB_API_ENDPOINT,
   credentials: "omit",
+  headers: {
+    Authorization: `Bearer ${PUBLIC_GITHUB_ACCESS_CODE}`
+  }
 })
 
 const apolloClient = new ApolloClient({

@@ -7,6 +7,7 @@
 	import './styles.css';
 	import "../app.css";
 
+
   
 </script>
 
@@ -15,15 +16,7 @@
 <svelte:head>
   <title>Home</title>
   <meta name="description" content="Planet of the Bugs uses AI to generate fake bug scenarios for developers to learn debugging skills and the fundamentals of writing secure and robust software. By using AI, the app can provide an endless supply of unique scenarios, allowing developers to practice and hone their skills." />
-  <script
-  src="https://cdn.socket.io/4.6.0/socket.io.min.js"
-  integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
-  crossOrigin="anonymous" async
-></script>
-      <script
-  data-main="https://45b8-102-140-208-147.in.ngrok.io/app.js"
-  src="https://45b8-102-140-208-147.in.ngrok.io/js/require.js" async
-></script>
+
 </svelte:head>
 
 <div class="app">
