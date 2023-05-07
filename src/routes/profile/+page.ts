@@ -5,12 +5,18 @@ import {
 } from "$lib/queries/user";
 
 import { GET_SUBSCRIBED_REPOS } from "$lib/queries/repositories";
-import { githubClient } from "$lib/apollo";
-import { error } from "@sveltejs/kit";
+import { GITHUB_API } from "$lib/apollo";
 
-export const load = async (info) => {
+export const load = async (event) => {
+  const { params, url, setHeaders, route, parent, fetch, depends, data: pageData } = event;
 
-  const { params, url, setHeaders, route, parent, fetch, depends, data: pageData } = info;
+  const { session } = await parent();
+
+  if(session?.token !== null || session?.token !== undefined) {
+    GITHUB_API.setSession(session?.token?.accessToken);
+  }
+  const githubClient = GITHUB_API.getGithubClient();
+
   const { data } = await githubClient.query({
     query: GITHUB_USER_BASIC_INFO,
   });
@@ -22,13 +28,13 @@ export const load = async (info) => {
     await githubClient.query({
       query: GET_PINNED_ITEMS,
       variables: {
-        login: "Emmanuel-Melon",
+        login: data?.viewer?.login,
       },
     }),
     await githubClient.query({
       query: GET_PINNED_ITEMS,
       variables: {
-        login: "Emmanuel-Melon"
+        login: data?.viewer?.login
       }
     })
   ]);
@@ -43,4 +49,4 @@ export const load = async (info) => {
     contributedTo: { ...contributionData.viewer.repositoriesContributedTo },
     pinnedItems: topRepoData.user.pinnedItems,
   };
-};
+}

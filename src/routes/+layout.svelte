@@ -3,20 +3,18 @@
   import "./styles.css";
   import { setClient } from "svelte-apollo";
   import apolloClient from "$lib/apollo";
+  import "../app.css";
   setClient(apolloClient);
-	import './styles.css';
-	import "../app.css";
 
 
-  
 </script>
-
-
 
 <svelte:head>
   <title>Home</title>
-  <meta name="description" content="Planet of the Bugs uses AI to generate fake bug scenarios for developers to learn debugging skills and the fundamentals of writing secure and robust software. By using AI, the app can provide an endless supply of unique scenarios, allowing developers to practice and hone their skills." />
-
+  <meta
+    name="description"
+    content="Planet of the Bugs uses AI to generate fake bug scenarios for developers to learn debugging skills and the fundamentals of writing secure and robust software. By using AI, the app can provide an endless supply of unique scenarios, allowing developers to practice and hone their skills."
+  />
 </svelte:head>
 
 <div class="app">

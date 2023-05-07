@@ -7,34 +7,20 @@ import {
   REPOS_CONTRIBUTED_TO,
   GET_PINNED_ITEMS
 } from '$lib/queries/user';
-import { githubClient } from '$lib/apollo';
+import { GITHUB_API } from "$lib/apollo";
 
-export const load = async ({ params }) => {
+export const load = async (event) => {
 
-  const { data } = await githubClient.query({
-    query: GITHUB_USER_BASIC_INFO
-  });
+  const { params, url, setHeaders, route, parent, fetch, depends, data: pageData } = event;
 
-  const [contributedTo] = await Promise.all([
-
-    await githubClient.query({
-      query: REPOS_CONTRIBUTED_TO
-    }),
-
-  ]);
-
-
-
-  const { data: contributionData } = contributedTo;
-
-
+  const { session } = await parent();
+  if (session?.token !== null || session?.token !== undefined) {
+    console.log("why");
+    GITHUB_API.setSession(session?.token?.accessToken);
+  }
+  const githubClient = GITHUB_API.getGithubClient();
   return {
-    user: {
-      ...data
-    },
-    contributedTo: {
-      ...contributionData.viewer.repositoriesContributedTo
-    },
+
 
   };
 };

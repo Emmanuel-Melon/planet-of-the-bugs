@@ -3,7 +3,8 @@ import { SvelteKitAuth } from "@auth/sveltekit";
 import GitHub from "@auth/core/providers/github";
 import Google from "@auth/core/providers/google";
 import { sequence } from '@sveltejs/kit/hooks';
-
+import { redirect } from '@sveltejs/kit';
+import { goto } from '$app/navigation';
 
 
 import {
@@ -16,8 +17,14 @@ import {
 } from "$env/static/public";
 
 /** @type {import('@sveltejs/kit').HandleFetch} */
-export async function handleFetch({ request, fetch }) {
-  request.headers.set('x-secure', 'Test')
+export async function handleFetch(data) {
+  console.log("*****************");
+  console.log("Hey Man!");
+  console.log(data);
+  const { request, fetch } = data;
+  request.headers.set('x-secure', 'Test');
+
+  // response.headers.append('Authorization', `Bearer ${sess?.token?.accessToken}`);
 
 
   return fetch(request)
@@ -35,6 +42,9 @@ export const handleGitHubAuth = async (data) => {
 
 
   const sess = await event.locals.getSession();
+  console.log("got session");
+  console.log(sess?.token?.accessToken);
+  
 
 
   return response;
@@ -63,6 +73,8 @@ export const handleAuth = SvelteKitAuth({
   trustHost: true,
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
+
+      // goto('/');
       return {
         user,
         account,
@@ -115,4 +127,4 @@ export const handleAuth = SvelteKitAuth({
   }
 });
 
-export const handle = sequence(handleAuth, handleCors, handleGitHubAuth);
+export const handle = sequence(handleAuth, handleCors);
