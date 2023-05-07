@@ -3,17 +3,18 @@
   import { page } from "$app/stores";
   import "iconify-icon";
   import { redirect } from '@sveltejs/kit';
+  import { goto } from '$app/navigation';
 
   const handleGithubLogin = async () => {
     const result = await signIn("github");
       console.log("result");
-      redirect(307, '/profile');
+      goto('/');
   }
 
   const handleGithubLogout = async () => {
     const result = await signOut("github");
       console.log(result);
-      throw redirect(307, '/auth');
+      goto('/auth');
   }
 </script>
 
@@ -54,13 +55,6 @@
         >
           <iconify-icon icon="ri:github-fill" />
           Sign In with GitHub
-        </button>
-        <button
-          class="btn bg-white text-black gap-2"
-          on:click={() => signIn("google")}
-        >
-          <iconify-icon icon="ion:logo-google" />
-          Sign In with Google
         </button>
         <p />
       </div>
