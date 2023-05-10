@@ -13,7 +13,7 @@
     { text: "Learn", path: "/courses", icon: "heroicons:academic-cap-20-solid" },
     { text: "Train", path: "/train", icon: "material-symbols:exercise" },
     { text: "Explore Projects", path: "/explore", icon: "heroicons:bug-ant-20-solid" },
-    { text: "Messages", path: "/messages", icon: "heroicons:chat-bubble-bottom-center-text-20-solid" },
+    { text: "Chat", path: "/chat", icon: "heroicons:chat-bubble-bottom-center-text-20-solid" },
     { text: "Notifications", path: "/notifications", icon: "heroicons:bell-alert-20-solid" },
   ];
 
