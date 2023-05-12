@@ -3,16 +3,6 @@ import {
   // @ts-ignore
 } from "@apollo/client/core/core.cjs";
 
-const COURSE_FIELDS_FRAGMENT = gql`
-  fragment CourseFields on Course {
-    id
-    title
-    description
-    complexity
-    slug
-  }
-`;
-
 export const FETCH_COURSES = gql`
   query fetchCourses {
     courses {
