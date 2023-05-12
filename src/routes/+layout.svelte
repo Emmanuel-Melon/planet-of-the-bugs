@@ -8,10 +8,7 @@
 
   let syncNetServerURL = "https://1ee2-102-140-208-147.ngrok-free.app" || "http://localhost:4000";
 
-  /**
-   *   <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
-<script data-main={`${syncNetServerURL}/app.js`} src={`${syncNetServerURL}/js/require.js`}></script>
-  */
+
 </script>
 
 <svelte:head>
