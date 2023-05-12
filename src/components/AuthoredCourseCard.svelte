@@ -23,11 +23,10 @@
             >{course.title}</a
           >
         </h3>
-        <div class="badge badge-accent mt-2 gap-2">
+        <div class="badge badge-accent gap-2">
           <iconify-icon icon="heroicons:star" />
           {course.complexity}
         </div>
-        <p>{course.description}</p>
       </div>
     </div>
     <div class="divider">Description</div>

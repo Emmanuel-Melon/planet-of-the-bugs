@@ -76,7 +76,7 @@
     </div>
     <div class="basis-3/4">
       <UserGithubStats user={data.user.viewer} />
-      <div class="gap-y-1.5">
+      <div class="gap-y-3">
         <Tabs {items} />
         <PaginationComponent />
       </div>
