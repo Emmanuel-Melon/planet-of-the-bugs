@@ -3,7 +3,7 @@
 </script>
 
 <header class="flex mx-auto items-center justify-center p-4">
-    <ul class="steps text-accent">
+    <ul class="steps text-primary">
         <li class="step step-neutral" data-content="💡">Master Debugging</li>
         <li class="step step-neutral" data-content="🤖">Coding Challenges</li>
         <li class="step step-neutral" data-content="🚀">Join the Hunt</li>
