@@ -1,23 +1,47 @@
 <script>
-    import { onMount } from "svelte";
-    import StartCourseButton from "$components/StartCourseButton.svelte";
-    import LessonOutline from "$components/Lessons/LessonOutline.svelte";
-  
-    export let data;
-    let { course, active } = data;
-  
-    onMount(async () => {});
-  
-    $: course, active;
-  </script>
-  
-  <div>
-    <h1 class="prose lg:prose-xl">{course.title}</h1>
-    <p>{course.description}</p>
-    <StartCourseButton
-      status={active?.status}
-      course_id={course.id}
-      slug={course.slug}
-    />
-    <LessonOutline chapters={course.course_chapters}/>
+  import { onMount } from "svelte";
+  import StartCourseButton from "$components/StartCourseButton.svelte";
+  import LessonOutline from "$components/Lessons/LessonOutline.svelte";
+  import Tabs from "$components/Tabs.svelte";
+  import CourseOverview from "$components/Courses/CourseOverview.svelte";
+
+  export let data;
+  let { course, active } = data;
+
+  onMount(async () => {});
+
+  $: course, active;;
+
+  const items = [
+    {
+      label: "Overview",
+      value: 1,
+      component: CourseOverview,
+      icon: "octicon:git-pull-request-16"
+    }
+  ]
+</script>
+
+<div>
+  <div class="flex gap-2">
+    <div class="basis-1/4">
+      <div class="card w-full bg-white shadow-xl">
+        <div class="card-body">
+          <h2 class="card-title">{course.title}</h2>
+          <div class="divider">Description</div>
+          <p>{course.description}</p>
+          <div class="card-actions justify-end">
+            <StartCourseButton
+            status={active?.status}
+            course_id={course.id}
+            slug={course.slug}
+          />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="basis-3/4">
+      <LessonOutline chapters={course.course_chapters} />
+    </div>
   </div>
+</div>

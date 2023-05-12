@@ -6,7 +6,7 @@
 
 </script>
 
-<section class="my-4">
+<section>
   <div class="gap-2">
     {#each chapters as chapter}
       <div

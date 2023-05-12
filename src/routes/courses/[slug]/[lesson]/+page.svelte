@@ -35,8 +35,7 @@
   class="border border-#efefef rounded-sm card bg-base-100 shadow-md box-border"
 >
   <div class="flex bg-white">
-    
-    <div class={isExpanded ? "hidden" : "flex-1 p-4"}>
+    <div class={isExpanded ? "hidden" : "flex-1"}>
       {#if $course.data}
         <LessonOverview lesson={$course.data.lessons_by_pk} />
       {:else}
