@@ -14,7 +14,6 @@
     data: { session, github_user, user },
   } = $page;
 
-
   const courses = query(FETCH_AUTHORED_COURSES, {
     variables: {
       creator: user.id,
@@ -53,36 +52,37 @@
           },
         });
       }
-
     } catch (error) {
-      console.log(error);
+
     }
   };
-
 
   const items = [
     {
       label: "Overview",
       value: 1,
-      content: ""
+      content: "",
     },
     {
-      label: "Exercises",
+      label: "Subscrbers",
       value: 2,
-      content: ""
-    }
-  ]
+      content: "",
+    },
+  ];
+  // 
 </script>
 
 <main>
   <Tabs {items} />
   <section class="flex gap-2">
-    <ContributionsStats {user} />
     <div>
-      <div class="flex justify-between gap-2 items-center">
-        <div>
+      <div class="flex mt-2 justify-between gap-2 items-center">
+        <div class="prose lg:prose-xl">
           <h3>My Courses</h3>
-          <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+          <p>
+            You've been selected for a chance to get one year of subscription to
+            use Wikipedia for free!
+          </p>
         </div>
         <!-- The button to open modal -->
         <label for="my-modal" class="btn gap-2 mb-2"
@@ -142,7 +142,7 @@
           </div>
         </label>
       </div>
-      <div class="flex gap-4 flex-wrap">
+      <div class="flex gap-1 flex-wrap">
         {#if $courses.data}
           {#each $courses.data.courses as course}
             <AuthoredCourseCard {course} />
@@ -152,6 +152,5 @@
         {/if}
       </div>
     </div>
-    
   </section>
 </main>

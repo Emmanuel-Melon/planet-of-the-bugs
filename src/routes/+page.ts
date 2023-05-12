@@ -15,7 +15,6 @@ export const load = async (event) => {
 
   const { session } = await parent();
   if (session?.token !== null || session?.token !== undefined) {
-    console.log("why");
     GITHUB_API.setSession(session?.token?.accessToken);
   }
   const githubClient = GITHUB_API.getGithubClient();

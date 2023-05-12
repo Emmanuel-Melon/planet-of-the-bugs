@@ -4,7 +4,7 @@
   import "iconify-icon";
 </script>
 
-<div class="card w-96 bg-gray-100 shadow-lg">
+<div class="card basis-1/3 bg-gray-100">
   <div class="card-body">
     <div class="flex gap-4">
       <div class="avatar">
@@ -19,7 +19,7 @@
       </div>
       <div>
         <h3 class="card-title">
-          <a class="link" href={`/courses/authored/edit`}
+          <a class="link" href={`/authored/edit`}
             >{course.title}</a
           >
         </h3>

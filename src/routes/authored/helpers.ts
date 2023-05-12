@@ -1,5 +1,4 @@
 export const destructureQueryResults = (queryResult) => {
-  console.log(queryResult.data);
   try {
     if (false) {
       const {

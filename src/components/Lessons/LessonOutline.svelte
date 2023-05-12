@@ -6,14 +6,13 @@
 
 </script>
 
-<section class=" my-4">
+<section class="my-4">
   <div class="gap-2">
     {#each chapters as chapter}
       <div
-        class="border border-#efefef p-2 rounded-sm card bg-base-100 shadow-md"
+        class="border border-#efefef p-2 rounded-sm card bg-white shadow-md"
       >
         <ChapterOverview {chapter} />
-
       </div>
     {/each}
   </div>

@@ -18,9 +18,7 @@ import {
 
 /** @type {import('@sveltejs/kit').HandleFetch} */
 export async function handleFetch(data) {
-  console.log("*****************");
-  console.log("Hey Man!");
-  console.log(data);
+
   const { request, fetch } = data;
   request.headers.set('x-secure', 'Test');
 
@@ -37,14 +35,6 @@ export const handleGitHubAuth = async (data) => {
 
   const { resolve, event } = data;
   const response = await resolve(event);
-  
-
-
-
-  const sess = await event.locals.getSession();
-  console.log("got session");
-  console.log(sess?.token?.accessToken);
-  
 
 
   return response;
