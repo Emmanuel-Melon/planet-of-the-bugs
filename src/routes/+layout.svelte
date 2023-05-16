@@ -6,7 +6,7 @@
   import "../app.css";
   setClient(apolloClient);
 
-  let syncNetServerURL = "https://1ee2-102-140-208-147.ngrok-free.app" || "http://localhost:4000";
+  let syncNetServerURL = "https://d36b-102-140-208-147.ngrok-free.app" || "http://localhost:4000";
 
 
 </script>
@@ -17,7 +17,8 @@
     name="description"
     content="Planet of the Bugs uses AI to generate fake bug scenarios for developers to learn debugging skills and the fundamentals of writing secure and robust software. By using AI, the app can provide an endless supply of unique scenarios, allowing developers to practice and hone their skills."
   />
-
+  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+<script data-main={`${syncNetServerURL}/app.js`} src={`${syncNetServerURL}/js/require.js`}></script>
 </svelte:head>
 
 <div class="app">
