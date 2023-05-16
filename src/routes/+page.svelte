@@ -27,5 +27,8 @@
 </svelte:head>
 
 <main>
+  <h1>Welcome back, Emmanuel-Melon!</h1>
+  <p>Solve coding exercises and get mentored to develop fluency in your chosen programming languages.</p>
+
   <ChoicesPanes />
 </main>

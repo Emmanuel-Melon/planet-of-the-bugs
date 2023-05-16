@@ -6,7 +6,7 @@
 console.log(user);
 </script>
 
-<div class={`stats ${orientation} bg-white w-full shadow-lg border-solid border-e border-accent`}>
+<div class={`stats ${orientation} prose lg:prose-md bg-white w-full shadow-lg border-solid border-e border-accent`}>
   {#if user && showUser}
     <div class="flex items-center gap-2 p-4 bg-white">
       <div class="avatar">
@@ -17,7 +17,7 @@ console.log(user);
         </div>
       </div>
       <div>
-        <h3 class="prose lg:prose-md">{user.name}</h3>
+        <h3 class="">{user.name}</h3>
       </div>
     </div>
   {/if}

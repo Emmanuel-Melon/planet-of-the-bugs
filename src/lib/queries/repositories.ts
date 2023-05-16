@@ -15,28 +15,60 @@ export const GET_SUBSCRIBED_REPOS = gql`
   }
 `;
 
-
-export const GET_USER_PULL_REQUEST_CONTRIBUTIONS = gql`
-query getUserPullRequests($author: String!) {
-  user(login: $author) {
-    pullRequests(first: 10, states: [OPEN, CLOSED, MERGED]) {
+export const GET_USER_REPOS = gql`
+query getUserRepositories($login: String!) {
+  user(login: $login) {
+    repositories(
+      last: 20
+      privacy: PUBLIC
+      isFork: false
+      affiliations: OWNER
+      orderBy: {field: CREATED_AT, direction: DESC}
+    ) {
       totalCount
       nodes {
-        state
-        title
-        url
         createdAt
-        closedAt
+        description
+        forkCount
+        homepageUrl
         id
-        number
-        mergeCommit {
-          oid
+        name
+        nameWithOwner
+        url
+        updatedAt
+        visibility
+        stargazerCount
+        owner {
+          login
+          url
         }
       }
     }
   }
 }
-`
+`;
+
+export const GET_USER_PULL_REQUEST_CONTRIBUTIONS = gql`
+  query getUserPullRequests($author: String!) {
+    user(login: $author) {
+      pullRequests(first: 10, states: [OPEN, CLOSED, MERGED]) {
+        totalCount
+        nodes {
+          state
+          title
+          url
+          createdAt
+          closedAt
+          id
+          number
+          mergeCommit {
+            oid
+          }
+        }
+      }
+    }
+  }
+`;
 
 export const GET_CONTRIBUTIONS_BY_REPO = gql`
   query getContributionsByRepo(
@@ -45,11 +77,7 @@ export const GET_CONTRIBUTIONS_BY_REPO = gql`
     $author: String!
   ) {
     repository(owner: $owner, name: $name) {
-      pullRequests(
-        states: [OPEN, CLOSED, MERGED]
-        last: 10
-
-      ) {
+      pullRequests(states: [OPEN, CLOSED, MERGED], last: 10) {
         totalCount
         nodes {
           state
@@ -76,10 +104,16 @@ export const GET_CONTRIBUTIONS_BY_REPO = gql`
           closedAt
         }
       }
-      openedIssues: issues(states: [OPEN], filterBy: { assignee: $author, createdBy: $author }) {
+      openedIssues: issues(
+        states: [OPEN]
+        filterBy: { assignee: $author, createdBy: $author }
+      ) {
         totalCount
       }
-      closedIssues: issues(states: [CLOSED], filterBy: { assignee: $author, createdBy: $author }) {
+      closedIssues: issues(
+        states: [CLOSED]
+        filterBy: { assignee: $author, createdBy: $author }
+      ) {
         totalCount
       }
     }

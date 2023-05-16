@@ -7,7 +7,9 @@
   export let user;
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
-  import { githubClient } from "$lib/apollo";
+  import { GITHUB_API } from "$lib/apollo";
+
+  const githubClient = GITHUB_API.getGithubClient();
 
   const getContributions = async () => {
     const { data } = await githubClient.query({

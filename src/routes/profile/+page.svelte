@@ -31,17 +31,16 @@
     {
       label: "Owned Repositories",
       value: 2,
-      component: RepositoriesContributedTo,
+      component: OwnedRepositories,
       props: {
-        repositories: data.contributedTo,
-        user: data.user.viewer,
+        repositories: data.repositories
       },
       icon: "codicon:repo"
     },
     {
       label: "Subscribed Repositories",
       value: 3,
-      component: RepositoriesContributedTo,
+      component: SubscrbedRepositories,
       props: {
         repositories: data.contributedTo,
         user: data.user.viewer,

@@ -4,7 +4,7 @@ import {
   GET_PINNED_ITEMS,
 } from "$lib/queries/user";
 
-import { GET_SUBSCRIBED_REPOS } from "$lib/queries/repositories";
+import { GET_SUBSCRIBED_REPOS, GET_USER_REPOS } from "$lib/queries/repositories";
 import { GITHUB_API } from "$lib/apollo";
 
 export const load = async (event) => {
@@ -21,7 +21,7 @@ export const load = async (event) => {
     query: GITHUB_USER_BASIC_INFO,
   });
 
-  const [contributedTo, pinnedItems] = await Promise.all([
+  const [contributedTo, pinnedItems, ownedRepos] = await Promise.all([
     await githubClient.query({
       query: REPOS_CONTRIBUTED_TO,
     }),
@@ -32,7 +32,7 @@ export const load = async (event) => {
       },
     }),
     await githubClient.query({
-      query: GET_PINNED_ITEMS,
+      query: GET_USER_REPOS,
       variables: {
         login: data?.viewer?.login
       }
@@ -41,6 +41,7 @@ export const load = async (event) => {
 
   const { data: contributionData } = contributedTo;
   const { data: topRepoData } = pinnedItems;
+  const { data: repositories } = ownedRepos;
 
   return {
     user: {
@@ -48,5 +49,6 @@ export const load = async (event) => {
     },
     contributedTo: { ...contributionData.viewer.repositoriesContributedTo },
     pinnedItems: topRepoData.user.pinnedItems,
+    repositories: repositories?.user?.repositories
   };
 }

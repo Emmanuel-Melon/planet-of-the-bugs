@@ -35,12 +35,12 @@
 </script>
 
 <div
-  class="card basis-2/5 grow bg-gray-100 shadow-lg border-solid border-e border-accent"
+  class="card basis-2/5 grow bg-white shadow-lg border-solid border border-accent"
 >
   <div class="card-body">
     <div class="flex gap-4 items-center">
       <div class="flex gap-2">
-        <h2 class="card-title">{repo.name.toLocaleUpperCase()}</h2>
+        <h3 class="card-title">{repo.name.toLocaleUpperCase()}</h3>
         <a class="link link-secondary" href={repo.url}>{repo.name}</a>
       </div>
       <div>

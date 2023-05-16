@@ -19,6 +19,7 @@
   $: dropdownLinks = [
     { text: "Profile", path: "/profile", icon: "heroicons:user-20-solid" },
     { text: "My Courses", path: "/authored", icon: "heroicons:book-open-solid" },
+    { text: "Settings", path: "/settings", icon: "heroicons:adjustments-horizontal-solid" },
     { text: "About", path: "/about", icon: "heroicons:information-circle-20-solid" },
   ];
 
@@ -53,8 +54,8 @@
       {#each menuLinks as { icon, text, path }}
         <li
           class={path === current
-            ? "p-1 hidden bg-secondary lg:flex transition-all  decoration-secondary hover:bg-secondary-focus"
-            : "p-1 hidden lg:flex transition-all underline-offset-8 decoration-primary-focus hover:bg-primary-focus"}
+            ? "p-2 hidden bg-accent lg:flex transition-all  decoration-accent hover:bg-accent-focus rounded-md"
+            : "p-2 hidden lg:flex transition-all underline-offset-8 decoration-primary-focus hover:bg-primary-focus rounded-md"}
         >
           <a href={path} class="flex items-center gap-2"><iconify-icon icon={icon}/> {text}</a>
         </li>
@@ -91,7 +92,7 @@
     <div class="dropdown dropdown-bottom dropdown-end">
       {#if user}
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-        <div tabindex="0" class="btn btn-accent btn-circle avatar">
+        <div tabindex="0" class="btn btn-secondary btn-circle avatar">
           <div class="w-10 rounded-full">
             <img src={user.image} alt={user.name} />
           </div>
@@ -107,11 +108,14 @@
             </li>
           {/each}
           <li>
-            <button class="hover:bg-primary-focus" on:click|preventDefault={() => signOut()}><iconify-icon icon="heroicons:arrow-right-on-rectangle-20-solid" /> Sign Out</button>
+            <button class="hover:bg-accent-focus" on:click|preventDefault={() => signOut()}><iconify-icon icon="heroicons:arrow-right-on-rectangle-20-solid" /> Sign Out</button>
           </li>
         </ul>
       {:else}
-        <a href="/auth" class="btn btn-outline btn-primary">Sign In</a>
+      <div class="flex gap-2 items-center">
+        <a href="/auth" class="btn btn-sm btn-ghost">Sign In</a>
+        <a href="/auth" class="btn btn-sm btn-secondary">Start for Free</a>
+      </div>
       {/if}
     </div>
     <div class="corner">
