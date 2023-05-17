@@ -24,10 +24,6 @@
   <main>
     <slot />
   </main>
-
-  <footer class="flex items-center justify-center p-4 bg-slate-50  shadow-xl">
-    <p>Planet Of The Bugs</p>
-  </footer>
 </div>
 
 <style>

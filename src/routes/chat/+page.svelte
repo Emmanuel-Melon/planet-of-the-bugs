@@ -19,7 +19,7 @@
     },
     {
       id: 2,
-      name: "Muzan Kibutsuji",
+      name: "😈 Muzan Kibutsuji",
       avatar:
         "https://m.media-amazon.com/images/M/MV5BMzcyZjYxYzktMWZhMi00ZGFkLTllMTEtNjJjZjU4ODdlYzRmXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg",
       text: "Prepare to witness the true terror of the Demong King!",
@@ -33,36 +33,42 @@
       text: "Hahahahaha",
       active: false,
     },
+    {
+      id: 4,
+      name: "Ban",
+      avatar:
+        "https://practicaltyping.com/wp-content/uploads/2020/11/ban.jpg",
+      text: "Even Though My Life hasn’t been all that great, I figure that if I Live Long Enough, Something good Might Happen.",
+      active: false,
+    },
+    {
+      id: 5,
+      name: "Nezuko",
+      avatar:
+        "https://staticg.sportskeeda.com/editor/2022/02/40498-16437334600644-1920.jpg",
+      text: "Hmmmmm, hmmm",
+      active: false,
+    }
   ];
 </script>
 
 <section class="card bg-white w-4/5 mx-auto border-2 border-gray-200 shadow-xl">
-  <div class="flex justify-between items-center p-4 border-b-2 border-gray-100">
-    <div>
-      <h1 class="flex items-center gap-2">
-        <iconify-icon
-          icon="heroicons:chat-bubble-bottom-center-text-20-solid"
-        />
-        Chat
-      </h1>
-    </div>
-    <div class="flex items-center gap-4">
-      <iconify-icon icon="heroicons:information-circle-solid" />
-    </div>
-  </div>
   <div class="flex w-full">
-    <div class="basis-1/4 border-r-2 border-gray-100 bg-gray-100">
+    <div class="basis-2/5 border-r-2 border-gray-200">
+      <div class="fflex justify-end items-center p-2">
+        <button class="btn btn-sm btn-primary  gap-2">
+          <iconify-icon icon="heroicons:pencil-solid" /> New Chat</button
+        >
+      </div>
       <div>
         {#each chats as chat}
           <div
-            class={`flex items-center gap-2 mb-1 hover:bg-gray-200 cursor-pointer p-2 ${
-              chat.active ? "bg-zinc-100 border-r-4 border-primary" : "bg-white"
+            class={`flex items-start gap-2 hover:bg-gray-100 cursor-pointer p-2 ${
+              chat.active ? "bg-amber-100 border-r-4 border-accent" : "bg-white"
             }`}
           >
-            <div class="avatar">
-              <div
-                class="w-12  mask mask-squircle"
-              >
+            <div class="avatar online">
+              <div class="w-12 mask mask-squircle">
                 <img src={chat.avatar} alt={chat.name} />
               </div>
             </div>
@@ -74,8 +80,21 @@
         {/each}
       </div>
     </div>
-    <div class="flex basis-3/4 items-center">
+    <div class="flex basis-3/5 items-center">
       <div class=" grow">
+        <div
+          class="flex justify-between items-center border-b-2 border-gray-200"
+        >
+          <div class="flex justify-between items-center w-full p-4 shadow-xl">
+            <div class="flex items-center gap-4">
+              <h3 class="flex items-center">😈 Muzan Kibutsuji</h3>
+            </div>
+            <div class="flex items-center gap-4">
+              <iconify-icon icon="heroicons:adjustments-vertical-20-solid" />
+              <iconify-icon icon="heroicons:information-circle-solid" />
+            </div>
+          </div>
+        </div>
         <div class="p-4">
           <div class="chat chat-start">
             <div class="chat-image avatar">
@@ -162,7 +181,8 @@
               </div>
             </div>
             <div class="chat-bubble chat-bubble-secondary">
-              We shall emerge victorious, for the sake of all the lives you've destroyed. The sound of justice will drown out your tyranny.
+              We shall emerge victorious, for the sake of all the lives you've
+              destroyed. The sound of justice will drown out your tyranny.
             </div>
           </div>
         </div>
