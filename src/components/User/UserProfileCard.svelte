@@ -49,7 +49,7 @@
 
 </script>
 
-<div class="card w-96 bg-white shadow-md">
+<div class="card grow bg-white shadow-md">
   <div class="card-body">
     <div class="flex gap-4">
       <div class="avatar">

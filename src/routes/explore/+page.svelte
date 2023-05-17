@@ -35,7 +35,7 @@
 
 <main>
   <div
-    class="card bg-white w-full shadow-lg mb-2 p-4 border-e border-2 border-secondary"
+    class="card bg-white w-full shadow-lg mb-2 p-4"
   >
     <div class="flex items-end">
       <div class="avatar">
@@ -47,7 +47,7 @@
         </div>
       </div>
       <div>
-        <h1 class="prose lg:prose-xl">Practice makes perfect!</h1>
+        <h1 class="prose prose-xl">Practice makes perfect!</h1>
         <p>
           Take your newly learned skills to the next level by practicing on
           real-world issues from Github? By subscribing to a Github repo, you
@@ -57,7 +57,6 @@
       </div>
     </div>
   </div>
-  <ContributionsStats {user} showUser={false} orientation={null} />
   <section class="mt-2">
     <div class="flex gap-2">
       <div class="grow">

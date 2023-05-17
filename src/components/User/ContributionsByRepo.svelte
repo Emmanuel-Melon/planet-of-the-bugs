@@ -50,10 +50,8 @@
 </script>
 
 {#if $contributionsStore}
-  <p>Contributions: {$contributionsStore.pullRequests.totalCount}</p>
-
   <div class="divider">Contributions</div>
-  <div class="stats bg-white text-primary-content">
+  <div class="stats bg-slate-100 text-primary-content">
     <div class="stat">
       <div class="stat-title">Pull Requests</div>
       <div class="stat-value">

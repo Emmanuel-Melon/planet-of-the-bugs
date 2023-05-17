@@ -2,7 +2,7 @@
   export let user;
 </script>
 
-<section class="bg-white w-full p-4 border-e shadow-sm border-2 border-secondary">
+<div class="card bg-white w-full p-4 border-e shadow-sm border-2 border-secondary">
   <div class="mt-2 mb-2">
     <h3 class="text-lg">Contributions Overview</h3>
   </div>
@@ -39,4 +39,4 @@
       </div>
     </div>
   </div>
-</section>
+</div>

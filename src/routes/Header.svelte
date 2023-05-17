@@ -37,9 +37,9 @@
   let theme = "light";
 </script>
 
-<header class="navbar bg-white shadow-sm">
+<header class="navbar bg-white shadow-xl">
   <div class="navbar-start gap-4">
-    <a href="/" class="normal-case text-xl">Planet Of The Bugs</a>
+    <a href="/" class="normal-case text-md">Planet Of The Bugs</a>
     <input
       type="checkbox"
       class={`toggle toggle-md ${

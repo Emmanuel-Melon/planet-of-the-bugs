@@ -29,7 +29,7 @@
   ];
 </script>
 
-<section class="card bg-white w-4/5 mx-auto border-2 border-gray-200 shadow-xl">
+<section class="card bg-white w-4/5 mx-auto border-2 border-gray-200 shadow-xl h-96">
   <div class="flex justify-between items-center p-4 border-b-2 border-gray-100">
     <div>
       <h1 class="flex items-center gap-2">

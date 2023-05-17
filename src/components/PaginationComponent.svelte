@@ -1,8 +1,8 @@
 <script>
   
 </script>
-<div class="flex items-center justify-center">
-    <div class="bg-secondary btn-group mt-2">
+<div class="flex items-center justify-center w-fit mx-auto mt-2">
+    <div class="bg-accent roounded-full btn-group">
       <button class="btn btn-active">1</button>
       <button class="btn">2</button>
       <button class="btn">3</button>

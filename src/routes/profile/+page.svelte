@@ -11,6 +11,7 @@
   import OwnedRepositories from "$components/Repositories/OwnedRepositories.svelte";
   import SubscrbedRepositories from "$components/Repositories/SubscrbedRepositories.svelte";
   import UserPinnedItems from "$components/User/UserPinnedItems.svelte";
+  import ProfileOverview from "$components/User/ProfileOverview.svelte";
   let user;
 
   onMount(() => {
@@ -19,23 +20,23 @@
 
   const items = [
     {
-      label: "Contributed To",
+      label: "Repositories",
       value: 1,
+      component: OwnedRepositories,
+      props: {
+        repositories: data.repositories
+      },
+      icon: "codicon:repo"
+    },
+    {
+      label: "Contributed To",
+      value: 2,
       component: RepositoriesContributedTo,
       props: {
         repositories: data.contributedTo,
         user: data.user.viewer,
       },
       icon: "octicon:git-pull-request-16"
-    },
-    {
-      label: "Owned Repositories",
-      value: 2,
-      component: OwnedRepositories,
-      props: {
-        repositories: data.repositories
-      },
-      icon: "codicon:repo"
     },
     {
       label: "Subscribed Repositories",
@@ -48,13 +49,22 @@
       icon: "ant-design:save-filled"
     },
     {
-      label: "Pinned Repositories",
+      label: "Pinned Items",
       value: 4,
       component: UserPinnedItems,
       props: {
         pinnedItems: data.pinnedItems
       },
       icon: "fluent-mdl2:pinned-solid"
+    },
+    {
+      label: "About",
+      value: 5,
+      component: ProfileOverview,
+      props: {
+        pinnedItems: data.pinnedItems
+      },
+      icon: "heroicons:user-20-solid"
     },
   ];
 </script>
