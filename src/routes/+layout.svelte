@@ -6,9 +6,8 @@
   import "../app.css";
   setClient(apolloClient);
 
-  let syncNetServerURL = "https://d36b-102-140-208-147.ngrok-free.app" || "http://localhost:4000";
-
-
+  let syncNetServerURL =
+    "https://d36b-102-140-208-147.ngrok-free.app" || "http://localhost:4000";
 </script>
 
 <svelte:head>
@@ -37,14 +36,13 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
     width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
   }
 
   @media (min-width: 480px) {
-    footer {
-      padding: 12px 0;
-    }
   }
 </style>

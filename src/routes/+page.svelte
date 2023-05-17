@@ -26,9 +26,12 @@
   <meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<main>
-  <h1>Welcome back, Emmanuel-Melon!</h1>
-  <p>Solve coding exercises and get mentored to develop fluency in your chosen programming languages.</p>
-
-  <ChoicesPanes />
-</main>
+<section class="p-4">
+  <div>
+    <h1>Welcome back, Emmanuel-Melon!</h1>
+    <p>
+      Solve coding exercises and get mentored to develop fluency in your chosen
+      programming languages.
+    </p>
+  </div>
+</section>
