@@ -37,11 +37,12 @@
         Notifications
       </h1>
     </div>
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-2">
+      <iconify-icon icon="heroicons:adjustments-vertical-20-solid" />
       <iconify-icon icon="heroicons:information-circle-solid" />
     </div>
   </div>
-  <div class="basis-3/4 p-2">
+  <div class="basis-3/4">
     {#if false}
       <div>
       <h3>No notifications yet!</h3>
