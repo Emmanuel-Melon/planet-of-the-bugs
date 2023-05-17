@@ -25,7 +25,7 @@
     <slot />
   </main>
 
-  <footer>
+  <footer class="flex items-center justify-center p-4 bg-slate-50  shadow-xl">
     <p>Planet Of The Bugs</p>
   </footer>
 </div>
@@ -45,14 +45,6 @@
     width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
-  }
-
-  footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 12px;
   }
 
   @media (min-width: 480px) {

@@ -54,8 +54,8 @@
       {#each menuLinks as { icon, text, path }}
         <li
           class={path === current
-            ? "p-2 hidden bg-accent lg:flex transition-all  decoration-accent hover:bg-accent-focus rounded-md"
-            : "p-2 hidden lg:flex transition-all underline-offset-8 decoration-primary-focus hover:bg-primary-focus rounded-md"}
+            ? "p-2 hidden lg:flex transition-all  decoration-accent rounded-md"
+            : "p-2 hidden lg:flex transition-all underline-offset-8 decoration-primary-focus rounded-md"}
         >
           <a href={path} class="flex items-center gap-2"><iconify-icon icon={icon}/> {text}</a>
         </li>
@@ -92,7 +92,7 @@
     <div class="dropdown dropdown-bottom dropdown-end">
       {#if user}
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-        <div tabindex="0" class="btn btn-secondary btn-circle avatar">
+        <div tabindex="0" class="btn btn-primary btn-circle avatar">
           <div class="w-10 rounded-full">
             <img src={user.image} alt={user.name} />
           </div>
