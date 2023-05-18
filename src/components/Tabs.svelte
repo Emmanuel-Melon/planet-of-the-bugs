@@ -14,10 +14,10 @@
     (activeTabValue = tabValue);
 </script>
 
-<div class="tabs w-full tabs-boxed mt-2 rounded-sm2">
+<div class="tabs w-full grow tabs-boxed">
   {#each items as item}
     <button
-      class={`tab-lg tab-lifted gap-2 flex items-center ${
+      class={`tab-lg tab-lifted gap-2 flex items-center p-2 ${
         activeTabValue === item.value ? "tab-active" : ""
       }`}
       on:click={handleTabClick(item.value)}

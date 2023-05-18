@@ -55,16 +55,16 @@
       props: {
         pinnedItems: data.pinnedItems
       },
-      icon: "ri:bookmark-line"
+      icon: "ri:pushpin-2-line"
     },
     {
-      label: "About",
+      label: "About User",
       value: 5,
       component: ProfileOverview,
       props: {
         pinnedItems: data.pinnedItems
       },
-      icon: "ri:open-arm-line"
+      icon: "ri:information-line"
     },
   ];
 </script>

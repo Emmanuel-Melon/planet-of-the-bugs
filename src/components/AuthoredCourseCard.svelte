@@ -4,7 +4,7 @@
   import "iconify-icon";
 </script>
 
-<div class="card basis-1/3 bg-gray-100">
+<div class="card basis-1/3 bg-white">
   <div class="card-body">
     <div class="flex gap-4">
       <div class="avatar">

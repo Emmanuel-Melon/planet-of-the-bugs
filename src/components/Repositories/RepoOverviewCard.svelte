@@ -35,7 +35,7 @@
 </script>
 
 <div
-  class="card basis-2/5 grow bg-white shadow-lg border-solid border border-accent"
+  class="card basis-2/5 grow bg-white shadow-lg"
 >
   <div class="card-body">
     <div class="flex gap-4 items-center">

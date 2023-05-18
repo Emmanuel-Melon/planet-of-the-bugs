@@ -26,7 +26,7 @@
   let description = "Hey";
   let creator = "0c6cd039-b8ed-4d8d-bdca-1173ad79b028";
   let courseId = "";
-  let chapterId = "8370d7fd-a74c-4ad4-b786-fdeaefea35f0"
+  let chapterId = "8370d7fd-a74c-4ad4-b786-fdeaefea35f0";
 
   const handleSubmit = async () => {
     try {
@@ -35,9 +35,9 @@
           lessonInput: {
             title,
             description,
-			content: markdown,
-			chapter_id: chapterId,
-			index: 4
+            content: markdown,
+            chapter_id: chapterId,
+            index: 4,
           },
         },
       });
@@ -48,6 +48,8 @@
   };
 </script>
 
-<div class="card h-96">
-  <textarea class="rounded-md h-full w-full p-4" bind:value={markdown} />
+<div class="card h-96 bg-white">
+  <div class="rounded-md">
+    {@html result}
+  </div>
 </div>

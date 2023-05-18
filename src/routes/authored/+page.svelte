@@ -73,7 +73,7 @@
 </script>
 
 <main>
-  <Tabs {items} />
+  
   <section class="flex gap-2">
     <div>
       <div class="flex mt-2 justify-between gap-2 items-center">

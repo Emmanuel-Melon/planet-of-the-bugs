@@ -6,7 +6,7 @@
   <div class="mt-2 mb-2">
     <h3 class="text-lg">Contributions Overview</h3>
   </div>
-  <div class="stats shadow bg-slate-100 w-full">
+  <div class="stats shadow bg-slate-50 w-full">
     <div class="stat place-items-center">
       <div class="stat-title">Contributed To</div>
       <div class="stat-value">
