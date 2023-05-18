@@ -2,11 +2,11 @@
   export let user;
 </script>
 
-<div class="card bg-white w-full p-4 border-e shadow-sm border-2 border-secondary">
+<div class="card bg-white w-full p-4 border-e shadow-sm">
   <div class="mt-2 mb-2">
     <h3 class="text-lg">Contributions Overview</h3>
   </div>
-  <div class="stats shadow bg-white w-full">
+  <div class="stats shadow bg-slate-100 w-full">
     <div class="stat place-items-center">
       <div class="stat-title">Contributed To</div>
       <div class="stat-value">

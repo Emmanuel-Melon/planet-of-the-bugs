@@ -1,5 +1,5 @@
 @import '@fontsource/fira-mono';
-@import url('https://fonts.googleapis.com/css2?family=Catamaran&family=Sen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Futura&family=Sen&display=swap');
 
 
 html, body {
@@ -12,6 +12,6 @@ html, body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Catamaran", Arial, Helvetica, sans-serif;
+    font-family: "Futura", Arial, Helvetica, sans-serif;
     font-weight: bold;
 }

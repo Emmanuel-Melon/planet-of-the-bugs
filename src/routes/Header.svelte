@@ -10,15 +10,16 @@
   let user;
   $: current = $page.url.pathname;
   $: menuLinks = [
-    { text: "Learn", path: "/courses", icon: "heroicons:academic-cap-20-solid" },
-    { text: "Explore Projects", path: "/explore", icon: "heroicons:bug-ant-20-solid" },
-    { text: "Chat", path: "/chat", icon: "heroicons:chat-bubble-bottom-center-text-20-solid" },
-    { text: "Notifications", path: "/notifications", icon: "heroicons:bell-alert-20-solid" },
+    { text: "Learn", path: "/courses", icon: "ri:graduation-cap-line" },
+    { text: "Explore Projects", path: "/explore", icon: "ri:bug-line" },
+    { text: "Chat", path: "/chat", icon: "ri:chat-1-line" },
+    { text: "Issues", path: "/issues", icon: "ri:meteor-line" },
+    { text: "Notifications", path: "/notifications", icon: "ri:notification-3-line" },
   ];
 
   $: dropdownLinks = [
-    { text: "Profile", path: "/profile", icon: "heroicons:user-20-solid" },
-    { text: "My Courses", path: "/authored", icon: "heroicons:book-open-solid" },
+    { text: "View Profile", path: "/profile", icon: "heroicons:user-20-solid" },
+    { text: "Authored Courses", path: "/authored", icon: "heroicons:book-open-solid" },
     { text: "Settings", path: "/settings", icon: "heroicons:adjustments-horizontal-solid" },
     { text: "About", path: "/about", icon: "heroicons:information-circle-20-solid" },
   ];
@@ -57,7 +58,7 @@
             ? "p-2 hidden lg:flex transition-all  decoration-accent rounded-md"
             : "p-2 hidden lg:flex transition-all underline-offset-8 decoration-primary-focus rounded-md"}
         >
-          <a href={path} class="flex items-center gap-2"><iconify-icon icon={icon}/> {text}</a>
+          <a href={path} class="flex items-center gap-2 text-primary"><iconify-icon icon={icon}/> {text}</a>
         </li>
       {/each}
     </ul>
@@ -118,10 +119,6 @@
       </div>
       {/if}
     </div>
-    <div class="corner">
-      <a href="https://github.com/sveltejs/kit">
-        <img src={github} alt="GitHub" />
-      </a>
-    </div>
+
   </div>
 </header>

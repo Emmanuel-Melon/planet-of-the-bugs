@@ -14,7 +14,7 @@
     (activeTabValue = tabValue);
 </script>
 
-<div class="tabs w-full tabs-boxed mt-2 rounded-sm p-2">
+<div class="tabs w-full tabs-boxed mt-2 rounded-sm2">
   {#each items as item}
     <button
       class={`tab-lg tab-lifted gap-2 flex items-center ${

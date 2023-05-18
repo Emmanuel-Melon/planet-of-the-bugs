@@ -4,6 +4,7 @@
   import Conversation from "$components/Chat/Conversation.svelte";
   import ConversationMenu from "$components/Chat/ConversationMenu.svelte";
   import ChatInput from "$components/Chat/ChatInput.svelte";
+  import NewConversationModal from "$components/Chat/NewConversationModal.svelte";
   const imageURL =
     "https://hips.hearstapps.com/digitalspyuk.cdnds.net/17/29/1500370357-1.jpg?crop=0.5625xw:1xh;center,top&resize=1200:*";
 
@@ -55,13 +56,14 @@
   ];
 </script>
 
-<section class="card bg-white w-4/5 mx-auto border-2 border-gray-200 shadow-xl">
+<section class="card bg-white w-full mx-auto border-2 border-gray-200 shadow-xl">
   <div class="flex w-full">
     <div class="basis-2/5 border-r-2 border-gray-200">
-      <div class="fflex justify-end items-center p-2">
-        <button class="btn btn-sm btn-primary gap-2">
-          <iconify-icon icon="heroicons:pencil-solid" /> New Chat</button
-        >
+      <div class="flex justify-between items-center p-3 border-b-2 border-gray-200">
+        <div>
+          <h3>My Conversations</h3>
+        </div>
+        <NewConversationModal />
       </div>
       <ChatList {chats} />
     </div>

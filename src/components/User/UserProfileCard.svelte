@@ -51,12 +51,7 @@
 
 <div class="card grow bg-white shadow-md">
   <div class="card-body">
-    <div class="flex gap-4">
-      <div class="avatar">
-        <div class="w-16 rounded-xl ring ring-accent ring-offset-base-100 ring-offset-2">
-          <img src={image} alt="user_profile" />
-        </div>
-      </div>
+    <div class="flex gap-2">
       <div>
         <h2 class="card-title">{user.name}</h2>
         <span class="flex gap-2">
@@ -81,9 +76,9 @@
 
     <ul>
       <li><a class="link link-ghost gap-2 flex items-center" href={user.websiteUrl}>
-        <iconify-icon icon="heroicons:globe-alt-solid" />Website</a></li>
-      <li class="gap-2 items-center"><iconify-icon icon="heroicons:briefcase-solid" />  {user.company}</li>
-      <li class="gap-2 items-center"><iconify-icon icon="heroicons:map-pin-20-solid" /> {user.location}</li>
+        <iconify-icon icon="ri:earth-line" />Website</a></li>
+      <li class="gap-2 items-center"><iconify-icon icon="ri:briefcase-2-line" />  {user.company}</li>
+      <li class="gap-2 items-center"><iconify-icon icon="ri:map-pin-user-line" /> {user.location}</li>
       <li class="gap-2 items-center"><iconify-icon icon="heroicons:clock-solid" /> Joined {user.createdAt}</li>
       <li><a
         class="link link-ghost gap-2 flex items-center"

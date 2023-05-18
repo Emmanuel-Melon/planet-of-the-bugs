@@ -26,7 +26,7 @@
       props: {
         repositories: data.repositories
       },
-      icon: "codicon:repo"
+      icon: "ri:git-repository-line"
     },
     {
       label: "Contributed To",
@@ -36,7 +36,7 @@
         repositories: data.contributedTo,
         user: data.user.viewer,
       },
-      icon: "octicon:git-pull-request-16"
+      icon: "ri:git-pull-request-fill"
     },
     {
       label: "Subscribed Repositories",
@@ -46,7 +46,7 @@
         repositories: data.contributedTo,
         user: data.user.viewer,
       },
-      icon: "ant-design:save-filled"
+      icon: "ri:base-station-line"
     },
     {
       label: "Pinned Items",
@@ -55,7 +55,7 @@
       props: {
         pinnedItems: data.pinnedItems
       },
-      icon: "fluent-mdl2:pinned-solid"
+      icon: "ri:bookmark-line"
     },
     {
       label: "About",
@@ -64,7 +64,7 @@
       props: {
         pinnedItems: data.pinnedItems
       },
-      icon: "heroicons:user-20-solid"
+      icon: "ri:open-arm-line"
     },
   ];
 </script>
