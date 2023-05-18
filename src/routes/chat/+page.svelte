@@ -5,6 +5,7 @@
   import ConversationMenu from "$components/Chat/ConversationMenu.svelte";
   import ChatInput from "$components/Chat/ChatInput.svelte";
   import NewConversationModal from "$components/Chat/NewConversationModal.svelte";
+  export let activeConversation = 1;
   const imageURL =
     "https://hips.hearstapps.com/digitalspyuk.cdnds.net/17/29/1500370357-1.jpg?crop=0.5625xw:1xh;center,top&resize=1200:*";
 

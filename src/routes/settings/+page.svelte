@@ -14,7 +14,7 @@
     <div class="basis-1/5 grow">
       <div class="card bg-white w-full border-e shadow-sm p-4">
         <ul class="menu bg-transparent w-full">
-          <li><a class="active">Edit Profile</a></li>
+          <li><a class="active bg-secondary">Edit Profile</a></li>
           <li><a>Notifications</a></li>
           <li><a>Account</a></li>
           <li><a>Privacy &amp; Security</a></li>

@@ -38,7 +38,7 @@
   let theme = "light";
 </script>
 
-<header class="navbar bg-white shadow-xl">
+<header class="navbar bg-white shadow-xl p-2">
   <div class="navbar-start gap-4">
     <a href="/" class="normal-case text-md">Planet Of The Bugs</a>
     <input

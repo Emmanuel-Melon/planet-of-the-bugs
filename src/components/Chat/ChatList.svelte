@@ -1,10 +1,14 @@
 <script>
   export let chats;
+
+  const handleConversationClick = (conversation) => {
+    console.log(conversation);
+  }
 </script>
 
 <div>
   {#each chats as chat}
-    <div
+    <div on:click={() => handleConversationClick(chat)}
       class={`flex items-start gap-2 hover:bg-slate-100 cursor-pointer p-2 ${
         chat.active ? "bg-zinc-100 border-r-4 border-primary" : "bg-white"
       }`}
@@ -14,9 +18,17 @@
           <img src={chat.avatar} alt={chat.name} />
         </div>
       </div>
-      <div class="prose prose-sm">
-        <h4>{chat.name}</h4>
-        <p>{chat.text}</p>
+      <div class="grow">
+        <div class="flex items-start justify-between">
+            <div>
+                <h4>{chat.name}</h4>
+                <p>{chat.text}</p>
+            </div>
+            <div>
+                <p>Yesterday</p>
+            </div>
+        </div>
+
       </div>
     </div>
   {/each}
