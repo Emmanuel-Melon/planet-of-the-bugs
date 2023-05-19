@@ -1,0 +1,58 @@
+{
+	"/": [
+		"src/routes/+page.ts",
+		"src/routes/+layout.server.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/about": [
+		"src/routes/about/+page.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/about/[slug=slug]": [
+		"src/routes/+layout.server.ts"
+	],
+	"/authored": [
+		"src/routes/authored/+page.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/authored/edit": [
+		"src/routes/+layout.server.ts"
+	],
+	"/auth": [
+		"src/routes/+layout.server.ts"
+	],
+	"/auth/new-user": [
+		"src/routes/+layout.server.ts"
+	],
+	"/chat": [
+		"src/routes/+layout.server.ts"
+	],
+	"/courses": [
+		"src/routes/+layout.server.ts"
+	],
+	"/courses/[slug]": [
+		"src/routes/courses/[slug]/+page.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/courses/[slug]/[lesson]": [
+		"src/routes/courses/[slug]/[lesson]/+page.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/explore": [
+		"src/routes/explore/+page.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/issues": [
+		"src/routes/+layout.server.ts"
+	],
+	"/notifications": [
+		"src/routes/+layout.server.ts"
+	],
+	"/profile": [
+		"src/routes/profile/+page.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/settings": [
+		"src/routes/+layout.server.ts"
+	]
+}
