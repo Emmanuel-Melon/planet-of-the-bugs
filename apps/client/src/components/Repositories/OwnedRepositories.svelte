@@ -9,7 +9,7 @@
 
 <div class="flex gap-2 basis-4/5 flex-wrap">
   {#each repositories.nodes as repo}
-    <div class="card basis-2/5 grow bg-white shadow-lg">
+    <div class="card card-bordered basis-2/5 grow bg-white shadow-lg">
       <div class="card-body">
         <div class="flex items-center justify-between">
           <h3 class="card-title">{repo.name}</h3>

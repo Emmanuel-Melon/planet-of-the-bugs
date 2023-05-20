@@ -49,7 +49,7 @@
 
 </script>
 
-<div class="card grow bg-white shadow-md">
+<div class="card grow card-bordered bg-white shadow-md">
   <div class="card-body">
     <div class="flex gap-2">
       <div>
