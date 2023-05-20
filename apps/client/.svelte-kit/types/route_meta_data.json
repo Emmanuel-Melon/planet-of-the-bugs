@@ -8,9 +8,6 @@
 		"src/routes/about/+page.ts",
 		"src/routes/+layout.server.ts"
 	],
-	"/about/[slug=slug]": [
-		"src/routes/+layout.server.ts"
-	],
 	"/authored": [
 		"src/routes/authored/+page.ts",
 		"src/routes/+layout.server.ts"

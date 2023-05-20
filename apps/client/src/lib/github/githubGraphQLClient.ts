@@ -2,7 +2,7 @@
 import { PUBLIC_GITHUB_API_ENDPOINT } from "$env/static/public";
 import { HttpLink, InMemoryCache, ApolloClient } from '@apollo/client/core';
 
-export type HttpLinkOptions = {
+type HttpLinkOptions = {
     Authorization: string,
     uri?: string
 }
