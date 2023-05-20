@@ -4,25 +4,12 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"turbo-build": "",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "./node_modules/.bin/prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-		"check-types": "tsc --pretty --noEmit",
-		"check-format": "prettier --check .",
-		"check-lint": "eslint . --ext ts --ext tsx --ext js",
-		"format": "prettier --write .",
-		"codegen": "graphql-codegen --config codegen.js",
-		"codegen:clean": "yarn codegen:clean-generated && yarn codegen:download && yarn codegen",
-		"codegen:clean-generated": "rm -rf src/lib/graphql/**/__generated__ src/lib/graphql/globalTypes.ts src/shared/__generated__",
-		"codegen:download": "apollo client:download-schema --config=src/lib/graphql/apollo.schema.config.js src/lib/graphql/schema.graphql"
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
 		"@fontsource/fira-mono": "^4.5.10",
-		"@graphql-codegen/cli": "^3.2.2",
-		"@graphql-codegen/typescript": "^3.0.2",
-		"@graphql-codegen/typescript-operations": "^3.0.2",
 		"@neoconfetti/svelte": "^1.0.0",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/adapter-vercel": "^2.4.3",
@@ -30,7 +17,6 @@
 		"@types/cookie": "^0.5.1",
 		"appwrite": "^11.0.0",
 		"autoprefixer": "^10.4.14",
-		"graphql-codegen-svelte-apollo": "^1.1.0",
 		"husky": "^8.0.3",
 		"hasura-cli": "^2.2.0",
 		"lint-staged": "^12.1.2",
@@ -82,7 +68,6 @@
 		"monaco-editor": "^0.36.1",
 		"sanitize-html": "^2.10.0",
 		"socket.io": "^4.6.1",
-		"svelte-apollo": "^0.5.0",
-		"svelte-ui": "workspace:*"
+		"svelte-apollo": "^0.5.0"
 	}
 }

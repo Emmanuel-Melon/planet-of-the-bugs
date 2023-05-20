@@ -10,10 +10,10 @@
   <div class="flex justify-between gap-2 items-center p-2">
     <div class="flex gap-2 grow items-center">
       <button
-        class="btn btn-sm btn-circle btn-outline btn-primary"
+        class="btn btn-sm btn-circle btn-outline btn-accent"
         type="submit"
       >
-        <iconify-icon icon="ic:baseline-send" />
+        <iconify-icon icon="ri:bear-smile-line" />
       </button>
       <textarea
         placeholder="Start a new message"
