@@ -1,0 +1,15 @@
+version: "3"
+services:
+  client:
+    container_name: client
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-client
+    restart: always
+    ports:
+      - 5173:5173
+    networks:
+      - app_network
+networks:
+  app_network:
+    external: true
