@@ -1,4 +1,4 @@
-import { GITHUB_API } from "$lib/apollo";
+import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 
 export const load = async (event) => {
 

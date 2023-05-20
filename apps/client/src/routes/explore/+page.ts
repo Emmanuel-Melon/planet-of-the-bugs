@@ -1,8 +1,9 @@
-import { FETCH_ISSUES_BY_DIFFICULTY } from "$lib/queries/issues";
-import { FETCH_REPOSITORIES_BY_TOPIC } from "$lib/queries/repositories.js";
-import apolloClient, { GITHUB_API } from "$lib/apollo";
+import { FETCH_ISSUES_BY_DIFFICULTY } from "$lib/graphql/queries/issues";
+import { FETCH_REPOSITORIES_BY_TOPIC } from "$lib/graphql/queries/repositories.js";
+import apolloClient from "$lib/graphql/apolloClient";
+import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { error } from "@sveltejs/kit";
-import { USER_BASIC_INFO } from "$lib/queries/user";
+import { USER_BASIC_INFO } from "$lib/graphql/queries/user";
 
 export const load = async (event) => {
 

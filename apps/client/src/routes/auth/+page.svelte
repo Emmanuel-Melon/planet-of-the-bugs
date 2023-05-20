@@ -7,13 +7,11 @@
 
   const handleGithubLogin = async () => {
     const result = await signIn("github");
-    console.log("result");
     goto("/");
   };
 
   const handleGithubLogout = async () => {
     const result = await signOut("github");
-    console.log(result);
     goto("/auth");
   };
 </script>

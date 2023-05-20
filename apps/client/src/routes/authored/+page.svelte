@@ -3,8 +3,8 @@
   import { query, mutation } from "svelte-apollo";
   import { page } from "$app/stores";
   import { onMount } from "svelte";
-  import { CREATE_COURSE } from "$lib/mutations/courses";
-  import { FETCH_AUTHORED_COURSES } from "$lib/queries/courses";
+  import { CREATE_COURSE } from "$lib/graphql/mutations/courses";
+  import { FETCH_AUTHORED_COURSES } from "$lib/graphql/queries/courses";
   import AuthoredCourseCard from "$components/AuthoredCourseCard.svelte";
   import ContributionsStats from "$components/User/ContributionsStats.svelte";
   import "iconify-icon";

@@ -5,7 +5,7 @@
   import CodeEditor from "$components/CodeEditor/CodeEditor.svelte";
   import CodeOutput from "$components/CodeEditor/CodeOutput.svelte";
   import { query, mutation } from "svelte-apollo";
-  import { FETCH_COURSE_BY_PK } from "$lib/queries/lessons";
+  import { FETCH_COURSE_BY_PK } from "$lib/graphql/queries/lessons";
   import LessonOverview from "$components/Lessons/LessonOverview.svelte";
 
   const course = query(FETCH_COURSE_BY_PK, {

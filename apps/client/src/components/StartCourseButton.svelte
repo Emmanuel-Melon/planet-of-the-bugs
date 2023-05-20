@@ -5,7 +5,7 @@
   export let status = "Unsubscribed";
 
   import { mutation } from "svelte-apollo";
-  import { START_COURSE } from "$lib/mutations/courses";
+  import { START_COURSE } from "$lib/graphql/mutations/courses";
   import "iconify-icon";
 
   const startCourse = mutation(START_COURSE);

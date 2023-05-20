@@ -2,7 +2,7 @@
   import Header from "./Header.svelte";
   import "./styles.css";
   import { setClient } from "svelte-apollo";
-  import apolloClient from "$lib/apollo";
+  import apolloClient from "$lib/graphql/apolloClient";
   import "../app.css";
   setClient(apolloClient);
 

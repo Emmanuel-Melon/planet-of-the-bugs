@@ -1,9 +1,10 @@
 import {
     FETCH_COURSE_BY_SLUG,
     FETCH_USER_COURSE_PROGRESS,
-} from '$lib/queries/courses';
-import { USER_BASIC_INFO } from '$lib/queries/user';
-import apolloClient from '$lib/apollo';
+} from '$lib/graphql/queries/courses';
+import { USER_BASIC_INFO } from '$lib/graphql/queries/user';
+import apolloClient from "$lib/graphql/apolloClient";
+import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { error } from '@sveltejs/kit';
 
 export const load = async (event) => {

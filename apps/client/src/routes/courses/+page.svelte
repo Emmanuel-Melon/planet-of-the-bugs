@@ -1,7 +1,7 @@
 <script>
   // @ts-nocheck
   import { onMount } from "svelte";
-  import { FETCH_COURSES } from "$lib/queries/courses";
+  import { FETCH_COURSES } from "$lib/graphql/queries/courses";
   import { query, mutation } from "svelte-apollo";
   import CourseCard from "$components/CourseCard.svelte";
   import SearchBar from "$components/SearchBar.svelte";

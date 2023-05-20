@@ -3,7 +3,7 @@
   import sanitizeHtml from "sanitize-html";
   import { query, mutation } from "svelte-apollo";
   import { afterUpdate } from "svelte";
-  import { CREATE_LESSON } from "$lib/mutations/lessons";
+  import { CREATE_LESSON } from "$lib/graphql/mutations/lessons";
 
   const md = new MarkdownIt();
 

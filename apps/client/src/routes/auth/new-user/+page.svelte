@@ -2,7 +2,7 @@
 // @ts-nocheck
     import { page } from "$app/stores";
     import welcome from '$lib/images/svelte-welcome.png'
-    import { ADD_NEW_USER } from "$lib/mutations/users";
+    import { ADD_NEW_USER } from "$lib/graphql/mutations/users";
     import { onMount } from "svelte";
     import { mutation } from "svelte-apollo";
 

@@ -3,7 +3,7 @@
   export let user;
   import "iconify-icon";
 
-  import { SUBSCRIBE_TO_REPO } from "$lib/mutations/repositories";
+  import { SUBSCRIBE_TO_REPO } from "$lib/graphql/mutations/repositories";
   import { mutation } from "svelte-apollo";
   const subscribeToRepo = mutation(SUBSCRIBE_TO_REPO);
 

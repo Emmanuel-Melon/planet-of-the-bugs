@@ -3,7 +3,7 @@
   import { page } from "$app/stores";
   import { onMount, onDestroy } from "svelte";
   import { query } from "svelte-apollo";
-  import { FETCH_COURSES } from "$lib/queries/courses";
+  import { FETCH_COURSES } from "$lib/graphql/queries/courses";
   import ContributionsStats from "$components/User/ContributionsStats.svelte";
   let user;
   import "iconify-icon";

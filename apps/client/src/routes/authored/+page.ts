@@ -1,6 +1,6 @@
-import { GITHUB_USER_BASIC_INFO, USER_BASIC_INFO } from "$lib/queries/user";
-import apolloClient, { GITHUB_API } from "$lib/apollo";
-import * as kit from "@sveltejs/kit";
+import { GITHUB_USER_BASIC_INFO, USER_BASIC_INFO } from "$lib/graphql/queries/user";
+import apolloClient from "$lib/graphql/apolloClient";
+import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 
 import { destructureQueryResults } from "./helpers";
 

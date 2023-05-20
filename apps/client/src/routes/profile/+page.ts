@@ -2,10 +2,11 @@ import {
   GITHUB_USER_BASIC_INFO,
   REPOS_CONTRIBUTED_TO,
   GET_PINNED_ITEMS,
-} from "$lib/queries/user";
+} from "$lib/graphql/queries/user";
 
-import { GET_SUBSCRIBED_REPOS, GET_USER_REPOS } from "$lib/queries/repositories";
-import { GITHUB_API } from "$lib/apollo";
+import { GET_SUBSCRIBED_REPOS, GET_USER_REPOS } from "$lib/graphql/queries/repositories";
+import apolloClient from "$lib/graphql/apolloClient";
+import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 
 export const load = async (event) => {
   const { params, url, setHeaders, route, parent, fetch, depends, data: pageData } = event;
