@@ -83,7 +83,6 @@
 		"sanitize-html": "^2.10.0",
 		"socket.io": "^4.6.1",
 		"svelte-apollo": "^0.5.0",
-		"svelte-ui": "*",
-		"types": "*"
+		"svelte-ui": "workspace:*"
 	}
 }

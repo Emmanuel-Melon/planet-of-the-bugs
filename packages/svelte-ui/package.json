@@ -1,0 +1,11 @@
+{
+  "name": "svelte-ui",
+  "version": "1.0.0",
+  "description": "Styles and components for use in svelte websites",
+  "module": "index.ts",
+  "svelte": "index.ts",
+  "license": "MIT",
+  "devDependencies": {
+    "svelte": "^3.59.1"
+  }
+}

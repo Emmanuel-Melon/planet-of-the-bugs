@@ -76,6 +76,7 @@
       <div class="card bg-white card-bordered space-y-2">
         <div class="card-body">
           <h2 class="card-title">Planet of The Bugs</h2>
+
           <p class="prose-p">The Planet of the Bugs platform uses AI and game mechanics to simulate real-world bugs and issues. Developers can practice their debugging skills, learn the fundamentals of writing secure software, and even receive bug recommendations based on their skills.</p>
           <div>
             <h3>The Problem</h3>
