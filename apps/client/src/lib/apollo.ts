@@ -2,8 +2,6 @@
 import { PUBLIC_HASURA_ADMIN_SECRET, PUBLIC_GITHUB_ACCESS_CODE, PUBLIC_GITHUB_API_ENDPOINT } from "$env/static/public";
 import { HttpLink, InMemoryCache, ApolloClient } from '@apollo/client/core';
 
-
-
 const httpLink = new HttpLink({
   uri: "https://planet-of-the-bugs.hasura.app/v1/graphql",
   credentials: "include",
@@ -13,22 +11,26 @@ const httpLink = new HttpLink({
   },
 });
 
-type HttpCredentials = "include" | "omit" | "same-origin";
+type HttpLinkOptions = {
+  Authorization: string, 
+  uri?: string
+}
 
+type GitHubHttplink = HttpLinkOptions & {
+  Authorization: string | null, 
+}
 
-const githubHttpLink = ({ Authorization, uri }) => {
+const githubHttpLink = ({ Authorization, uri }: GitHubHttplink) => {
   return new HttpLink({
     uri,
     credentials: "same-origin",
     headers: {
-      Authorization,
-   
+      Authorization: Authorization || "",
     }
   });
 }
 
-
-export const githubClient = (options) => {
+export const githubClient = (options: GitHubHttplink) => {
   return new ApolloClient({
     cache: new InMemoryCache(),
     credentials: "include",
@@ -43,13 +45,16 @@ const apolloClient = new ApolloClient({
 });
 
 export class GithubApi {
-  constructor(options) {
+  options: { Authorization: null; uri: any; };
+  session: null;
+  client: null;
+  constructor(options: { Authorization: null; uri: any; }) {
     this.options = options;
     this.session = null;
     this.client = null;
   }
 
-  setSession(session) {
+  setSession(session: any) {
     this.session = session;
     this.client = new ApolloClient({
       cache: new InMemoryCache(),
@@ -62,7 +67,7 @@ export class GithubApi {
     return this.client;
   }
 
-  createHttpLink({ Authorization, uri }) {
+  createHttpLink({ Authorization, uri }: HttpLinkOptions) {
     return new HttpLink({
       uri,
       credentials: "same-origin",

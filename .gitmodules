@@ -1,0 +1,3 @@
+[submodule "apps/website"]
+	path = apps/website
+	url = https://github.com/PlanetOfTheBugs/website.git

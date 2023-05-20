@@ -98,9 +98,7 @@
           <div>
             <h3>The Solution</h3>
             <p class="prose-p">
-              Bug-fixing is a skill that takes years to master. We aim to change
-              this by providing comprehensive resources and rewarding developers for
-              their debugging expertise.
+              Planet of the Bugs is an AI platform that uses a unique test generation engine to generate bug scenarios that are tailored to your skill level and area of expertise. The results are an infinite supply of unique scenarios, allowing developers to practice and hone their debugging skills.
             </p>
           </div>
 
@@ -122,6 +120,7 @@
   <div class="prose prose-sm">
     <h3>Join the Party</h3>
     <p class="bg-secondary p-2 w-fit">It's like a game! Except your skills will help you write better code.</p>
+    <p>Export Exercises and Practice Locally!</p>
     <p>
       Connect with Planet of The Bugs across various platforms and be part of
       our buzzing coding community!
