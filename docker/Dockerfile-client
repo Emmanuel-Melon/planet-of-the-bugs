@@ -1,0 +1,10 @@
+ARG NODE_VERSION=16
+ARG ALPINE_VERSION=3.15
+
+FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS builder
+RUN apk update && apk add git
+# Set working directory
+WORKDIR /app
+RUN yarn global add turbo
+COPY . .
+RUN turbo prune --scope=web --docker

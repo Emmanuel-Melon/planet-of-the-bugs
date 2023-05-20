@@ -1,0 +1,6 @@
+[submodule "apps/admin"]
+	path = apps/admin
+	url = https://github.com/PlanetOfTheBugs/admin.git
+[submodule "apps/website"]
+	path = apps/website
+	url = https://github.com/PlanetOfTheBugs/website.git
