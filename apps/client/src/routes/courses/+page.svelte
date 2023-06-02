@@ -43,7 +43,7 @@ const criteria = [
 </script>
 
 <section class="h-max min-h-ful">
-  <div class="card bg-white w-full p-4 border-e shadow-lg border-2 border-secondary mb-2">
+  <div class="card bg-white w-full p-4 shadow mb-2">
     <div class="bg-white mb-2 mx-auto text-center w-4/5">
       <h1 class="text-xl">Explore the Planet of Bugs</h1>
       <p>Discover a world of software defects, debugging techniques, and programming pitfalls. Join our community of curious developers and learn how to track down and squash those pesky bugs.</p>

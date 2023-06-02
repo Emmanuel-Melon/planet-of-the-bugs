@@ -6,7 +6,6 @@
   import PaginationComponent from "$components/PaginationComponent.svelte";
   import { page } from "$app/stores";
   import { onMount, onDestroy } from "svelte";
-  import ContributionsByRepo from "$components/User/ContributionsByRepo.svelte";
   import Tabs from "$components/Tabs.svelte";
   import OwnedRepositories from "$components/Repositories/OwnedRepositories.svelte";
   import SubscrbedRepositories from "$components/Repositories/SubscrbedRepositories.svelte";
@@ -69,12 +68,6 @@
   ];
 </script>
 
-<svelte:head>
-  <title>Profile</title>
-  <meta name="description" content="Planet of the Bugs uses AI to generate fake bug scenarios for developers to learn debugging skills and the fundamentals of writing secure and robust software. By using AI, the app can provide an endless supply of unique scenarios, allowing developers to practice and hone their skills." />
-
-</svelte:head>
-
 <main class="w-full">
   <div class="flex gap-1">
     <div class="basis-1/4">
@@ -87,7 +80,6 @@
       <UserGithubStats user={data.user.viewer} />
       <div class="gap-y-3">
         <Tabs {items} />
-        <PaginationComponent />
       </div>
     </div>
   </div>

@@ -18,7 +18,7 @@
 
 <section class="flex justify-center items-center">
   {#if $page.data.session}
-    <div class="card w-2/5 bg-white shadow-xl">
+    <div class="card w-2/5 bg-white shadow">
       <div class="card-body">
         <h2 class="card-title">Welcome to Planet of The Bugs</h2>
         <span class="signedInText">
@@ -45,7 +45,7 @@
       </div>
     </div>
   {:else}
-    <div class="card w-2/5 bg-white shadow-xl p-4">
+    <div class="card w-2/5 bg-white shadow p-4">
       <div class="card-body text-center">
         <div class="mx-auto">
           <h2 class="card-title">Planet of The Bugs</h2>
@@ -61,7 +61,7 @@
           <input
             type="text"
             placeholder="bug@planet.xyz"
-            class="input bg-white input-accent input-bordered w-full"
+            class="input bg-white input-bordered w-full"
           />
         </div>
         <div class="form-control w-full">
@@ -71,7 +71,7 @@
           <input
             type="password"
             placeholder="Your password"
-            class="input bg-white input-accent input-bordered w-full"
+            class="input bg-white input-bordered w-full"
           />
           <label class="label">
             <span class="label-text-alt">Must be at least 8 characters</span>
@@ -80,7 +80,7 @@
         </div>
 
         <button class="btn btn-primary">Register</button>
-        <div class="divider">Or Register with</div>
+        <div class="divider">OR</div>
         <button
           class="btn bg-black text-white gap-2"
           on:click={handleGithubLogin}

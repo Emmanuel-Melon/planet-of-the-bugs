@@ -7,13 +7,11 @@
 </script>
 
 <div
-class="card p-4 bg-white shadow-lg border-solid border-e border-accent"
+class="card p-4 bg-white shadow"
 >
 <div class="divider">{CTA}</div>
 <div>
-
     {#each criteria as criterion}
-
     <div class="form-control">
         <label class="cursor-pointer label">
           <span class="flex items-center gap-2 label-text"><iconify-icon icon={criterion.icon || icon} /> {criterion.title}</span>

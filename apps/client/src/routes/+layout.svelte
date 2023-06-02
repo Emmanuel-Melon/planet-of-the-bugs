@@ -5,9 +5,6 @@
   import apolloClient from "$lib/graphql/apolloClient";
   import "../app.css";
   setClient(apolloClient);
-
-  // https://cacb-102-140-208-147.ngrok-free.app
-  // let syncNetServerURL = "https://syncnet-api.onrender.com" || "http://localhost:4000";
 </script>
 
 <svelte:head>
@@ -16,7 +13,6 @@
     name="description"
     content="Planet of the Bugs uses AI to generate fake bug scenarios for developers to learn debugging skills and the fundamentals of writing secure and robust software. By using AI, the app can provide an endless supply of unique scenarios, allowing developers to practice and hone their skills."
   />
-
 </svelte:head>
 
 <div class="app">

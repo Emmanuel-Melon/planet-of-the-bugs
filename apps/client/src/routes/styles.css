@@ -1,17 +1,10 @@
-@import '@fontsource/fira-mono';
-@import url('https://fonts.googleapis.com/css2?family=Futura&family=Sen&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&family=Sen&display=swap');
 
 html, body {
     font-family: "Sen", Arial, Helvetica, sans-serif;
-    background: #FFEEEE;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #DDEFBB, #FFEEEE);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #DDEFBB, #FFEEEE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
-    
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Futura", Arial, Helvetica, sans-serif;
+    font-family: "Ubuntu", Arial, Helvetica, sans-serif;
     font-weight: bold;
 }

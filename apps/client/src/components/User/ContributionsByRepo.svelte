@@ -2,12 +2,12 @@
   import {
     GET_CONTRIBUTIONS_BY_REPO,
     GET_USER_PULL_REQUEST_CONTRIBUTIONS,
-  } from "$lib/queries/repositories";
+  } from "$lib/graphql/queries/repositories";
   export let repository;
   export let user;
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
-  import { GITHUB_API } from "$lib/apollo";
+  import { GITHUB_API } from "$lib/graphql/apolloClient";
 
   const githubClient = GITHUB_API.getGithubClient();
 

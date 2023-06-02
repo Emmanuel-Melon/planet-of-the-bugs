@@ -12,7 +12,7 @@
         <img src={muzanURL} alt="deadpool" />
       </div>
     </div>
-    <div class="chat-bubble chat-bubble-accent">
+    <div class="chat-bubble chat-bubble-info">
       Ah, the Sound Hashira. It seems we have finally crossed paths. Quite
       flashy!
     </div>
@@ -23,7 +23,7 @@
         <img src={tengenURL} alt="deadpool" />
       </div>
     </div>
-    <div class="chat-bubble chat-bubble-secondary">
+    <div class="chat-bubble">
       Muzan Kibutsuji, your reign of terror ends here.
     </div>
   </div>
@@ -33,7 +33,7 @@
         <img src={muzanURL} alt="deadpool" />
       </div>
     </div>
-    <div class="chat-bubble chat-bubble-accent">
+    <div class="chat-bubble chat-bubble-info">
       Your resistance is futile. I will crush you and all the Demon Slayers who
       dare oppose me.
     </div>
@@ -44,7 +44,7 @@
         <img src={tengenURL} alt="deadpool" />
       </div>
     </div>
-    <div class="chat-bubble chat-bubble-secondary">
+    <div class="chat-bubble">
       Your empty threats won't intimidate me, Muzan.
     </div>
   </div>
@@ -54,7 +54,7 @@
         <img src={tengenURL} alt="deadpool" />
       </div>
     </div>
-    <div class="chat-bubble chat-bubble-secondary">
+    <div class="chat-bubble">
       Your arrogance blinds you, Muzan. We fight for a cause greater than
       ourselves, a cause that protects humanity from the darkness you embody.
       Your
@@ -66,7 +66,7 @@
         <img src={muzanURL} alt="deadpool" />
       </div>
     </div>
-    <div class="chat-bubble chat-bubble-accent">
+    <div class="chat-bubble chat-bubble-info">
       Prepare to witness the true terror of the Demong King!
     </div>
   </div>
@@ -76,7 +76,7 @@
         <img src={tengenURL} alt="deadpool" />
       </div>
     </div>
-    <div class="chat-bubble chat-bubble-secondary">
+    <div class="chat-bubble">
       We shall emerge victorious, for the sake of all the lives you've
       destroyed. The sound of justice will drown out your tyranny.
     </div>

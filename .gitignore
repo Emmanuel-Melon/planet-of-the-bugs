@@ -14,3 +14,5 @@ vite.config.ts.timestamp-*
 .vscode/
 yarn-error.log*
 .turbo
+apps/client/.svelte-kit
+apps/client/.svelte-kit/

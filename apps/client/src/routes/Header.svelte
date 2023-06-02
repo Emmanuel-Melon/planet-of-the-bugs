@@ -38,7 +38,7 @@
   let theme = "light";
 </script>
 
-<header class="navbar bg-white shadow-xl p-2">
+<header class="navbar bg-base-100">
   <div class="navbar-start gap-4">
     <a href="/" class="normal-case text-md">Planet Of The Bugs</a>
     <input
@@ -58,7 +58,7 @@
             ? "p-2 hidden lg:flex transition-all  decoration-accent rounded-md"
             : "p-2 hidden lg:flex transition-all underline-offset-8 decoration-primary-focus rounded-md"}
         >
-          <a href={path} class="flex items-center gap-2 text-primary"><iconify-icon icon={icon}/> {text}</a>
+          <a href={path} class="flex items-center gap-2"><iconify-icon icon={icon}/> {text}</a>
         </li>
       {/each}
     </ul>

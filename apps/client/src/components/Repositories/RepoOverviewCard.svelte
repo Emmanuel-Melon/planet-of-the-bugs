@@ -44,7 +44,7 @@
         <a class="link link-secondary" href={repo.url}>{repo.name}</a>
       </div>
       <div>
-        <div class="badge badge-primary gap-2">
+        <div class="badge gap-2">
           <iconify-icon icon="heroicons:star" />
           {repo.stargazerCount.toLocaleString()}
         </div>

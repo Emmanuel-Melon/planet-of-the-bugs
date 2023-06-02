@@ -4,7 +4,7 @@
   export let user;
   import "iconify-icon";
   import ContributionsByRepo from "./ContributionsByRepo.svelte";
-  import { githubClient } from "$lib/apollo";
+  import { githubClient } from "$lib/graphql/apolloClient";
   let contributions;
 
   function hexToHSL(hexColor) {
@@ -75,7 +75,7 @@
         <slot>
           <ContributionsByRepo repository={node} {user} />
         </slot>
-        <h3>Tech Stack</h3>
+        <div class="divider">Tech Stack</div>
         <div class="flex gap-2 flex-wrap">
           {#each node.languages.nodes as language}
             <div class={`badge badge-outline badge-lg gap-2`}>
