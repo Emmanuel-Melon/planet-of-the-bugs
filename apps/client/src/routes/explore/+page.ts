@@ -4,12 +4,17 @@ import apolloClient from "$lib/graphql/apolloClient";
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { error } from "@sveltejs/kit";
 import { USER_BASIC_INFO } from "$lib/graphql/queries/user";
+import { redirect } from '@sveltejs/kit';
 
-export const load = async (event) => {
+export const load = (async (event) => {
 
-  const { params, url, setHeaders, route, parent, fetch, depends, data: pageData } = event;
+  const { params, url, setHeaders, parent, fetch, depends, data: pageData } = event;
 
   const { session } = await parent();
+
+  if (session === null) {
+    throw redirect(307, '/auth');
+  }
   if (session?.token !== null || session?.token !== undefined) {
     GITHUB_API.setSession(session?.token?.accessToken);
   }
@@ -36,4 +41,4 @@ export const load = async (event) => {
       data: user?.data?.user[0] || {},
     },
   };
-};
+});
