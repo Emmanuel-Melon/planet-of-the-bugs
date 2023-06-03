@@ -1,8 +1,6 @@
 .DS_Store
 node_modules
 /build
-.svelte-kit
-.svelte-kit/
 /package
 .env
 .env.*
@@ -14,5 +12,10 @@ vite.config.ts.timestamp-*
 .vscode/
 yarn-error.log*
 .turbo
+/apps/client/.svelte-kit
+/apps/client/.svelte-kit/
 apps/client/.svelte-kit
 apps/client/.svelte-kit/
+/.svelte-kit
+.svelte-kit/
+
