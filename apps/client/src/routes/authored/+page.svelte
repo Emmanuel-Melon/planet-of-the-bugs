@@ -63,16 +63,10 @@
   <section class="flex gap-2">
     <div>
       <div class="flex mt-2 justify-between gap-2 items-center">
-        <div class="prose lg:prose-xl">
-          <h3>My Courses</h3>
-          <p>
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
-        </div>
+        <h3 class="text-xl">My Courses</h3>
         <!-- The button to open modal -->
         <label for="my-modal" class="btn gap-2 mb-2"
-          ><iconify-icon icon="heroicons:cog-8-tooth-solid" /> New Course</label
+          ><iconify-icon icon="ri:add-line" /> New Course</label
         >
 
         <!-- Put this part before </body> tag -->

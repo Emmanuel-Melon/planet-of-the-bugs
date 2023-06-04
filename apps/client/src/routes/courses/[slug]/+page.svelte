@@ -12,14 +12,6 @@
 
   $: course, active;;
 
-  const items = [
-    {
-      label: "Overview",
-      value: 1,
-      component: CourseOverview,
-      icon: "octicon:git-pull-request-16"
-    }
-  ]
 </script>
 
 <div>

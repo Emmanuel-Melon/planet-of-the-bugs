@@ -14,10 +14,10 @@
     (activeTabValue = tabValue);
 </script>
 
-<div class="tabs w-full grow tabs-boxed">
+<div class="tabs tabs-boxed gap-2 w-full grow rounded-none bg-base-100">
   {#each items as item}
     <button
-      class={`tab-lg tab-lifted gap-2 flex items-center p-2 ${
+      class={`tab tab-lg gap-2 flex items-center hover:bg-base-200 ${
         activeTabValue === item.value ? "tab-active" : ""
       }`}
       on:click={handleTabClick(item.value)}
@@ -26,7 +26,7 @@
   {/each}
   {#each items as item}
     {#if activeTabValue == item.value}
-      <div class="w-full gap-2 mt-2">
+      <div class="w-full gap-2">
         <svelte:component this={item.component} {...item.props} />
       </div>
     {/if}

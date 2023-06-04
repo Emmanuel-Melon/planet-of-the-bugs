@@ -32,20 +32,11 @@
     menuLinks = [];
     dropdownLinks = [];
   });
-
-  let theme = "light";
 </script>
 
-<header class="navbar bg-base-100">
+<header class="navbar bg-primary text-neutral-content">
   <div class="navbar-start gap-4">
     <a href="/" class="normal-case text-md">Planet Of The Bugs</a>
-    <input
-      type="checkbox"
-      class={`toggle toggle-md ${
-        theme === "light" ? "toggle-bg-green-100" : "toggle-bg-blue-100"
-      }`}
-      checked
-    />
   </div>
 
   <nav>
@@ -91,7 +82,7 @@
     <div class="dropdown dropdown-bottom dropdown-end">
       {#if user}
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-        <div tabindex="0" class="btn btn-primary btn-circle avatar">
+        <div tabindex="0" class="btn bg-base-200 btn-circle avatar">
           <div class="w-10 rounded-full">
             <img src={user.image} alt={user.name} />
           </div>
@@ -99,15 +90,15 @@
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <ul
           tabindex="0"
-          class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52"
+          class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 text-neutral-focus rounded-box w-52"
         >
           {#each dropdownLinks as { text, path, icon }}
-            <li class="hover:bg-primary-focus">
+            <li>
               <a href={path}><iconify-icon icon={icon}/> {text}</a>
             </li>
           {/each}
           <li>
-            <button class="hover:bg-accent-focus" on:click|preventDefault={() => signOut()}><iconify-icon icon="heroicons:arrow-right-on-rectangle-20-solid" /> Sign Out</button>
+            <button on:click|preventDefault={() => signOut()}><iconify-icon icon="heroicons:arrow-right-on-rectangle-20-solid" /> Sign Out</button>
           </li>
         </ul>
       {:else}

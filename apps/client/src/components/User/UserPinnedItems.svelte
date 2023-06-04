@@ -3,7 +3,7 @@
   import "iconify-icon";
 </script>
 
-<section class="bg-grary-500 p-4">
+<section>
   <div class="flex justify-between items-center mb-2">
     <h3 class="text-xl flex items-center gap-2">
       <iconify-icon icon="heroicons:bookmark-20-solid" /> Pinned Items ({pinnedItems.totalCount})

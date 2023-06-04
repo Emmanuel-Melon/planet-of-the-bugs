@@ -4,40 +4,30 @@
   import "iconify-icon";
 </script>
 
-<div class="card basis-1/3 bg-white">
-  <div class="card-body">
+<div class="card card-compact basis-1/4 grow bg-base-100 shadow-md">
+  <div class="card-body space-y-2">
     <div class="flex gap-4">
-      <div class="avatar">
-        <div
-          class="w-16 rounded-full ring ring-accent ring-offset-base-100 ring-offset-2"
-        >
-          <img
-            src="https://res.cloudinary.com/dwacr3zpp/image/upload/v1682839084/Planet%20of%20The%20Bugs/Untitled_design_1.png"
-            alt="course logo"
-          />
-        </div>
-      </div>
-      <div>
+      <div class="w-full flex justify-between items-center">
         <h3 class="card-title">
-          <a class="link" href={`/authored/edit`}
+          <a class="link link-hover" href={`/authored/${course.slug}`}
             >{course.title}</a
           >
         </h3>
         <div class="badge badge-accent gap-2">
-          <iconify-icon icon="heroicons:star" />
+          <iconify-icon icon="ri:bar-chart-2-line" />
           {course.complexity}
         </div>
       </div>
     </div>
     <div class="divider">Description</div>
     <p>{course.description}</p>
-    <div class="card-actions justify-center mt-4">
-      <div class="flex gap-4">
-        <button class="btn btn-sm btn-primary gap-2">
-          <iconify-icon icon="heroicons:cog-8-tooth-solid" /> Manage Course</button
+    <div class="card-actions justify-end">
+      <div class="flex gap-2">
+        <a href={`/authored/${course.slug}/analytics`} class="btn btn-sm btn-outline gap-2">
+          <iconify-icon icon="ri:bubble-chart-line" /> Analytics</a
         >
-        <button class="btn btn-sm btn-secondary gap-2">
-          <iconify-icon icon="heroicons:chart-pie-20-solid" /> Analytics</button
+        <a href={`/authored/${course.slug}/edit`} class="btn btn-sm btn-primary gap-2">
+          <iconify-icon icon="ri:settings-3-line" /> Manage Course</a
         >
       </div>
     </div>
