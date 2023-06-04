@@ -7,12 +7,12 @@
 
   const handleGithubLogin = async () => {
     const result = await signIn("github");
-    goto("/");
+    redirect(307, '/');
   };
 
   const handleGithubLogout = async () => {
     const result = await signOut("github");
-    goto("/auth");
+    redirect(307, '/auth');
   };
 </script>
 
@@ -79,13 +79,13 @@
           </label>
         </div>
 
-        <button class="btn btn-primary">Register</button>
+        <button class="btn btn-secondary">Register</button>
         <div class="divider">OR</div>
         <button
           class="btn bg-black text-white gap-2"
           on:click={handleGithubLogin}
         >
-          <iconify-icon icon="ri:github-fill" />
+          <iconify-icon icon="ri:github-line" />
           Sign In with GitHub
         </button>
         <span class="notSignedInText">Already have an account?</span>

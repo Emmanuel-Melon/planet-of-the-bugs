@@ -17,16 +17,6 @@
           repo_url: repo?.url,
         },
       });
-
-      /**
-       *       if (result.data.insert_user_subscribed_repos.affected_rows === 1) {
-        console.log("Mutation successful!");
-        //  Change the URL to the Svelte page
-        window.location.href = `/courses/${slug}`;
-      } else {
-        console.log("Mutation failed");
-      }
-      */
     } catch (error) {
       console.log(error);
       // TODO

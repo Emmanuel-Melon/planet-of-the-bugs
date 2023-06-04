@@ -1,11 +1,9 @@
 <script>
   // @ts-nocheck
-
   import { page } from "$app/stores";
   import { onMount, onDestroy } from "svelte";
   import { signOut } from "@auth/sveltekit/client";
   import "iconify-icon";
-  import github from '$lib/images/github.svg';
 
   let user;
   $: current = $page.url.pathname;
@@ -18,10 +16,10 @@
   ];
 
   $: dropdownLinks = [
-    { text: "View Profile", path: "/profile", icon: "heroicons:user-20-solid" },
-    { text: "Authored Courses", path: "/authored", icon: "heroicons:book-open-solid" },
-    { text: "Settings", path: "/settings", icon: "heroicons:adjustments-horizontal-solid" },
-    { text: "About", path: "/about", icon: "heroicons:information-circle-20-solid" },
+    { text: "My Profile", path: "/profile", icon: "ri:user-2-line" },
+    { text: "Authored Courses", path: "/authored", icon: "ri:book-read-line" },
+    { text: "Settings", path: "/settings", icon: "ri:settings-3-line" },
+    { text: "About", path: "/about", icon: "ri:information-line" },
   ];
 
   onMount(() => {
@@ -114,8 +112,7 @@
         </ul>
       {:else}
       <div class="flex gap-2 items-center">
-        <a href="/auth" class="btn btn-sm btn-ghost">Sign In</a>
-        <a href="/auth" class="btn btn-sm btn-secondary">Start for Free</a>
+        <a href="/auth" class="btn btn-primary gap-2"><iconify-icon icon="ri:login-circle-line" /> Sign In</a>
       </div>
       {/if}
     </div>
