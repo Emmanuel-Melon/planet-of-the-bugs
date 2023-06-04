@@ -56,20 +56,6 @@
 
     }
   };
-
-  const items = [
-    {
-      label: "Overview",
-      value: 1,
-      content: "",
-    },
-    {
-      label: "Subscrbers",
-      value: 2,
-      content: "",
-    },
-  ];
-  // 
 </script>
 
 <main>

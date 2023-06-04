@@ -45,38 +45,33 @@
       </div>
     </div>
   {:else}
-    <div class="card w-2/5 bg-white shadow p-4">
+    <div class="card w-2/5 bg-white shadow">
+      <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
       <div class="card-body text-center">
         <div class="mx-auto">
           <h2 class="card-title">Planet of The Bugs</h2>
         </div>
-        <p>
-          Join our vibrant community to level up your coding skills, take on
-          real-life bugs from open-source repositories.
-        </p>
         <div class="form-control w-full">
-          <label class="label">
+          <label class="label" for="email">
             <span class="label-text">Email Address</span>
           </label>
           <input
-            type="text"
+            type="email"
             placeholder="bug@planet.xyz"
             class="input bg-white input-bordered w-full"
+            id="email"
           />
         </div>
         <div class="form-control w-full">
-          <label class="label">
+          <label class="label" for="password">
             <span class="label-text">Password</span>
           </label>
           <input
             type="password"
             placeholder="Your password"
             class="input bg-white input-bordered w-full"
+            id="password"
           />
-          <label class="label">
-            <span class="label-text-alt">Must be at least 8 characters</span>
-            <span class="label-text-alt"><iconify-icon icon="ri:shield-keyhole-line" /> Strong</span>
-          </label>
         </div>
 
         <button class="btn btn-secondary">Register</button>
