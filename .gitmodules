@@ -1,6 +1,6 @@
 [submodule "apps/admin"]
 	path = apps/admin
-	url = https://github.com/PlanetOfTheBugs/admin.git
+	url = https://github.com/Planet-Of-the-Bugs/admin.git
 [submodule "apps/website"]
 	path = apps/website
-	url = https://github.com/PlanetOfTheBugs/website.git
+	url = https://github.com/Planet-Of-the-Bugs/website.git
