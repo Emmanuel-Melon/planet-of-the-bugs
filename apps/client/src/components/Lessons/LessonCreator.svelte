@@ -48,6 +48,6 @@
   };
 </script>
 
-<div class="card h-96">
+<div class="card bg-base-100 shadow-md h-96">
   <textarea class="rounded-md h-full w-full p-4" bind:value={markdown} />
 </div>

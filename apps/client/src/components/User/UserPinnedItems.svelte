@@ -3,7 +3,7 @@
   import "iconify-icon";
 </script>
 
-<section class="bg-grary-500 p-4">
+<section>
   <div class="flex justify-between items-center mb-2">
     <h3 class="text-xl flex items-center gap-2">
       <iconify-icon icon="heroicons:bookmark-20-solid" /> Pinned Items ({pinnedItems.totalCount})
@@ -24,7 +24,7 @@
         <div class="card-body">
           <div class="flex justify-between items-center">
             <h2 class="card-title">{pinnedItem.name}</h2>
-            <div class="badge badge-md gap-2">
+            <div class="badge badge-outline gap-2">
               <iconify-icon icon="heroicons:star" />
               {pinnedItem.stargazerCount}
             </div>

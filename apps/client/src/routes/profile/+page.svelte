@@ -69,7 +69,7 @@
 </script>
 
 <main class="w-full">
-  <div class="flex gap-1">
+  <div class="flex gap-2">
     <div class="basis-1/4">
       <UserProfileCard
         user={data.user.viewer || {}}

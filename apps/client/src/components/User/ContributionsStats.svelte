@@ -2,8 +2,6 @@
   export let user;
   export let showUser;
   export let orientation = "stats-vertical";
-
-console.log(user);
 </script>
 
 <div class={`stats ${orientation} prose lg:prose-md bg-white w-full shadow-lg border-solid border-e border-accent`}>

@@ -2,77 +2,57 @@
   const issues = [
     {
       id: 1,
-      title: "Source Stripe: sync modified objects, not only created",
+      title: "Analyze and recommend GitHub issues via MindsDB",
       description: "",
     },
     {
       id: 2,
-      title: "Source Stripe: sync modified objects, not only created",
+      title: "Execute code from Monaco Editor",
       description: "",
     },
     {
       id: 3,
-      title: "Source Stripe: sync modified objects, not only created",
+      title: " Mark Course as Completed",
       description: "",
-    }
+    },
   ];
+  import "iconify-icon";
+
+  // w-3/4 mx-auto 
 </script>
 
-<section class="w-3/4 mx-auto space-y-2">
-  <div class="card bg-secondary p-4  w-full">
-    <div class="prose">
-        <h3>Issues</h3>
-        <p>Enhance your coding skills by solving real-life issues from open-source repositories</p>
-    
-    </div>
-    <div class="card p-2 flex bg-slate-100 gap-2 ">
-        <div class="flex justify-evenly">
-            <div class="form-control">
-                <label class="label">
-                  <span class="label-text">Pick based on complexity</span>
-                </label>
-                <select class="select select-sm w-full max-w-xs">
-                  <option disabled selected>Easy</option>
-                  <option>Auto</option>
-                  <option>Dark mode</option>
-                  <option>Light mode</option>
-                </select>
-              </div>
-              <div class="form-control">
-                <label class="label">
-                  <span class="label-text">Pick based on complexity</span>
-                </label>
-                <select class="select select-sm w-full max-w-xs">
-                  <option disabled selected>Easy</option>
-                  <option>Auto</option>
-                  <option>Dark mode</option>
-                  <option>Light mode</option>
-                </select>
-              </div>
-              <div class="form-control">
-                <label class="label">
-                  <span class="label-text">Pick based on complexity</span>
-                </label>
-                <select class="select select-sm w-full max-w-xs">
-                  <option disabled selected>Easy</option>
-                  <option>Auto</option>
-                  <option>Dark mode</option>
-                  <option>Light mode</option>
-                </select>
-              </div>
-        </div>
+<section class="space-y-4">
+  <div class="card card-compact shadow w-full">
+    <div class="card-body">
+      <h3 class="card-title">Issues</h3>
+      <p>
+        Enhance your coding skills by solving real-life issues from open-source
+        repositories
+      </p>
     </div>
   </div>
-  <div class="space-y-2">
-    {#each issues as issue}
-      <div class="card bg-white mx-auto shadow-md">
+  <div class="flex gap-2">
+    <div class="grow">
+      <div class="card card-compact shadow w-full">
         <div class="card-body">
-          <h3 class="card-title">{issue.title}</h3>
-          <div class="card-actions justify-end items-end">
-            <button class="btn btn-sm btn-primary">Contribute</button>
+          <div class="divider">Filter Issues</div>
+        </div>
+      </div> 
+    </div>
+    <div class="space-y-2 w-3/4 ">
+      {#each issues as issue}
+        <div class="card card-compact mx-auto shadow-md">
+          <div class="card-body space-y-2">
+            <div class="flex w-full items-center justify-between">
+              <h3 class="card-title">{issue.title} <div class="badge badge-lg badge-info">NEW!</div></h3>
+            </div>
+            <p>{issue.title}</p>
+            <div class="card-actions justify-end items-end">
+              <button class="btn btn-sm btn-primary gap-2"><iconify-icon icon="ri:git-pull-request-line" /> Contribute</button>
+            </div>
           </div>
         </div>
-      </div>
-    {/each}
+      {/each}
+    </div>
   </div>
 </section>

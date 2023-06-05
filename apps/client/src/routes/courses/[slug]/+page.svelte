@@ -2,24 +2,12 @@
   import { onMount } from "svelte";
   import StartCourseButton from "$components/StartCourseButton.svelte";
   import LessonOutline from "$components/Lessons/LessonOutline.svelte";
-  import Tabs from "$components/Tabs.svelte";
-  import CourseOverview from "$components/Courses/CourseOverview.svelte";
-
   export let data;
   let { course, active } = data;
-
   onMount(async () => {});
 
   $: course, active;;
 
-  const items = [
-    {
-      label: "Overview",
-      value: 1,
-      component: CourseOverview,
-      icon: "octicon:git-pull-request-16"
-    }
-  ]
 </script>
 
 <div>

@@ -2,8 +2,8 @@
     import "iconify-icon";
 </script>
 <!-- The button to open modal -->
-<label for="my-modal-4" class="btn btn-sm btn-outline btn-primary gap-2">
-    <iconify-icon icon="heroicons:pencil-square-solid" /> New Chat</label>
+<label for="my-modal-4" class="btn btn-sm btn-primary gap-2">
+    <iconify-icon icon="ri:quill-pen-line" /> New Chat</label>
 
 <!-- Put this part before </body> tag -->
 <input type="checkbox" id="my-modal-4" class="modal-toggle" />

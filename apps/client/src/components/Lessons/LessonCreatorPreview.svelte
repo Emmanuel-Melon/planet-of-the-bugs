@@ -48,7 +48,7 @@
   };
 </script>
 
-<div class="card h-96 bg-white">
+<div class="card h-96 bg-base-100 shadow-md">
   <div class="rounded-md">
     {@html result}
   </div>

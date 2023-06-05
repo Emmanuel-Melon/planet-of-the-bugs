@@ -7,12 +7,12 @@
 
   const handleGithubLogin = async () => {
     const result = await signIn("github");
-    goto("/");
+    redirect(307, '/');
   };
 
   const handleGithubLogout = async () => {
     const result = await signOut("github");
-    goto("/auth");
+    redirect(307, '/auth');
   };
 </script>
 
@@ -45,49 +45,44 @@
       </div>
     </div>
   {:else}
-    <div class="card w-2/5 bg-white shadow p-4">
-      <div class="card-body text-center">
+    <div class="card card-compact w-2/5 bg-white shadow">
+
+      <div class="card-body text-center space-y-2">
         <div class="mx-auto">
           <h2 class="card-title">Planet of The Bugs</h2>
         </div>
-        <p>
-          Join our vibrant community to level up your coding skills, take on
-          real-life bugs from open-source repositories.
-        </p>
+        <button
+          class="btn bg-black text-white gap-2"
+          on:click={handleGithubLogin}
+        >
+          <iconify-icon icon="ri:github-line" />
+          Sign In with GitHub
+        </button>
+        <div class="divider">OR</div>
         <div class="form-control w-full">
-          <label class="label">
+          <label class="label" for="email">
             <span class="label-text">Email Address</span>
           </label>
           <input
-            type="text"
+            type="email"
             placeholder="bug@planet.xyz"
             class="input bg-white input-bordered w-full"
+            id="email"
           />
         </div>
         <div class="form-control w-full">
-          <label class="label">
+          <label class="label" for="password">
             <span class="label-text">Password</span>
           </label>
           <input
             type="password"
             placeholder="Your password"
             class="input bg-white input-bordered w-full"
+            id="password"
           />
-          <label class="label">
-            <span class="label-text-alt">Must be at least 8 characters</span>
-            <span class="label-text-alt"><iconify-icon icon="ri:shield-keyhole-line" /> Strong</span>
-          </label>
         </div>
 
-        <button class="btn btn-primary">Register</button>
-        <div class="divider">OR</div>
-        <button
-          class="btn bg-black text-white gap-2"
-          on:click={handleGithubLogin}
-        >
-          <iconify-icon icon="ri:github-fill" />
-          Sign In with GitHub
-        </button>
+        <button class="btn btn-accent">Register</button>
         <span class="notSignedInText">Already have an account?</span>
       </div>
     </div>
