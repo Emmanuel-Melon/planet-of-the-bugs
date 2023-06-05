@@ -24,33 +24,32 @@
   }
 </script>
 
-<div
-  class="card basis-2/5 grow bg-white shadow-lg"
->
-  <div class="card-body">
+<div class="card card-compact basis-2/5 grow bg-white shadow-md">
+  <div class="card-body space-y-2">
     <div class="flex gap-4 items-center">
-      <div class="flex gap-2">
-        <h3 class="card-title">{repo.name.toLocaleUpperCase()}</h3>
-        <a class="link link-secondary" href={repo.url}>{repo.name}</a>
-      </div>
-      <div>
-        <div class="badge gap-2">
+      <div class="flex items-center justify-between w-full">
+        <h3 class="card-title">
+          <a class="link link-hover" target="_blank" href={repo.url}
+            >{repo.name.toLocaleUpperCase()}</a
+          >
+        </h3>
+        <div class="badge badge-outline gap-2">
           <iconify-icon icon="heroicons:star" />
           {repo.stargazerCount.toLocaleString()}
         </div>
       </div>
     </div>
-
     <p>{repo.description}</p>
-    <div class="card-actions">
+    <div class="divider">Subscrbe</div>
+    <p>Never miss an update from your favorite GitHub repositories</p>
+    <div class="card-actions justify-end">
       <div class="bg-base-10 flex gap-2 p-1 items-center">
-        <p>Never miss an update from your favorite GitHub repositories</p>
         <button
           on:click={handleSubscrbeToRepo}
           class="btn btn-sm btn-accent gap-2"
         >
-          Watch Repo!
-          <iconify-icon icon="heroicons:eye" />
+          <iconify-icon icon="ri:eye-line" />
+          Subscribe
         </button>
       </div>
     </div>

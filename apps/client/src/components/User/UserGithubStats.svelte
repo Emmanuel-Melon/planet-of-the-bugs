@@ -22,7 +22,7 @@
   
       <div class="stat place-items-center">
         <div class="stat-title">Pull Requests</div>
-        <div class="stat-value text-secondary">
+        <div class="stat-value">
           {user.pullRequests.totalCount}
         </div>
       </div>

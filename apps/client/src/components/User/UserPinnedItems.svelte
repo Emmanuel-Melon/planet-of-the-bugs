@@ -24,7 +24,7 @@
         <div class="card-body">
           <div class="flex justify-between items-center">
             <h2 class="card-title">{pinnedItem.name}</h2>
-            <div class="badge badge-md gap-2">
+            <div class="badge badge-outline gap-2">
               <iconify-icon icon="heroicons:star" />
               {pinnedItem.stargazerCount}
             </div>

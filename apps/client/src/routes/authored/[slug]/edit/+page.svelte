@@ -97,19 +97,20 @@
         <option>Lisa</option>
         <option>Maggie</option>
       </select>
-      <div class="card-actions justify-end">
-        <button class="btn btn-sm btn-outline gap-2">
-          <iconify-icon icon="ri:edit-2-line" />
-          Draft</button
-        >
-        <button class="btn btn-sm btn-primary gap-2">
-          <iconify-icon icon="ri:check-line" />
-          Publish</button
-        >
-      </div>
+
     </div>
   </div>
-  <div class="basis-3/4">
+  <div class="basis-3/4 space-y-2">
     <Tabs {items} />
+    <div class="card-actions justify-end">
+      <button class="btn btn-sm btn-outline gap-2">
+        <iconify-icon icon="ri:edit-2-line" />
+        Draft</button
+      >
+      <button class="btn btn-sm btn-primary gap-2">
+        <iconify-icon icon="ri:check-line" />
+        Publish</button
+      >
+    </div>
   </div>
 </section>

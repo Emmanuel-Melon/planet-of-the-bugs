@@ -57,5 +57,5 @@
 <button
   class={` btn-sm gap-2 ${buttons[status].style}` }
   on:click|preventDefault={buttons[status].logic}
-  >{buttons[status].text} <iconify-icon icon="heroicons:check-circle" /></button
+  ><iconify-icon icon="heroicons:check-circle" /> {buttons[status].text}</button
 >

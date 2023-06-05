@@ -22,7 +22,7 @@
       />
     </div>
     <button class="btn btn-sm btn-circle btn-primary" type="submit">
-      <iconify-icon icon="ic:baseline-send" />
+      <iconify-icon icon="ri:send-plane-line" />
     </button>
   </div>
 </form>
