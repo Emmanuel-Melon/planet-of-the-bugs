@@ -4,16 +4,18 @@ import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 
 import { destructureQueryResults } from "./helpers";
 
-
+import { redirect } from '@sveltejs/kit';
 export const load = async (event) => {
 
   const { parent, data: pageData } = event;
 
   const { session } = await parent();
 
-  if(session?.token !== null || session?.token !== undefined) {
-    GITHUB_API.setSession(session?.token?.accessToken);
+  if (session === null) {
+    throw redirect(307, '/auth');
   }
+
+  GITHUB_API.setSession(session?.token?.accessToken);
   const githubClient = GITHUB_API.getGithubClient();
   const [githubUser, user] = await Promise.all([
     githubClient.query({

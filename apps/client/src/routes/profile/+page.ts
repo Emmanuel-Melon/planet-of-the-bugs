@@ -5,17 +5,19 @@ import {
 } from "$lib/graphql/queries/user";
 
 import { GET_SUBSCRIBED_REPOS, GET_USER_REPOS } from "$lib/graphql/queries/repositories";
-import apolloClient from "$lib/graphql/apolloClient";
+import { redirect } from '@sveltejs/kit';
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 
 export const load = async (event) => {
-  const { params, url, setHeaders, route, parent, fetch, depends, data: pageData } = event;
+  const { parent, fetch, depends, data: pageData } = event;
 
   const { session } = await parent();
 
-  if(session?.token !== null || session?.token !== undefined) {
-    GITHUB_API.setSession(session?.token?.accessToken);
+  if (session === null) {
+    throw redirect(307, '/auth');
   }
+
+  GITHUB_API.setSession(session?.token?.accessToken);
   const githubClient = GITHUB_API.getGithubClient();
 
   const { data } = await githubClient.query({

@@ -2,7 +2,6 @@ import { FETCH_ISSUES_BY_DIFFICULTY } from "$lib/graphql/queries/issues";
 import { FETCH_REPOSITORIES_BY_TOPIC } from "$lib/graphql/queries/repositories.js";
 import apolloClient from "$lib/graphql/apolloClient";
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
-import { error } from "@sveltejs/kit";
 import { USER_BASIC_INFO } from "$lib/graphql/queries/user";
 import { redirect } from '@sveltejs/kit';
 
@@ -15,9 +14,7 @@ export const load = (async (event) => {
   if (session === null) {
     throw redirect(307, '/auth');
   }
-  if (session?.token !== null || session?.token !== undefined) {
-    GITHUB_API.setSession(session?.token?.accessToken);
-  }
+  GITHUB_API.setSession(session?.token?.accessToken);
   const githubClient = GITHUB_API.getGithubClient();
 
   const [repositories, user] = await Promise.all([
