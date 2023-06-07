@@ -62,11 +62,11 @@ const criteria = [
       </div>
     </div>
   </div>
-  <div class="flex gap-2">
+  <div class="flex flex-col lg:flex-row gap-2">
     <div class="gap-2 grow">
       <SidebarFilter {criteria} CTA="Filter Courses" />
     </div>
-    <div class="flex gap-2 flex-wrap basis-4/5">
+    <div class="flex gap-4 flex-wrap basis-4/5 mb-4">
       {#if $courses.data}
         {#each $courses.data.courses as course}
           <CourseCard {course} />

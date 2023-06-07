@@ -70,9 +70,9 @@
   <meta name="description" content="About this app" />
 </svelte:head>
 
-<section class="mx-auto ">
-  <div class="flex gap-2">
-    <div class="basis-3/5 gap-2 grow">
+<section class="mx-auto">
+  <div class="flex flex-col lg:flex-row gap-2">
+    <div class="basis-1/2 gap-2 grow">
       <div class="card bg-white card-bordered space-y-2">
         <div class="card-body">
           <h2 class="card-title">Planet of The Bugs</h2>
@@ -106,7 +106,7 @@
         </div>
       </div>
     </div>
-    <div class="flex basis-2/5 flex-wrap gap-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 basis-1/2">
       {#each skills as skill}
         <div class={`card basis-2/5 grow card-bordered ${skill.bg} shadow-md`}>
           <div class="card-body">
@@ -118,15 +118,17 @@
     </div>
   </div>
 
-  <div class="prose prose-sm">
-    <h3>Join the Party</h3>
-    <p class="bg-secondary p-2 w-fit">It's like a game! Except your skills will help you write better code.</p>
-    <p>Export Exercises and Practice Locally!</p>
-    <p>
-      Connect with Planet of The Bugs across various platforms and be part of
-      our buzzing coding community!
-    </p>
-    <div class="flex gap-2">
+  <div class="prose prose-sm mt-4 flex flex-col md:flex-row max-w-full">
+    <div class="p-8 basis-1/2">
+      <h3>Join the Party</h3>
+      <p class="card-bordered shadow-sm p-2 w-fit">It's like a game! Except your skills will help you write better code.</p>
+      <p>Export Exercises and Practice Locally!</p>
+      <p>
+        Connect with Planet of The Bugs across various platforms and be part of
+        our buzzing coding community!
+      </p>
+    </div>
+    <div class="flex justify-center items-center flex-wrap gap-2 p-8 basis-1/2">
       {#each social as network}
         <div class="badge badge-lg badge-primary items-center gap-2">
           <iconify-icon icon={network.icon} />
