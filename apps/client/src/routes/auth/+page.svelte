@@ -18,7 +18,7 @@
 
 <section class="flex justify-center items-center">
   {#if $page.data.session}
-    <div class="card w-2/5 bg-white shadow">
+    <div class="card w-full md:w-2/3 max-w-xl bg-white shadow">
       <div class="card-body">
         <h2 class="card-title">Welcome to Planet of The Bugs</h2>
         <span class="signedInText">
@@ -45,7 +45,7 @@
       </div>
     </div>
   {:else}
-    <div class="card card-compact w-2/5 bg-white shadow">
+    <div class="card card-compact w-full md:w-2/3 max-w-xl bg-white shadow">
 
       <div class="card-body text-center space-y-2">
         <div class="mx-auto">
@@ -82,7 +82,7 @@
           />
         </div>
 
-        <button class="btn btn-accent">Register</button>
+        <a href='auth/new-user' class="btn btn-accent">Register</a>
         <span class="notSignedInText">Already have an account?</span>
       </div>
     </div>
