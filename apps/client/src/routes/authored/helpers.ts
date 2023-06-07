@@ -12,9 +12,6 @@ export const destructureQueryResults = (queryResult) => {
         data,
         loading,
       } = queryResult;
-
-      console.log(data);
-
       return {data, loading };
     }
   } catch (error) {
