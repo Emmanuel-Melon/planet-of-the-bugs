@@ -1,14 +1,22 @@
 <script>
-    export let data;
-    let { slug, course } = data;
+  export let data;
+  import { onMount } from "svelte";
+  let { course } = data;
+  import { sdk, server } from "$lib/appwrite/appwriteClient";
 
-  
-    $: course
-  </script>
+  $: course;
 
+  onMount(async () => {
+    try {
+      const bucket = await sdk.storage.listFiles(course.bucketId);
+      console.log(bucket);
+    } catch (error) {
+      console.log(error);
+    }
+  });
+</script>
 
-    <section>
-
-        <h1>{course.title}</h1>
-        <p>{course.description}</p>
-    </section>
+<section>
+  <h1>{course.title}</h1>
+  <p>{course.description}</p>
+</section>
