@@ -13,6 +13,7 @@ export const load = async (event) => {
     });
 
     const course = data.courses[0];
+
     return {
         slug,
         course
