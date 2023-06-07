@@ -25,6 +25,7 @@ export const FETCH_COURSE_BY_SLUG = gql`
       id
       title
       updated_at
+      bucketId
       course_chapters(order_by: { index: asc }) {
         id
         index
