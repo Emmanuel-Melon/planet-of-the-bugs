@@ -5,7 +5,7 @@
     import "iconify-icon";
 </script>
 
-<div class="card basis-1/3 grow bg-white shadow-md">
+<div class="card basis-1/3 grow bg-white shadow-md max-w-screen-sm md:max-w-[360px] lg:max-w-sm xl:max-w-lg">
   <div class="card-body space-y-2">
     <div class="flex gap-4">
       <div class="w-full flex justify-between items-center">

@@ -62,7 +62,7 @@
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
       <ul
         tabindex="0"
-        class="menu menu-compact dropdown-content mt-3 p-2 shadow-lg rounded-box w-52"
+        class="menu menu-compact dropdown-content mt-3 p-2 shadow-lg rounded-box w-52 text-primary bg-base-100"
       >
         {#each menuLinks as { text, path }}
           <li>
@@ -90,7 +90,7 @@
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <ul
           tabindex="0"
-          class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 text-neutral-focus rounded-box w-52"
+          class="menu menu-compact dropdown-content mt-3 p-2 shadow-lg rounded-box w-52 text-primary bg-base-100"
         >
           {#each dropdownLinks as { text, path, icon }}
             <li>

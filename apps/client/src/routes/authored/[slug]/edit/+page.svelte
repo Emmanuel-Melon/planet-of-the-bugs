@@ -24,9 +24,9 @@
 
 <div class="card bg-base-100 shadow-md mb-4">
   <div class="card-body">
-    <div class="flex justify-between items-center">
+    <div class="flex flex-col md:flex-row justify-between items-center">
       <h2 class="card-title">{course.title}</h2>
-      <div class="flex gap-2">
+      <div class="flex gap-2 mt-2 md:mt-0">
         <button class="btn btn-sm btn-outline gap-2">
           <iconify-icon icon="ri:edit-2-line" />
           New Lesson</button
@@ -39,8 +39,8 @@
     </div>
   </div>
 </div>
-<section class="flex gap-2">
-  <div class="card card-compact basis-1/4 bg-base-200 space-y-4">
+<section class="flex flex-col md:flex-row gap-2">
+  <div class="card card-compact basis-1/4 bg-base-200 space-y-4 h-max">
     <div class="card-body">
       <h2 class="card-title">Course Options</h2>
       <div class="form-control w-full max-w-xs">

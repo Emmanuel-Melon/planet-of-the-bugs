@@ -31,7 +31,7 @@
       </p>
     </div>
   </div>
-  <div class="flex gap-2">
+  <div class="flex flex-col md:flex-row gap-2">
     <div class="grow">
       <div class="card card-compact shadow w-full">
         <div class="card-body">
@@ -39,7 +39,7 @@
         </div>
       </div> 
     </div>
-    <div class="space-y-2 w-3/4 ">
+    <div class="mt-4 space-y-4 md:w-3/5 ">
       {#each issues as issue}
         <div class="card card-compact mx-auto shadow-md">
           <div class="card-body space-y-2">

@@ -10,9 +10,9 @@
 
 </script>
 
-<div>
-  <div class="flex gap-2">
-    <div class="basis-1/4">
+
+  <div class="flex flex-col lg:flex-row gap-2">
+    <div class="basis-2/5">
       <div class="card w-full bg-white shadow-xl">
         <div class="card-body">
           <h2 class="card-title">{course.title}</h2>
@@ -28,8 +28,8 @@
         </div>
       </div>
     </div>
-    <div class="basis-3/4">
+    <div class="basis-3/5">
       <LessonOutline chapters={course.course_chapters} />
     </div>
   </div>
-</div>
+

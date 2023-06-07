@@ -57,11 +57,9 @@
     }
   };
 </script>
-
-<main>
-  
+ 
   <section class="flex gap-2">
-    <div>
+    <div class="w-full">
       <div class="flex mt-2 justify-between gap-2 items-center">
         <h3 class="text-xl">My Courses</h3>
         <!-- The button to open modal -->
@@ -133,4 +131,3 @@
       </div>
     </div>
   </section>
-</main>
