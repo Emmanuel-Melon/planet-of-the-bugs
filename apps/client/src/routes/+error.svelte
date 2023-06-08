@@ -9,6 +9,6 @@
       assured, we're doing everything we can to resolve this error and prevent
       it from happening again.
     </p>
-    <a href="/" class="btn btn-secondary">Back to Home</a>
+    <a href="/" class="btn btn-secondary text-base-100">Back to Home</a>
   </div>
 </section>

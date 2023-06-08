@@ -262,6 +262,8 @@ export const GET_USER_BASIC_INFO = gql`
       role
       updated_at
       username
+      hasConnectedGithub
+      githubUsername
     }
   }
 `;
