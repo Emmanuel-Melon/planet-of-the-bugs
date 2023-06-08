@@ -15,6 +15,7 @@
 
   onMount(() => {
     user = $page.data.session?.user;
+    console.log(data)
   });
 
   const items = [
@@ -23,7 +24,7 @@
       value: 1,
       component: OwnedRepositories,
       props: {
-        repositories: data.repositories
+        repositories: data.user.repositories
       },
       icon: "ri:git-repository-line"
     },
@@ -32,7 +33,7 @@
       value: 2,
       component: RepositoriesContributedTo,
       props: {
-        repositories: data.contributedTo,
+        repositories: data.user.contributedTo,
         user: data.user.viewer,
       },
       icon: "ri:git-pull-request-fill"
@@ -42,8 +43,8 @@
       value: 3,
       component: SubscrbedRepositories,
       props: {
-        repositories: data.contributedTo,
-        user: data.user.viewer,
+        repositories: data.user.contributedTo,
+        user: data.user,
       },
       icon: "ri:base-station-line"
     },
@@ -52,7 +53,7 @@
       value: 4,
       component: UserPinnedItems,
       props: {
-        pinnedItems: data.pinnedItems
+        pinnedItems: data.user.pinnedItems
       },
       icon: "ri:pushpin-2-line"
     },
@@ -61,7 +62,7 @@
       value: 5,
       component: ProfileOverview,
       props: {
-        pinnedItems: data.pinnedItems
+        pinnedItems: data.user.pinnedItems
       },
       icon: "ri:information-line"
     },
@@ -72,12 +73,13 @@
   <div class="flex flex-col lg:flex-row gap-2">
     <div class="lg:w-1/3">
       <UserProfileCard
-        user={data.user.viewer || {}}
+        user={data.user || {}}
         image={data.session?.user?.image || {}}
+        isCurrentUser={data.user.isCurrentUser}
       />
     </div>
     <div class="lg:w-2/3">
-      <UserGithubStats user={data.user.viewer} />
+      <UserGithubStats user={data.user} />
       <div class="gap-y-3">
         <Tabs {items} />
       </div>

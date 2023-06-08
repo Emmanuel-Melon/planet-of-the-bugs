@@ -78,6 +78,7 @@ export const handleAuth = SvelteKitAuth(async () => {
         }
         if (profile) {
           // token.profile = profile
+          token.githubUsername = profile.login
         }
         return token;
       },

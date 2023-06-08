@@ -1,25 +1,33 @@
 <script>
   // @ts-nocheck
-  import { page } from "$app/stores";
-  import { onMount, onDestroy } from "svelte";
-  import { signOut } from "@auth/sveltekit/client";
-  import "iconify-icon";
+  import { page } from '$app/stores';
+  import { onMount, onDestroy } from 'svelte';
+  import { signOut } from '@auth/sveltekit/client';
+  import 'iconify-icon';
 
   let user;
   $: current = $page.url.pathname;
   $: menuLinks = [
-    { text: "Learn", path: "/courses", icon: "ri:graduation-cap-line" },
-    { text: "Explore Projects", path: "/explore", icon: "ri:bug-line" },
-    { text: "Chat", path: "/chat", icon: "ri:chat-1-line" },
-    { text: "Issues", path: "/issues", icon: "ri:meteor-line" },
-    { text: "Notifications", path: "/notifications", icon: "ri:notification-3-line" },
+    { text: 'Learn', path: '/courses', icon: 'ri:graduation-cap-line' },
+    { text: 'Explore Projects', path: '/explore', icon: 'ri:bug-line' },
+    { text: 'Chat', path: '/chat', icon: 'ri:chat-1-line' },
+    { text: 'Issues', path: '/issues', icon: 'ri:meteor-line' },
+    {
+      text: 'Notifications',
+      path: '/notifications',
+      icon: 'ri:notification-3-line',
+    },
   ];
 
   $: dropdownLinks = [
-    { text: "My Profile", path: "/profile", icon: "ri:user-2-line" },
-    { text: "Authored Courses", path: "/authored", icon: "ri:book-read-line" },
-    { text: "Settings", path: "/settings", icon: "ri:settings-3-line" },
-    { text: "About", path: "/about", icon: "ri:information-line" },
+    {
+      text: 'My Profile',
+      path: `/${user?.githubUsername?.toLowerCase()}`,
+      icon: 'ri:user-2-line',
+    },
+    { text: 'Authored Courses', path: '/authored', icon: 'ri:book-read-line' },
+    { text: 'Settings', path: '/settings', icon: 'ri:settings-3-line' },
+    { text: 'About', path: '/about', icon: 'ri:information-line' },
   ];
 
   onMount(() => {
@@ -44,10 +52,12 @@
       {#each menuLinks as { icon, text, path }}
         <li
           class={path === current
-            ? "p-2 hidden lg:flex transition-all  decoration-accent rounded-md"
-            : "p-2 hidden lg:flex transition-all underline-offset-8 decoration-primary-focus rounded-md"}
+            ? 'p-2 hidden lg:flex transition-all  decoration-accent rounded-md'
+            : 'p-2 hidden lg:flex transition-all underline-offset-8 decoration-primary-focus rounded-md'}
         >
-          <a href={path} class="flex items-center gap-2"><iconify-icon icon={icon}/> {text}</a>
+          <a href={path} class="flex items-center gap-2"
+            ><iconify-icon {icon} /> {text}</a
+          >
         </li>
       {/each}
     </ul>
@@ -94,19 +104,24 @@
         >
           {#each dropdownLinks as { text, path, icon }}
             <li>
-              <a href={path}><iconify-icon icon={icon}/> {text}</a>
+              <a href={path}><iconify-icon {icon} /> {text}</a>
             </li>
           {/each}
           <li>
-            <button on:click|preventDefault={() => signOut()}><iconify-icon icon="heroicons:arrow-right-on-rectangle-20-solid" /> Sign Out</button>
+            <button on:click|preventDefault={() => signOut()}
+              ><iconify-icon
+                icon="heroicons:arrow-right-on-rectangle-20-solid"
+              /> Sign Out</button
+            >
           </li>
         </ul>
       {:else}
-      <div class="flex gap-2 items-center">
-        <a href="/auth" class="btn btn-primary gap-2"><iconify-icon icon="ri:login-circle-line" /> Sign In</a>
-      </div>
+        <div class="flex gap-2 items-center">
+          <a href="/auth" class="btn btn-primary gap-2"
+            ><iconify-icon icon="ri:login-circle-line" /> Sign In</a
+          >
+        </div>
       {/if}
     </div>
-
   </div>
 </header>

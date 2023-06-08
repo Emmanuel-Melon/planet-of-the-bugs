@@ -48,6 +48,39 @@ query getUserRepositories($login: String!) {
 }
 `;
 
+export const GET_USER_REPOS_BY_GITHUB_USERNAME = gql`
+query GetUserRepositories($username: String!) {
+  user(login: $username) {
+    repositories(
+      last: 20
+      privacy: PUBLIC
+      isFork: false
+      affiliations: OWNER
+      orderBy: { field: CREATED_AT, direction: DESC }
+    ) {
+      totalCount
+      nodes {
+        createdAt
+        description
+        forkCount
+        homepageUrl
+        id
+        name
+        nameWithOwner
+        url
+        updatedAt
+        visibility
+        stargazerCount
+        owner {
+          login
+          url
+        }
+      }
+    }
+  }
+}
+`;
+
 export const GET_USER_PULL_REQUEST_CONTRIBUTIONS = gql`
   query getUserPullRequests($author: String!) {
     user(login: $author) {

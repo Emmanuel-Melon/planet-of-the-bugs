@@ -1,14 +1,21 @@
-import { FETCH_ISSUES_BY_DIFFICULTY } from "$lib/graphql/queries/issues";
-import { FETCH_REPOSITORIES_BY_TOPIC } from "$lib/graphql/queries/repositories.js";
-import apolloClient from "$lib/graphql/apolloClient";
-import { GITHUB_API } from "$lib/github/githubGraphQLClient";
-import { error } from "@sveltejs/kit";
-import { USER_BASIC_INFO } from "$lib/graphql/queries/user";
+import { FETCH_ISSUES_BY_DIFFICULTY } from '$lib/graphql/queries/issues';
+import { FETCH_REPOSITORIES_BY_TOPIC } from '$lib/graphql/queries/repositories.js';
+import apolloClient from '$lib/graphql/apolloClient';
+import { GITHUB_API } from '$lib/github/githubGraphQLClient';
+import { error } from '@sveltejs/kit';
+import { GET_USER_BASIC_INFO } from '$lib/graphql/queries/user';
 import { redirect } from '@sveltejs/kit';
 
-export const load = (async (event) => {
-
-  const { params, url, setHeaders, parent, fetch, depends, data: pageData } = event;
+export const load = async (event) => {
+  const {
+    params,
+    url,
+    setHeaders,
+    parent,
+    fetch,
+    depends,
+    data: pageData,
+  } = event;
 
   const { session } = await parent();
 
@@ -25,7 +32,7 @@ export const load = (async (event) => {
       query: FETCH_REPOSITORIES_BY_TOPIC,
     }),
     apolloClient.query({
-      query: USER_BASIC_INFO,
+      query: GET_USER_BASIC_INFO,
       variables: {
         email: session?.user?.email, // make it dybanuc
       },
@@ -41,4 +48,4 @@ export const load = (async (event) => {
       data: user?.data?.user[0] || {},
     },
   };
-});
+};

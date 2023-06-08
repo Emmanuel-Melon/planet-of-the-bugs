@@ -1,6 +1,7 @@
 <script>
   export let user;
   export let image;
+  export let isCurrentUser;
   import "iconify-icon";
   const colorMap = {
     isBountyHunter: "pink",
@@ -30,6 +31,9 @@
     const colors = generateBadgeColors();
 
     for (const prop in user) {
+      if(typeof user[prop] === "boolean" && prop === "isCurrentUser"){
+        continue
+      }
       if (typeof user[prop] === "boolean") {
         const label = prop
           .replace(/^is/, "")
@@ -60,15 +64,26 @@
             ({user.pronouns})
           </p>
         </span>
-       <div class="mt-2 space-y-2">
-        <button class="btn btn-sm btn-primary gap-2">
-          <iconify-icon icon="heroicons:user-plus-solid" /> 
-          Follow</button>
-        <button class="btn btn-sm btn-secondary gap-2">
-          <iconify-icon icon="heroicons:chat-bubble-oval-left"/>
-          Message
-        </button>
-       </div>
+        <div class="mt-2 space-y-2">
+          {#if isCurrentUser}
+            <a href="/authored" class="btn btn-sm btn-secondary gap-2">
+              <iconify-icon icon="ri:book-read-line"/>
+              Authored Courses
+            </a>
+            <a href="/settings" class="btn btn-sm btn-primary gap-2">
+              <iconify-icon icon="ri:settings-3-line" /> 
+              Settings
+            </a>
+          {:else}
+            <button class="btn btn-sm btn-primary gap-2">
+              <iconify-icon icon="heroicons:user-plus-solid" /> 
+              Follow</button>
+            <button class="btn btn-sm btn-secondary gap-2">
+              <iconify-icon icon="heroicons:chat-bubble-oval-left"/>
+              Message
+            </button>
+          {/if}
+        </div>
       </div>
     </div>
     <div class="divider">Basic Info</div>
