@@ -9,10 +9,9 @@
   $: current = $page.url.pathname;
   $: menuLinks = [
     { text: "Learn", path: "/courses", icon: "ri:graduation-cap-line" },
-    { text: "Explore Projects", path: "/explore", icon: "ri:bug-line" },
-    { text: "Chat", path: "/chat", icon: "ri:chat-1-line" },
-    { text: "Issues", path: "/issues", icon: "ri:meteor-line" },
-    { text: "Notifications", path: "/notifications", icon: "ri:notification-3-line" },
+    { text: "Explore Repos", path: "/explore", icon: "ri:git-repository-line" },
+    { text: "Chat", path: "/chat", icon: "ri:message-3-line" },
+    { text: "Hunt Bugs", path: "/issues", icon: "ri:bug-line" },
   ];
 
   $: dropdownLinks = [
@@ -34,7 +33,7 @@
   });
 </script>
 
-<header class="navbar bg-primary text-neutral-content">
+<header class="navbar bg-primary text-neutral-focus">
   <div class="navbar-start gap-4">
     <a href="/" class="normal-case text-md">Planet Of The Bugs</a>
   </div>

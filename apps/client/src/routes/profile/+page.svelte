@@ -3,9 +3,8 @@
   import UserGithubStats from "$components/User/UserGithubStats.svelte";
   import UserProfileCard from "$components/User/UserProfileCard.svelte";
   import RepositoriesContributedTo from "$components/User/RepositoriesContributedTo.svelte";
-  import PaginationComponent from "$components/PaginationComponent.svelte";
   import { page } from "$app/stores";
-  import { onMount, onDestroy } from "svelte";
+  import { onMount } from "svelte";
   import Tabs from "$components/Tabs.svelte";
   import OwnedRepositories from "$components/Repositories/OwnedRepositories.svelte";
   import SubscrbedRepositories from "$components/Repositories/SubscrbedRepositories.svelte";
@@ -63,7 +62,7 @@
       props: {
         pinnedItems: data.pinnedItems
       },
-      icon: "ri:information-line"
+      icon: "ri:user-heart-line"
     },
   ];
 </script>
