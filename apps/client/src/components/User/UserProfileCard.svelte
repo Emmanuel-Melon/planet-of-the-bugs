@@ -12,12 +12,12 @@
   };
 
   const iconMap = {
-    isBountyHunter: "heroicons:bug-ant",
-    isCampusExpert: "heroicons:academic-cap-20-solid",
-    isDeveloperProgramMember: "heroicons:building-office",
-    isEmployee: "heroicons:briefcase",
-    isGitHubStar: "heroicons:star-20-solid",
-    isHireable: "heroicons:check-circle-20-solid",
+    isBountyHunter: "ri:bug-line",
+    isCampusExpert: "ri:graduation-cap-line",
+    isDeveloperProgramMember: "ri:building-line",
+    isEmployee: "ri:briefcase-line",
+    isGitHubStar: "ri:star-line",
+    isHireable: "ri:check-line",
   };
 
   function generateBadgeColors() {
@@ -52,7 +52,7 @@
 <div class="card basis-3/4 grow card-bordered bg-white shadow-md">
   <div class="card-body">
     <div class="flex gap-2">
-      <div>
+      <div class=" space-y-2">
         <h2 class="card-title">{user.name}</h2>
         <span class="flex gap-2">
           <a class="link link-accent" href={user.url}>{user.login}</a>
@@ -68,22 +68,23 @@
           <iconify-icon icon="heroicons:chat-bubble-oval-left"/>
           Message
         </button>
+        <button class="btn btn-sm btn-primary gap-2">
+          <iconify-icon icon="ri:user-add-line" /> 
+          Follow</button>
        </div>
       </div>
     </div>
     <div class="divider">Basic Info</div>
-    <h1>{user.bio}</h1>
-
-    <ul>
-      <li><a class="link link-ghost gap-2 flex items-center" href={user.websiteUrl}>
+    <ul class="space-y-2">
+      <li><a class="link link-hover flex items-center gap-2" href={user.websiteUrl}>
         <iconify-icon icon="ri:earth-line" />Website</a></li>
-      <li class="gap-2 items-center"><iconify-icon icon="ri:briefcase-2-line" />  {user.company}</li>
-      <li class="gap-2 items-center"><iconify-icon icon="ri:map-pin-user-line" /> {user.location}</li>
-      <li class="gap-2 items-center"><iconify-icon icon="heroicons:clock-solid" /> Joined {user.createdAt}</li>
+      <li class="flex items-center gap-2"><iconify-icon icon="ri:briefcase-2-line" />  {user.company}</li>
+      <li class="flex items-center gap-2"><iconify-icon icon="ri:map-pin-user-line" /> {user.location}</li>
+      <li class="flex items-center gap-2"><iconify-icon icon="ri:cake-line" /> Joined {user.createdAt}</li>
       <li><a
-        class="link link-ghost gap-2 flex items-center"
+        class="link link-hover flex items-center gap-2"
         href={`https://twitter.com/${user.twitterUsername}`}>
-        <iconify-icon icon="ri:twitter-fill" />Twitter</a
+        <iconify-icon icon="ri:twitter-line" />Twitter</a
       ></li>
     </ul>
 
