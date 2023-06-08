@@ -9,9 +9,9 @@
   $: current = $page.url.pathname;
   $: menuLinks = [
     { text: "Learn", path: "/courses", icon: "ri:graduation-cap-line" },
-    { text: "Explore Repos", path: "/explore", icon: "ri:git-repository-line" },
-    { text: "Chat", path: "/chat", icon: "ri:message-3-line" },
-    { text: "Hunt Bugs", path: "/issues", icon: "ri:bug-line" },
+    { text: "Repositories", path: "/repositories", icon: "ri:git-repository-line" },
+    { text: "Hunt Bugs", path: "/bugs", icon: "ri:bug-line" },
+    { text: "Messages", path: "/messages", icon: "ri:message-3-line" },
   ];
 
   $: dropdownLinks = [
@@ -33,18 +33,18 @@
   });
 </script>
 
-<header class="navbar bg-primary text-neutral-content">
+<header class="navbar bg-primary">
   <div class="navbar-start gap-4">
     <a href="/" class="normal-case text-md">Planet Of The Bugs</a>
   </div>
 
   <nav>
-    <ul class="navbar-center hidden lg:flex items-center gap-4 text-md">
+    <ul class="navbar-center hidden lg:flex items-center gap-2">
       {#each menuLinks as { icon, text, path }}
         <li
           class={path === current
-            ? "p-2 hidden lg:flex transition-all  decoration-accent rounded-md"
-            : "p-2 hidden lg:flex transition-all underline-offset-8 decoration-primary-focus rounded-md"}
+            ? "p-2 hidden lg:flex transition-all  decoration-amber-100 rounded-md"
+            : "p-2 hidden lg:flex transition-all underline-offset-8 decoration-accent-focus rounded-md"}
         >
           <a href={path} class="flex items-center gap-2"><iconify-icon icon={icon}/> {text}</a>
         </li>
@@ -89,7 +89,7 @@
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <ul
           tabindex="0"
-          class="menu menu-compact dropdown-content mt-3 p-2 shadow-lg rounded-box w-52 text-primary bg-base-100"
+          class="menu menu-compact dropdown-content mt-3 p-2 shadow-lg rounded-box w-52 bg-base-100"
         >
           {#each dropdownLinks as { text, path, icon }}
             <li>
