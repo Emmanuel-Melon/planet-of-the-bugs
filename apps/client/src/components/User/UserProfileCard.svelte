@@ -49,7 +49,7 @@
 
 </script>
 
-<div class="card grow card-bordered bg-white shadow-md">
+<div class="card basis-3/4 grow card-bordered bg-white shadow-md">
   <div class="card-body">
     <div class="flex gap-2">
       <div>
@@ -60,7 +60,7 @@
             ({user.pronouns})
           </p>
         </span>
-       <div class="mt-2">
+       <div class="mt-2 space-y-2">
         <button class="btn btn-sm btn-primary gap-2">
           <iconify-icon icon="heroicons:user-plus-solid" /> 
           Follow</button>

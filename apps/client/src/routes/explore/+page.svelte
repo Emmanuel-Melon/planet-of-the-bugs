@@ -37,7 +37,7 @@
   <div
     class="card bg-white w-full shadow-lg mb-2 p-4"
   >
-    <div class="flex items-end">
+    <div class="flex flex-col md:flex-row justify-center items-center">
       <div class="avatar">
         <div class="w-24">
           <img
@@ -58,7 +58,7 @@
     </div>
   </div>
   <section class="mt-2">
-    <div class="flex gap-2">
+    <div class="flex flex-col lg:flex-row gap-2">
       <div class="grow">
         <SidebarFilter CTA="Filter Repositories" {criteria} />
       </div>
