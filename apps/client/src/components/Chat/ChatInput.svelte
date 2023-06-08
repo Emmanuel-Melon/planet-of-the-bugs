@@ -7,13 +7,13 @@
 </script>
 
 <form on:submit|preventDefault={handleMessage}>
-  <div class="flex justify-between gap-2 items-center p-2">
+  <div class="flex justify-between gap-2 items-center px-2 py-4 bg-base-200">
     <div class="flex gap-2 grow items-center">
       <button
-        class="btn btn-sm btn-circle btn-outline btn-accent"
+        class="btn btn-sm btn-circle btn-accent"
         type="submit"
       >
-        <iconify-icon icon="ri:bear-smile-line" />
+        <iconify-icon icon="ri:emotion-line" />
       </button>
       <textarea
         placeholder="Start a new message"
@@ -22,7 +22,7 @@
       />
     </div>
     <button class="btn btn-sm btn-circle btn-primary" type="submit">
-      <iconify-icon icon="ri:send-plane-line" />
+      <iconify-icon icon="ri:send-plane-2-line" />
     </button>
   </div>
 </form>
