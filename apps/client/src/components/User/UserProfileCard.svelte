@@ -51,6 +51,12 @@
 
 <div class="card basis-3/4 grow card-bordered bg-white shadow-md">
   <div class="card-body">
+    <div class="avatar indicator">
+      <span class="indicator-item badge badge-accent">Hirable</span> 
+      <div class="w-20 h-20 rounded-lg">
+        <img src={image} />
+      </div>
+    </div>
     <div class="flex gap-2">
       <div class=" space-y-2">
         <h2 class="card-title">{user.name}</h2>
@@ -61,11 +67,8 @@
           </p>
         </span>
        <div class="mt-2 space-y-2">
-        <button class="btn btn-sm btn-primary gap-2">
-          <iconify-icon icon="heroicons:user-plus-solid" /> 
-          Follow</button>
-        <button class="btn btn-sm btn-secondary gap-2">
-          <iconify-icon icon="heroicons:chat-bubble-oval-left"/>
+        <button class="btn btn-sm btn-outline gap-2">
+          <iconify-icon icon="ri:chat-new-line"/>
           Message
         </button>
         <button class="btn btn-sm btn-primary gap-2">
