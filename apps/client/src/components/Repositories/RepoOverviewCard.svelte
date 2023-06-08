@@ -40,13 +40,20 @@
       </div>
     </div>
     <p>{repo.description}</p>
-    <div class="divider">Subscrbe</div>
+    <div class="divider">Subscribe</div>
     <p>Never miss an update from your favorite GitHub repositories</p>
     <div class="card-actions justify-end">
-      <div class="bg-base-10 flex gap-2 p-1 items-center">
+      <div class="flex gap-2 items-center">
+        <button
+        on:click={handleSubscrbeToRepo}
+        class="btn btn-sm btn-outline gap-2"
+      >
+        <iconify-icon icon="ri:settings-3-line" />
+        Manage
+      </button>
         <button
           on:click={handleSubscrbeToRepo}
-          class="btn btn-sm btn-accent gap-2"
+          class="btn btn-sm btn-primary gap-2"
         >
           <iconify-icon icon="ri:eye-line" />
           Subscribe

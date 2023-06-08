@@ -3,14 +3,12 @@
   import UserGithubStats from "$components/User/UserGithubStats.svelte";
   import UserProfileCard from "$components/User/UserProfileCard.svelte";
   import RepositoriesContributedTo from "$components/User/RepositoriesContributedTo.svelte";
-  import PaginationComponent from "$components/PaginationComponent.svelte";
   import { page } from "$app/stores";
-  import { onMount, onDestroy } from "svelte";
+  import { onMount } from "svelte";
   import Tabs from "$components/Tabs.svelte";
   import OwnedRepositories from "$components/Repositories/OwnedRepositories.svelte";
   import SubscrbedRepositories from "$components/Repositories/SubscrbedRepositories.svelte";
   import UserPinnedItems from "$components/User/UserPinnedItems.svelte";
-  import ProfileOverview from "$components/User/ProfileOverview.svelte";
   let user;
 
   onMount(() => {
@@ -23,9 +21,9 @@
       value: 1,
       component: OwnedRepositories,
       props: {
-        repositories: data.repositories
+        repositories: data.repositories,
       },
-      icon: "ri:git-repository-line"
+      icon: "ri:git-repository-line",
     },
     {
       label: "Contributed To",
@@ -35,7 +33,7 @@
         repositories: data.contributedTo,
         user: data.user.viewer,
       },
-      icon: "ri:git-pull-request-fill"
+      icon: "ri:git-pull-request-fill",
     },
     {
       label: "Subscribed Repositories",
@@ -45,25 +43,16 @@
         repositories: data.contributedTo,
         user: data.user.viewer,
       },
-      icon: "ri:base-station-line"
+      icon: "ri:base-station-line",
     },
     {
       label: "Pinned Items",
       value: 4,
       component: UserPinnedItems,
       props: {
-        pinnedItems: data.pinnedItems
+        pinnedItems: data.pinnedItems,
       },
-      icon: "ri:pushpin-2-line"
-    },
-    {
-      label: "About User",
-      value: 5,
-      component: ProfileOverview,
-      props: {
-        pinnedItems: data.pinnedItems
-      },
-      icon: "ri:information-line"
+      icon: "ri:pushpin-2-line",
     },
   ];
 </script>

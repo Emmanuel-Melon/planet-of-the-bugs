@@ -89,7 +89,7 @@
             </div>
           </div>
           <div class="card-actions justify-end border-t-2 mt-2 py-2">
-            <button class="btn btn-md btn-primary">Save Info</button>
+            <button class="btn btn-primary gap-2"><iconify-icon icon="ri:check-line"/> Update Info</button>
           </div>
         </div>
       </div>
@@ -102,7 +102,7 @@
             deleted is links to your social profiles.
           </p>
           <div class="card-actions justify-end">
-            <button class="btn btn-md btn-warning">Delete profile</button>
+            <button class="btn btn-md btn-warning gap-2"><iconify-icon icon="ri:check-line"/> Delete profile</button>
           </div>
         </div>
       </div>
@@ -113,7 +113,7 @@
             This option will eliminate your account entirely with all data. You’ll get a chance to confirm your choice.
           </p>
           <div class="card-actions justify-end">
-            <button class="btn btn-md btn-error">Delete account</button>
+            <button class="btn btn-md btn-error gap-2"><iconify-icon icon="ri:delete-bin-7-line"/> Delete account</button>
           </div>
         </div>
       </div>
