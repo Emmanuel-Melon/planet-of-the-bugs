@@ -59,11 +59,11 @@
 </script>
  
   <section class="flex gap-2">
-    <div class="w-full">
-      <div class="flex mt-2 justify-between gap-2 items-center">
+    <div class="w-full space-y-4">
+      <div class="flex justify-between gap-2 items-center">
         <h3 class="text-xl">My Courses</h3>
         <!-- The button to open modal -->
-        <label for="my-modal" class="btn gap-2 mb-2"
+        <label for="my-modal" class="btn btn-sm btn-primary gap-2"
           ><iconify-icon icon="ri:add-line" /> New Course</label
         >
 

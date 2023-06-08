@@ -33,7 +33,7 @@
   });
 </script>
 
-<header class="navbar bg-primary">
+<header class="navbar">
   <div class="navbar-start gap-4">
     <a href="/" class="normal-case text-md">Planet Of The Bugs</a>
   </div>
