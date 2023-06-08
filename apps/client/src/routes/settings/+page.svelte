@@ -2,17 +2,15 @@
   import "iconify-icon";
 </script>
 
-<section class="mx-auto w-3/4">
+<section class="mx-auto lg:w-3/4">
   <div class="card bg-white border-b-2 border-double shadow-md border-slate-200 p-4 flex mb-2">
-    <div>
       <h3 class="flex items-center gap-2">
         <iconify-icon icon="ri:settings-5-line" /> Settings
       </h3>
-    </div>
   </div>
-  <div class="flex w-full gap-2">
-    <div class="basis-1/5 grow">
-      <div class="card bg-white w-full border-e shadow-sm p-4">
+  <div class="flex flex-col md:flex-row w-full gap-2">
+    <div class="basis-2/5 grow">
+      <div class="card bg-white w-full border-e shadow-xl p-4">
         <ul class="menu bg-transparent w-full">
           <li><a class="active bg-secondary">Edit Profile</a></li>
           <li><a>Notifications</a></li>
@@ -23,7 +21,7 @@
       </div>
     </div>
     <div class="basis-3/4">
-      <div class="card bg-white w-full border-e shadow-sm">
+      <div class="card bg-white w-full border-e shadow-xl">
         <div class="card-body">
           <h3 class="card-title">Basic Info</h3>
           <div class="form-control w-full">

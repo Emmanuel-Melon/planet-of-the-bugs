@@ -7,7 +7,7 @@
 </script>
 
 <section>
-  <div class="gap-2">
+  <div class="gap-2 space-y-4">
     {#each chapters as chapter}
       <div
         class="border border-#efefef p-2 rounded-sm card bg-white shadow-md"

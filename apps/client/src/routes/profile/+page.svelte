@@ -68,19 +68,19 @@
   ];
 </script>
 
-<main class="w-full">
-  <div class="flex gap-2">
-    <div class="basis-1/4">
+<section class="w-full">
+  <div class="flex flex-col lg:flex-row gap-2">
+    <div class="lg:w-1/3">
       <UserProfileCard
         user={data.user.viewer || {}}
         image={data.session?.user?.image || {}}
       />
     </div>
-    <div class="basis-3/4">
+    <div class="lg:w-2/3">
       <UserGithubStats user={data.user.viewer} />
       <div class="gap-y-3">
         <Tabs {items} />
       </div>
     </div>
   </div>
-</main>
+</section>
