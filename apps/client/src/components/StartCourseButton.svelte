@@ -3,7 +3,7 @@
   export let course_id;
   export let slug;
   export let status = "Unsubscribed";
-  export let userId = "fae379cf-4387-4dac-a5af-bf092734a464";
+  export let userId;
 
   import { mutation } from "svelte-apollo";
   import { START_COURSE } from "$lib/graphql/mutations/courses";

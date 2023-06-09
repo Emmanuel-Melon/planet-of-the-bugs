@@ -5,6 +5,7 @@
   import apolloClient from "$lib/graphql/apolloClient";
   import "../app.css";
   setClient(apolloClient);
+  
 </script>
 
 <svelte:head>
@@ -14,6 +15,15 @@
     content="Planet of the Bugs uses AI to generate fake bug scenarios for developers to learn debugging skills and the fundamentals of writing secure and robust software. By using AI, the app can provide an endless supply of unique scenarios, allowing developers to practice and hone their skills."
   />
 </svelte:head>
+
+<svelte:window
+    on:sveltekit:navigation-start={() => {
+        console.log('Navigation started!');
+    }}
+    on:sveltekit:navigation-end={() => {
+        console.log('Navigation ended!');
+    }}
+/>
 
 <div class="app">
   <Header />
