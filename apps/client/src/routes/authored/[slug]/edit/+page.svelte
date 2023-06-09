@@ -4,6 +4,7 @@
   import LessonCreator from "$components/Lessons/LessonCreator.svelte";
   import LessonCreatorPreview from "$components/Lessons/LessonCreatorPreview.svelte";
   import Tabs from "$components/Tabs.svelte";
+  import NewChapterModal from "$components/Courses/NewChapterModal.svelte";
   const items = [
     {
       label: "Edit",
@@ -31,10 +32,7 @@
           <iconify-icon icon="ri:edit-2-line" />
           New Lesson</button
         >
-        <button class="btn btn-sm primary gap-2">
-          <iconify-icon icon="ri:edit-2-line" />
-          New Chapter</button
-        >
+        <NewChapterModal {course} />
       </div>
     </div>
   </div>

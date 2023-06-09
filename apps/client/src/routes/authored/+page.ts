@@ -2,7 +2,7 @@ import { GITHUB_USER_BASIC_INFO, USER_BASIC_INFO } from "$lib/graphql/queries/us
 import apolloClient from "$lib/graphql/apolloClient";
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 
-import { destructureQueryResults } from "./helpers";
+import { destructureQueryResults } from "$lib/graphql/helpers";
 
 
 export const load = async (event) => {

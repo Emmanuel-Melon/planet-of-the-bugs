@@ -28,6 +28,8 @@ export const FETCH_COURSE_BY_SLUG = gql`
       updated_at
       bucketId
       cover
+      creator
+      slug
       course_chapters(order_by: { index: asc }) {
         id
         index
