@@ -10,6 +10,7 @@
 	},
 	"devDependencies": {
 		"@apollo/link-schema": "^2.0.0-beta.3",
+		"@babel/standalone": "^7.22.5",
 		"@neoconfetti/svelte": "^1.0.0",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/adapter-vercel": "^2.4.3",
@@ -40,7 +41,6 @@
 		"@apollo/client": "^3.7.11",
 		"@auth/core": "^0.5.1",
 		"@auth/sveltekit": "^0.3.0",
-		"@babel/standalone": "^7.21.4",
 		"@sveltestack/svelte-query": "^1.6.0",
 		"@svelteuidev/composables": "^0.10.0",
 		"@svelteuidev/core": "^0.10.0",
