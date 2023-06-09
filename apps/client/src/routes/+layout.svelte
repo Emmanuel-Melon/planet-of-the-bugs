@@ -44,7 +44,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 1rem;
+
     width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
