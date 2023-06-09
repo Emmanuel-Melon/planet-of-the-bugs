@@ -3,21 +3,28 @@
    * @type {{ title: any; description: any; }}
    */
   export let chapter;
+  export let course;
+  import "iconify-icon";
+  console.log(course);
 </script>
 
-<div class="my-2 bg-white">
-    <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 mb-4 justify-between items-center">
-        <h3 class="">{chapter.title}</h3>
-        <progress class="progress progress-secondary w-56" value="38" max="100"></progress>
+<div class="w-full">
+  <div
+    class="w-full flex flex-col md:flex-row md:space-y-0 justify-between items-center"
+  >
+    <div>
+      <h3 class="flex items-center gap-2"><iconify-icon icon="ri:award-line" /> {chapter.title}</h3>
+      <p>{chapter.description}</p>
     </div>
-  <p>{chapter.description}</p>
-  <div class="mt-4">
+
+  </div>
+  <div class="space-y-2">
     {#each chapter.lessons as lesson}
-      <div class="flex py-2 items-center gap-2">
-        <span class="bg-black rounded-full px-1 text-white">
-          <iconify-icon icon="heroicons:document-text" />
+      <div class="flex items-center gap-2">
+        <span class="flex items-center bg-base-200 p-2 rounded-full shodow-md">
+          <iconify-icon icon="ri:booklet-line" />
         </span>
-        <a class="link" href={`/courses/introduction_to_debugging/${lesson.id}`}
+        <a class="link link-hover" href={`/courses/${course.slug}/${lesson.id}`}
           >{lesson.title}</a
         >
       </div>

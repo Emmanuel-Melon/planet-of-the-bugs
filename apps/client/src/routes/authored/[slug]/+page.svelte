@@ -2,12 +2,10 @@
   export let data;
   import { onMount } from "svelte";
   import "iconify-icon";
-  let { course, files } = data;
+  let { course, files, user } = data;
   import { sdk, server } from "$lib/appwrite/appwriteClient";
   import { DELETE_COURSE } from "$lib/graphql/mutations/courses";
-  import apolloClient from "$lib/graphql/apolloClient";
   import { mutation } from "svelte-apollo";
-  export let userId = "fae379cf-4387-4dac-a5af-bf092734a464";
 
   const deleteCourse = mutation(DELETE_COURSE);
 
@@ -16,7 +14,7 @@
       const result = await deleteCourse({
         variables: {
           id: course.id,
-          creator: userId
+          creator: user.id
         }
       });
       console.log(result);
@@ -31,7 +29,7 @@
   $: files;
 
   onMount(async () => {
-    console.log(files);
+    console.log(user);
   });
 </script>
 

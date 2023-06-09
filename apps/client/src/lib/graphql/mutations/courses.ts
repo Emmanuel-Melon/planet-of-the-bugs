@@ -3,6 +3,20 @@ import {
   // @ts-ignore
 } from "@apollo/client/core/core.cjs";
 
+export const ADD_CHAPTER = gql`
+mutation addNewChapter($chapterInput: course_chapters_insert_input!) {
+  insert_course_chapters_one(object: $chapterInput) {
+    id
+    course_id
+    title
+    index
+  }
+}
+
+`;
+
+
+
 export const CREATE_COURSE = gql`
   mutation insertCoursesOne($courseInput: courses_insert_input!) {
     insert_courses_one(object: $courseInput)  {
@@ -27,7 +41,6 @@ mutation deleteCourse($id: uuid, $creator: uuid) {
     }
   }
 }
-
 `;
 
 
