@@ -10,6 +10,8 @@
 
   const courses = query(FETCH_COURSES);
 
+  export let userId = "fae379cf-4387-4dac-a5af-bf092734a464";
+
   onMount(async () => {
     courses.refetch();
   });
@@ -42,7 +44,7 @@ const criteria = [
   ];
 </script>
 
-<section class="h-max min-h-ful">
+<section class="h-max min-h-ful space-y-4">
   <div class="card bg-white w-full p-4 shadow mb-2">
     <div class="bg-white mb-2 mx-auto text-center w-4/5">
       <h1 class="text-xl">Explore the Planet of Bugs</h1>
@@ -66,15 +68,19 @@ const criteria = [
     <div class="gap-2 grow">
       <SidebarFilter {criteria} CTA="Filter Courses" />
     </div>
-    <div class="flex gap-4 flex-wrap basis-4/5 mb-4">
+    <div class="flex gap-4 items-start flex-wrap basis-4/5">
       {#if $courses.data}
         {#each $courses.data.courses as course}
-          <CourseCard {course} />
+          <CourseCard {course} {userId }/>
         {/each}
       {:else}
-        <p>Loading...</p>
+        <div class="card bg-black text-white">
+          <div class="card-body">
+            <h2 class="card-title">Loading</h2>
+            <span class="loading loading-bars loading-lg"></span>
+          </div>
+        </div>
       {/if}
     </div>
   </div>
-  <PaginationComponent />
 </section>

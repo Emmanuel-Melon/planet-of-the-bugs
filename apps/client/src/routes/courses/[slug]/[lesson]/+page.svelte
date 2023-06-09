@@ -23,12 +23,7 @@
 
   const handleExpand = () => {
     isExpanded = !isExpanded;
-    console.log(isExpanded)
-  }
-
-  // http://localhost:5173/courses/introduction-to-debugging/85ceb7ff-c4a9-449e-b6fb-572afecec604
-
-  // http://localhost:5173/courses/introduction_to_debugging/8bc28676-19ef-41bd-89f4-a27bef045eb0
+  };
 </script>
 
 <section
@@ -44,11 +39,10 @@
     </div>
 
     <div class="flex-1 w-full">
-      <CodeEditor handleExpand={handleExpand} isExpanded={isExpanded}/>
+      <CodeEditor {handleExpand} {isExpanded} />
       {#if !isExpanded}
-      <CodeOutput />
+        <CodeOutput />
       {/if}
     </div>
   </div>
-
 </section>

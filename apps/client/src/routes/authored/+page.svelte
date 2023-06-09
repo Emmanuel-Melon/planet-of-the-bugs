@@ -6,9 +6,7 @@
   import { CREATE_COURSE } from "$lib/graphql/mutations/courses";
   import { FETCH_AUTHORED_COURSES } from "$lib/graphql/queries/courses";
   import AuthoredCourseCard from "$components/AuthoredCourseCard.svelte";
-  import ContributionsStats from "$components/User/ContributionsStats.svelte";
   import "iconify-icon";
-  import Tabs from "$components/Tabs.svelte";
 
   const {
     data: { session, github_user, user },
@@ -126,7 +124,9 @@
             <AuthoredCourseCard {course} />
           {/each}
         {:else}
-          <p>Loading...</p>
+        <div class="mx-auto p-4">
+          <span class="loading loading-bars loading-lg"></span>
+        </div>
         {/if}
       </div>
     </div>
