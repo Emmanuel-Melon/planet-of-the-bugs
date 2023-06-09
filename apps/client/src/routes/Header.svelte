@@ -22,7 +22,7 @@
   $: dropdownLinks = [
     {
       text: 'My Profile',
-      path: `/${user?.githubUsername?.toLowerCase()}`,
+      path: `/${user?.username?.toLowerCase() || user?.githubUsername?.toLowerCase()}`,
       icon: 'ri:user-2-line',
     },
     { text: 'Authored Courses', path: '/authored', icon: 'ri:book-read-line' },

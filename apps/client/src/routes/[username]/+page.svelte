@@ -15,7 +15,6 @@
 
   onMount(() => {
     user = $page.data.session?.user;
-    console.log(data)
   });
 
   const items = [
