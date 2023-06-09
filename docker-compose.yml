@@ -10,6 +10,16 @@ services:
       - 5173:5173
     networks:
       - app_network
+  website:
+    container_name: website
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-website
+    restart: always
+    ports:
+      - 5174:5174
+    networks:
+      - app_network
 networks:
   app_network:
     external: true
