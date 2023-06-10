@@ -19,6 +19,7 @@
     <div class="flex gap-2 text-white">
       <button class="btn btn-sm btn-outline btn-info gap-2"><iconify-icon icon="ri:bookmark-line" /> Bookmark Course</button>
       <button class="btn btn-sm btn-outline btn-info gap-2"><iconify-icon icon="ri:booklet-line" /> Chapters</button>
+      <button class="btn btn-sm btn-outline btn-info gap-2"><iconify-icon icon="ri:group-line" /> Students</button>
     </div>
   </div>
 </section>
