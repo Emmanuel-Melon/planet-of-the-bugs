@@ -29,11 +29,11 @@ export const load = async (event) => {
 
   const course = data.courses[0];
   const userInfo = destructuredUserObject[0];
-  let files = await appwriteServer.storage.listFiles(course.bucketId);
+  // let files = await appwriteServer.storage.listFiles(course.bucketId);
   return {
     slug,
     course,
-    files: files || [],
+
     user: { ...userInfo, profileLoading },
   }
 }
