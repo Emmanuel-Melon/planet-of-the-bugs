@@ -5,6 +5,7 @@
   import apolloClient from "$lib/graphql/apolloClient";
   import "../app.css";
   setClient(apolloClient);
+  
 </script>
 
 <svelte:head>
@@ -15,9 +16,18 @@
   />
 </svelte:head>
 
-<div class="app">
+<svelte:window
+    on:sveltekit:navigation-start={() => {
+        console.log('Navigation started!');
+    }}
+    on:sveltekit:navigation-end={() => {
+        console.log('Navigation ended!');
+    }}
+/>
+
+<div class="app space-y-2">
   <Header />
-  <main>
+  <main class="space-y-4">
     <slot />
   </main>
 </div>
@@ -34,7 +44,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 1rem;
     width: 100%;
     margin: 0 auto;
     box-sizing: border-box;

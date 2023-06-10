@@ -49,34 +49,35 @@
 
 </script>
 
-<div class="card basis-3/4 grow card-bordered bg-white shadow-md">
-  <div class="card-body">
-    <div class="avatar indicator">
-      <span class="indicator-item badge badge-accent">Hirable</span> 
-      <div class="w-20 h-20 rounded-lg">
-        <img src={image} />
+<div class="card basis-3/4 grow card-bordered bg-white shadow">
+  <div class="card-body space-y-2">
+    <div class="flex items-center gap-4">
+      <div class="avatar indicator">
+        <span class="indicator-item badge badge-lg badge-secondary">Hirable</span> 
+        <div class="w-24 rounded-full ring  ring-offset-base-100 ring-offset-2">
+          <img src={image} alt={user.login} />
+        </div>
       </div>
-    </div>
-    <div class="flex gap-2">
-      <div class=" space-y-2">
+      <div>
         <h2 class="card-title">{user.name}</h2>
         <span class="flex gap-2">
-          <a class="link link-accent" href={user.url}>{user.login}</a>
+          <a class="link" href={user.url}>{user.login}</a>
           <p class="">
             ({user.pronouns})
           </p>
         </span>
-       <div class="mt-2 space-y-2">
-        <button class="btn btn-sm btn-outline gap-2">
-          <iconify-icon icon="ri:chat-new-line"/>
-          Message
-        </button>
-        <button class="btn btn-sm btn-primary gap-2">
-          <iconify-icon icon="ri:user-add-line" /> 
-          Follow</button>
-       </div>
       </div>
     </div>
+    <p class="text-xl font-bold">{user.bio}</p>
+   <div class="card-actions gap-2 justify-end">
+    <button class="btn btn-sm btn-outline gap-2">
+      <iconify-icon icon="ri:chat-new-line"/>
+      Message
+    </button>
+    <button class="btn btn-sm btn-primary gap-2">
+      <iconify-icon icon="ri:user-add-line" /> 
+      Follow</button>
+   </div>
     <div class="divider">Basic Info</div>
     <ul class="space-y-2">
       <li><a class="link link-hover flex items-center gap-2" href={user.websiteUrl}>

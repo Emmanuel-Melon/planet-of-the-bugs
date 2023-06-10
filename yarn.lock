@@ -53,10 +53,10 @@
   dependencies:
     "@auth/core" "0.5.1"
 
-"@babel/standalone@^7.21.4":
-  version "7.22.4"
-  resolved "https://registry.yarnpkg.com/@babel/standalone/-/standalone-7.22.4.tgz#1962cdc38ecacd8c6d7ba68f96b386b30a3b4a06"
-  integrity sha512-QBNy4MzdvdyNMgnGBU8GsOHoJG0ghrQj8NupxV4gMxHo6EhrwozNsICbT3dz0MTRLldqYSYDmTOZQBvYcDVOUQ==
+"@babel/standalone@^7.22.5":
+  version "7.22.5"
+  resolved "https://registry.yarnpkg.com/@babel/standalone/-/standalone-7.22.5.tgz#91a55e725e93d65241e0ccd8b0c3c7067258da3c"
+  integrity sha512-6Lwhzral4YDEbIM3dBC8/w0BMDvOosGBGaJWSORLkerx8byawkmwwzXKUB0jGlI1Zp90+cK2uyTl62UPtLbUjQ==
 
 "@esbuild/android-arm64@0.17.19":
   version "0.17.19"

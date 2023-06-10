@@ -13,10 +13,9 @@
 
   <div class="flex flex-col lg:flex-row gap-2">
     <div class="basis-2/5">
-      <div class="card w-full bg-white shadow-xl">
-        <div class="card-body">
+      <div class="card card-compact w-full bg-white shadow">
+        <div class="card-body prose prose-sm">
           <h2 class="card-title">{course.title}</h2>
-          <div class="divider">Description</div>
           <p>{course.description}</p>
           <div class="card-actions justify-end">
             <StartCourseButton
@@ -29,7 +28,7 @@
       </div>
     </div>
     <div class="basis-3/5">
-      <LessonOutline chapters={course.course_chapters} />
+      <LessonOutline chapters={course.course_chapters} {course} {active} />
     </div>
   </div>
 

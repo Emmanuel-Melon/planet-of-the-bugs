@@ -24,17 +24,17 @@
   }
 </script>
 
-<div class="card card-compact basis-2/5 grow bg-white shadow-md">
+<div class="card card-compact basis-2/5 grow bg-white shadow">
   <div class="card-body space-y-2">
     <div class="flex gap-4 items-center">
       <div class="flex items-center justify-between w-full">
-        <h3 class="card-title">
+        <h2 class="card-title">
           <a class="link link-hover" target="_blank" href={repo.url}
             >{repo.name.toLocaleUpperCase()}</a
           >
-        </h3>
-        <div class="badge badge-outline gap-2">
-          <iconify-icon icon="heroicons:star" />
+        </h2>
+        <div class="badge badge-lg badge-accent gap-2">
+          <iconify-icon icon="ri:star-line" />
           {repo.stargazerCount.toLocaleString()}
         </div>
       </div>

@@ -3,6 +3,7 @@
   export let course_id;
   export let slug;
   export let status = "Unsubscribed";
+  export let userId;
 
   import { mutation } from "svelte-apollo";
   import { START_COURSE } from "$lib/graphql/mutations/courses";
@@ -14,7 +15,7 @@
     try {
       const result = await startCourse({
         variables: {
-          user_id: "a4f9150e-4619-4b18-807d-2f273b75c12f",
+          user_id: userId,
           course_id,
         },
       });
@@ -57,5 +58,5 @@
 <button
   class={` btn-sm gap-2 ${buttons[status].style}` }
   on:click|preventDefault={buttons[status].logic}
-  ><iconify-icon icon="heroicons:check-circle" /> {buttons[status].text}</button
+  ><iconify-icon icon="ri:add-circle-line" /> {buttons[status].text}</button
 >

@@ -4,6 +4,7 @@
   import LessonCreator from "$components/Lessons/LessonCreator.svelte";
   import LessonCreatorPreview from "$components/Lessons/LessonCreatorPreview.svelte";
   import Tabs from "$components/Tabs.svelte";
+  import NewChapterModal from "$components/Courses/NewChapterModal.svelte";
   const items = [
     {
       label: "Edit",
@@ -19,7 +20,9 @@
     },
   ];
 
-  $: course
+  $: course;
+
+  console.log(course);
 </script>
 
 <div class="card bg-base-100 shadow-md mb-4">
@@ -31,10 +34,7 @@
           <iconify-icon icon="ri:edit-2-line" />
           New Lesson</button
         >
-        <button class="btn btn-sm primary gap-2">
-          <iconify-icon icon="ri:edit-2-line" />
-          New Chapter</button
-        >
+        <NewChapterModal {course} />
       </div>
     </div>
   </div>
@@ -91,11 +91,9 @@
       </div>
       <select class="select select-bordered w-full max-w-xs">
         <option disabled selected>Pick a chapter</option>
-        <option>Homer</option>
-        <option>Marge</option>
-        <option>Bart</option>
-        <option>Lisa</option>
-        <option>Maggie</option>
+        {#each course.course_chapters as chapter}
+          <option>{chapter.title}</option>
+        {/each}
       </select>
 
     </div>

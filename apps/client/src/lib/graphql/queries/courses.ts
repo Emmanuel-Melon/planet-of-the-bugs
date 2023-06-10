@@ -12,6 +12,7 @@ export const FETCH_COURSES = gql`
       description
       complexity
       slug
+      cover
     }
   }
 `;
@@ -26,6 +27,9 @@ export const FETCH_COURSE_BY_SLUG = gql`
       title
       updated_at
       bucketId
+      cover
+      creator
+      slug
       course_chapters(order_by: { index: asc }) {
         id
         index
@@ -72,6 +76,7 @@ export const FETCH_AUTHORED_COURSES = gql`
       creator
       complexity
       slug
+      cover
     }
   }
 `;

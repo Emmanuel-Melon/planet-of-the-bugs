@@ -33,27 +33,21 @@
   ];
 </script>
 
-<main>
+<section>
   <div
-    class="card bg-white w-full shadow-lg mb-2 p-4"
+    class="card bg-base-200 w-full shadow"
   >
-    <div class="flex flex-col md:flex-row justify-center items-center">
-      <div class="avatar">
-        <div class="w-24">
-          <img
-            src="https://res.cloudinary.com/dwacr3zpp/image/upload/v1682868697/Planet%20of%20The%20Bugs/Untitled_design_4.png"
-            alt="github logo"
-          />
+    <div class="card-body">
+      <div class="flex flex-col md:flex-row justify-center items-center">
+        <div class="prose prose-sm">
+          <h1 class="card-title text-center text-2xl w-fit mx-auto">Practice makes perfect!</h1>
+          <p>
+            Take your newly learned skills to the next level by practicing on
+            real-world issues from Github? By subscribing to a Github repo, you
+            can receive issues with labels that match your interests such as
+            language, bug, good-first-issue, or even bounty.
+          </p>
         </div>
-      </div>
-      <div>
-        <h1 class="prose prose-xl">Practice makes perfect!</h1>
-        <p>
-          Take your newly learned skills to the next level by practicing on
-          real-world issues from Github? By subscribing to a Github repo, you
-          can receive issues with labels that match your interests such as
-          language, bug, good-first-issue, or even bounty.
-        </p>
       </div>
     </div>
   </div>
@@ -69,4 +63,4 @@
     </div>
   </section>
   <PaginationComponent />
-</main>
+</section>
