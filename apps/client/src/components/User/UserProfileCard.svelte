@@ -61,7 +61,7 @@
       <div>
         <h2 class="card-title">{user.name}</h2>
         <span class="flex gap-2">
-          <a class="link link-secondary" href={user.url}>{user.login}</a>
+          <a class="link" href={user.url}>{user.login}</a>
           <p class="">
             ({user.pronouns})
           </p>

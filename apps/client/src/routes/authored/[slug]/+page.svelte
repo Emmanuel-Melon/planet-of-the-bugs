@@ -2,8 +2,7 @@
   export let data;
   import { onMount } from "svelte";
   import "iconify-icon";
-  let { course, files, user } = data;
-  import { sdk, server } from "$lib/appwrite/appwriteClient";
+  let { course, user } = data;
   import { DELETE_COURSE } from "$lib/graphql/mutations/courses";
   import { mutation } from "svelte-apollo";
 
@@ -24,11 +23,7 @@
 
 
   $: course;
-  $: files;
 
-  onMount(async () => {
-    console.log(files.files[0]);
-  });
 </script>
 
 <section>

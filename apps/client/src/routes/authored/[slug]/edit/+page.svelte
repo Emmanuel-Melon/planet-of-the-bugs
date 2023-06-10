@@ -20,7 +20,9 @@
     },
   ];
 
-  $: course
+  $: course;
+
+  console.log(course);
 </script>
 
 <div class="card bg-base-100 shadow-md mb-4">
@@ -89,11 +91,9 @@
       </div>
       <select class="select select-bordered w-full max-w-xs">
         <option disabled selected>Pick a chapter</option>
-        <option>Homer</option>
-        <option>Marge</option>
-        <option>Bart</option>
-        <option>Lisa</option>
-        <option>Maggie</option>
+        {#each course.course_chapters as chapter}
+          <option>{chapter.title}</option>
+        {/each}
       </select>
 
     </div>
