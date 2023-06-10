@@ -6,7 +6,7 @@
 </script>
 
 <section>
-  <div class="card card-compact bg-base-100 shadow">
+  <div class="card card-compact bg-white shadow">
     <div class="card-body prose prose-sm">
       <div class="w-full">
         {#each chapters as chapter}

@@ -17,9 +17,7 @@
           creator: user.id
         }
       });
-      console.log(result);
     } catch (error) {
-      console.log("oh no");
       console.log(error);
     }
   }
@@ -29,7 +27,7 @@
   $: files;
 
   onMount(async () => {
-    console.log(user);
+    console.log(files.files[0]);
   });
 </script>
 
