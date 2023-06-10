@@ -11,6 +11,17 @@
 
 </script>
 
+<section class="w-full bg-primary h-fit p-4 text-white">
+  <div class="space-y-4 w-1/8 mx-auto p-4">
+    <h1 class="text-5xl">{course.title}</h1>
+    <p>{course.description}</p>
+  
+    <div class="flex gap-2 text-white">
+      <button class="btn btn-sm btn-outline btn-info gap-2"><iconify-icon icon="ri:bookmark-line" /> Bookmark Course</button>
+      <button class="btn btn-sm btn-outline btn-info gap-2"><iconify-icon icon="ri:booklet-line" /> Chapters</button>
+    </div>
+  </div>
+</section>
 
   <div class="flex flex-col lg:flex-row gap-2">
     <div class="basis-2/5">
