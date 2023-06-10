@@ -10,8 +10,9 @@
   $: menuLinks = [
     { text: "Learn", path: "/courses", icon: "ri:graduation-cap-line" },
     { text: "Repositories", path: "/repositories", icon: "ri:git-repository-line" },
-    { text: "Hunt Bugs", path: "/bugs", icon: "ri:bug-line" },
+    { text: "BugsHub", path: "/bugs", icon: "ri:bug-line" },
     { text: "Messages", path: "/messages", icon: "ri:message-3-line" },
+    { text: "Resources", path: "/resources", icon: "ri:folder-5-line" },
   ];
 
   $: dropdownLinks = [
@@ -33,7 +34,7 @@
   });
 </script>
 
-<header class="navbar">
+<header class="navbar bg-white shadow">
   <div class="navbar-start gap-4">
     <a href="/" class="normal-case text-md">Planet Of The Bugs</a>
   </div>
@@ -42,9 +43,8 @@
     <ul class="navbar-center hidden lg:flex items-center gap-2">
       {#each menuLinks as { icon, text, path }}
         <li
-          class={path === current
-            ? "p-2 hidden lg:flex transition-all  decoration-amber-100 rounded-md"
-            : "p-2 hidden lg:flex transition-all underline-offset-8 decoration-accent-focus rounded-md"}
+          class={`hover:bg-base-200 hover:text-black transition-all rounded-md  ${path === current ? "p-2 hidden lg:flex hover:bg-primary bg-primary text-primary-content"
+          : "p-2 hidden lg:flex"} `}
         >
           <a href={path} class="flex items-center gap-2"><iconify-icon icon={icon}/> {text}</a>
         </li>

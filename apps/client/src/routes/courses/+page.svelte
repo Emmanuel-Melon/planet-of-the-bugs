@@ -32,18 +32,20 @@ const criteria = [
   $: user;
 </script>
 
-<section class="h-max min-h-ful space-y-4">
-  <div class="card bg-white w-full p-4 shadow mb-2">
-    <div class="bg-white mb-2 mx-auto text-center w-4/5 space-y-2">
-      <h1 class="text-xl">Explore the Planet of Bugs</h1>
-      <p>Discover a world of software defects, debugging techniques, and programming pitfalls. Join our community of curious developers and learn how to track down and squash those pesky bugs.</p>
-    </div>
-    <div class="flex items-center justify-center">
-      <SearchBar />
+<section class="h-max min-h-full space-y-4">
+  <div class="card card-compact bg-base-200 w-full shadow" >
+    <div class="card-body">
+      <div class="prose prose-sm text-center mx-auto w-full space-y-2">
+        <h1 class="text-center text-2xl w-fit mx-auto">Explore the Planet of Bugs</h1>
+        <p>Discover a world of software defects, debugging techniques, and programming pitfalls. Join our community of curious developers and learn how to track down and squash those pesky bugs.</p>
+        <div class="flex items-center justify-center">
+          <SearchBar />
+        </div>
+      </div>
     </div>
   </div>
   <div class="flex flex-col lg:flex-row gap-2">
-    <div class="gap-2 grow">
+    <div class="gap-2 grow bg-base-200 shadow">
       <SidebarFilter {criteria} CTA="Filter Courses" />
     </div>
     <div class="flex gap-4 items-start flex-wrap basis-4/5">

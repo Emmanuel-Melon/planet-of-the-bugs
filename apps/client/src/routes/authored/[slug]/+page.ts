@@ -29,17 +29,11 @@ export const load = async (event) => {
 
   const course = data.courses[0];
   const userInfo = destructuredUserObject[0];
-  let files;
-  try {
-    const buckets = await appwriteServer.storage.listFiles("6482292c07f473e25144");
-    console.log(buckets?.files[0]);
-  } catch (error) {
-    console.log(error);
-  }
+  let files = await appwriteServer.storage.listFiles(course.bucketId);
   return {
     slug,
     course,
-    files,
+    files: files || [],
     user: { ...userInfo, profileLoading },
   }
 }

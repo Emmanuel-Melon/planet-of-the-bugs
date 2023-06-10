@@ -8,6 +8,7 @@
   let title = "";
   let description = "";
   let complexity = "Beginner";
+  import "iconify-icon";
 
   function createSlug(str: string) {
     return str.toLowerCase().replace(/\s+/g, "_");
@@ -40,7 +41,10 @@
   <input type="checkbox" id="my-modal" class="modal-toggle" />
   <label for="my-modal" class="modal cursor-pointer">
     <div class="modal-box bg-gray-100 object-fill shadow-lg">
-      <h3 class="font-bold text-lg">Create New Course</h3>
+      <div class="flex justify-between items-center">
+        <h3 class="font-bold text-lg">Create New Course</h3>
+        <button class="btn btn-sm btn-ghost btn-square"><iconify-icon icon="ri:close-line" /></button>
+      </div>
       <div>
         <label for="username" class="label">
           <span class="label-text">Title</span>
@@ -70,7 +74,7 @@
       <div>
         <select
           bind:value={complexity}
-          class="select w-full max-w-lg bg-accent"
+          class="select w-full max-w-lg bg-base-200"
           on:change={(e) => (complexity = event.target.value)}
         >
           <option disabled selected>Pick course complexity</option>
@@ -80,8 +84,8 @@
         </select>
       </div>
       <div class="modal-action">
-        <button for="my-modal" class="btn btn-primary" on:click={handleSubmit}
-          >Submit Course</button
+        <button class="btn btn-sm btn-primary gap-2" on:click={handleSubmit}
+          ><iconify-icon icon="ri:booklet-line" /> Create Course</button
         >
       </div>
     </div>

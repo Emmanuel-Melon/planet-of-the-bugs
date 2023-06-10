@@ -7,7 +7,7 @@
 </script>
 
 <div
-class="card p-4 bg-white shadow"
+class="card p-4"
 >
 <div class="divider">{CTA}</div>
 <div>
@@ -17,7 +17,7 @@ class="card p-4 bg-white shadow"
           <span class="flex items-center gap-2 label-text"><iconify-icon icon={criterion.icon || icon} /> {criterion.title}</span>
           <input
             type="checkbox"
-            class="checkbox checkbox-md checkbox-secondary"
+            class="checkbox checkbox-md checkbox-primary"
           />
         </label>
       </div>

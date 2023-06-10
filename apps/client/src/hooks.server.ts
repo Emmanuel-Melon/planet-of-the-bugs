@@ -16,19 +16,12 @@ import {
   PUBLIC_GITHUB_API_ENDPOINT
 } from "$env/static/public";
 
-/** @type {import('@sveltejs/kit').HandleFetch} */
-export async function handleFetch(data) {
-  const { request, fetch } = data;
-  request.headers.set('x-secure', 'Test');
-  return fetch(request)
-}
-
 export const handleCors = async (data) => {
   const { resolve, event } = data;
   const response = await resolve(event);
-  response.headers.append('Access-Control-Allow-Methods', `GET, POST, PUT, DELETE, PATCH, OPTIONS`);
   response.headers.append('Access-Control-Allow-Origin', `*`);
-  response.headers.append('Access-Control-Allow-Headers', `*`);
+  response.headers.append('Access-Control-Allow-Methods', `GET, POST, PUT, DELETE, PATCH, OPTIONS`);
+  response.headers.append('Access-Control-Allow-Headers', "Content-Type, Origin, Accept, token");
   return response;
 };
 
@@ -90,4 +83,4 @@ export const handleAuth = SvelteKitAuth(async () => {
   return authOptions;
 }) satisfies Handle;
 
-export const handle = sequence(handleAuth, handleCors);
+export const handle = sequence(handleAuth);

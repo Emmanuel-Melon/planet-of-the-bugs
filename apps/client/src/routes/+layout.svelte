@@ -25,9 +25,9 @@
     }}
 />
 
-<div class="app">
+<div class="app space-y-2">
   <Header />
-  <main>
+  <main class="space-y-4">
     <slot />
   </main>
 </div>
@@ -44,7 +44,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-
     width: 100%;
     margin: 0 auto;
     box-sizing: border-box;

@@ -9,7 +9,7 @@
 </script>
 
 <div
-  class="card h-96 basis-1/3 grow bg-white shadow-md max-w-screen-sm md:max-w-[360px] lg:max-w-sm xl:max-w-lg"
+  class="card h-96 basis-1/3 grow bg-white shadow max-w-screen-sm md:max-w-[360px] lg:max-w-sm xl:max-w-lg"
 >
   <figure class="h-full">
     <img
@@ -27,7 +27,7 @@
           >
         </h2>
         <div class="flex gap-2 items-center">
-          <div class="badge badge-lg badge-outline gap-2">
+          <div class="badge badge-lg badge-accent gap-2">
             <iconify-icon icon="ri:bar-chart-2-line" />
             {course.complexity}
           </div>
