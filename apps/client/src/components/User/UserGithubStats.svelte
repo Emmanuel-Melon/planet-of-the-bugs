@@ -2,7 +2,7 @@
   export let user;
 </script>
 
-<div class="card card-compact w-full shadow">
+<div class="card card-compact bg-white w-full shadow">
   <div class="card-body">
     <h2 class="card-title">Contributions Overview</h2>
     <div class="stats w-full">
