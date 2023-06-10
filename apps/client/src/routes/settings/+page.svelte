@@ -2,26 +2,28 @@
   import "iconify-icon";
 </script>
 
-<section class="mx-auto lg:w-3/4">
-  <div class="card bg-white border-b-2 border-double shadow-md border-slate-200 p-4 flex mb-2">
-      <h3 class="flex items-center gap-2">
+<section class="mx-auto lg:w-3/4 space-y-2">
+  <div class="card card-compact bg-white shadow flex space-y-2">
+    <div class="card-body">
+      <h2 class="card-title gap-2">
         <iconify-icon icon="ri:settings-5-line" /> Settings
-      </h3>
+      </h2>
+      <p>Here, you have full control over customizing your experience and personalizing your account according to your preferences.</p>
+    </div>
   </div>
   <div class="flex flex-col md:flex-row w-full gap-2">
     <div class="basis-2/5 grow">
-      <div class="card bg-white w-full border-e shadow-xl p-4">
+      <div class="card bg-white w-full shadow">
         <ul class="menu bg-transparent w-full">
-          <li><a class="active bg-secondary">Edit Profile</a></li>
-          <li><a>Notifications</a></li>
-          <li><a>Account</a></li>
-          <li><a>Privacy &amp; Security</a></li>
-          <li><a>Help &amp; Support</a></li>
+          <li><a href="/settings/#profile" class="active bg-accent">Edit Profile</a></li>
+          <li><a href="/settings/#notifications">Notifications</a></li>
+          <li><a href="/settings/#account">Account</a></li>
+          <li><a href="/settings/#privacyt">Privacy &amp; Security</a></li>
         </ul>
       </div>
     </div>
-    <div class="basis-3/4">
-      <div class="card bg-white w-full border-e shadow-xl">
+    <div class="basis-3/4 space-y-4">
+      <div class="card card-compact bg-white w-full shadow">
         <div class="card-body">
           <h3 class="card-title">Basic Info</h3>
           <div class="form-control w-full">
@@ -88,12 +90,12 @@
               />
             </div>
           </div>
-          <div class="card-actions justify-end border-t-2 mt-2 py-2">
-            <button class="btn btn-primary gap-2"><iconify-icon icon="ri:check-line"/> Update Info</button>
+          <div class="card-actions justify-end">
+            <button class="btn btn-sm btn-primary gap-2">Update Info</button>
           </div>
         </div>
       </div>
-      <div class="card bg-white w-full mt-4 shadow-xl">
+      <div class="card card-compact bg-white w-full shadow">
         <div class="card-body">
           <h3 class="card-title">Delete your public profile</h3>
           <p>
@@ -102,18 +104,18 @@
             deleted is links to your social profiles.
           </p>
           <div class="card-actions justify-end">
-            <button class="btn btn-md btn-warning gap-2"><iconify-icon icon="ri:check-line"/> Delete profile</button>
+            <button class="btn btn-sm btn-warning gap-2">Delete profile</button>
           </div>
         </div>
       </div>
-      <div class="card bg-white w-full mt-4 shadow-xl">
+      <div class="card card-compact bg-white w-full shadow">
         <div class="card-body">
           <h3 class="card-title">Delete account</h3>
           <p>
             This option will eliminate your account entirely with all data. You’ll get a chance to confirm your choice.
           </p>
           <div class="card-actions justify-end">
-            <button class="btn btn-md btn-error gap-2"><iconify-icon icon="ri:delete-bin-7-line"/> Delete account</button>
+            <button class="btn btn-sm btn-error gap-2"><iconify-icon icon="ri:delete-bin-7-line"/> Delete account</button>
           </div>
         </div>
       </div>
