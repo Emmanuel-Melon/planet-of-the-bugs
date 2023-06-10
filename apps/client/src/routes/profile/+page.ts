@@ -13,7 +13,7 @@ export const load = async (event) => {
 
   const { session } = await parent();
 
-  if(session?.token !== null || session?.token !== undefined) {
+  if (session?.token !== null || session?.token !== undefined) {
     GITHUB_API.setSession(session?.token?.accessToken);
   }
   const githubClient = GITHUB_API.getGithubClient();
@@ -22,34 +22,42 @@ export const load = async (event) => {
     query: GITHUB_USER_BASIC_INFO,
   });
 
-  const [contributedTo, pinnedItems, ownedRepos] = await Promise.all([
-    await githubClient.query({
+  const [contributedTo, pinnedItems, ownedRepos, subscribedRepos] = await Promise.all([
+    githubClient.query({
       query: REPOS_CONTRIBUTED_TO,
     }),
-    await githubClient.query({
+    githubClient.query({
       query: GET_PINNED_ITEMS,
       variables: {
         login: data?.viewer?.login,
       },
     }),
-    await githubClient.query({
+    githubClient.query({
       query: GET_USER_REPOS,
       variables: {
         login: data?.viewer?.login
       }
+    }),
+    apolloClient.query({
+      query: GET_SUBSCRIBED_REPOS,
+      variables: {
+        user_id: "fae379cf-4387-4dac-a5af-bf092734a464",
+      },
     })
   ]);
 
   const { data: contributionData } = contributedTo;
   const { data: topRepoData } = pinnedItems;
   const { data: repositories } = ownedRepos;
-
+  const { data: subscribedTo } = subscribedRepos;
+  
   return {
     user: {
       ...data,
     },
     contributedTo: { ...contributionData.viewer.repositoriesContributedTo },
     pinnedItems: topRepoData.user.pinnedItems,
-    repositories: repositories?.user?.repositories
+    repositories: repositories?.user?.repositories,
+    subscribedTo: subscribedTo?.user_subscribed_repos
   };
 }
