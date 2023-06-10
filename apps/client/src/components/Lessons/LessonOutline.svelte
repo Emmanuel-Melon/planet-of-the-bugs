@@ -7,8 +7,8 @@
 
 <section>
   <div class="card card-compact bg-white shadow">
-    <div class="card-body prose prose-sm">
-      <div class="w-full">
+    <div class="card-body">
+      <div class="w-full space-y-4">
         {#each chapters as chapter}
           <ChapterOverview {chapter} {course} />
         {/each}

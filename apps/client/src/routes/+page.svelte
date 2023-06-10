@@ -1,14 +1,14 @@
 <script>
-  import { signIn, signOut } from '@auth/sveltekit/client';
-  import { page } from '$app/stores';
-  import { onMount, onDestroy } from 'svelte';
-  import { query } from 'svelte-apollo';
-  import { FETCH_COURSES } from '$lib/graphql/queries/courses';
-  import ContributionsStats from '$components/User/ContributionsStats.svelte';
+  import { signIn, signOut } from "@auth/sveltekit/client";
+  import { page } from "$app/stores";
+  import { onMount, onDestroy } from "svelte";
+  import { query } from "svelte-apollo";
+  import { FETCH_COURSES } from "$lib/graphql/queries/courses";
+  import ContributionsStats from "$components/User/ContributionsStats.svelte";
   let user;
-  import 'iconify-icon';
+  import "iconify-icon";
 
-  import ChoicesPanes from '$components/ChoicesPanes.svelte';
+  import ChoicesPanes from "$components/ChoicesPanes.svelte";
 
   const courses = query(FETCH_COURSES);
 
@@ -24,73 +24,99 @@
 
 <svelte:head>
   <title>Home</title>
-  <meta name="description" content="Svelte demo app" />
+  <meta name="description" content="Planet of the Bugs uses AI to generate fake bug scenarios for developers to learn debugging skills and the fundamentals of writing secure and robust software. By using AI, the app can provide an endless supply of unique scenarios, allowing developers to practice and hone their skills." />
 </svelte:head>
 
 <section class="p-4">
   <div>
     <div class="mb-4">
       <h3 class="flex items-center gap-2">
-        <iconify-icon icon="heroicons:academic-cap-solid" />
+        <iconify-icon icon="ri:graduation-cap-line" />
         Continue Learning
       </h3>
     </div>
-    <div class="card bg-white w-full shadow-lg p-4">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div>
-          <h1>Introduction to Debugging</h1>
-          <progress
-            class="progress progress-success w-56"
-            value="70"
-            max="100"
-          />
+    <div class="card card-compact bg-white w-full shadow">
+      <div class="card-body">
+        <h2 class="card-title">Introduction to Debugging</h2>
+        <progress class="progress progress-success w-56" value="70" max="100" />
+        <div class="card-actions justify-end gap-2">
+          <button class="btn btn-sm btn-primary">Hunt Bugs &amp; Issues</button>
         </div>
-        <button class="btn btn-sm btn-primary mt-2 md:mt-0">Continue Training</button>
       </div>
     </div>
   </div>
 </section>
 
 <section class="flex flex-col md:flex-row p-4 gap-4">
-  <div class="basis-2/5">
-    <div class="mb-4">
-      <h3 class="flex items-center gap-2">
-        <iconify-icon icon="ri:bug-line" />
-        Issues/ Bugs
-      </h3>
+  <div class="card card-compact bg-white w-full shadow">
+    <div class="card-body space-y-2">
+      <div class="flex justify-between items-center">
+        <h2 class="card-title">        <iconify-icon icon="ri:git-repository-line" />
+          Subscribed Repositories</h2>
+
+      <div>
+        <a href="/repositories/subscribed" class="link">See all</a>
+      </div>
     </div>
-    <div class="card bg-white w-full shadow-lg p-4">
-      <div class="flex flex-col xl:flex-row justify-between items-center">
-        <div>
-          <h1>Introduction to Debugging</h1>
-          <progress
-            class="progress progress-success w-56"
-            value="70"
-            max="100"
-          />
+      <div class="stats stats-vertical lg:stats-horizontal">
+
+        <div class="stat">
+          <div class="stat-title">Downloads</div>
+          <div class="stat-value">31K</div>
+          <div class="stat-desc">Jan 1st - Feb 1st</div>
         </div>
-        <button class="btn btn-sm btn-primary mt-2 lg:mt-0">Hunt Bugs &amp; Issues</button>
+        
+        <div class="stat">
+          <div class="stat-title">New Users</div>
+          <div class="stat-value">4,200</div>
+          <div class="stat-desc">↗︎ 400 (22%)</div>
+        </div>
+        
+        <div class="stat">
+          <div class="stat-title">New Registers</div>
+          <div class="stat-value">1,200</div>
+          <div class="stat-desc">↘︎ 90 (14%)</div>
+        </div>
+        
+      </div>
+      <div class="card-actions justify-end gap-2">
+        <button class="btn btn-sm btn-primary">Hunt Bugs &amp; Issues</button>
       </div>
     </div>
   </div>
-  <div class="basis-2/5">
-    <div class="mb-4">
-      <h3 class="flex items-center gap-2">
-        <iconify-icon icon="ri:bug-line" />
-        Issues/ Bugs
-      </h3>
+  <div class="card card-compact bg-white w-full shadow">
+    <div class="card-body space-y-2">
+      <div class="flex justify-between items-center">
+        <h2 class="card-title">        <iconify-icon icon="ri:git-repository-line" />
+          Subscribed Repositories</h2>
+
+      <div>
+        <a href="/repositories/subscribed" class="link">See all</a>
+      </div>
     </div>
-    <div class="card bg-white w-full shadow-lg p-4">
-      <div class="flex flex-col xl:flex-row justify-between items-center">
-        <div>
-          <h1>Introduction to Debugging</h1>
-          <progress
-            class="progress progress-success w-56"
-            value="70"
-            max="100"
-          />
+      <div class="stats stats-vertical lg:stats-horizontal">
+
+        <div class="stat">
+          <div class="stat-title">Downloads</div>
+          <div class="stat-value">31K</div>
+          <div class="stat-desc">Jan 1st - Feb 1st</div>
         </div>
-        <button class="btn btn-sm btn-primary mt-2 lg:mt-0">Hunt Bugs &amp; Issues</button>
+        
+        <div class="stat">
+          <div class="stat-title">New Users</div>
+          <div class="stat-value">4,200</div>
+          <div class="stat-desc">↗︎ 400 (22%)</div>
+        </div>
+        
+        <div class="stat">
+          <div class="stat-title">New Registers</div>
+          <div class="stat-value">1,200</div>
+          <div class="stat-desc">↘︎ 90 (14%)</div>
+        </div>
+        
+      </div>
+      <div class="card-actions justify-end gap-2">
+        <button class="btn btn-sm btn-primary">Hunt Bugs &amp; Issues</button>
       </div>
     </div>
   </div>
