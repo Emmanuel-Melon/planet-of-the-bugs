@@ -5,7 +5,7 @@
   import RepositoriesContributedTo from "$components/User/RepositoriesContributedTo.svelte";
   import { page } from "$app/stores";
   import { onMount } from "svelte";
-  import Tabs from "$components/Tabs.svelte";
+  import Tabs from "$components/ProfileTabs.svelte";
   import OwnedRepositories from "$components/Repositories/OwnedRepositories.svelte";
   import SubscribedRepositories from "$components/Repositories/SubscribedRepositories.svelte";
   import UserPinnedItems from "$components/User/UserPinnedItems.svelte";
