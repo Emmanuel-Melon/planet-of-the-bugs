@@ -3,7 +3,7 @@
   import LessonCreator from '$components/Lessons/LessonCreator.svelte';
   import LessonCreatorPreview from '$components/Lessons/LessonCreatorPreview.svelte';
   import Tabs from '$components/ProfileTabs.svelte';
-  import { ADD_LESSON } from '$lib/graphql/mutations//lessons';
+  import { ADD_LESSON } from '$lib/graphql/mutations/courses';
   import { mutation } from 'svelte-apollo';
   const addLesson = mutation(ADD_LESSON);
 
@@ -228,6 +228,10 @@
       </div>
     </div>
   {:else}
+<<<<<<< HEAD
     <div class="card shadow justify-center items-center min-h-16">Please Select a Chapter to edit</div>
+=======
+    <div>Please Select a Chapter to edit</div>
+>>>>>>> a6be53a (Major changes to manage course UI & logic)
   {/if}
 </div>

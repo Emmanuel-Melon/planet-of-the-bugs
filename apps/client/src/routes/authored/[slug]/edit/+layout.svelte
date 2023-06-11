@@ -53,3 +53,11 @@
   </div>
   
 </section>
+<!-- <section>
+</section>
+<section class="flex flex-col lg:flex-row gap-2">
+  <div class="flex flex-col space-y-4 basis-1/4">Course Chapters List</div>
+  <div class="basis-3/4 space-y-2">
+    <slot />
+  </div>
+</section> -->

@@ -127,6 +127,6 @@
       </div>
     </div>
   {:else}
-    <div class="card shadow justify-center items-center min-h-16">Please Select a Chapter to edit</div>
+    <div>Please Select a Chapter to edit</div>
   {/if}
 </div>
