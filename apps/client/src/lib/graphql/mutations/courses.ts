@@ -14,23 +14,6 @@ mutation addNewChapter($chapterInput: course_chapters_insert_input!) {
 }
 `;
 
-export const ADD_LESSON = gql`
-mutation addNewLesson($lessonInput: lessons_insert_input!) {
-  insert_lessons_one(object: $lessonInput) {
-    content
-    description
-    index
-    title
-    type
-    XP
-    chapter_id
-    created_at
-    id
-  }
-}
-`;
-
-
 
 export const CREATE_COURSE = gql`
   mutation insertCoursesOne($courseInput: courses_insert_input!) {
