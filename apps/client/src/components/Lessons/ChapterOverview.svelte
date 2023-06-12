@@ -7,12 +7,12 @@
   import "iconify-icon";
 </script>
 
-<div class="w-full">
+<div class="w-full space-y-4">
   <div
-    class="w-full flex flex-col md:flex-row md:space-y-0 justify-between items-center"
+    class="w-full flex flex-col md:flex-row justify-between items-center space-y-4"
   >
-    <div>
-      <h3 class="flex items-center gap-2 text-primary"><iconify-icon icon="ri:award-line" /> {chapter.title}</h3>
+    <div class="space-y-4">
+      <h3 class="text-xl text-primary">{chapter.title}</h3>
       <p>{chapter.description}</p>
     </div>
 

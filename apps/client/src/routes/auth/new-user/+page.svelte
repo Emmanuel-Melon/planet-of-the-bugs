@@ -62,7 +62,7 @@
     </ul>
   </div>
   <div class="flex justify-center items-center gap-4">
-    <div class="card shadow-md w-2/5">
+    <div class="card card-compact shadow w-2/5">
       <div class="card-body space-y-2">
         <h2 class="card-title"> Let's Get to Know You!</h2>
         <p>Hey there! To get started on this awesome journey together, we'd love to learn a bit more about you.</p>

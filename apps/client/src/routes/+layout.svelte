@@ -5,6 +5,9 @@
   import apolloClient from "$lib/graphql/apolloClient";
   import "../app.css";
   setClient(apolloClient);
+  import "iconify-icon";
+
+  //     { text: "About", path: "/about", icon: "ri:information-line" },
   
 </script>
 
@@ -23,6 +26,7 @@
     on:sveltekit:navigation-end={() => {
         console.log('Navigation ended!');
     }}
+    
 />
 
 <div class="app space-y-2">
@@ -30,6 +34,13 @@
   <main class="space-y-4">
     <slot />
   </main>
+  <footer class="flex items-center justify-center p-2 bg-base-200">
+    <div class="flex gap-2">
+      <a class="link" target="_blank" href="https://support.planetofthebugs.xyz">Support</a>
+      <a class="link" target="_blank" href="https://github.com/Emmanuel-Melon/planet-of-the-bugs">Contribute</a>
+      <a class="link" href="/about">About</a>
+    </div>
+  </footer>
 </div>
 
 <style>

@@ -14,10 +14,10 @@
     (activeTabValue = tabValue);
 </script>
 
-<div class="tabs tabs-boxed gap-2 w-full grow rounded-none bg-base-100">
+<div class="tabs tabs-boxed gap-2 w-full grow rounded-none shadow">
   {#each items as item}
     <button
-      class={`tab tab-lg gap-2 flex items-center hover:bg-base-200 ${
+      class={`tab tab-lg gap-2 flex items-center hover:bg-base-100 ${
         activeTabValue === item.value ? "tab-active" : ""
       }`}
       on:click={handleTabClick(item.value)}

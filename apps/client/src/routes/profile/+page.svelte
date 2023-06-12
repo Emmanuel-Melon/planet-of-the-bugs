@@ -7,7 +7,7 @@
   import { onMount } from "svelte";
   import Tabs from "$components/Tabs.svelte";
   import OwnedRepositories from "$components/Repositories/OwnedRepositories.svelte";
-  import SubscrbedRepositories from "$components/Repositories/SubscrbedRepositories.svelte";
+  import SubscribedRepositories from "$components/Repositories/SubscribedRepositories.svelte";
   import UserPinnedItems from "$components/User/UserPinnedItems.svelte";
   let user;
 
@@ -38,7 +38,7 @@
     {
       label: "Subscribed Repositories",
       value: 3,
-      component: SubscrbedRepositories,
+      component: SubscribedRepositories,
       props: {
         repositories: data.contributedTo,
         user: data.user.viewer,
@@ -65,7 +65,7 @@
         image={data.session?.user?.image || {}}
       />
     </div>
-    <div class="lg:w-2/3">
+    <div class="lg:w-2/3 space-y-2">
       <UserGithubStats user={data.user.viewer} />
       <div class="gap-y-3">
         <Tabs {items} />
