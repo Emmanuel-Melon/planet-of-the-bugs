@@ -228,10 +228,6 @@
       </div>
     </div>
   {:else}
-<<<<<<< HEAD
     <div class="card shadow justify-center items-center min-h-16">Please Select a Chapter to edit</div>
-=======
-    <div>Please Select a Chapter to edit</div>
->>>>>>> a6be53a (Major changes to manage course UI & logic)
   {/if}
 </div>
