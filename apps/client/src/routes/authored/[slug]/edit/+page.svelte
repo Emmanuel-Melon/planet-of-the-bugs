@@ -1,6 +1,6 @@
 <script lang="ts">
   export let data;
-  let { slug, course } = data;
+  let { course } = data;
   import {selectedTab} from './selectedTabStore'
   import ManageChapterCard from '$components/Chapters/ManageChapterDetails.svelte';
   import ManageCourseDetailsCard from '$components/Courses/ManageCourseDetails.svelte';
