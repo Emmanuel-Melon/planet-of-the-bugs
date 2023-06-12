@@ -1,6 +1,7 @@
 <script>
     import "iconify-icon";
     export let lesson;
+    import { Card } from "svelte-ui";
 </script>
 
 
@@ -10,10 +11,10 @@
         <p>Go Back to Course</p>
     </div>
     
-    <div class="card card-compact">
+    <Card>
         <div class="card-body">
             <h2 class="card-title">{lesson.title}</h2>
             <progress class="progress progress-info w-56" value="40" max="100"></progress>
         </div>
-    </div>
+    </Card>
 </div>
