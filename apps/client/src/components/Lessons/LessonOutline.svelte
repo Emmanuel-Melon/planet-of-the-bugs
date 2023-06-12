@@ -1,5 +1,5 @@
 <script>
-  import ChapterOverview from "./ChapterOverview.svelte";
+  import ChapterOverview from "../Chapters/ChapterOverview.svelte";
   export let chapters;
   export let active;
   export let course;
