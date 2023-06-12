@@ -6,6 +6,7 @@
   import { ADD_LESSON } from '$lib/graphql/mutations/courses';
   import { mutation } from 'svelte-apollo';
   const addLesson = mutation(ADD_LESSON);
+  import { Card } from "svelte-ui";
 
   export let courseId: string;
   export let chapters: Array<Object>;
@@ -105,7 +106,7 @@
   </div>
 
   {#if isChapterSelected && isLessonSelected}
-    <div class="card card-compact shadow space-y-4">
+    <Card>
       <div class="card-body space-y-2">
         <form class="w-full">
           <div class="flex flex-col md:flex-row justify-between items-center">
@@ -186,9 +187,9 @@
           </div>
         </form>
       </div>
-    </div>
+    </Card>
 
-    <div class="card bg-white w-full mt-4 shadow-xl">
+    <Card>
       <div class="card-body">
         <h2>Lesson Content</h2>
 
@@ -206,9 +207,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </Card>
 
-    <div class="card bg-white w-full mt-4 shadow-xl">
+    <Card>
       <div class="card-body">
         <h3 class="card-title">Delete Lesson</h3>
         <p>
@@ -226,7 +227,7 @@
           >
         </div>
       </div>
-    </div>
+    </Card>
   {:else}
     <div class="card shadow justify-center items-center min-h-16">Please Select a Chapter to edit</div>
   {/if}

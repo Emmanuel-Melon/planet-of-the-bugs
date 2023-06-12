@@ -1,5 +1,6 @@
 <script lang="ts">
   import { selectedTab } from './selectedTabStore';
+  import { Card } from "svelte-ui";
   // /** @type {import('./$types').PageData} */
   export let data;
   let { slug, course } = data;
@@ -23,29 +24,31 @@
   $: course;
 </script>
 
-<section class="mx-auto w-11/12 lg:w-3/4">
-  <div
-    class="card bg-white border-b-2 border-double shadow-md border-slate-200 p-4 flex mb-2"
-  >
-    <h1 class="flex items-center gap-2">
-      <iconify-icon icon="ri:settings-5-line" /> Manage Course
-    </h1>
-  </div>
+<section class="mx-auto w-11/12 lg:w-3/4 space-y-2">
+  <Card>
+    <div class="card-body">
+      <h1 class="card-title gap-2">
+        <iconify-icon icon="ri:settings-5-line" /> Manage Course
+      </h1>
+    </div>
+  </Card>
   <div class="flex flex-col md:flex-row w-full gap-2">
     <div class="basis-2/5 grow">
-      <div class="card bg-white w-full border-e shadow-xl p-4">
-        <ul class="menu bg-transparent w-full">
-          {#each tabs as { id, name }}
-            <li>
-              <button
-                on:click={() => handleTabChange(id)}
-                class={selectedTabValue === id ? 'active bg-secondary' : ''}
-                >{name}</button
-              >
-            </li>
-          {/each}
-        </ul>
-      </div>
+      <Card>
+        <div class="card-body">
+          <ul class="menu bg-transparent w-full">
+            {#each tabs as { id, name }}
+              <li>
+                <button
+                  on:click={() => handleTabChange(id)}
+                  class={selectedTabValue === id ? 'active bg-secondary' : ''}
+                  >{name}</button
+                >
+              </li>
+            {/each}
+          </ul>
+        </div>
+      </Card>
     </div>
     <div class="basis-3/5 grow mb-10">
       <slot />
