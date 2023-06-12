@@ -1,4 +1,5 @@
 <script>
+  import { PageHeader } from "svelte-ui";
   const issues = [
     {
       id: 1,
@@ -19,18 +20,9 @@
   import "iconify-icon";
 </script>
 
-<section class="space-y-4">
-  <div class="card card-compact bg-base-200 w-full shadow">
-    <div class="card-body">
-      <div class="prose prose-sm text-center mx-auto w-full space-y-2">
-        <h1 class="text-center text-2xl w-fit mx-auto"> BugsHub</h1>
-        <p>
-          Enhance your coding skills by solving real-life issues from open-source
-          repositories
-        </p>
-      </div>
-    </div>
-  </div>
+<PageHeader heading="BugsHub"  description="Enhance your coding skills by solving real-life issues from open-source
+repositories" />
+<section class="space-y-4 p-4">
   <div class="flex flex-col md:flex-row gap-2">
     <div class="grow">
       <div class="card card-compact shadow w-full">

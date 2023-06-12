@@ -14,7 +14,6 @@
   }
 
   const handleSubmit = async () => {
-    console.log('yoooo');
     try {
       const result = await addChapter({
         variables: {
@@ -84,7 +83,7 @@
       <div class="modal-action flex justify-end">
         <button class="btn btn-sm btn-primary gap-2">
           <iconify-icon icon="ri:add-line" />
-          Add Chapter
+          Save Chapter
         </button>
       </div>
     </form>

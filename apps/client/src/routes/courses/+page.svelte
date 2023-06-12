@@ -7,6 +7,7 @@
   import CourseCard from "$components/CourseCard.svelte";
   import SearchBar from "$components/SearchBar.svelte";
   import SidebarFilter from "$components/SidebarFilter.svelte";
+  import { PageHeader } from "svelte-ui";
   let { user } = data;
 
   const courses = query(FETCH_COURSES);
@@ -16,34 +17,27 @@
   });
   $: courses.refetch();
 
-const criteria = [
+  const criteria = [
     {
       id: 1,
       title: "Complexity",
-      icon: "ri:bar-chart-2-line"
+      icon: "ri:bar-chart-2-line",
     },
     {
       id: 2,
       title: "Duration",
-      icon: "ri:time-line"
-    }
+      icon: "ri:time-line",
+    },
   ];
 
   $: user;
 </script>
 
-<section class="h-max min-h-full space-y-4">
-  <div class="card card-compact bg-base-200 w-full shadow" >
-    <div class="card-body">
-      <div class="prose prose-sm text-center mx-auto w-full space-y-2">
-        <h1 class="text-center text-2xl w-fit mx-auto">Explore the Planet of Bugs</h1>
-        <p>Discover a world of software defects, debugging techniques, and programming pitfalls. Join our community of curious developers and learn how to track down and squash those pesky bugs.</p>
-        <div class="flex items-center justify-center">
-          <SearchBar />
-        </div>
-      </div>
-    </div>
-  </div>
+<PageHeader
+  description="Discover a world of software defects, debugging techniques, and programming pitfalls. Join our community of curious developers and learn how to track down and squash those pesky bugs."
+  heading="Explore the Planet of Bugs"
+/>
+<section class="h-max min-h-full space-y-4 p-4">
   <div class="flex flex-col lg:flex-row gap-2">
     <div class="gap-2 grow bg-base-200 shadow">
       <SidebarFilter {criteria} CTA="Filter Courses" />
@@ -57,7 +51,7 @@ const criteria = [
         <div class="card bg-black text-white">
           <div class="card-body">
             <h2 class="card-title">Loading</h2>
-            <span class="loading loading-bars loading-lg"></span>
+            <span class="loading loading-bars loading-lg" />
           </div>
         </div>
       {/if}

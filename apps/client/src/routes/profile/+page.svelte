@@ -57,7 +57,7 @@
   ];
 </script>
 
-<section class="w-full">
+<section class="w-full p-4">
   <div class="flex flex-col lg:flex-row gap-2">
     <div class="lg:w-1/3">
       <UserProfileCard

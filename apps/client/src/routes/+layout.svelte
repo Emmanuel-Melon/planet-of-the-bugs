@@ -29,7 +29,7 @@
     
 />
 
-<div class="app space-y-2">
+<div class="app">
   <Header />
   <main class="space-y-4">
     <slot />
