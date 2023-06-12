@@ -55,7 +55,7 @@
     <div class="dropdown dropdown-end lg:hidden">
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
       <div tabindex="0" class="btn btn-ghost btn-circle text-3xl">
-        <iconify-icon icon="heroicons:bars-3-bottom-right-20-solid" />
+        <iconify-icon icon="ri:logout-circle-line" />
       </div>
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
       <ul
@@ -88,7 +88,7 @@
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <ul
           tabindex="0"
-          class="menu menu-compact dropdown-content mt-3 p-2 shadow-lg rounded-box w-52 bg-base-100"
+          class="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52 bg-base-100"
         >
           {#each dropdownLinks as { text, path, icon }}
             <li>
@@ -96,7 +96,7 @@
             </li>
           {/each}
           <li>
-            <button on:click|preventDefault={() => signOut()}><iconify-icon icon="heroicons:arrow-right-on-rectangle-20-solid" /> Sign Out</button>
+            <button on:click|preventDefault={() => signOut()}><iconify-icon icon="ri:logout-circle-line" /> Sign Out</button>
           </li>
         </ul>
       {:else}
