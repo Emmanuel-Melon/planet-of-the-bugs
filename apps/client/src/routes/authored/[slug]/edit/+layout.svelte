@@ -1,25 +1,25 @@
 <script lang="ts">
-  import { selectedTab } from './selectedTabStore';
+  import { selectedTab } from "./selectedTabStore";
   import { Card } from "svelte-ui";
   // /** @type {import('./$types').PageData} */
   export let data;
-  let { slug, course } = data;
+  let { course } = data;
 
   let selectedTabValue: number;
 
-  selectedTab.subscribe(value => {
+  selectedTab.subscribe((value) => {
     selectedTabValue = value;
   });
 
   const tabs = [
-    { id: 1, name: 'Course Details' },
-    { id: 2, name: 'Chapter Details' },
-    { id: 3, name: 'Lesson Details' },
+    { id: 1, name: "Course Details" },
+    { id: 2, name: "Chapter Details" },
+    { id: 3, name: "Lesson Details" },
   ];
 
   const handleTabChange = (id: number) => {
-    selectedTab.set(id)
-  }
+    selectedTab.set(id);
+  };
 
   $: course;
 </script>
@@ -41,7 +41,7 @@
               <li>
                 <button
                   on:click={() => handleTabChange(id)}
-                  class={selectedTabValue === id ? 'active bg-secondary' : ''}
+                  class={selectedTabValue === id ? "active bg-secondary" : ""}
                   >{name}</button
                 >
               </li>
@@ -54,7 +54,6 @@
       <slot />
     </div>
   </div>
-  
 </section>
 <!-- <section>
 </section>
