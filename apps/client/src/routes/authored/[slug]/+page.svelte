@@ -26,7 +26,7 @@
 
 </script>
 
-<section>
+<section class="p-4">
   <div
     class="card h-fit basis-1/3 grow bg-white shadow-md max-w-screen-sm md:max-w-[360px] lg:max-w-sm xl:max-w-lg"
   >

@@ -2,6 +2,7 @@
   export let user;
   export let image;
   import "iconify-icon";
+  import { Button, Card } from "svelte-ui";
   const colorMap = {
     isBountyHunter: "pink",
     isCampusExpert: "blue",
@@ -53,8 +54,8 @@
   <div class="card-body space-y-2">
     <div class="flex items-center gap-4">
       <div class="avatar indicator">
-        <span class="indicator-item badge badge-lg badge-secondary">Hirable</span> 
-        <div class="w-24 rounded-full ring  ring-offset-base-100 ring-offset-2">
+        <span class="indicator-item badge badge-lg badge-accent">Hirable</span> 
+        <div class="w-24 rounded-md shadow">
           <img src={image} alt={user.login} />
         </div>
       </div>
@@ -68,15 +69,22 @@
         </span>
       </div>
     </div>
-    <p class="text-xl font-bold">{user.bio}</p>
-   <div class="card-actions gap-2 justify-end">
-    <button class="btn btn-sm btn-outline gap-2">
-      <iconify-icon icon="ri:chat-new-line"/>
-      Message
-    </button>
-    <button class="btn btn-sm btn-primary gap-2">
-      <iconify-icon icon="ri:user-add-line" /> 
-      Follow</button>
+    <p>{user.bio}</p>
+   <div class="card-actions justify-between">
+    <div class="gap-2">
+      <button class="btn btn-sm btn-outline gap-2">
+        <iconify-icon icon="ri:chat-new-line"/>
+        Message
+      </button>
+      <button class="btn btn-sm btn-primary gap-2">
+        <iconify-icon icon="ri:user-add-line" /> 
+        Follow</button>
+    </div>
+    <div class="gap-2">
+      <button class="btn btn-sm btn-outline btn-circle ">
+        <iconify-icon icon="ri:more-2-line" /> 
+      </button>
+    </div>
    </div>
     <div class="divider">Basic Info</div>
     <ul class="space-y-2">

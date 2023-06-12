@@ -24,7 +24,7 @@
   $: course;
 </script>
 
-<section class="mx-auto w-11/12 lg:w-3/4 space-y-2">
+<section class="mx-auto w-11/12 lg:w-3/4 space-y-2 p-4">
   <Card>
     <div class="card-body">
       <h1 class="card-title gap-2">

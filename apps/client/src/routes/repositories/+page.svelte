@@ -2,6 +2,7 @@
   export let data;
   import { page } from "$app/stores";
   import { onMount, onDestroy } from "svelte";
+  import { PageHeader } from "svelte-ui";
 
   import LessonCreator from "$components/Lessons/LessonCreator.svelte";
   import ContributionsStats from "$components/User/ContributionsStats.svelte";
@@ -33,34 +34,18 @@
   ];
 </script>
 
-<section>
-  <div
-    class="card bg-base-200 w-full shadow"
-  >
-    <div class="card-body">
-      <div class="flex flex-col md:flex-row justify-center items-center">
-        <div class="prose prose-sm">
-          <h1 class="card-title text-center text-2xl w-fit mx-auto">Practice makes perfect!</h1>
-          <p>
-            Take your newly learned skills to the next level by practicing on
-            real-world issues from Github? By subscribing to a Github repo, you
-            can receive issues with labels that match your interests such as
-            language, bug, good-first-issue, or even bounty.
-          </p>
-        </div>
-      </div>
+<PageHeader description="Take your newly learned skills to the next level by practicing on
+real-world issues from Github? By subscribing to a Github repo, you
+can receive issues with labels that match your interests such as
+language, bug, good-first-issue, or even bounty." heading="Practice makes perfect!" />
+<section class="p-4">
+  <div class="flex flex-col lg:flex-row gap-2">
+    <div class="grow">
+      <SidebarFilter CTA="Filter Repositories" {criteria} />
     </div>
+    <RepositoryRecommendations
+      repositories={data.repositories?.data?.edges}
+      user={data.repositories?.user}
+    />
   </div>
-  <section class="mt-2">
-    <div class="flex flex-col lg:flex-row gap-2">
-      <div class="grow">
-        <SidebarFilter CTA="Filter Repositories" {criteria} />
-      </div>
-      <RepositoryRecommendations
-        repositories={data.repositories?.data?.edges}
-        user={data.repositories?.user}
-      />
-    </div>
-  </section>
-  <PaginationComponent />
 </section>
