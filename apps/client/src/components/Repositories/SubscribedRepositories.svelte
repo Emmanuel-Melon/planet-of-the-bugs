@@ -2,20 +2,18 @@
     import "iconify-icon";
     export let repositories;
     export let user;
-
-    console.log(repositories);
   </script>
   
   <div class="flex gap-2 basis-4/5 flex-wrap">
-    {#each repositories.nodes as repo}
+    {#each repositories as repo}
     <div class="card card-compact basis-2/5 grow bg-white shadow">
       <div class="card-body space-y-2">
-        <h3 class="card-title">{repo.name}</h3>
+        <h3 class="card-title">{repo?.repo_name}</h3>
         <div class="divider">Contributions</div>
         <div class="stats">          
           <div class="stat place-items-center">
             <div class="stat-title">Pull Requests</div>
-            <div class="stat-value text-secondary">4,200</div>
+            <div class="stat-value">4,200</div>
           </div>
           
           <div class="stat place-items-center">

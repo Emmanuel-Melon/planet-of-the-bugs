@@ -4,20 +4,11 @@
   export let userId;
   import StartCourseButton from "$components/StartCourseButton.svelte";
   import "iconify-icon";
-  const src =
-    "https://cloud.appwrite.io/v1/storage/buckets/64693e8a74abbc579060/files/6469466101af50b3e087/view?project=646376283eca78018cd9&mode=admin";
 </script>
 
 <div
-  class="card h-96 basis-1/3 grow bg-white shadow max-w-screen-sm md:max-w-[360px] lg:max-w-sm xl:max-w-lg"
+  class="card card-compact basis-1/3 grow bg-white shadow max-w-screen-sm md:max-w-[360px] lg:max-w-sm xl:max-w-lg"
 >
-  <figure class="h-full">
-    <img
-      class="shadow-xl border-4 border-primary border-double"
-      src={course?.cover || src}
-      alt={course.title}
-    />
-  </figure>
   <div class="card-body space-y-2">
     <div class="flex gap-3">
       <div class="w-full flex justify-between items-center">
