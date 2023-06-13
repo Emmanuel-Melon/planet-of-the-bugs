@@ -10,7 +10,7 @@
     <div class="card card-compact basis-2/5 grow bg-white shadow">
       <div class="card-body space-y-2">
         <div class="flex items-center justify-between">
-          <h3 class="card-title text-primary">{repo.name}</h3>
+          <h3 class="card-title">{repo.name}</h3>
           <div class="flex items-center justify-center gap-2">
             <div class="badge badge-lg badge-accent flex gap-2 items-center">
               <iconify-icon icon="ri:star-line" />

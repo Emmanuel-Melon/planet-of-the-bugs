@@ -70,12 +70,18 @@
 
   onMount(() => {
     if (currentUser !== null || currentUser !== undefined) {
-      setLoggedInUser({ name: "user", ...currentUser, ...user.viewer });
+      setLoggedInUser({ ...currentUser, ...user.viewer });
     }
   });
 
   onDestroy(unsubscribe);
+
+  // check the store
+  // redirect/ fallback 
+  // 
+
 </script>
+
 
 <div class="flex flex-col lg:flex-row gap-2">
   <div class="lg:w-1/3">

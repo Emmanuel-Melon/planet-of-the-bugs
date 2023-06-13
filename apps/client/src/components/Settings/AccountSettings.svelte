@@ -8,7 +8,7 @@
 <div class="basis-3/4 space-y-4">
   <div class="card card-compact bg-white w-full shadow">
     <div class="card-body">
-      <h3 class="card-title text-primary">Password Management</h3>
+      <h3 class="card-title">Password Management</h3>
       <p>Change or manage your passwords.</p>
       <form>
         <div class="form-control w-full">
@@ -42,7 +42,7 @@
 
   <div class="card card-compact bg-white w-full shadow">
     <div class="card-body">
-      <h3 class="card-title text-primary">Social Accounts</h3>
+      <h3 class="card-title">Social Accounts</h3>
       <p>Connect your social accounts.</p>
       <div class="flex  gap-2">
         <Button CTA="Add GitHub" icon="ri:github-line" onClick={connectGithub} bg="base-200" />
