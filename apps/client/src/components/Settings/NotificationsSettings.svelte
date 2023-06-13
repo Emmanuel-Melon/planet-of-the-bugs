@@ -24,7 +24,7 @@
 <div class="basis-3/4">
   <Card>
     <div class="card-body">
-      <h3 class="card-title">Notifications</h3>
+      <h3 class="card-title text-primary">Notifications</h3>
       <p>Manage your notification settings</p>
       <form>
         {#each options as { description, status }}

@@ -4,7 +4,7 @@
 <div class="basis-3/4 space-y-4">
     <div class="card card-compact bg-white w-full shadow">
       <div class="card-body">
-        <h3 class="card-title">Basic Info</h3>
+        <h3 class="card-title text-primary">Basic Info</h3>
         <div class="form-control w-full">
           <label class="label" for="name">
             <span class="label-text">What is your name?</span>

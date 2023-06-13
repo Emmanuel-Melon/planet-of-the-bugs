@@ -9,7 +9,7 @@
   };
   export let items: TabItem[] = [];
   export let activeTabValue = 1;
-  export let icon = "heroicons:star";
+  export let icon = "ri:star-line";
   const handleTabClick = (tabValue: TabItem["value"]) => () =>
     (activeTabValue = tabValue);
 </script>

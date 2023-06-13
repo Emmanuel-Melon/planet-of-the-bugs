@@ -8,7 +8,7 @@
     {#each repositories as repo}
     <div class="card card-compact basis-2/5 grow bg-white shadow">
       <div class="card-body space-y-2">
-        <h3 class="card-title">{repo?.repo_name}</h3>
+        <h3 class="card-title text-primary">{repo?.repo_name}</h3>
         <div class="divider">Contributions</div>
         <div class="stats">          
           <div class="stat place-items-center">

@@ -1,7 +1,7 @@
 <script>
   export let CTA = "Filter By";
   export let criteria = [];
-  export let icon = "heroicons:star";
+  export let icon = "ri:star-line";
   import "iconify-icon";
   import { Card } from "svelte-ui";
   export let filter = false;

@@ -55,7 +55,7 @@
     <div class="flex items-center gap-4">
       <div class="avatar indicator">
         <span class="indicator-item badge badge-lg badge-accent">Hirable</span> 
-        <div class="w-24 rounded-md shadow">
+        <div class="w-24  mask mask-squircle shadow">
           <img src={image} alt={user.login} />
         </div>
       </div>
