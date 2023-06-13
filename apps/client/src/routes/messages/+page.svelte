@@ -57,23 +57,26 @@
   ];
 </script>
 
-<section class="card bg-white w-full mx-auto border-2 border-gray-200 shadow-xl">
-  <div class="flex w-full">
-    <div class="basis-2/5 border-r-2 border-gray-200">
-      <div class="flex justify-between items-center p-3 border-b-2 border-gray-200">
-        <div>
-          <h3>My Conversations</h3>
+<section class="mx-auto p-4">
+  <div class="card bg-white w-full border-2 border-gray-200">
+    <div class="flex w-full">
+      <div class="basis-2/5 border-r-2 border-gray-200">
+        <div class="flex justify-between items-center p-3 border-b-2 border-gray-200">
+          <div>
+            <h3>My Conversations</h3>
+          </div>
+          <NewConversationModal />
         </div>
-        <NewConversationModal />
+        <ChatList {chats} />
       </div>
-      <ChatList {chats} />
-    </div>
-    <div class="flex basis-3/5 items-center">
-      <div class="">
-        <ConversationMenu />
-        <Conversation />
-        <ChatInput />
+      <div class="flex basis-3/5 items-center">
+        <div class="">
+          <ConversationMenu />
+          <Conversation />
+          <ChatInput />
+        </div>
       </div>
     </div>
   </div>
+  
 </section>

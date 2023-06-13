@@ -1,30 +1,32 @@
 <script lang="ts">
-  import { selectedTab } from './selectedTabStore';
+  import { onDestroy } from "svelte";
+  import { selectedTab } from "./selectedTabStore";
   import { Card } from "svelte-ui";
   // /** @type {import('./$types').PageData} */
   export let data;
-  let { slug, course } = data;
+  let { course } = data;
 
   let selectedTabValue: number;
 
-  selectedTab.subscribe(value => {
+  const unsubscribe = selectedTab.subscribe((value) => {
     selectedTabValue = value;
   });
 
   const tabs = [
-    { id: 1, name: 'Course Details' },
-    { id: 2, name: 'Chapter Details' },
-    { id: 3, name: 'Lesson Details' },
+    { id: 1, name: "Course Details" },
+    { id: 2, name: "Chapter Details" },
+    { id: 3, name: "Lesson Details" },
   ];
 
   const handleTabChange = (id: number) => {
-    selectedTab.set(id)
-  }
+    selectedTab.set(id);
+  };
 
   $: course;
+  onDestroy(unsubscribe);
 </script>
 
-<section class="mx-auto w-11/12 lg:w-3/4 space-y-2">
+<section class="mx-auto w-11/12 lg:w-3/4 space-y-2 p-4">
   <Card>
     <div class="card-body">
       <h1 class="card-title gap-2">
@@ -41,7 +43,7 @@
               <li>
                 <button
                   on:click={() => handleTabChange(id)}
-                  class={selectedTabValue === id ? 'active bg-secondary' : ''}
+                  class={selectedTabValue === id ? "active bg-secondary" : ""}
                   >{name}</button
                 >
               </li>
@@ -54,7 +56,6 @@
       <slot />
     </div>
   </div>
-  
 </section>
 <!-- <section>
 </section>

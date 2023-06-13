@@ -7,6 +7,7 @@
   import ContributionsStats from "$components/User/ContributionsStats.svelte";
   let user;
   import "iconify-icon";
+  import { PageHeader } from "svelte-ui";
 
   import ChoicesPanes from "$components/ChoicesPanes.svelte";
 
@@ -26,7 +27,10 @@
   <title>Home</title>
   <meta name="description" content="Planet of the Bugs uses AI to generate fake bug scenarios for developers to learn debugging skills and the fundamentals of writing secure and robust software. By using AI, the app can provide an endless supply of unique scenarios, allowing developers to practice and hone their skills." />
 </svelte:head>
-
+<PageHeader
+  description="Get ready to sharpen your debugging skills, exchange knowledge, and have a blast along the way."
+  heading="Good afternoon, Emmanuel!"
+/>
 <section class="p-4">
   <div>
     <div class="mb-4">

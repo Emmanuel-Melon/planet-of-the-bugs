@@ -16,7 +16,7 @@
   };
 </script>
 
-<section class="flex justify-center items-center">
+<section class="flex justify-center items-center p-4">
   {#if $page.data.session}
     <div class="card w-full md:w-2/3 max-w-xl bg-white shadow">
       <div class="card-body">

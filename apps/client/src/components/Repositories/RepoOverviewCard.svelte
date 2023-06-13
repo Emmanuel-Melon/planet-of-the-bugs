@@ -6,6 +6,7 @@
   import { SUBSCRIBE_TO_REPO } from "$lib/graphql/mutations/repositories";
   import { mutation } from "svelte-apollo";
   const subscribeToRepo = mutation(SUBSCRIBE_TO_REPO);
+  import ManageRepoSubscription from "./ManageRepoSubscription.svelte";
 
   async function handleSubscrbeToRepo() {
     try {
@@ -44,18 +45,12 @@
     <p>Never miss an update from your favorite GitHub repositories</p>
     <div class="card-actions justify-end">
       <div class="flex gap-2 items-center">
-        <button
-        on:click={handleSubscrbeToRepo}
-        class="btn btn-sm btn-outline gap-2"
-      >
-        <iconify-icon icon="ri:settings-3-line" />
-        Manage
-      </button>
+        <ManageRepoSubscription />
         <button
           on:click={handleSubscrbeToRepo}
           class="btn btn-sm btn-primary gap-2"
         >
-          <iconify-icon icon="ri:eye-line" />
+          <iconify-icon icon="ri:heart-add-line" />
           Subscribe
         </button>
       </div>

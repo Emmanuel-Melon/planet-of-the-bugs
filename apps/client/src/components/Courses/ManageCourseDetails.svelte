@@ -2,7 +2,7 @@
   export let course: any;
   let title: string = course.title;
   let description: string = course.description;
-  import { Card } from "svelte-ui";
+  import { Button, Card } from "svelte-ui";
 
   const complexity = [
     { id: 0, name: "Beginner" },
@@ -16,6 +16,8 @@
   };
 
   $: index, title, description;
+
+  const deleteCourse = () => {}
 </script>
 
 <section class="space-y-4">
@@ -101,9 +103,7 @@
         >. You’ll get a chance to confirm your choice.
       </p>
       <div class="card-actions justify-end">
-        <button class="btn btn-md btn-error gap-2"
-          ><iconify-icon icon="ri:delete-bin-7-line" /> Delete Course</button
-        >
+        <Button bg="error" icon="ri:delete-bin-7-line" onClick={deleteCourse} CTA="Delete Course" />
       </div>
     </div>
   </Card>

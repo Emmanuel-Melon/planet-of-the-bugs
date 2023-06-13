@@ -57,17 +57,21 @@
     <div class="card card-compact basis-2/5 grow bg-white shadow-md">
       <div class="card-body">
         <div class="flex gap-4">
-          <div class="w-full">
-            <div class="flex justify-between w-ful mb-2">
-              <h3 class="card-title">
-                <a class="link" href={node.url}>
-                  {`${node.nameWithOwner}`}
-                </a>
-              </h3>
-              <a class="link flex items-center gap-2" href={node.homepageUrl}>
-                <iconify-icon icon="heroicons:globe-alt-solid" />
+          <div class="w-full space-y-2">
+            <div class="flex gap-2">
+              <a class="link link-hover badge badge-accent badge-lg gap-2" href={node.url}>
+                <iconify-icon icon="ri:github-line" />
+                Github
+              </a>
+              <a class="link link-hover badge badge-accent badge-lg gap-2" href={node.homepageUrl}>
+                <iconify-icon icon="ri:global-line" />
                 Website</a
               >
+            </div>
+            <div class="flex justify-between w-ful mb-2">
+              <h3 class="card-title">
+                {node.nameWithOwner}
+              </h3>
             </div>
             <p>{node?.description}</p>
           </div>
@@ -79,7 +83,7 @@
         <div class="flex gap-2 flex-wrap">
           {#each node.languages.nodes as language}
             <div class={`badge badge-outline badge-lg gap-2`}>
-              <iconify-icon icon="heroicons:code-bracket-square-20-solid" />
+              <iconify-icon icon="ri:code-s-slash-line" />
               {language.name}
             </div>
           {/each}

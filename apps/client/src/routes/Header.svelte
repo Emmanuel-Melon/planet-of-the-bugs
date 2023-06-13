@@ -4,6 +4,7 @@
   import { onMount, onDestroy } from "svelte";
   import { signOut } from "@auth/sveltekit/client";
   import "iconify-icon";
+  import { Dropdown } from "svelte-ui";
 
   let user;
   $: current = $page.url.pathname;
@@ -31,6 +32,33 @@
     menuLinks = [];
     dropdownLinks = [];
   });
+
+  const notifications = [
+    {
+      id: 1,
+      name: "Gyomei Himejima",
+      avatar:
+        "https://staticg.sportskeeda.com/editor/2021/12/d8fd2-16407278993535-1920.jpg",
+      text: "We are proud to live and die as human beings.",
+      active: false,
+    },
+    {
+      id: 2,
+      name: "Muzan Kibutsuji",
+      avatar:
+        "https://m.media-amazon.com/images/M/MV5BMzcyZjYxYzktMWZhMi00ZGFkLTllMTEtNjJjZjU4ODdlYzRmXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg",
+      text: "Prepare to witness the true terror of the Demong King!",
+      active: true,
+    },
+    {
+      id: 3,
+      name: "Ryuk",
+      avatar:
+        "https://cdn.europosters.eu/image/750/canvas-print-death-note-ryuk-checkered-i147611.jpg",
+      text: "Hahahahaha",
+      active: false,
+    },
+  ];
 </script>
 
 <header class="navbar bg-white shadow">
@@ -52,24 +80,27 @@
   </nav>
 
   <div class="navbar-end relative gap-2 items-center">
+    <Dropdown items={notifications}>
+      <iconify-icon icon="ri:notification-line" height="25" width="25" /> 
+      </Dropdown>
     <div class="dropdown dropdown-end lg:hidden">
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
       <div tabindex="0" class="btn btn-ghost btn-circle text-3xl">
-        <iconify-icon icon="ri:logout-circle-line" />
+        <iconify-icon icon="ri:menu-4-line" />
       </div>
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
       <ul
         tabindex="0"
-        class="menu menu-compact dropdown-content mt-3 p-2 shadow-lg rounded-box w-52 text-primary bg-base-100"
+        class="menu menu-compact dropdown-content mt-3 p-2 shadow-lg rounded-box w-52 bg-base-100"
       >
-        {#each menuLinks as { text, path }}
+        {#each menuLinks as { text, path, icon }}
           <li>
-            <a href={path}>{text}</a>
+            <a href={path}><iconify-icon icon={icon}/>  {text}</a>
           </li>
         {/each}
         <li>
           {#if user}
-            <button on:click|preventDefault={() => signOut()}>Sign Out</button>
+            <button on:click|preventDefault={() => signOut()}><iconify-icon icon="ri:logout-circle-line" /> Sign Out</button>
           {:else}
             <a href="/auth">Sign In</a>
           {/if}
@@ -80,7 +111,7 @@
     <div class="dropdown dropdown-bottom dropdown-end">
       {#if user}
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-        <div tabindex="0" class="btn bg-base-200 btn-circle avatar">
+        <div tabindex="0" class="btn btn-secondary shadow btn-circle avatar">
           <div class="w-10 rounded-full">
             <img src={user.image} alt={user.name} />
           </div>

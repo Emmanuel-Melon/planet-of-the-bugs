@@ -24,6 +24,7 @@
   </div>
 </section>
 
+<section class="p-2">
   <div class="flex flex-col lg:flex-row gap-2">
     <div class="basis-2/5">
       <div class="card card-compact w-full bg-white shadow">
@@ -42,7 +43,7 @@
     </div>
     <div class="basis-3/5">
       <div class="flex justify-between items-center bg-base-200 w-full p-2 gap-2">
-        <h3 class="text-md">Course Chapters</h3>
+        <h3 class="text-xl font-bold">Course Chapters</h3>
         <div class="flex gap-2">
           <div class="badge badge-lg badge-outline gap-2">
             <iconify-icon icon="ri:booklet-line" />
@@ -62,3 +63,5 @@
     </div>
   </div>
 
+
+</section>

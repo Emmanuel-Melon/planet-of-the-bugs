@@ -1,20 +1,22 @@
 <script>
-    export let CTA = "Filter By";
-    export let criteria = [];
-    export let icon = "heroicons:star";
-    import "iconify-icon";
-    
+  export let CTA = "Filter By";
+  export let criteria = [];
+  export let icon = "ri:star-line";
+  import "iconify-icon";
+  import { Card } from "svelte-ui";
+  export let filter = false;
 </script>
 
-<div
-class="card p-4"
->
-<div class="divider">{CTA}</div>
-<div>
+<Card>
+  <div class="card-body">
+    <div class="divider">{CTA}</div>
     {#each criteria as criterion}
-    <div class="form-control">
+      <div class="form-control">
         <label class="cursor-pointer label">
-          <span class="flex items-center gap-2 label-text"><iconify-icon icon={criterion.icon || icon} /> {criterion.title}</span>
+          <span class="flex items-center gap-2 label-text"
+            ><iconify-icon icon={criterion.icon || icon} />
+            {criterion.title}</span
+          >
           <input
             type="checkbox"
             class="checkbox checkbox-md checkbox-primary"
@@ -22,5 +24,10 @@ class="card p-4"
         </label>
       </div>
     {/each}
-</div>
-</div>
+    <div class="card-actions justify-end mt-4">
+      {#if filter}
+        <button class="btn btn-sm btn-ghost">Clear</button>
+      {/if}
+    </div>
+  </div>
+</Card>

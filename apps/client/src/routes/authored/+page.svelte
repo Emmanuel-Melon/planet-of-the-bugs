@@ -24,7 +24,7 @@
   $: courses.refetch();
 </script>
 
-<section class="flex gap-2">
+<section class="flex gap-2 p-4">
   <div class="w-full space-y-4">
     <div class="flex justify-between gap-2 items-center">
       <h3 class="text-xl">My Courses</h3>
