@@ -37,7 +37,7 @@
   <footer class="flex items-center justify-center p-4 bg-base-200">
     <div class="flex gap-4">
       <a class="link link-hover flex items-center gap-2" target="_blank" href="https://support.planetofthebugs.xyz"><iconify-icon icon="ri:customer-service-2-line" /> Contact Support</a>
-      <a class="link link-hover flex items-center gap-2" target="_blank" href="https://github.com/Emmanuel-Melon/planet-of-the-bugs"><iconify-icon icon="ri:send-plane-2-line" /> Invite a friend</a>
+      <a class="link link-hover flex items-center gap-2" target="_blank" href="https://github.com/Emmanuel-Melon/planet-of-the-bugs"><iconify-icon icon="ri:share-line" /> Invite a friend</a>
       <a class="link link-hover flex items-center gap-2" href="/about"><iconify-icon icon="ri:information-line" /> About</a>
     </div>
   </footer>

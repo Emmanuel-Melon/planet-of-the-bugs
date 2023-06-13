@@ -1,5 +1,6 @@
 export { default as Button } from './components/Button.svelte';
 export { default as Card } from './components/Card.svelte';
+export { default as Dropdown } from './components/Dropdown.svelte';
 export { default as Modal } from './components/Modal.svelte';
 export { default as NextPrev } from './components/NextPrev.svelte';
 export { default as PageHeader } from './components/PageHeader.svelte';
