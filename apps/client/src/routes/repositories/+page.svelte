@@ -6,7 +6,6 @@
 
   import LessonCreator from "$components/Lessons/LessonCreator.svelte";
   import ContributionsStats from "$components/User/ContributionsStats.svelte";
-  import PaginationComponent from "$components/PaginationComponent.svelte";
   import SidebarFilter from "$components/SidebarFilter.svelte";
   import RepositoryRecommendations from "$components/Repositories/RepositoryRecommendations.svelte";
   let user;

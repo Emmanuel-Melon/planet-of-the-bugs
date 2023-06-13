@@ -1,4 +1,6 @@
 <script>
+    export let pages;
+    export let index;
   
 </script>
 <div class="flex items-center justify-center w-fit mx-auto mt-2">
