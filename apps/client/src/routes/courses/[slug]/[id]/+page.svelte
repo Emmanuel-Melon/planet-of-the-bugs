@@ -6,6 +6,7 @@
   import EditorTerminal from "$components/CodeEditor/EditorTerminal.svelte";
   import EditorIFrame from "$components/CodeEditor/EditorIFrame.svelte";
   import LessonSidebar from "$components/Lessons/LessonSidebar.svelte";
+  import { NextPrev } from "svelte-ui";
 
   import MarkdownIt from "markdown-it";
   import sanitizeHtml from "sanitize-html";
@@ -41,13 +42,32 @@
   const md = new MarkdownIt();
 </script>
 
+
 <section class="h-screen">
+  <div class="flex justify-between items-center p-2 bg-base-200">
+    <div class="text-md breadcrumbs">
+      <ul>
+        <li>
+          <a href="/">
+            <iconify-icon icon="ri:arrow-right-double-line" />
+            Home
+          </a>
+        </li> 
+      </ul>
+    </div>
+    <div>
+      <h1 class="text-xl">{lesson.data.lessons_by_pk.title}</h1>
+    </div>
+    <NextPrev />
+  </div>
   <div class="flex h-full">
     <div class="basis-1/5 h-full">
       <LessonSidebar lesson={lesson.data.lessons_by_pk} />
     </div>
-    {#if lesson.data.lessons_by_pk.type === "text"}
-      <div>{@html lesson.data.lessons_by_pk.content}</div>
+    <div class="p-4">
+      {#if lesson.data.lessons_by_pk.type === "text"}
+      <div>{@html lesson.data.lessons_by_pk.content}
+      </div>
     {:else if lesson.data.lessons_by_pk.type === "video"}
       <p>{lesson.data.lessons_by_pk.title}</p>
     {:else if lesson.data.lessons_by_pk.type === "interactive"}
@@ -61,5 +81,6 @@
         </div>
       </div>
     {/if}
+    </div>
   </div>
 </section>
