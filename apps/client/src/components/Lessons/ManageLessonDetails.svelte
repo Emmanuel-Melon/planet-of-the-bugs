@@ -181,7 +181,7 @@
           </div>
 
           <div class="card-actions justify-end mt-2 py-2">
-            <button class="btn btn-primary gap-2"
+            <button class="btn btn-sm btn-primary gap-2"
               ><iconify-icon icon="ri:check-line" /> Update Chapter Details</button
             >
           </div>

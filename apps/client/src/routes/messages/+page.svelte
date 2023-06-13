@@ -58,25 +58,24 @@
 </script>
 
 <section class="mx-auto p-4">
-  <div class="card bg-white w-full border-2 border-gray-200">
-    <div class="flex w-full">
-      <div class="basis-2/5 border-r-2 border-gray-200">
-        <div class="flex justify-between items-center p-3 border-b-2 border-gray-200">
-          <div>
-            <h3>My Conversations</h3>
-          </div>
-          <NewConversationModal />
+  <div class="flex w-full shadow">
+    <div class="basis-2/5 border-r-2">
+      <div
+        class="flex justify-between items-center p-2 bg-base-300"
+      >
+        <div>
+          <h3>My Conversations</h3>
         </div>
-        <ChatList {chats} />
+        <NewConversationModal />
       </div>
-      <div class="flex basis-3/5 items-center">
-        <div class="">
-          <ConversationMenu />
-          <Conversation />
-          <ChatInput />
-        </div>
+      <ChatList {chats} />
+    </div>
+    <div class="flex basis-3/5 items-center">
+      <div class="">
+        <ConversationMenu />
+        <Conversation />
+        <ChatInput />
       </div>
     </div>
   </div>
-  
 </section>

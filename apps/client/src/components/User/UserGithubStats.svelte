@@ -5,16 +5,9 @@
 <div class="card card-compact bg-white w-full shadow">
   <div class="card-body">
     <h2 class="card-title">Contributions Overview</h2>
-    <div class="stats w-full">
+    <div class="stats w-full">  
       <div class="stat place-items-center">
-        <div class="stat-title">Contributed To</div>
-        <div class="stat-value">
-          {user.repositories.totalCount}
-        </div>
-      </div>
-  
-      <div class="stat place-items-center">
-        <div class="stat-title">Owned Repositories</div>
+        <div class="stat-title">Repositories</div>
         <div class="stat-value">
           {user.repositories.totalCount}
         </div>
