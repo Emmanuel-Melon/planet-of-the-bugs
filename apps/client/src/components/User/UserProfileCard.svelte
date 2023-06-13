@@ -3,6 +3,8 @@
   export let image;
   export let isCurrentUser;
   import "iconify-icon";
+  import { Button, Card } from "svelte-ui";
+  import UserProfileCardControls from "./UserProfileCardControls.svelte";
   const colorMap = {
     isBountyHunter: "pink",
     isCampusExpert: "blue",
@@ -13,12 +15,12 @@
   };
 
   const iconMap = {
-    isBountyHunter: "heroicons:bug-ant",
-    isCampusExpert: "heroicons:academic-cap-20-solid",
-    isDeveloperProgramMember: "heroicons:building-office",
-    isEmployee: "heroicons:briefcase",
-    isGitHubStar: "heroicons:star-20-solid",
-    isHireable: "heroicons:check-circle-20-solid",
+    isBountyHunter: "ri:bug-line",
+    isCampusExpert: "ri:graduation-cap-line",
+    isDeveloperProgramMember: "ri:building-line",
+    isEmployee: "ri:briefcase-line",
+    isGitHubStar: "ri:star-line",
+    isHireable: "ri:check-line",
   };
 
   function generateBadgeColors() {
@@ -51,15 +53,22 @@
   }
   const booleanObjects = extractBooleanProps(user);
 
+  console.log(user);
 </script>
 
-<div class="card basis-3/4 grow card-bordered bg-white shadow-md">
-  <div class="card-body">
-    <div class="flex gap-2">
+<div class="card basis-3/4 grow card-bordered bg-white shadow">
+  <div class="card-body space-y-2">
+    <div class="flex items-center gap-4">
+      <div class="avatar indicator">
+        <span class="indicator-item badge badge-lg badge-accent">Hirable</span>
+        <div class="w-24 mask mask-squircle shadow">
+          <img src={image} alt={user.login} />
+        </div>
+      </div>
       <div>
         <h2 class="card-title">{user.name}</h2>
         <span class="flex gap-2">
-          <a class="link link-accent" href={user.url}>{user.login}</a>
+          <p>@{user.username}</p>
           <p class="">
             ({user.pronouns})
           </p>
@@ -86,20 +95,37 @@
         </div>
       </div>
     </div>
+    <p>{user.bio}</p>
+    <UserProfileCardControls {...user} />
     <div class="divider">Basic Info</div>
-    <h1>{user.bio}</h1>
-
-    <ul>
-      <li><a class="link link-ghost gap-2 flex items-center" href={user.websiteUrl}>
-        <iconify-icon icon="ri:earth-line" />Website</a></li>
-      <li class="gap-2 items-center"><iconify-icon icon="ri:briefcase-2-line" />  {user.company}</li>
-      <li class="gap-2 items-center"><iconify-icon icon="ri:map-pin-user-line" /> {user.location}</li>
-      <li class="gap-2 items-center"><iconify-icon icon="heroicons:clock-solid" /> Joined {user.createdAt}</li>
-      <li><a
-        class="link link-ghost gap-2 flex items-center"
-        href={`https://twitter.com/${user.twitterUsername}`}>
-        <iconify-icon icon="ri:twitter-fill" />Twitter</a
-      ></li>
+    <ul class="space-y-2">
+      <li>
+        <a
+          class="link link-hover flex items-center gap-2"
+          href={user.websiteUrl}
+        >
+          <iconify-icon icon="ri:earth-line" />Website</a
+        >
+      </li>
+      <li class="flex items-center gap-2">
+        <iconify-icon icon="ri:briefcase-2-line" />
+        {user.company}
+      </li>
+      <li class="flex items-center gap-2">
+        <iconify-icon icon="ri:map-pin-user-line" />
+        {user.location}
+      </li>
+      <li class="flex items-center gap-2">
+        <iconify-icon icon="ri:cake-line" /> Joined {user.createdAt}
+      </li>
+      <li>
+        <a
+          class="link link-hover flex items-center gap-2"
+          href={`https://twitter.com/${user.twitterUsername}`}
+        >
+          <iconify-icon icon="ri:twitter-line" />Twitter</a
+        >
+      </li>
     </ul>
 
     <div class="card-actions" />
@@ -108,7 +134,7 @@
       {#each booleanObjects as prop}
         {#if prop.value}
           <div class={`badge badge-lg gap-2 ${prop.bg}`}>
-            <iconify-icon icon={prop.icon}/>
+            <iconify-icon icon={prop.icon} />
             {prop.label}
           </div>
         {/if}

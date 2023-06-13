@@ -18,3 +18,19 @@ export const CREATE_LESSON = gql`
     }
   }
 `;
+
+export const ADD_LESSON = gql`
+mutation addNewLesson($lessonInput: lessons_insert_input!) {
+  insert_lessons_one(object: $lessonInput) {
+    content
+    description
+    index
+    title
+    type
+    XP
+    chapter_id
+    created_at
+    id
+  }
+}
+`;

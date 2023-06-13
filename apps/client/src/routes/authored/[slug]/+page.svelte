@@ -1,14 +1,41 @@
 <script>
-    export let data;
-    let { slug, course } = data;
+  export let data;
+  import { onMount } from "svelte";
+  import "iconify-icon";
+  let { course, user } = data;
+  import { DELETE_COURSE } from "$lib/graphql/mutations/courses";
+  import { mutation } from "svelte-apollo";
 
-  
-    $: course
-  </script>
+  const deleteCourse = mutation(DELETE_COURSE);
+
+  async function handleCourseDeletion () {
+    try {
+      const result = await deleteCourse({
+        variables: {
+          id: course.id,
+          creator: user.id
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
 
-    <section>
+  $: course;
 
-        <h1>{course.title}</h1>
-        <p>{course.description}</p>
-    </section>
+</script>
+
+<section class="p-4">
+  <div
+    class="card h-fit basis-1/3 grow bg-white shadow-md max-w-screen-sm md:max-w-[360px] lg:max-w-sm xl:max-w-lg"
+  >
+    <div class="card-body space-y-2">
+      <h2 class="card-title">{course.title}</h2>
+      <p>{course.description}</p>
+      <div class="card-actions justify-end gap-2">
+        <button class="btn btn-sm btn-warning gap-2" on:click={handleCourseDeletion}><iconify-icon icon="ri:delete-bin-4-line"/> Delete Course</button>
+      </div>
+    </div>
+  </div>
+</section>

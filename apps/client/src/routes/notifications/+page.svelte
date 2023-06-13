@@ -1,5 +1,6 @@
 <script>
   import "iconify-icon";
+  import { Card } from "svelte-ui"
 
   const notifications = [
     {
@@ -29,49 +30,54 @@
   ];
 </script>
 
-<section class="card bg-white md:w-4/5 mx-auto border-2 border-gray-200 shadow-xl h-96">
-  <div class="flex justify-between items-center p-4 border-b-2 border-gray-100">
-    <div>
-      <h1 class="flex items-center gap-2">
-        <iconify-icon icon="heroicons:bell-alert-20-solid" />
-        Notifications
-      </h1>
-    </div>
-    <div class="flex items-center gap-2">
-      <iconify-icon icon="heroicons:adjustments-vertical-20-solid" />
-      <iconify-icon icon="heroicons:information-circle-solid" />
-    </div>
-  </div>
-  <div class="basis-3/4">
-    {#if false}
-      <div>
-      <h3>No notifications yet!</h3>
-      <p>
-        It looks like you haven't received any notifications yet. Check back
-        later!
-      </p>
-    </div>
-    {/if}
-    <div>
-      {#each notifications as notification}
-        <div
-          class={`flex items-center gap-2 mb-1 hover:bg-gray-200 cursor-pointer p-2 ${
-            notification.active ? "bg-zinc-100 border-r-4 border-primary" : "bg-white"
-          }`}
-        >
-          <div class="avatar">
-            <div
-              class="w-12  mask mask-squircle"
-            >
-              <img src={notification.avatar} alt={notification.name} />
-            </div>
-          </div>
-          <div>
-            <h4>{notification.name}</h4>
-            <p>{notification.text}</p>
-          </div>
+<section class="p-4">
+
+  <Card>
+    <div class="card-body">
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="flex items-center gap-2 text-xl">
+            <iconify-icon icon="ri:notification-line"  />
+            Notifications
+          </h1>
         </div>
-      {/each}
+        <div class="flex items-center gap-2">
+          <iconify-icon icon="ri:settings-5-line"  height="25" width="25" />
+          <iconify-icon icon="ri:information-line" height="25" width="25"/>
+        </div>
+      </div>
+      <div class="basis-3/4">
+        {#if false}
+          <div>
+          <h3>No notifications yet!</h3>
+          <p>
+            It looks like you haven't received any notifications yet. Check back
+            later!
+          </p>
+        </div>
+        {/if}
+        <div class="space-y-2">
+          {#each notifications as notification}
+            <div
+              class={`flex items-center gap-2 cursor-pointer p-2 ${
+                notification.active ? "bg-base-200 border-l-4 border-primary" : "bg-white"
+              }`}
+            >
+              <div class="avatar">
+                <div
+                  class="w-12 mask mask-squircle shadow"
+                >
+                  <img src={notification.avatar} alt={notification.name} />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-bold">{notification.name}</h3>
+                <p>{notification.text}</p>
+              </div>
+            </div>
+          {/each}
+        </div>
+      </div>
     </div>
-  </div>
+  </Card>
 </section>

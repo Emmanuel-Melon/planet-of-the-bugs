@@ -7,14 +7,18 @@
 
 <div class="flex gap-2 basis-4/5 flex-wrap">
   {#each repositories.nodes as repo}
-    <div class="card card-bordered basis-2/5 grow bg-white shadow-lg">
+    <div class="card card-compact basis-2/5 grow bg-white shadow">
       <div class="card-body space-y-2">
         <div class="flex items-center justify-between">
           <h3 class="card-title">{repo.name}</h3>
           <div class="flex items-center justify-center gap-2">
-            <div class="badge badge-outline flex gap-2 items-center"><iconify-icon icon="heroicons:star" /> {repo.stargazerCount}</div>
-            <div class="badge badge-outline flex gap-2 items-center"><iconify-icon icon="iconoir:git-fork" />{repo.forkCount
-            }</div>
+            <div class="badge badge-lg badge-accent flex gap-2 items-center">
+              <iconify-icon icon="ri:star-line" />
+              {repo.stargazerCount}
+            </div>
+            <div class="badge badge-lg badge-accent flex gap-2 items-center">
+              <iconify-icon icon="iconoir:git-fork" />{repo.forkCount}
+            </div>
           </div>
         </div>
         <div class="divider">Description</div>
@@ -31,8 +35,8 @@
             href={repo.homepageUrl}
             class="btn btn-sm btn-primary link link-hover flex gap-2 items-center"
           >
-            <iconify-icon icon="ri:global-line" />
-            Demo</a
+            <iconify-icon icon="ri:link" />
+            Live Demo</a
           >
         </div>
       </div>

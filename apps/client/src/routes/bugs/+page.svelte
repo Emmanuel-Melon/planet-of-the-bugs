@@ -1,4 +1,5 @@
 <script>
+  import { PageHeader } from "svelte-ui";
   const issues = [
     {
       id: 1,
@@ -17,38 +18,34 @@
     },
   ];
   import "iconify-icon";
-
-  // w-3/4 mx-auto 
 </script>
 
-<section class="space-y-4">
-  <div class="card card-compact shadow w-full">
-    <div class="card-body">
-      <h3 class="card-title">Issues</h3>
-      <p>
-        Enhance your coding skills by solving real-life issues from open-source
-        repositories
-      </p>
-    </div>
-  </div>
+<PageHeader heading="BugsHub"  description="Enhance your coding skills by solving real-life issues from open-source
+repositories" />
+<section class="space-y-4 p-4">
   <div class="flex flex-col md:flex-row gap-2">
     <div class="grow">
       <div class="card card-compact shadow w-full">
         <div class="card-body">
           <div class="divider">Filter Issues</div>
         </div>
-      </div> 
+      </div>
     </div>
-    <div class="mt-4 space-y-4 md:w-3/5 ">
+    <div class="mt-4 space-y-4 md:w-3/5">
       {#each issues as issue}
         <div class="card card-compact mx-auto shadow-md">
           <div class="card-body space-y-2">
             <div class="flex w-full items-center justify-between">
-              <h3 class="card-title">{issue.title} <div class="badge badge-lg badge-info">NEW!</div></h3>
+              <h3 class="card-title">
+                {issue.title}
+                <div class="badge badge-lg badge-info">NEW!</div>
+              </h3>
             </div>
             <p>{issue.title}</p>
             <div class="card-actions justify-end items-end">
-              <button class="btn btn-sm btn-primary gap-2"><iconify-icon icon="ri:git-pull-request-line" /> Contribute</button>
+              <button class="btn btn-sm btn-primary gap-2"
+                ><iconify-icon icon="ri:git-pull-request-line" /> Contribute</button
+              >
             </div>
           </div>
         </div>

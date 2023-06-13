@@ -6,6 +6,7 @@
   import { SUBSCRIBE_TO_REPO } from "$lib/graphql/mutations/repositories";
   import { mutation } from "svelte-apollo";
   const subscribeToRepo = mutation(SUBSCRIBE_TO_REPO);
+  import ManageRepoSubscription from "./ManageRepoSubscription.svelte";
 
   async function handleSubscrbeToRepo() {
     try {
@@ -24,31 +25,32 @@
   }
 </script>
 
-<div class="card card-compact basis-2/5 grow bg-white shadow-md">
+<div class="card card-compact basis-2/5 grow bg-white shadow">
   <div class="card-body space-y-2">
     <div class="flex gap-4 items-center">
       <div class="flex items-center justify-between w-full">
-        <h3 class="card-title">
+        <h2 class="card-title">
           <a class="link link-hover" target="_blank" href={repo.url}
             >{repo.name.toLocaleUpperCase()}</a
           >
-        </h3>
-        <div class="badge badge-outline gap-2">
-          <iconify-icon icon="heroicons:star" />
+        </h2>
+        <div class="badge badge-lg badge-accent gap-2">
+          <iconify-icon icon="ri:star-line" />
           {repo.stargazerCount.toLocaleString()}
         </div>
       </div>
     </div>
     <p>{repo.description}</p>
-    <div class="divider">Subscrbe</div>
+    <div class="divider">Subscribe</div>
     <p>Never miss an update from your favorite GitHub repositories</p>
     <div class="card-actions justify-end">
-      <div class="bg-base-10 flex gap-2 p-1 items-center">
+      <div class="flex gap-2 items-center">
+        <ManageRepoSubscription />
         <button
           on:click={handleSubscrbeToRepo}
-          class="btn btn-sm btn-accent gap-2"
+          class="btn btn-sm btn-primary gap-2"
         >
-          <iconify-icon icon="ri:eye-line" />
+          <iconify-icon icon="ri:heart-add-line" />
           Subscribe
         </button>
       </div>
