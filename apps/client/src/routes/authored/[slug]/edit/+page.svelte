@@ -1,14 +1,15 @@
 <script lang="ts">
+  import { onDestroy } from "svelte";
   export let data;
   let { course } = data;
-  import {selectedTab} from './selectedTabStore'
-  import ManageChapterCard from '$components/Chapters/ManageChapterDetails.svelte';
-  import ManageCourseDetailsCard from '$components/Courses/ManageCourseDetails.svelte';
-  import ManageLessonDetails from '$components/Lessons/ManageLessonDetails.svelte';
+  import { selectedTab } from "./selectedTabStore";
+  import ManageChapterCard from "$components/Chapters/ManageChapterDetails.svelte";
+  import ManageCourseDetailsCard from "$components/Courses/ManageCourseDetails.svelte";
+  import ManageLessonDetails from "$components/Lessons/ManageLessonDetails.svelte";
 
   let currentTab: number;
 
-  selectedTab.subscribe(value => {
+  const unsubscribe = selectedTab.subscribe((value) => {
     currentTab = value - 1;
   });
 
@@ -36,12 +37,15 @@
         chapters: course.course_chapters,
       },
     },
-   
   ];
 
   $: currentTab;
+  onDestroy(unsubscribe);
 </script>
 
 <section>
-  <svelte:component this={tabs[currentTab].component} {...tabs[currentTab].props} />
+  <svelte:component
+    this={tabs[currentTab].component}
+    {...tabs[currentTab].props}
+  />
 </section>

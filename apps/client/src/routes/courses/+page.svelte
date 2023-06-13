@@ -39,7 +39,7 @@
 />
 <section class="h-max min-h-full space-y-4 p-4">
   <div class="flex flex-col lg:flex-row gap-2">
-    <div class="gap-2 grow bg-base-200 shadow">
+    <div class="gap-2 grow">
       <SidebarFilter {criteria} CTA="Filter Courses" />
     </div>
     <div class="flex gap-4 items-start flex-wrap basis-4/5">

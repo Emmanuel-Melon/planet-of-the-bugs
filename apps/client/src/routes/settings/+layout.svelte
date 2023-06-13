@@ -1,18 +1,26 @@
 <script lang="ts">
+  import { onDestroy } from "svelte";
   import "iconify-icon";
   import { selectedItem } from "./store";
   import { Card } from "svelte-ui";
 
   let selectedItemValue: number;
+
+  const unsubscribe = selectedItem.subscribe((value) => {
+    selectedItemValue = value;
+  });
+
   const items = [
     { id: 1, name: "Profile" },
     { id: 2, name: "Account" },
-    { id: 3, name: "Notifications" }
+    { id: 3, name: "Notifications" },
   ];
 
   const handleItemChange = (id: number) => {
     selectedItem.set(id);
   };
+
+  onDestroy(unsubscribe);
 </script>
 
 <section class="mx-auto w-11/12 lg:w-3/4 space-y-2 p-4">

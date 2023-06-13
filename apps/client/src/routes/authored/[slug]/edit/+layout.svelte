@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onDestroy } from "svelte";
   import { selectedTab } from "./selectedTabStore";
   import { Card } from "svelte-ui";
   // /** @type {import('./$types').PageData} */
@@ -7,7 +8,7 @@
 
   let selectedTabValue: number;
 
-  selectedTab.subscribe((value) => {
+  const unsubscribe = selectedTab.subscribe((value) => {
     selectedTabValue = value;
   });
 
@@ -22,6 +23,7 @@
   };
 
   $: course;
+  onDestroy(unsubscribe);
 </script>
 
 <section class="mx-auto w-11/12 lg:w-3/4 space-y-2 p-4">

@@ -2,11 +2,16 @@ import {
   GITHUB_USER_BASIC_INFO,
   REPOS_CONTRIBUTED_TO,
   GET_PINNED_ITEMS,
+  USER_BASIC_INFO
 } from "$lib/graphql/queries/user";
 
-import { GET_SUBSCRIBED_REPOS, GET_USER_REPOS } from "$lib/graphql/queries/repositories";
+import {
+  GET_SUBSCRIBED_REPOS, GET_USER_REPOS, GET_CONTRIBUTIONS_BY_REPO,
+  GET_USER_PULL_REQUEST_CONTRIBUTIONS,
+} from "$lib/graphql/queries/repositories";
 import apolloClient from "$lib/graphql/apolloClient";
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
+import { destructureQueryResults } from "$lib/graphql/helpers";
 
 export const load = async (event) => {
   const { params, url, setHeaders, route, parent, fetch, depends, data: pageData } = event;
@@ -21,6 +26,28 @@ export const load = async (event) => {
   const { data } = await githubClient.query({
     query: GITHUB_USER_BASIC_INFO,
   });
+
+  const [githubUser, user] = await Promise.all([
+    githubClient.query({
+      query: GITHUB_USER_BASIC_INFO,
+    }),
+    apolloClient.query({
+      query: USER_BASIC_INFO,
+      variables: {
+        email: session?.user?.email,
+      },
+    }),
+  ]);
+
+  const {
+    data: { user: destructuredUserObject, loading: profileLoading },
+  } = user;
+
+  const output = destructureQueryResults(githubUser);
+
+  const { result: destructuredGithubUser, loading: gitHubrofileLoading } = output;
+
+  const userInfo = destructuredUserObject[0];
 
   const [contributedTo, pinnedItems, ownedRepos, subscribedRepos] = await Promise.all([
     githubClient.query({
@@ -41,7 +68,7 @@ export const load = async (event) => {
     apolloClient.query({
       query: GET_SUBSCRIBED_REPOS,
       variables: {
-        user_id: "fae379cf-4387-4dac-a5af-bf092734a464",
+        user_id: userInfo.id,
       },
     })
   ]);
@@ -50,8 +77,13 @@ export const load = async (event) => {
   const { data: topRepoData } = pinnedItems;
   const { data: repositories } = ownedRepos;
   const { data: subscribedTo } = subscribedRepos;
-  
+
   return {
+    github_user: {
+      destructuredGithubUser,
+      gitHubrofileLoading
+    },
+    currentUser: { ...userInfo, profileLoading },
     user: {
       ...data,
     },

@@ -55,7 +55,7 @@
           on:click={handleSubscrbeToRepo}
           class="btn btn-sm btn-primary gap-2"
         >
-          <iconify-icon icon="ri:eye-line" />
+          <iconify-icon icon="ri:heart-add-line" />
           Subscribe
         </button>
       </div>
