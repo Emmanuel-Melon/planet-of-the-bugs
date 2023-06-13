@@ -252,8 +252,8 @@ export const GET_REPOS_CONTRIBUTED_TO_BY_GITHUB_USERNAME = gql`
   }
 `;
 
-export const GET_USER_BASIC_INFO = gql`
-  query getUserBasicInfo($email: String) {
+export const GET_USER_BASIC_INFO_BY_EMAIL = gql`
+  query getUserBasicInfoByEmail($email: String) {
     user: users(where: { email: { _eq: $email } }) {
       email
       created_at
@@ -266,4 +266,20 @@ export const GET_USER_BASIC_INFO = gql`
       githubUsername
     }
   }
+`;
+
+export const GET_USER_BASIC_INFO_BY_USERNAME = gql`
+query getUserBasicInfoByUsername($username: String) {
+  user: users(where: {username: {_eq: $username}}) {
+    email
+    created_at
+    id
+    name
+    role
+    updated_at
+    username
+    hasConnectedGithub
+    githubUsername
+  }
+}
 `;

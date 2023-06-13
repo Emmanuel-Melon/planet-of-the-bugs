@@ -1,11 +1,10 @@
-
-import { SvelteKitAuth } from "@auth/sveltekit";
-import GitHub from "@auth/core/providers/github";
-import Google from "@auth/core/providers/google";
+import { SvelteKitAuth } from '@auth/sveltekit';
+import GitHub from '@auth/core/providers/github';
+import Google from '@auth/core/providers/google';
 import { sequence } from '@sveltejs/kit/hooks';
 import { redirect } from '@sveltejs/kit';
-import type { Handle } from "@sveltejs/kit";
-
+import type { Handle } from '@sveltejs/kit';
+import apolloClient from '$lib/graphql/apolloClient';
 
 import {
   PUBLIC_GOOGLE_CLIENT_ID,
@@ -13,15 +12,23 @@ import {
   PUBLIC_AUTH_SECRET,
   PUBLIC_GITHUB_ID,
   PUBLIC_GITHUB_SECRET,
-  PUBLIC_GITHUB_API_ENDPOINT
-} from "$env/static/public";
+  PUBLIC_GITHUB_API_ENDPOINT,
+} from '$env/static/public';
+import { GET_USER_BASIC_INFO_BY_EMAIL } from '$lib/graphql/queries/user';
+import { loggedInUserStore } from './routes/[username]/store';
 
 export const handleCors = async (data) => {
   const { resolve, event } = data;
   const response = await resolve(event);
   response.headers.append('Access-Control-Allow-Origin', `*`);
-  response.headers.append('Access-Control-Allow-Methods', `GET, POST, PUT, DELETE, PATCH, OPTIONS`);
-  response.headers.append('Access-Control-Allow-Headers', "Content-Type, Origin, Accept, token");
+  response.headers.append(
+    'Access-Control-Allow-Methods',
+    `GET, POST, PUT, DELETE, PATCH, OPTIONS`
+  );
+  response.headers.append(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Origin, Accept, token'
+  );
   return response;
 };
 
@@ -29,7 +36,7 @@ async function authorization({ event, resolve }) {
   // Protect any routes under /authenticated
   const session = await event.locals.getSession();
   if (!session) {
-    throw redirect(303, "/auth");
+    throw redirect(303, '/auth');
   }
 
   // If the request is still here, just proceed as normally
@@ -42,7 +49,7 @@ export const handleAuth = SvelteKitAuth(async () => {
       GitHub({
         clientId: PUBLIC_GITHUB_ID,
         clientSecret: PUBLIC_GITHUB_SECRET,
-      })
+      }),
     ],
     secret: PUBLIC_AUTH_SECRET,
     trustHost: true,
@@ -57,13 +64,22 @@ export const handleAuth = SvelteKitAuth(async () => {
       },
       async session(data) {
         const { session, token } = data;
+        const result = await apolloClient.query({
+          query: GET_USER_BASIC_INFO_BY_EMAIL,
+          variables: {
+            email: session.user.email,
+          },
+        });
+        let user = { ...result.data.user[0], ...session.user };
+        loggedInUserStore.set(user);
+        session.user = {...session.user, ...user}
         session.token = token;
         return session;
       },
       async jwt(data) {
         const { token, user, account, profile, isNewUser } = data;
         if (account) {
-          token.accessToken = account.access_token
+          token.accessToken = account.access_token;
         }
 
         if (user) {
@@ -71,16 +87,16 @@ export const handleAuth = SvelteKitAuth(async () => {
         }
         if (profile) {
           // token.profile = profile
-          token.githubUsername = profile.login
+          token.githubUsername = profile.login;
         }
         return token;
       },
       debug: true,
       pages: {
-        newUser: '/auth/new-user'
-      }
-    }
-  }
+        newUser: '/auth/new-user',
+      },
+    },
+  };
   return authOptions;
 }) satisfies Handle;
 

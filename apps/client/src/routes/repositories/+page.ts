@@ -3,7 +3,7 @@ import { FETCH_REPOSITORIES_BY_TOPIC } from '$lib/graphql/queries/repositories.j
 import apolloClient from '$lib/graphql/apolloClient';
 import { GITHUB_API } from '$lib/github/githubGraphQLClient';
 import { error } from '@sveltejs/kit';
-import { GET_USER_BASIC_INFO } from '$lib/graphql/queries/user';
+import { GET_USER_BASIC_INFO_BY_EMAIL } from '$lib/graphql/queries/user';
 import { redirect } from '@sveltejs/kit';
 
 export const load = async (event) => {
@@ -32,7 +32,7 @@ export const load = async (event) => {
       query: FETCH_REPOSITORIES_BY_TOPIC,
     }),
     apolloClient.query({
-      query: GET_USER_BASIC_INFO,
+      query: GET_USER_BASIC_INFO_BY_EMAIL,
       variables: {
         email: session?.user?.email, // make it dybanuc
       },

@@ -1,6 +1,6 @@
 import {
-  GITHUB_USER_BASIC_INFO,
-  USER_BASIC_INFO,
+  GET_GITHUB_USER_BASIC_INFO,
+  GET_USER_BASIC_INFO_BY_EMAIL,
 } from '$lib/graphql/queries/user';
 import apolloClient from '$lib/graphql/apolloClient';
 import { GITHUB_API } from '$lib/github/githubGraphQLClient';
@@ -20,7 +20,7 @@ export const load = async (event) => {
       query: GET_GITHUB_USER_BASIC_INFO,
     }),
     apolloClient.query({
-      query: GET_USER_BASIC_INFO,
+      query: GET_USER_BASIC_INFO_BY_EMAIL,
       variables: {
         email: session?.user?.email,
       },

@@ -1,69 +1,74 @@
 <script>
   export let data;
-  import UserGithubStats from "$components/User/UserGithubStats.svelte";
-  import UserProfileCard from "$components/User/UserProfileCard.svelte";
-  import RepositoriesContributedTo from "$components/User/RepositoriesContributedTo.svelte";
-  import PaginationComponent from "$components/PaginationComponent.svelte";
-  import { page } from "$app/stores";
-  import { onMount, onDestroy } from "svelte";
-  import Tabs from "$components/Tabs.svelte";
-  import OwnedRepositories from "$components/Repositories/OwnedRepositories.svelte";
-  import SubscrbedRepositories from "$components/Repositories/SubscrbedRepositories.svelte";
-  import UserPinnedItems from "$components/User/UserPinnedItems.svelte";
-  import ProfileOverview from "$components/User/ProfileOverview.svelte";
+  import UserGithubStats from '$components/User/UserGithubStats.svelte';
+  import UserProfileCard from '$components/User/UserProfileCard.svelte';
+  import RepositoriesContributedTo from '$components/User/RepositoriesContributedTo.svelte';
+  import { onMount, onDestroy } from 'svelte';
+  import Tabs from 'svelte-ui/components/Tabs.svelte';
+  import OwnedRepositories from '$components/Repositories/OwnedRepositories.svelte';
+  import SubscribedRepositories from '$components/Repositories/SubscribedRepositories.svelte';
+  import UserPinnedItems from '$components/User/UserPinnedItems.svelte';
+  import ProfileOverview from '$components/User/ProfileOverview.svelte';
+  import { page } from '$app/stores';
+
+
   let user;
 
   onMount(() => {
-    user = $page.data.session?.user;
+    user = $page?.data?.session?.user;
+  });
+
+  onDestroy(() => {
+    user = null;
   });
 
   const items = [
     {
-      label: "Repositories",
+      label: 'Repositories',
       value: 1,
       component: OwnedRepositories,
       props: {
-        repositories: data.user.repositories
+        repositories: data.user.repositories,
       },
-      icon: "ri:git-repository-line"
+      icon: 'ri:git-repository-line',
     },
     {
-      label: "Contributed To",
+      label: 'Contributed To',
       value: 2,
       component: RepositoriesContributedTo,
       props: {
         repositories: data.user.contributedTo,
         user: data.user.viewer,
       },
-      icon: "ri:git-pull-request-fill"
+      icon: 'ri:git-pull-request-fill',
     },
     {
-      label: "Subscribed Repositories",
+      label: 'Subscribed Repositories',
       value: 3,
-      component: SubscrbedRepositories,
+      component: SubscribedRepositories,
       props: {
         repositories: data.user.contributedTo,
         user: data.user,
       },
-      icon: "ri:base-station-line"
+      icon: 'ri:base-station-line',
     },
     {
-      label: "Pinned Items",
+      label: 'Pinned Items',
       value: 4,
       component: UserPinnedItems,
       props: {
-        pinnedItems: data.user.pinnedItems
+        pinnedItems: data.user.pinnedItems,
       },
-      icon: "ri:pushpin-2-line"
+      icon: 'ri:pushpin-2-line',
     },
     {
-      label: "About User",
+      label: 'About User',
       value: 5,
       component: ProfileOverview,
       props: {
-        pinnedItems: data.user.pinnedItems
+        pinnedItems: data.user.pinnedItems,
       },
-      icon: "ri:information-line"
+      icon: 'ri:information-line',
     },
   ];
 </script>
