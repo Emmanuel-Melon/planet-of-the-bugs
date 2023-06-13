@@ -45,8 +45,8 @@
       <h3 class="card-title">Social Accounts</h3>
       <p>Connect your social accounts.</p>
       <div class="flex  gap-2">
-        <Button CTA="Add GitHub" icon="ri:github-line" onClick={connectGithub} bg="base-200" />
-        <Button CTA="Add LinkedIn" icon="ri:linkedin-box-line" onClick={connectLinkedIn} bg="blue-100"/>
+        <Button CTA="Connect your GitHub" icon="ri:github-line" onClick={connectGithub} bg="base-200" />
+        <Button CTA="Connect your LinkedIn" icon="ri:linkedin-box-line" onClick={connectLinkedIn} bg="blue-100"/>
       </div>
     </div>
   </div>

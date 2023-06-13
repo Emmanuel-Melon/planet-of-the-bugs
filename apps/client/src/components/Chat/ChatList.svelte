@@ -10,7 +10,7 @@
   {#each chats as chat}
     <div on:click={() => handleConversationClick(chat)}
       class={`flex items-start gap-2 hover:bg-slate-100 cursor-pointer p-2 ${
-        chat.active ? "bg-zinc-100 border-r-4 border-primary" : "bg-white"
+        chat.active ? "bg-base-200 border-l-4 border-primary" : "bg-white"
       }`}
     >
       <div class="avatar online">

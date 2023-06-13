@@ -3,9 +3,9 @@
     //  class="prose prose-sm"
 </script>
 <div
-class="flex justify-between items-center border-b-2 border-gray-200"
+class="flex justify-between items-center bg-base-300"
 >
-<div class="flex justify-between items-center w-full p-4">
+<div class="flex justify-between items-center w-full p-2">
   <div class="flex items-center gap-4 prose prose-sm">
     <h3 class="flex items-center">😈 Muzan Kibutsuji</h3>
   </div>
