@@ -12,7 +12,7 @@
   <div class="card-body space-y-2">
     <div class="flex gap-3">
       <div class="w-full flex justify-between items-center">
-        <h2 class="card-title text-primary">
+        <h2 class="card-title">
           <a class="link link-hover" href={`/courses/${course.slug}`}
             >{course.title}</a
           >

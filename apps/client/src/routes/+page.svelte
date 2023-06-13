@@ -28,7 +28,7 @@
   <meta name="description" content="Planet of the Bugs uses AI to generate fake bug scenarios for developers to learn debugging skills and the fundamentals of writing secure and robust software. By using AI, the app can provide an endless supply of unique scenarios, allowing developers to practice and hone their skills." />
 </svelte:head>
 <PageHeader
-  description="Learn the art of tracking down and squashing those pesky bugs that lurk in the shadows of your code. Get ready to sharpen your debugging skills, exchange knowledge, and have a blast along the way. Together, we'll conquer bugs and create bug-free masterpieces. Join us now and let the bug-squashing adventure begin!"
+  description="Get ready to sharpen your debugging skills, exchange knowledge, and have a blast along the way."
   heading="Good afternoon, Emmanuel!"
 />
 <section class="p-4">

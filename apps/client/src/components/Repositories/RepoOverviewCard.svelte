@@ -29,7 +29,7 @@
   <div class="card-body space-y-2">
     <div class="flex gap-4 items-center">
       <div class="flex items-center justify-between w-full">
-        <h2 class="card-title text-primary">
+        <h2 class="card-title">
           <a class="link link-hover" target="_blank" href={repo.url}
             >{repo.name.toLocaleUpperCase()}</a
           >

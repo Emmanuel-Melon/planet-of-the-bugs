@@ -4,7 +4,7 @@
 
 <div class="card card-compact bg-white w-full shadow">
   <div class="card-body">
-    <h2 class="card-title text-primary">Contributions Overview</h2>
+    <h2 class="card-title">Contributions Overview</h2>
     <div class="stats w-full">
       <div class="stat place-items-center">
         <div class="stat-title">Contributed To</div>

@@ -34,7 +34,7 @@
 
   <Card>
     <div class="card-body">
-      <div class="flex justify-between items-center p-4 border-b-2 border-gray-100">
+      <div class="flex justify-between items-center">
         <div>
           <h1 class="flex items-center gap-2 text-xl">
             <iconify-icon icon="ri:notification-line"  />
@@ -56,11 +56,11 @@
           </p>
         </div>
         {/if}
-        <div>
+        <div class="space-y-2">
           {#each notifications as notification}
             <div
-              class={`flex items-center gap-2 mb-1 hover:bg-gray-200 cursor-pointer p-2 ${
-                notification.active ? "bg-zinc-100 border-r-4 border-primary" : "bg-white"
+              class={`flex items-center gap-2 cursor-pointer p-2 ${
+                notification.active ? "bg-base-200 border-l-4 border-primary" : "bg-white"
               }`}
             >
               <div class="avatar">

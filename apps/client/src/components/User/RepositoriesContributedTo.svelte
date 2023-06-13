@@ -69,7 +69,7 @@
               >
             </div>
             <div class="flex justify-between w-ful mb-2">
-              <h3 class="card-title text-primary">
+              <h3 class="card-title">
                 {node.nameWithOwner}
               </h3>
             </div>
