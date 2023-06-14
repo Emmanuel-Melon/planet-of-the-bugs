@@ -1,15 +1,15 @@
 <script>
-  import { signIn, signOut } from "@auth/sveltekit/client";
-  import { page } from "$app/stores";
-  import { onMount, onDestroy } from "svelte";
-  import { query } from "svelte-apollo";
-  import { FETCH_COURSES } from "$lib/graphql/queries/courses";
-  import ContributionsStats from "$components/User/ContributionsStats.svelte";
+  import { signIn, signOut } from '@auth/sveltekit/client';
+  import { page } from '$app/stores';
+  import { onMount, onDestroy } from 'svelte';
+  import { query } from 'svelte-apollo';
+  import { FETCH_COURSES } from '$lib/graphql/queries/courses';
+  import ContributionsStats from '$components/User/ContributionsStats.svelte';
   let user;
-  import "iconify-icon";
-  import { PageHeader } from "svelte-ui";
+  import 'iconify-icon';
+  import { PageHeader } from 'svelte-ui';
 
-  import ChoicesPanes from "$components/ChoicesPanes.svelte";
+  import ChoicesPanes from '$components/ChoicesPanes.svelte';
 
   const courses = query(FETCH_COURSES);
 
@@ -25,11 +25,14 @@
 
 <svelte:head>
   <title>Home</title>
-  <meta name="description" content="Planet of the Bugs uses AI to generate fake bug scenarios for developers to learn debugging skills and the fundamentals of writing secure and robust software. By using AI, the app can provide an endless supply of unique scenarios, allowing developers to practice and hone their skills." />
+  <meta
+    name="description"
+    content="Planet of the Bugs uses AI to generate fake bug scenarios for developers to learn debugging skills and the fundamentals of writing secure and robust software. By using AI, the app can provide an endless supply of unique scenarios, allowing developers to practice and hone their skills."
+  />
 </svelte:head>
 <PageHeader
   description="Get ready to sharpen your debugging skills, exchange knowledge, and have a blast along the way."
-  heading="Good afternoon, Emmanuel!"
+  heading={`Welcome Back, ${user?.name}`}
 />
 <section class="p-4">
   <div>
@@ -55,33 +58,33 @@
   <div class="card card-compact bg-white w-full shadow">
     <div class="card-body space-y-2">
       <div class="flex justify-between items-center">
-        <h2 class="card-title">        <iconify-icon icon="ri:git-repository-line" />
-          Subscribed Repositories</h2>
+        <h2 class="card-title">
+          <iconify-icon icon="ri:git-repository-line" />
+          Subscribed Repositories
+        </h2>
 
-      <div>
-        <a href="/repositories/subscribed" class="link">See all</a>
+        <div>
+          <a href="/repositories/subscribed" class="link">See all</a>
+        </div>
       </div>
-    </div>
       <div class="stats stats-vertical lg:stats-horizontal">
-
         <div class="stat">
           <div class="stat-title">Downloads</div>
           <div class="stat-value">31K</div>
           <div class="stat-desc">Jan 1st - Feb 1st</div>
         </div>
-        
+
         <div class="stat">
           <div class="stat-title">New Users</div>
           <div class="stat-value">4,200</div>
           <div class="stat-desc">↗︎ 400 (22%)</div>
         </div>
-        
+
         <div class="stat">
           <div class="stat-title">New Registers</div>
           <div class="stat-value">1,200</div>
           <div class="stat-desc">↘︎ 90 (14%)</div>
         </div>
-        
       </div>
       <div class="card-actions justify-end gap-2">
         <button class="btn btn-sm btn-primary">Hunt Bugs &amp; Issues</button>
@@ -91,33 +94,33 @@
   <div class="card card-compact bg-white w-full shadow">
     <div class="card-body space-y-2">
       <div class="flex justify-between items-center">
-        <h2 class="card-title">        <iconify-icon icon="ri:git-repository-line" />
-          Subscribed Repositories</h2>
+        <h2 class="card-title">
+          <iconify-icon icon="ri:git-repository-line" />
+          Subscribed Repositories
+        </h2>
 
-      <div>
-        <a href="/repositories/subscribed" class="link">See all</a>
+        <div>
+          <a href="/repositories/subscribed" class="link">See all</a>
+        </div>
       </div>
-    </div>
       <div class="stats stats-vertical lg:stats-horizontal">
-
         <div class="stat">
           <div class="stat-title">Downloads</div>
           <div class="stat-value">31K</div>
           <div class="stat-desc">Jan 1st - Feb 1st</div>
         </div>
-        
+
         <div class="stat">
           <div class="stat-title">New Users</div>
           <div class="stat-value">4,200</div>
           <div class="stat-desc">↗︎ 400 (22%)</div>
         </div>
-        
+
         <div class="stat">
           <div class="stat-title">New Registers</div>
           <div class="stat-value">1,200</div>
           <div class="stat-desc">↘︎ 90 (14%)</div>
         </div>
-        
       </div>
       <div class="card-actions justify-end gap-2">
         <button class="btn btn-sm btn-primary">Hunt Bugs &amp; Issues</button>
