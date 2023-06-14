@@ -1,15 +1,15 @@
 <script>
-  import { onMount } from "svelte";
+  import { onMount } from 'svelte';
   export let repositories;
   export let user;
-  import "iconify-icon";
-  import ContributionsByRepo from "./ContributionsByRepo.svelte";
-  import { githubClient } from "$lib/graphql/apolloClient";
+  import 'iconify-icon';
+  import ContributionsByRepo from './ContributionsByRepo.svelte';
+  import { githubClient } from '$lib/graphql/apolloClient';
   let contributions;
 
   function hexToHSL(hexColor) {
     // Remove the # if present
-    hexColor = hexColor.replace("#", "");
+    hexColor = hexColor.replace('#', '');
 
     // Convert hex to RGB
     const r = parseInt(hexColor.substring(0, 2), 16) / 255;
@@ -56,29 +56,31 @@
   {#each repositories.nodes as node}
     <div class="card card-compact basis-2/5 grow bg-white shadow-md">
       <div class="card-body">
-        <div class="flex gap-4">
-          <div class="w-full space-y-2">
-            <div class="flex gap-2">
-              <a class="link link-hover badge badge-accent badge-lg gap-2" href={node.url}>
-                <iconify-icon icon="ri:github-line" />
-                Github
-              </a>
-              <a class="link link-hover badge badge-accent badge-lg gap-2" href={node.homepageUrl}>
-                <iconify-icon icon="ri:global-line" />
-                Website</a
+        <div class="space-y-">
+          <h3 class="card-title">
+            {node.nameWithOwner}
+          </h3>
+          <div class="flex space-x-6">
+            <div class="flex items-center justify-center space-x-1">
+              <iconify-icon icon="ri:git-repository-line" />
+              <a href={node.url} target="_blank" class="underline"
+                >{node.name}</a
               >
             </div>
-            <div class="flex justify-between w-ful mb-2">
-              <h3 class="card-title">
-                {node.nameWithOwner}
-              </h3>
+            <div class="flex justify-center items-center space-x-1">
+              <iconify-icon icon="ri:star-line" />
+              <p>{node.stargazerCount}</p>
             </div>
-            <p>{node?.description}</p>
+            <div class="flex justify-center items-center space-x-1">
+              <iconify-icon icon="ri:git-branch-line" />
+              <p>{node.forkCount}</p>
+            </div>
           </div>
         </div>
-        <slot>
+        <p>{node?.description}</p>
+        <!-- <slot>
           <ContributionsByRepo repository={node} {user} />
-        </slot>
+        </slot> -->
         <div class="divider">Tech Stack</div>
         <div class="flex gap-2 flex-wrap">
           {#each node.languages.nodes as language}
