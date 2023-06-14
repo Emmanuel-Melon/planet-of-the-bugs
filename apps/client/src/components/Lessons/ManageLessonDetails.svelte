@@ -6,7 +6,7 @@
   import { ADD_LESSON } from '$lib/graphql/mutations/courses';
   import { mutation } from 'svelte-apollo';
   const addLesson = mutation(ADD_LESSON);
-  import { Card } from "svelte-ui";
+  import { Button, Card } from 'svelte-ui';
 
   export let courseId: string;
   export let chapters: Array<Object>;
@@ -181,9 +181,11 @@
           </div>
 
           <div class="card-actions justify-end mt-2 py-2">
-            <button class="btn btn-sm btn-primary gap-2"
-              ><iconify-icon icon="ri:check-line" /> Update Chapter Details</button
-            >
+            <Button
+              CTA="Update Lesson Details"
+              icon="ri:check-line"
+              onClick={() => {}}
+            />
           </div>
         </form>
       </div>
@@ -196,14 +198,13 @@
         <div class="basis-3/4 space-y-2">
           <Tabs {items} />
           <div class="card-actions justify-end">
-            <button class="btn btn-sm btn-outline gap-2">
-              <iconify-icon icon="ri:edit-2-line" />
-              Draft</button
-            >
-            <button class="btn btn-sm btn-primary gap-2">
-              <iconify-icon icon="ri:check-line" />
-              Publish</button
-            >
+            <Button
+              CTA="Draft"
+              icon="ri:edit-2-line"
+              isOutline={true}
+              onClick={() => {}}
+            />
+            <Button CTA="Publish" icon="ri:check-line" onClick={() => {}} />
           </div>
         </div>
       </div>
@@ -222,13 +223,18 @@
           You’ll get a chance to confirm your choice.
         </p>
         <div class="card-actions justify-end">
-          <button class="btn btn-md btn-error gap-2"
-            ><iconify-icon icon="ri:delete-bin-7-line" /> Delete Lesson</button
-          >
+          <Button
+            CTA="Delete Lesson"
+            icon="ri:delete-bin-7-line"
+            bg="error"
+            onClick={() => {}}
+          />
         </div>
       </div>
     </Card>
   {:else}
-    <div class="card shadow justify-center items-center min-h-16">Please Select a Chapter to edit</div>
+    <div class="card shadow justify-center items-center min-h-16">
+      Please Select a Chapter to edit
+    </div>
   {/if}
 </div>

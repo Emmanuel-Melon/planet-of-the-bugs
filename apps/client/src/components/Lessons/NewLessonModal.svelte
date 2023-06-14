@@ -1,5 +1,6 @@
 <script lang="ts">
   import 'iconify-icon';
+  import { Button } from 'svelte-ui';
   export let chapterId: string;
   export let idx: number;
   export let lessonTypes: Array<string>;
@@ -26,16 +27,7 @@
       class="modal-backdrop btn btn-sm btn-circle btn-ghost absolute top-2 right-2"
       ><iconify-icon icon="ri:close-line" /></label
     >
-    <form
-      on:submit={handleSubmit({
-        title,
-        description,
-        index: idx,
-        chapter_id: chapterId,
-        type: type,
-        XP: xp,
-      })}
-    >
+    <form>
       <div class="flex justify-between items-center">
         <h3 class="font-bold text-lg">Add New Lesson</h3>
       </div>
@@ -100,10 +92,18 @@
         />
       </div>
       <div class="modal-action flex justify-end">
-        <button class="btn btn-sm btn-primary gap-2">
-          <iconify-icon icon="ri:add-line" />
-          Add Lesson
-        </button>
+        <Button
+          CTA="Add Lesson"
+          icon="ri:add-line"
+          onClick={()=>handleSubmit({
+            title,
+            description,
+            index: idx,
+            chapter_id: chapterId,
+            type: type,
+            XP: xp,
+          })}
+        />
       </div>
     </form>
   </div>

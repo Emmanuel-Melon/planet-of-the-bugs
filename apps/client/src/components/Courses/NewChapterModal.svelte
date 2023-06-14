@@ -4,6 +4,7 @@
   export let chaptersLength;
   import { ADD_CHAPTER } from '$lib/graphql/mutations/courses';
   import { mutation } from 'svelte-apollo';
+  import { Button } from 'svelte-ui';
   const addChapter = mutation(ADD_CHAPTER);
 
   let title = '';
@@ -48,7 +49,7 @@
       class="modal-backdrop btn btn-sm btn-circle btn-ghost absolute top-2 right-2"
       ><iconify-icon icon="ri:close-line" /></label
     >
-    <form on:submit={handleSubmit}>
+    <form>
       <div class="flex justify-between items-center">
         <h3 class="font-bold text-lg">Add New Chapter</h3>
         <!-- <button class="btn btn-sm btn-ghost btn-square"><iconify-icon icon="ri:close-line" /></button> -->
@@ -81,10 +82,8 @@
       </div>
 
       <div class="modal-action flex justify-end">
-        <button class="btn btn-sm btn-primary gap-2">
-          <iconify-icon icon="ri:add-line" />
-          Save Chapter
-        </button>
+        <Button CTA="Save Chapter" icon="ri:add-line" onClick={handleSubmit} />
+
       </div>
     </form>
   </div>

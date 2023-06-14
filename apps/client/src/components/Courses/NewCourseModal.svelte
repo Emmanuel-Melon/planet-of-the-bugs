@@ -9,6 +9,7 @@
   let description = "";
   let complexity = "Beginner";
   import "iconify-icon";
+  import Button from "svelte-ui/components/Button.svelte";
 
   function createSlug(str: string) {
     return str.toLowerCase().replace(/\s+/g, "_");
@@ -84,9 +85,7 @@
         </select>
       </div>
       <div class="modal-action">
-        <button class="btn btn-sm btn-primary gap-2" on:click={handleSubmit}
-          ><iconify-icon icon="ri:booklet-line" /> Create Course</button
-        >
+        <Button CTA="Create Course" icon="ri:booklet-line" onClick={handleSubmit} />
       </div>
     </div>
   </label>
