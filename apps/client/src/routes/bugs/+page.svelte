@@ -3,6 +3,7 @@
   import Card from 'svelte-ui/components/Card.svelte';
   import { PageHeader } from 'svelte-ui';
   import Pagination from 'svelte-ui/components/Pagination.svelte';
+  import Button from 'svelte-ui/components/Button.svelte';
 
   const issues = [
     {
@@ -138,9 +139,7 @@ repositories"
                 </p>
               </div>
               <div class="card-actions justify-end items-end">
-                <button class="btn btn-sm btn-primary gap-2"
-                  ><iconify-icon icon="ri:git-pull-request-line" /> Contribute</button
-                >
+                <Button CTA="Contribute" icon="ri:git-pull-request-line" onClick={() =>{}} />
               </div>
             </div>
           </Card>

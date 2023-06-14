@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Card } from "svelte-ui";
+  import { Button, Card } from 'svelte-ui';
   export let courseId: string;
   export let chapters: Array<Object>;
   import NewChapterModal from '$components/Courses/NewChapterModal.svelte';
@@ -30,7 +30,7 @@
           <h2 class="card-title">Chapters Details</h2>
           <NewChapterModal {courseId} chaptersLength={chapters.length} />
         </div>
-  
+
         <select
           on:change={handleChapterChange}
           class="select select-bordered w-full"
@@ -85,9 +85,11 @@
             />
           </div>
           <div class="card-actions justify-end mt-2 py-2">
-            <button class="btn btn-sm btn-primary gap-2"
-              ><iconify-icon icon="ri:check-line" /> Update Chapter Details</button
-            >
+            <Button
+              CTA="Update Chapter Details"
+              icon="ri:check-line"
+              onClick={() => {}}
+            />
           </div>
 
           <!-- <div class="flex flex-col space-y-2">
@@ -119,13 +121,17 @@
       <div class="card-body">
         <h3 class="card-title">Delete Chapter</h3>
         <p>
-          This option will remove the currently selected chapter from this course <span class="italic">({chapters[selectedChapter].title})</span>. You’ll
-          get a chance to confirm your choice.
+          This option will remove the currently selected chapter from this
+          course <span class="italic">({chapters[selectedChapter].title})</span
+          >. You’ll get a chance to confirm your choice.
         </p>
         <div class="card-actions justify-end">
-          <button class="btn btn-md btn-error gap-2"
-            ><iconify-icon icon="ri:delete-bin-7-line" /> Delete Chapter</button
-          >
+          <Button
+            CTA="Delete Chapter"
+            icon="ri:delete-bin-7-line"
+            bg="error"
+            onClick={() => {}}
+          />
         </div>
       </div>
     </Card>

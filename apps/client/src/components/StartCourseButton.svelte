@@ -8,6 +8,7 @@
   import { mutation } from "svelte-apollo";
   import { START_COURSE } from "$lib/graphql/mutations/courses";
   import "iconify-icon";
+  import Button from "svelte-ui/components/Button.svelte";
 
   const startCourse = mutation(START_COURSE);
 
@@ -55,8 +56,5 @@
   };
 </script>
 
-<button
-  class={` btn-sm gap-2 ${buttons[status].style}` }
-  on:click|preventDefault={buttons[status].logic}
-  ><iconify-icon icon="ri:add-circle-line" /> {buttons[status].text}</button
->
+<Button CTA={buttons[status].text} icon="ri:add-circle-line" onClick={buttons[status].logic} />
+

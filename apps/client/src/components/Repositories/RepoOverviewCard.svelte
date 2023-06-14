@@ -7,8 +7,9 @@
   import { mutation } from "svelte-apollo";
   const subscribeToRepo = mutation(SUBSCRIBE_TO_REPO);
   import ManageRepoSubscription from "./ManageRepoSubscription.svelte";
+  import Button from "svelte-ui/components/Button.svelte";
 
-  async function handleSubscrbeToRepo() {
+  async function handleSubscribeToRepo() {
     try {
       const result = await subscribeToRepo({
         variables: {
@@ -54,13 +55,7 @@
     <div class="card-actions justify-end">
       <div class="flex gap-2 items-center">
         <ManageRepoSubscription />
-        <button
-          on:click={handleSubscrbeToRepo}
-          class="btn btn-sm btn-primary gap-2"
-        >
-          <iconify-icon icon="ri:heart-add-line" />
-          Subscribe
-        </button>
+        <Button CTA="Subscribe" onClick={handleSubscribeToRepo} icon="ri:heart-add-line"/>
       </div>
     </div>
   </div>

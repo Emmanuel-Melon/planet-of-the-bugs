@@ -86,9 +86,7 @@
         </div>
 
         <div class="card-actions justify-end mt-2 py-2">
-          <button class="btn btn-primary gap-2"
-            ><iconify-icon icon="ri:check-line" /> Update Course Details</button
-          >
+          <Button CTA="Update Course Details" icon="ri:check-line" onClick={()=>{}} />
         </div>
       </form>
     </div>
