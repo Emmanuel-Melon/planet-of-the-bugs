@@ -27,7 +27,7 @@ export const load = (async (event) => {
     apolloClient.query({
       query: USER_BASIC_INFO,
       variables: {
-        email: session?.user?.email, // make it dybanuc
+        email: session?.user?.email,
       },
     }),
   ]);

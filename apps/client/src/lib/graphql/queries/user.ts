@@ -2,8 +2,7 @@ import {
   gql,
   // @ts-ignore
   // @ts-nocheck
-} from "@apollo/client/core/core.cjs";
-
+} from '@apollo/client/core/core.cjs';
 
 export const GET_USER_BY_GITHUB_LOGIN = gql`
   query ($username: String!) {
@@ -142,6 +141,7 @@ export const REPOS_CONTRIBUTED_TO = gql`
             }
             totalCount
           }
+          forkCount
         }
       }
     }
