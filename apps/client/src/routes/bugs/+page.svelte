@@ -117,7 +117,7 @@ repositories"
               </div>
               <p>{issue.title}</p>
               <div
-                class="flex felx-wrap flex-grow-0 space-x-2 w-full lg:w-fit px-4 py-2 rounded-md"
+                class="flex felx-wrap flex-grow-0 space-x-2 w-full lg:w-fit rounded"
               >
                 <p
                   class="flex-grow-0 px-2 rounded-md text-center bg-yellow-200"
