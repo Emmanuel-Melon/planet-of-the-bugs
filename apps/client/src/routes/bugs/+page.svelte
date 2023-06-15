@@ -30,7 +30,7 @@
 repositories"
 />
 
-<section>
+<section class="p-4">
   <div class="flex flex-col justify-center md:flex-row gap-2 mb-4">
     <div class="grow">
       <Card>
