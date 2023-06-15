@@ -30,15 +30,22 @@
   <div class="card-body space-y-2">
     <div class="flex flex-col items-start">
       <div class="flex items-center justify-between w-full">
+        <a href={`repositories/${repo.id}`} class="hover:underline">
         <h2 class="card-title">
-          <a class="link link-hover" target="_blank" href={repo.url}
-            >{repo.name.toLocaleUpperCase()}</a
-          >
-        </h2>
-        <button class="rounded-full grid place-items-center"><iconify-icon icon="ri:close-line" /></button>
+            {repo.name.toLocaleUpperCase()}
+          </h2>
+        </a>
+        <ManageRepoSubscription />
       </div>
       <div class="flex space-x-8">
-
+        <div class="flex items-center justify-center space-x-1">
+          <iconify-icon icon="ri:git-repository-line" />
+          <a
+            href={repo.url}
+            target="_blank"
+            class="underline">{repo.name}</a
+          >
+        </div>
         <div class="flex justify-center items-center space-x-1">
           <iconify-icon icon="ri:star-line" />
           <p>{repo.stargazerCount.toLocaleString()}</p>
@@ -54,7 +61,7 @@
     <p>Never miss an update from your favorite GitHub repositories</p>
     <div class="card-actions justify-end">
       <div class="flex gap-2 items-center">
-        <ManageRepoSubscription />
+        <Button CTA="Dismiss" onClick={()=>{}} icon="ri:close-circle-line" bg="ghost"/>
         <Button CTA="Subscribe" onClick={handleSubscribeToRepo} icon="ri:heart-add-line"/>
       </div>
     </div>

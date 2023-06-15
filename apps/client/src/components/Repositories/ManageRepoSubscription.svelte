@@ -3,7 +3,7 @@
   import { Modal } from "svelte-ui";
 </script>
 
-<Modal CTA="Manage" heading="Manage Subscription" icon={"ri:settings-3-line"}>
+<Modal isOutline={true} id="manage-repo" CTA="" heading="Manage Subscription" icon="ri:more-2-line">
     <p>Stack That Cheese</p>
 </Modal>
 
