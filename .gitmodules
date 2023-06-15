@@ -4,3 +4,6 @@
 [submodule "apps/website"]
 	path = apps/website
 	url = https://github.com/Planet-Of-the-Bugs/website.git
+[submodule "apps/support"]
+	path = apps/support
+	url = https://github.com/Planet-Of-the-Bugs/support.git
