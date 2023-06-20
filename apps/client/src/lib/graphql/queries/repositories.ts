@@ -42,6 +42,17 @@ query getUserRepositories($login: String!) {
           login
           url
         }
+        sshUrl
+        pullRequests {
+          totalCount
+        }
+        issues {
+          totalCount
+        }
+        forks {
+          totalCount
+        }
+        forkingAllowed
       }
     }
   }

@@ -1,25 +1,24 @@
 <script>
-  import 'iconify-icon';
-  import Card from 'svelte-ui/components/Card.svelte';
-  import { PageHeader } from 'svelte-ui';
-  import Pagination from 'svelte-ui/components/Pagination.svelte';
-  import Button from 'svelte-ui/components/Button.svelte';
+  import "iconify-icon";
+  import Card from "svelte-ui/components/Card.svelte";
+  import { PageHeader } from "svelte-ui";
+  import Button from "svelte-ui/components/Button.svelte";
 
   const issues = [
     {
       id: 1,
-      title: 'Analyze and recommend GitHub issues via MindsDB',
-      description: '',
+      title: "Analyze and recommend GitHub issues via MindsDB",
+      description: "",
     },
     {
       id: 2,
-      title: 'Execute code from Monaco Editor',
-      description: '',
+      title: "Execute code from Monaco Editor",
+      description: "",
     },
     {
       id: 3,
-      title: ' Mark Course as Completed',
-      description: '',
+      title: " Mark Course as Completed",
+      description: "",
     },
   ];
 </script>
@@ -72,11 +71,14 @@ repositories"
         </div>
       </Card>
     </div>
-    <div class="basis-3/5 lg:basis-4/5">
-      <div
-        class="flex justify-between items-center space-x-1 px-2 py-1 rounded-md"
-      >
-        <h3>Open Source Bugs</h3>
+    <div class="basis-3/5 lg:basis-4/5 space-y-2">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <button class="btn btn-sm btn-circle btn-outline">
+            <iconify-icon icon="ri:information-line" /></button
+          >
+          <h3>Recommended Issuses/ Bugs</h3>
+        </div>
         <div>
           <button class="btn btn-sm btn-circle btn-secondary">
             <iconify-icon icon="ri:arrow-left-double-line" />
@@ -84,12 +86,9 @@ repositories"
           <button class="btn btn-sm btn-circle btn-outline">
             <iconify-icon icon="ri:arrow-right-double-line" />
           </button>
-          <button class="btn btn-sm btn-circle btn-outline">
-            <iconify-icon icon="ri:information-line" /></button
-          >
         </div>
       </div>
-      <div class="space-y-4">
+      <div class="space-y-2">
         {#each issues as issue}
           <Card>
             <div class="card-body space-y-2">
@@ -138,8 +137,18 @@ repositories"
                   DOC
                 </p>
               </div>
-              <div class="card-actions justify-end items-end">
-                <Button CTA="Contribute" icon="ri:git-pull-request-line" onClick={() =>{}} />
+              <div class="card-actions justify-end items-end gap-2">
+                <Button
+                  CTA="c"
+                  icon="ri:close-circle-line"
+                  onClick={() => {}}
+                  bg="ghost"
+                />
+                <Button
+                  CTA="Contribute"
+                  icon="ri:git-pull-request-line"
+                  onClick={() => {}}
+                />
               </div>
             </div>
           </Card>

@@ -14,6 +14,7 @@
     { id: 1, name: "Profile" },
     { id: 2, name: "Account" },
     { id: 3, name: "Notifications" },
+    { id: 4, name: "API & CLI" },
   ];
 
   const handleItemChange = (id: number) => {

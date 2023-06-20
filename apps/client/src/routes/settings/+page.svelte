@@ -5,6 +5,7 @@
   import ProfileSettings from "$components/Settings/ProfileSettings.svelte";
   import NotificationsSettings from "$components/Settings/NotificationsSettings.svelte";
   import AccountSettings from "$components/Settings/AccountSettings.svelte";
+  import CLISettings from "$components/Settings/CLISettings.svelte";
 
   let currentItem: number;
 
@@ -16,6 +17,7 @@
     { value: 1, component: ProfileSettings },
     { value: 2, component: AccountSettings },
     { value: 3, component: NotificationsSettings },
+    { value: 4, component: CLISettings },
   ];
 
   onDestroy(unsubscribe);

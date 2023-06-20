@@ -4,13 +4,13 @@
   export let user;
 </script>
 
-<div class="basis-4/5">
-  <div class="flex justify-between items-center px-2 py-1 rounded-md">
+<div class="basis-4/5 space-y-2">
+  <div class="flex justify-between items-center">
     <div class="flex gap-2 items-center">
       <button class="btn btn-sm btn-circle btn-outline">
         <iconify-icon icon="ri:information-line" /></button
       >
-      <h3 class="text-xl">Recommended Repositories</h3>
+      <h3>Recommended Repositories</h3>
     </div>
     <div class="flex justify-end space-x-1 mb-1 pr-2">
       <button class="btn btn-sm btn-circle btn-outline"

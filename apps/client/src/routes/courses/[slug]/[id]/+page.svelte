@@ -5,7 +5,7 @@
   import CodeEditor from "$components/CodeEditor/CodeEditor.svelte";
   import EditorTerminal from "$components/CodeEditor/EditorTerminal.svelte";
   import EditorIFrame from "$components/CodeEditor/EditorIFrame.svelte";
-  import LessonSidebar from "$components/Lessons/LessonSidebar.svelte";
+
   import { NextPrev } from "svelte-ui";
 
   import MarkdownIt from "markdown-it";
@@ -44,26 +44,22 @@
 
 
 
-<div class="flex h-full">
-  <div class="basis-1/5 h-full">
-    <LessonSidebar lesson={lesson.data.lessons_by_pk} />
+
+<div class="p-4">
+  {#if lesson.data.lessons_by_pk.type === "text"}
+  <div>{@html lesson.data.lessons_by_pk.content}
   </div>
-  <div class="p-4">
-    {#if lesson.data.lessons_by_pk.type === "text"}
-    <div>{@html lesson.data.lessons_by_pk.content}
-    </div>
-  {:else if lesson.data.lessons_by_pk.type === "video"}
-    <p>{lesson.data.lessons_by_pk.title}</p>
-  {:else if lesson.data.lessons_by_pk.type === "interactive"}
-    <div class="basis-2/5">
-      <CodeEditor {handleExpand} {isExpanded} />
-    </div>
-    <div class="basis-2/5 h-full">
-      <div>
-        <EditorIFrame {sourceDoc} />
-        <EditorTerminal />
-      </div>
-    </div>
-  {/if}
+{:else if lesson.data.lessons_by_pk.type === "video"}
+  <p>{lesson.data.lessons_by_pk.title}</p>
+{:else if lesson.data.lessons_by_pk.type === "interactive"}
+  <div class="basis-2/5">
+    <CodeEditor {handleExpand} {isExpanded} />
   </div>
+  <div class="basis-2/5 h-full">
+    <div>
+      <EditorIFrame {sourceDoc} />
+      <EditorTerminal />
+    </div>
+  </div>
+{/if}
 </div>
