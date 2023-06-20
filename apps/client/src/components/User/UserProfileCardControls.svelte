@@ -29,7 +29,7 @@
   {/if}
   <div class="gap-2">
     <button class="btn btn-sm btn-outline btn-circle">
-      <iconify-icon icon="ri:more-2-line" />
+      <iconify-icon icon="ri:more-line" />
     </button>
   </div>
 </div>
