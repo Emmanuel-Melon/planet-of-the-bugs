@@ -22,7 +22,7 @@
       <div class="card-body">
         <h2 class="card-title">Welcome to Planet of The Bugs</h2>
         <span class="signedInText">
-          <small>Welcome Back</small><br />
+          <small>Hello, Bug Slayer!</small><br />
         </span>
         <div class="flex items-center gap-4">
           <div class="avatar">

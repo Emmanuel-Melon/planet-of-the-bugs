@@ -18,7 +18,7 @@
           >
         </h2>
         <div class="flex gap-2 items-center">
-          <div class="badge badge-md badge-accent gap-2">
+          <div class="badge badge-lg py-2 badge-accent gap-2">
             <iconify-icon icon="ri:bar-chart-2-line" />
             {course.complexity}
           </div>

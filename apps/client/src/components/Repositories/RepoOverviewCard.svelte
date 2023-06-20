@@ -3,6 +3,8 @@
   export let user;
   import "iconify-icon";
 
+  console.log(repo?.owner?.avatarUrl);
+
   import { SUBSCRIBE_TO_REPO } from "$lib/graphql/mutations/repositories";
   import { mutation } from "svelte-apollo";
   const subscribeToRepo = mutation(SUBSCRIBE_TO_REPO);
@@ -28,11 +30,17 @@
 
 <div class="card card-compact basis-2/5 grow bg-white shadow">
   <div class="card-body space-y-2">
+    <div class="avatar">
+      <div class="w-12 rounded-full ring ring-offset-base-100 ring-offset-2">
+        <img src={repo?.owner?.avatarUrl} alt="repo" />
+      </div>
+    </div>
     <div class="flex flex-col items-start">
       <div class="flex items-center justify-between w-full">
         <a href={`repositories/${repo.id}`} class="hover:underline">
+          
         <h2 class="card-title">
-            {repo.name.toLocaleUpperCase()}
+            {repo?.name}
           </h2>
         </a>
         <ManageRepoSubscription />

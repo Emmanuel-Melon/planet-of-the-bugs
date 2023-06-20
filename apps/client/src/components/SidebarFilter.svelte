@@ -9,7 +9,7 @@
 
 <Card>
   <div class="card-body">
-    <div class="divider">{CTA}</div>
+    <h3 class="card-title">{CTA}</h3>
     {#each criteria as criterion}
       <div class="form-control">
         <label class="cursor-pointer label">

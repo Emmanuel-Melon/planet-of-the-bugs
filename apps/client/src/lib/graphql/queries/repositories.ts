@@ -137,6 +137,9 @@ export const FETCH_REPOSITORIES_BY_TOPIC = gql`
             stargazerCount
             owner {
               login
+              avatarUrl(size: 84)
+              id
+              url
             }
           }
         }

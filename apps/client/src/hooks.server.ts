@@ -46,6 +46,10 @@ export const handleAuth = SvelteKitAuth(async () => {
     ],
     secret: PUBLIC_AUTH_SECRET,
     trustHost: true,
+    pages: {
+      newUser: '/auth/new-user',
+      error: '/auth/error'
+    },
     callbacks: {
       async signIn({ user, account, profile, email, credentials }) {
         return {
@@ -75,9 +79,6 @@ export const handleAuth = SvelteKitAuth(async () => {
         return token;
       },
       debug: true,
-      pages: {
-        newUser: '/auth/new-user'
-      }
     }
   }
   return authOptions;

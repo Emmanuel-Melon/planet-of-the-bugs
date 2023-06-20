@@ -2,19 +2,19 @@
   import RepoOverviewCard from '$components/Repositories/RepoOverviewCard.svelte';
   export let repositories;
   export let user;
-
-  console.log(user);
 </script>
 
 <div class="basis-4/5">
   <div class="flex justify-between items-center px-2 py-1 rounded-md">
-    <h3>Recommended Repositories</h3>
+    <div class="flex gap-2 items-center">
+      <button class="btn btn-sm btn-circle btn-outline">
+        <iconify-icon icon="ri:information-line" /></button
+      >
+      <h3 class="text-xl">Recommended Repositories</h3>
+    </div>
     <div class="flex justify-end space-x-1 mb-1 pr-2">
       <button class="btn btn-sm btn-circle btn-outline"
         ><iconify-icon icon="ri:equalizer-line" /></button
-      >
-      <button class="btn btn-sm btn-circle btn-outline">
-        <iconify-icon icon="ri:information-line" /></button
       >
     </div>
   </div>
