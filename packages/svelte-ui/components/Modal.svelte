@@ -12,14 +12,14 @@
 <label
   for={`${id}-modal`}
   class={isOutline
-    ? `cursor-pointer`
-    : `btn btn-sm btn-${btnBg} gap-2`}><iconify-icon {icon} />{CTA}</label
+    ? `cursor-pointer gap-2 flex justify-center items-center `
+    : `flex justify-center items-center btn btn-sm btn-${btnBg} gap-2`}><iconify-icon {icon} />{CTA}</label
 >
 
 <!-- Put this part before </body> tag -->
 <input type="checkbox" id={`${id}-modal`} class="modal-toggle" />
 <div class="modal">
-  <div class="modal-box cursor-pointer relative space-y-2">
+  <div class="modal-box relative space-y-2">
     <div class="flex items-center justify-between">
       <h3 class="text-xl text-bold">{heading}</h3>
       <label
