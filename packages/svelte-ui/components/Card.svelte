@@ -3,11 +3,11 @@
   export let bg: String = 'white';
   export let title: String = '';
   export let titleTag: String = 'h2';
-  export let childrenVerticalSpacing: number = 0;
+  export let bodyVerticalSpacing: number = 0;
 </script>
 
 <div class={`card card-compact bg-${bg} w-full shadow`}>
-  <div class={`card-body space-y-${childrenVerticalSpacing}`}>
+  <div class={`card-body space-y-${bodyVerticalSpacing}`}>
     {#if title}
       {@html `<${titleTag} class="card-title">${title}</${titleTag}>`}
     {/if}

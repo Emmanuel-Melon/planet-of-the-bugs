@@ -53,7 +53,7 @@
   const booleanObjects = extractBooleanProps(githubUser);
 </script>
 
-<Card childrenVerticalSpacing={2}>
+<Card bodyVerticalSpacing={2}>
   <div class="flex items-center gap-4">
     <div class="avatar indicator">
       <span class="indicator-item badge badge-lg badge-accent -top-3"
