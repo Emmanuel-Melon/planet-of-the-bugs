@@ -5,6 +5,7 @@ import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { error } from "@sveltejs/kit";
 import { USER_BASIC_INFO } from "$lib/graphql/queries/user";
 import { redirect } from '@sveltejs/kit';
+import { formatUserRepoTopics } from "./helpers";
 
 export const load = (async (event) => {
 
@@ -20,17 +21,19 @@ export const load = (async (event) => {
   }
   const githubClient = GITHUB_API.getGithubClient();
 
-  const [repositories, user] = await Promise.all([
-    await githubClient.query({
-      query: FETCH_REPOSITORIES_BY_TOPIC,
-    }),
-    apolloClient.query({
-      query: USER_BASIC_INFO,
-      variables: {
-        email: session?.user?.email,
-      },
-    }),
-  ]);
+  const user = await apolloClient.query({
+    query: USER_BASIC_INFO,
+    variables: {
+      email: session?.user?.email,
+    },
+  });
+
+  const repositories = await githubClient.query({
+    query: FETCH_REPOSITORIES_BY_TOPIC,
+    variables: {
+      topics: formatUserRepoTopics()
+    }
+  });
 
   return {
     repositories: {

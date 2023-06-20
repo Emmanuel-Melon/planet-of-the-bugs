@@ -42,7 +42,7 @@
       </div>
     </div>
     <div class="basis-3/5">
-      <div class="flex justify-between items-center bg-base-200 w-full p-2 gap-2">
+      <div class="flex justify-between items-center w-full p-2 gap-2">
         <h3 class="text-xl font-bold">Course Chapters</h3>
         <div class="flex gap-2">
           <div class="badge badge-lg badge-outline gap-2">

@@ -121,8 +121,8 @@ export const GET_CONTRIBUTIONS_BY_REPO = gql`
 `;
 
 export const FETCH_REPOSITORIES_BY_TOPIC = gql`
-  query MyQuery {
-    search(query: "topic:react", type: REPOSITORY, first: 10) {
+  query MyQuery($topics: String!) {
+    search(query: $topics, type: REPOSITORY, first: 10) {
       edges {
         node {
           ... on Repository {

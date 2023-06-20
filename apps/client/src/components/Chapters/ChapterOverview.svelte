@@ -20,7 +20,7 @@
   <div class="space-y-2">
     {#each chapter.lessons as lesson}
       <div class="flex items-center gap-2">
-        <span class="flex items-center bg-accent text-white p-2 rounded-full shodow-md">
+        <span class="flex items-center p-2 rounded-full bg-neutral shadow text-neutral-content">
           <iconify-icon icon="ri:booklet-line" />
         </span>
         <a class="link link-hover" href={`/courses/${course.slug}/${lesson.id}`}
