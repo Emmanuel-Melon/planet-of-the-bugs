@@ -6,6 +6,20 @@ import { sequence } from "@sveltejs/kit/hooks";
 import type { Handle } from "@sveltejs/kit";
 import BugsClientCustomAdapter from "$lib/auth/BugsClientCustomAdapter";
 import apolloClient from "$lib/graphql/apolloClient";
+import { GET_USER_BY_EMAIL } from "$lib/graphql/queries/user";
+
+interface User {
+  name: string | null;
+  image: string | null;
+  created_at: string | null;
+  role: string | null;
+  updated_at: string | null;
+  username: string | null;
+  hasConnectedGithub: boolean;
+  githubUsername: string | null;
+  email?: string | null;
+  __typename?: string;
+}
 
 import {
   PUBLIC_GOOGLE_CLIENT_ID,
@@ -21,14 +35,14 @@ import {
 export const handleCors = async (data) => {
   const { resolve, event } = data;
   const response = await resolve(event);
-  response.headers.append("Access-Control-Allow-Origin", `*`);
+  response.headers.append('Access-Control-Allow-Origin', `*`);
   response.headers.append(
-    "Access-Control-Allow-Methods",
+    'Access-Control-Allow-Methods',
     `GET, POST, PUT, DELETE, PATCH, OPTIONS`
   );
   response.headers.append(
-    "Access-Control-Allow-Headers",
-    "Content-Type, Origin, Accept, token"
+    'Access-Control-Allow-Headers',
+    'Content-Type, Origin, Accept, token'
   );
   return response;
 };
@@ -82,6 +96,14 @@ export const handleAuth = SvelteKitAuth(async () => {
       },
       async session(data) {
         const { session, token } = data;
+        const result = await apolloClient.query({
+          query: GET_USER_BY_EMAIL,
+          variables: {
+            email: session.user?.email,
+          },
+        });
+        let user: User = { ...result.data.user[0], ...session.user };
+        session.user = user;
         session.token = token;
         return session;
       },

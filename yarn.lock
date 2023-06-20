@@ -440,10 +440,23 @@
   resolved "https://registry.yarnpkg.com/@svelteuidev/composables/-/composables-0.10.0.tgz#894a230ee6e3d1361a8811ddb77d603904d7d841"
   integrity sha512-6fmwFX9BSsF5jbEdrGqBloC0Knx5lyj7HjjZyD/hT6iKKeP/xDbNMfOLwIBqcBu4HN2EIWnLzvKBVeqoVKonWA==
 
+"@svelteuidev/composables@^0.12.1":
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/@svelteuidev/composables/-/composables-0.12.1.tgz#1782ee826aadbcc58d5df32338e4614cc4570fa2"
+  integrity sha512-4w17gQex9mcJZhYvzuKxT5X1bDVWJQFjThZif32DKEKi9iL9adD2zScckjidEnP8kHZBntEhUF7a64ofgNtRsA==
+
 "@svelteuidev/core@^0.10.0":
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/@svelteuidev/core/-/core-0.10.0.tgz#8635160c90aade9eb44f5991b9c13ddea69e3c6f"
   integrity sha512-58cRAEZQmM48zZuYiMyMHwt6rfj0YtrzS71mfo+E2icjiYeofAANDYklCchMm1PClmcRT70OCZQc6SenoKuR9g==
+  dependencies:
+    "@floating-ui/dom" "0.5.2"
+    "@stitches/core" "1.2.8"
+
+"@svelteuidev/core@^0.12.1":
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/@svelteuidev/core/-/core-0.12.1.tgz#3b11e1b9ac287183237605efd01424068ff27e31"
+  integrity sha512-dWpGl2ATc7BMLZLtK7eg4OPMP1AGlfWW+cxjeAPAwcjS/AimvnXo5fNwHHnRNRG2r3fGW1LHTXROHByPHQw0OA==
   dependencies:
     "@floating-ui/dom" "0.5.2"
     "@stitches/core" "1.2.8"
@@ -455,20 +468,45 @@
   dependencies:
     dayjs "1.11.1"
 
+"@svelteuidev/dates@^0.12.1":
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/@svelteuidev/dates/-/dates-0.12.1.tgz#030fa490a4e8456d76c7908a23584234aea5d916"
+  integrity sha512-fdmjXK+k7J2tVE3ENGLgjLHPgce3oYKigrhSvSDXJ+f4SoPJuFDuYGUS3Q20QgSxsGkr6OV1Mu36V/vP3lADBw==
+  dependencies:
+    dayjs "1.11.1"
+
 "@svelteuidev/motion@^0.10.0":
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/@svelteuidev/motion/-/motion-0.10.0.tgz#06aff9d51aa58fc57d64f57f874bfda5b3ed072a"
   integrity sha512-WJlqQVfTiv8PScD9MXW3p2VHBSuzoHsaktejOHY+5y1MQPUHTDndLLacbfoJJe1bxPNrwsZQGEZOs7L0aJ4/Zg==
+
+"@svelteuidev/motion@^0.12.1":
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/@svelteuidev/motion/-/motion-0.12.1.tgz#cef274594295f51b80f1e75a2ed01ab1df301f58"
+  integrity sha512-q4t8ge6RiOtI5JXGXkMX6TcdHjukFowMjr/fpXnKyMBilEYhjCTYH/7e75XWSdhW87XR4/tKSaExAvVCUZHeyg==
 
 "@svelteuidev/preprocessors@^0.10.0":
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/@svelteuidev/preprocessors/-/preprocessors-0.10.0.tgz#c34863d1e8eb8102edb3adb0383eaf45bf665cbd"
   integrity sha512-IcCCxh4Tv7VTCxEoxjkez1ZYR4oR6FjX1jDqR/wJleZ50JXnupb/o/mCFscwljLqVuIEcuWFCKhDUlCRe4MLpA==
 
+"@svelteuidev/preprocessors@^0.12.1":
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/@svelteuidev/preprocessors/-/preprocessors-0.12.1.tgz#c4f5236fc45fb77cf2c6877097e196ca588b770f"
+  integrity sha512-odxmj9NWcRb9xJmRqtJ7IdWcC0YTOwtMy7UNpwhYhEAMeWqeq/cStQLeeR8sDgiXcrUfDZ4tXhznIuZp0uNOhQ==
+
 "@svelteuidev/prism@^0.10.0":
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/@svelteuidev/prism/-/prism-0.10.0.tgz#dd60ceefaf97873c256568154e36da6dce53713c"
   integrity sha512-i1zhIuB5aHkU63JywlU6dWNbtK6aADwOvYBTweJ6KqnYfKWav997PsRspeZym09+CA+WPd2bK9CczhAk4dNSdg==
+  dependencies:
+    prism-svelte "0.5.0"
+    prismjs "1.28.0"
+
+"@svelteuidev/prism@^0.12.1":
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/@svelteuidev/prism/-/prism-0.12.1.tgz#82fd283e9ca18aaaf2e3fc8a2e1c2c98ab2cec1f"
+  integrity sha512-DU2/NKJhxmcnqoiva/j/2js1LS88EkQg3FxE7iXQbkFxCMuquCcmn76LjEN1CnRXpDKOlzS4vBYopryb6g4wWQ==
   dependencies:
     prism-svelte "0.5.0"
     prismjs "1.28.0"
@@ -1438,7 +1476,7 @@ cssesc@^3.0.0:
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
 
-daisyui@^2.51.4:
+daisyui@^2.51.4, daisyui@^2.51.6:
   version "2.52.0"
   resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-2.52.0.tgz#1e22abd655bf4a5cb466e1a1f264bb597e9ec254"
   integrity sha512-LQTA5/IVXAJHBMFoeaEMfd7/akAFPPcdQPR3O9fzzcFiczneJFM73CFPnScmW2sOgn/D83cvkP854ep2T9OfTg==

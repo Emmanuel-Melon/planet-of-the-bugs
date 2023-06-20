@@ -2,7 +2,7 @@ import {
   gql,
   // @ts-ignore
   // @ts-nocheck
-} from "@apollo/client/core/core.cjs";
+} from '@apollo/client/core/core.cjs';
 
 export const GET_SUBSCRIBED_REPOS = gql`
   query SubscribedRepos($user_id: uuid) {
@@ -15,9 +15,9 @@ export const GET_SUBSCRIBED_REPOS = gql`
   }
 `;
 
-export const GET_USER_REPOS = gql`
-  query getUserRepositories($login: String!) {
-    user(login: $login) {
+export const GET_USER_REPOS_BY_GITHUB_USERNAME = gql`
+  query GetUserRepositories($username: String!) {
+    user(login: $username) {
       repositories(
         last: 20
         privacy: PUBLIC
