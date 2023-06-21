@@ -2,7 +2,7 @@ import { GITHUB_USER_BASIC_INFO, USER_BASIC_INFO } from "$lib/graphql/queries/us
 import apolloClient from "$lib/graphql/apolloClient";
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { destructureQueryResults } from "$lib/graphql/helpers";
-
+import { redirectUnAuthenticatedUsers, refreshGitHubAccessToken, validateGitHubAccessToken } from "$lib/auth/helpers";
 
 export const load = async (event) => {
 
@@ -10,21 +10,29 @@ export const load = async (event) => {
 
   const { session } = await parent();
 
-  if(session?.token !== null || session?.token !== undefined) {
-    GITHUB_API.setSession(session?.token?.accessToken);
+  redirectUnAuthenticatedUsers(session, [307, '/auth']);
+
+  const isTokenValid = validateGitHubAccessToken(session?.expires);
+
+  if(!isTokenValid) {
+    refreshGitHubAccessToken(session);
   }
+
+  GITHUB_API.setSession(session?.token?.accessToken);
+
+  const user = await apolloClient.query({
+    query: USER_BASIC_INFO,
+    variables: {
+      email: session?.user?.email,
+    },
+  });
+
   const githubClient = GITHUB_API.getGithubClient();
-  const [githubUser, user] = await Promise.all([
-    githubClient.query({
-      query: GITHUB_USER_BASIC_INFO,
-    }),
-    apolloClient.query({
-      query: USER_BASIC_INFO,
-      variables: {
-        email: session?.user?.email,
-      },
-    }),
-  ]);
+
+  const githubUser = await githubClient.query({
+    query: GITHUB_USER_BASIC_INFO,
+  });
+
 
   const {
     data: { user: destructuredUserObject, loading: profileLoading },

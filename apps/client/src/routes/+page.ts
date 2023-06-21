@@ -1,4 +1,4 @@
-import { redirectUnAuthenticatedUsers } from "$lib/auth/helpers.js";
+import { redirectUnAuthenticatedUsers } from "$lib/auth/helpers";
 
 export const load = async (event) => {
 
