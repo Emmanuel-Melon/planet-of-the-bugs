@@ -5,6 +5,7 @@ import Google from "@auth/core/providers/google";
 import { sequence } from '@sveltejs/kit/hooks';
 import { redirect } from '@sveltejs/kit';
 import type { Handle } from "@sveltejs/kit";
+import BugsClientCustomAdapter from "$lib/auth/BugsClientCustomAdapter";
 
 
 import {
