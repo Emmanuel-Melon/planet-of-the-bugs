@@ -81,7 +81,7 @@
 
   <div class="navbar-end relative gap-2 items-center">
     <Dropdown items={notifications}>
-      <iconify-icon icon="ri:notification-line" height="25" width="25" /> 
+      <iconify-icon icon="ri:notification-line" height="20" width="20" /> 
       </Dropdown>
     <div class="dropdown dropdown-end lg:hidden">
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
@@ -112,7 +112,7 @@
       {#if user}
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <div tabindex="0" class="btn btn-secondary shadow btn-circle avatar">
-          <div class="w-10 rounded-full">
+          <div class="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
             <img src={user.image} alt={user.name} />
           </div>
         </div>
@@ -132,7 +132,7 @@
         </ul>
       {:else}
       <div class="flex gap-2 items-center">
-        <a href="/auth" class="btn btn-primary gap-2"><iconify-icon icon="ri:login-circle-line" /> Sign In</a>
+        <a href="/auth" class="btn btn-primary btn-sm gap-2"><iconify-icon icon="ri:login-circle-line" /> Sign In</a>
       </div>
       {/if}
     </div>

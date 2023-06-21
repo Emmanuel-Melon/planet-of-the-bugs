@@ -1,7 +1,7 @@
 <script>
   // @ts-nocheck
   import { page } from "$app/stores";
-  import { ADD_NEW_USER } from "$lib/graphql/mutations/users";
+  import { INSERT_NEW_USER } from "$lib/graphql/mutations/users";
   import { onMount } from "svelte";
   import { mutation } from "svelte-apollo";
   import "iconify-icon";
@@ -24,7 +24,7 @@
     });
   });
 
-  const addNewUser = mutation(ADD_NEW_USER);
+  const insertNewUser = mutation(INSERT_NEW_USER);
 
   async function handleSubmit() {
     if (!usernamePattern.test(username) && !emailPattern.test(email)) {
@@ -32,7 +32,7 @@
     }
 
     try {
-      const result = await addNewUser({
+      const result = await insertNewUser({
         variables: {
           email,
           name,

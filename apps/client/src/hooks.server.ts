@@ -26,19 +26,18 @@ export const handleCors = async (data) => {
   return response;
 };
 
-async function authorization({ event, resolve }) {
-  // Protect any routes under /authenticated
-  const session = await event.locals.getSession();
-  if (!session) {
-    throw redirect(303, "/auth");
-  }
-
+async function authorization(data) {
+  const { resolve, event } = data;
+  // const session = await event.locals.getSession();
   // If the request is still here, just proceed as normally
-  return resolve(event);
+  //console.log(Object.keys(event.locals));
+  // console.log(event.locals);
+  return resolve();
 }
 
 export const handleAuth = SvelteKitAuth(async () => {
   const authOptions = {
+    // adapter: BugsClientCustomAdapter(),
     providers: [
       GitHub({
         clientId: PUBLIC_GITHUB_ID,
@@ -68,11 +67,17 @@ export const handleAuth = SvelteKitAuth(async () => {
       async jwt(data) {
         const { token, user, account, profile, isNewUser } = data;
         if (account) {
+          console.log("sirrrr")
+          console.log(account);
           token.accessToken = account.access_token
+  
+        } else if (Date.now() < token.expires_at!) {
+          // If the access token has not expired yet, return it
+          return token;
         }
 
         if (user) {
-          // token.user = user
+          token.user = user
         }
         if (profile) {
           // token.profile = profile

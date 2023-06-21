@@ -1,18 +1,19 @@
-<script>
+<script lang="ts">
   import { signIn, signOut } from "@auth/sveltekit/client";
   import { page } from "$app/stores";
   import "iconify-icon";
-  import { redirect } from "@sveltejs/kit";
-  import { goto } from "$app/navigation";
 
   const handleGithubLogin = async () => {
-    const result = await signIn("github");
-    redirect(307, '/');
+    try {
+      const result = await signIn("github", { callbackUrl: "/" });
+    } catch (err) {
+      console.log("error");
+    }
   };
 
   const handleGithubLogout = async () => {
-    const result = await signOut("github");
-    redirect(307, '/auth');
+    await signOut("github");
+    redirect(307, "/auth");
   };
 </script>
 
@@ -40,19 +41,20 @@
         </div>
 
         <div class="card-actions justify-end">
-          <button on:click={handleGithubLogout} class="btn">Sign out</button>
+          <button on:click={handleGithubLogout} class="btn btn-sm gap-2"
+            ><iconify-icon icon="ri:logout-circle-line" /> Sign out</button
+          >
         </div>
       </div>
     </div>
   {:else}
     <div class="card card-compact w-full md:w-2/3 max-w-xl bg-white shadow">
-
       <div class="card-body text-center space-y-2">
         <div class="mx-auto">
           <h2 class="card-title">Planet of The Bugs</h2>
         </div>
         <button
-          class="btn bg-black text-white gap-2"
+          class="btn btn-sm bg-black text-white gap-2"
           on:click={handleGithubLogin}
         >
           <iconify-icon icon="ri:github-line" />
@@ -82,7 +84,7 @@
           />
         </div>
 
-        <a href='auth/new-user' class="btn btn-accent">Register</a>
+        <a href="auth/new-user" class="btn btn-sm btn-outline">Register</a>
         <span class="notSignedInText">Already have an account?</span>
       </div>
     </div>
