@@ -2,9 +2,6 @@
   export let repo;
   export let user;
   import "iconify-icon";
-
-  console.log(repo?.owner?.avatarUrl);
-
   import { SUBSCRIBE_TO_REPO } from "$lib/graphql/mutations/repositories";
   import { mutation } from "svelte-apollo";
   const subscribeToRepo = mutation(SUBSCRIBE_TO_REPO);
