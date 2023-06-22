@@ -66,7 +66,7 @@
     </div>
     <p>{repo.description}</p>
     <div class="divider">Subscribe</div>
-    <p>Never miss an update from your favorite GitHub repositories</p>
+    <p class="text-neutral">Never miss an update from your favorite GitHub repositories</p>
     <div class="card-actions justify-end">
       <div class="flex gap-2 items-center">
         <Button CTA="Dismiss" onClick={()=>{}} icon="ri:close-circle-line" bg="ghost"/>

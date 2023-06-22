@@ -2,6 +2,7 @@
 import { SvelteKitAuth } from "@auth/sveltekit";
 import GitHub from "@auth/core/providers/github";
 import Google from "@auth/core/providers/google";
+import Linkedin from "@auth/core/providers/linkedin";
 import { sequence } from '@sveltejs/kit/hooks';
 import { redirect } from '@sveltejs/kit';
 import type { Handle } from "@sveltejs/kit";
@@ -42,11 +43,20 @@ export const handleAuth = SvelteKitAuth(async () => {
       GitHub({
         clientId: PUBLIC_GITHUB_ID,
         clientSecret: PUBLIC_GITHUB_SECRET,
+      }),
+      Google({
+        clientId: PUBLIC_GITHUB_ID,
+        clientSecret: PUBLIC_GITHUB_SECRET,
+      }),
+      Linkedin({
+        clientId: PUBLIC_GITHUB_ID,
+        clientSecret: PUBLIC_GITHUB_SECRET,
       })
     ],
     secret: PUBLIC_AUTH_SECRET,
     trustHost: true,
     pages: {
+      signIn: '/auth/signin',
       newUser: '/auth/new-user',
       error: '/auth/error'
     },

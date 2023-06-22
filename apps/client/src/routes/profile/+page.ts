@@ -12,15 +12,15 @@ import {
 import apolloClient from "$lib/graphql/apolloClient";
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { destructureQueryResults } from "$lib/graphql/helpers";
+import { redirectUnAuthenticatedUsers } from "$lib/auth/helpers";
 
 export const load = async (event) => {
   const { params, url, setHeaders, route, parent, fetch, depends, data: pageData } = event;
 
   const { session } = await parent();
+  redirectUnAuthenticatedUsers(session, [307, '/auth']);
 
-  if (session?.token !== null || session?.token !== undefined) {
-    GITHUB_API.setSession(session?.token?.accessToken);
-  }
+  GITHUB_API.setSession(session?.token?.accessToken);
   const githubClient = GITHUB_API.getGithubClient();
 
   const { data } = await githubClient.query({
@@ -49,7 +49,14 @@ export const load = async (event) => {
 
   const userInfo = destructuredUserObject[0];
 
-  const [contributedTo, pinnedItems, ownedRepos, subscribedRepos] = await Promise.all([
+  const subscribedRepos = await apolloClient.query({
+    query: GET_SUBSCRIBED_REPOS,
+    variables: {
+      user_id: userInfo.id,
+    },
+  });
+
+  const [contributedTo, pinnedItems, ownedRepos] = await Promise.all([
     githubClient.query({
       query: REPOS_CONTRIBUTED_TO,
     }),
@@ -64,12 +71,6 @@ export const load = async (event) => {
       variables: {
         login: data?.viewer?.login
       }
-    }),
-    apolloClient.query({
-      query: GET_SUBSCRIBED_REPOS,
-      variables: {
-        user_id: userInfo.id,
-      },
     })
   ]);
 

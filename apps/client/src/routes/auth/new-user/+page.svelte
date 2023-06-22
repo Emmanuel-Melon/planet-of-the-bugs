@@ -52,7 +52,7 @@
   }
 </script>
 
-<section class="space-y-4 p-4">
+<section class="space-y-4 p-4 w-full">
   <div class="w-fit mx-auto">
     <ul class="steps">
       <li class="step step-primary">Basic Info</li>
