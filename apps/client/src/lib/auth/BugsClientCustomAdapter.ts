@@ -1,56 +1,72 @@
-import { GITHUB_USER_BASIC_INFO } from "$lib/graphql/queries/user";
+import { USER_BASIC_INFO, USER_BY_ACCOUNT } from "$lib/graphql/queries/user";
 import { INSERT_NEW_USER } from "$lib/graphql/mutations/users";
-import { mutation } from "svelte-apollo";
 
-export default async function BugsClientCustomAdapter(client = null, options = {}) {
+
+export default function BugsClientCustomAdapter(client, options = {}) {
     return {
         async createUser(user) {
             try {
                 console.log("yooooooooo custom!");
-                const insertNewUser = mutation(INSERT_NEW_USER);
-                const result = await insertNewUser({
+                const user = await client.mutation({
+                    mutation: INSERT_NEW_USER,
                     variables: {
-                        ...user
+                      name: "Emmanuel G. Daniel",
+                      email: "eman@planetofthebugs.xyz",
+                      username: "eman"
                     },
-                });
+                  });
 
-                console.log(result);
+                console.log(user);
+                return null
+                
             } catch (error) {
                 console.log(error);
             }
         },
         async getUser(id) {
-            return
+            return null
         },
         async getUserByEmail(email) {
-            return
+            const user = await client.query({
+                query: USER_BASIC_INFO,
+                variables: {
+                  email: "emmanuelgatwech@gmail.com",
+                },
+              });
+            return user
         },
         async getUserByAccount({ providerAccountId, provider }) {
-            return
+            const account = await client.query({
+                query: USER_BY_ACCOUNT,
+                variables: {
+                  id: "",
+                },
+              });
+            return account
         },
         async updateUser(user) {
-            return
+            return null
         },
         async linkAccount(account) {
-            return
+            return null
         },
         async createSession({ sessionToken, userId, expires }) {
-            return
+            return null
         },
         async getSessionAndUser(sessionToken) {
-            return
+            return null
         },
         async updateSession({ sessionToken }) {
-            return
+            return null
         },
         async deleteSession(sessionToken) {
-            return
+            return null
         },
         async createVerificationToken({ identifier, expires, token }) {
-            return
+            return null
         },
         async useVerificationToken({ identifier, token }) {
-            return
+            return null
         },
     }
 }

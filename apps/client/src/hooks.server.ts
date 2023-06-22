@@ -7,6 +7,7 @@ import { sequence } from '@sveltejs/kit/hooks';
 import { redirect } from '@sveltejs/kit';
 import type { Handle } from "@sveltejs/kit";
 import BugsClientCustomAdapter from "$lib/auth/BugsClientCustomAdapter";
+import apolloClient from "$lib/graphql/apolloClient";
 
 
 import {
@@ -15,7 +16,9 @@ import {
   PUBLIC_AUTH_SECRET,
   PUBLIC_GITHUB_ID,
   PUBLIC_GITHUB_SECRET,
-  PUBLIC_GITHUB_API_ENDPOINT
+  PUBLIC_GITHUB_API_ENDPOINT,
+  PUBLIC_LINKEDIN_CLIENT_ID,
+  PUBLIC_LINKEDIN_CLIENT_SECRET
 } from "$env/static/public";
 
 export const handleCors = async (data) => {
@@ -36,21 +39,28 @@ async function authorization(data) {
   return resolve();
 }
 
+const adapter = BugsClientCustomAdapter(apolloClient);
+
+console.log(adapter);
+
 export const handleAuth = SvelteKitAuth(async () => {
   const authOptions = {
-    // adapter: BugsClientCustomAdapter(),
+    adapter,
+    session: {
+      strategy: "jwt",
+    },
     providers: [
       GitHub({
         clientId: PUBLIC_GITHUB_ID,
         clientSecret: PUBLIC_GITHUB_SECRET,
       }),
       Google({
-        clientId: PUBLIC_GITHUB_ID,
-        clientSecret: PUBLIC_GITHUB_SECRET,
+        clientId: PUBLIC_GOOGLE_CLIENT_ID,
+        clientSecret: PUBLIC_GOOGLE_CLIENT_SECRET,
       }),
       Linkedin({
-        clientId: PUBLIC_GITHUB_ID,
-        clientSecret: PUBLIC_GITHUB_SECRET,
+        clientId: PUBLIC_LINKEDIN_CLIENT_ID,
+        clientSecret: PUBLIC_LINKEDIN_CLIENT_SECRET,
       })
     ],
     secret: PUBLIC_AUTH_SECRET,
@@ -58,7 +68,8 @@ export const handleAuth = SvelteKitAuth(async () => {
     pages: {
       signIn: '/auth/signin',
       newUser: '/auth/new-user',
-      error: '/auth/error'
+      error: '/auth/error',
+      verifyRequest: "/auth/verify",
     },
     callbacks: {
       async signIn({ user, account, profile, email, credentials }) {

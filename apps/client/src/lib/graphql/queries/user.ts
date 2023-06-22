@@ -161,3 +161,22 @@ export const USER_BASIC_INFO = gql`
     }
   }
 `;
+
+export const USER_BY_ACCOUNT = gql`
+  query getUserByAccount($id: uuid) {
+    account: account(where: { id: { _eq: $id } }) {
+      access_token
+      created_at
+      expires_at
+      id
+      id_token
+      provider
+      providerAccountId
+      refresh_token
+      scope
+      session_state
+      token_type
+      userId
+    }
+  }
+`;
