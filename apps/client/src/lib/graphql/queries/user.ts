@@ -196,5 +196,12 @@ export const USER_BY_ACCOUNT = gql`
 `;
 
 export const GET_SESSION_AND_USER = gql`
-
+query getSessionAndUser($sessionToken: String) {
+  session(where: {sessionToken: {_eq: $sessionToken}}) {
+    expires
+    id
+    sessionToken
+    userId
+  }
+}
 `;

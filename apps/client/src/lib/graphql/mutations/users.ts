@@ -18,25 +18,58 @@ export const INSERT_NEW_USER = gql`
 `;
 
 export const INSERT_NEW_VERIFICATION_TOKEN = gql`
-
+mutation insertVerificationToken($verificationTokenInput: verification_token_input!) {
+  insert_verification_token_one(object: $verificationTokenInput) {
+    expires
+    identifier
+    token
+  }
+}
 `;
 
 export const INSERT_NEW_ACCOUNT = gql`
-
+mutation insertNewAccount($newAccountInput: account_input!) {
+  insert_account_one(object: $newAccountInput) {
+    expires
+    identifier
+    token
+  }
+}
 `;
 
 export const DELETE_SESSION = gql`
-
+mutation deleteSession($sessionToken: String) {
+  delete_session(where: {sessionToken: {_eq: $sessionToken}}) {
+    affected_rows
+  }
+}
 `;
 
 export const UPADTE_SESSION = gql`
-
+mutation updateSession($sessionToken: String) {
+  update_session(where: {sessionToken: {_eq: $sessionToken}}) {
+    affected_rows
+    returning
+  }
+}
 `;
 
 export const UPADTE_USER = gql`
+mutation updateUser($id: uuid) {
+  update_users(where: {id: {_eq: $id}}) {
+    affected_rows
+  }
+}
 
 `;
 
 export const INSERT_NEW_SESSION = gql`
-
+mutation insertNewSession($newSessionInput: session_input!) {
+  insert_session_one(object: $newSessionInput) {
+    expires
+    id
+    sessionToken
+    userId
+  }
+}
 `;
