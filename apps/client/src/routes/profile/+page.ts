@@ -1,8 +1,8 @@
 import {
-  GITHUB_USER_BASIC_INFO,
+  GITHUB_GET_USER_BY_EMAIL,
   REPOS_CONTRIBUTED_TO,
   GET_PINNED_ITEMS,
-  USER_BASIC_INFO
+  GET_USER_BY_EMAIL
 } from "$lib/graphql/queries/user";
 
 import {
@@ -24,15 +24,15 @@ export const load = async (event) => {
   const githubClient = GITHUB_API.getGithubClient();
 
   const { data } = await githubClient.query({
-    query: GITHUB_USER_BASIC_INFO,
+    query: GITHUB_GET_USER_BY_EMAIL,
   });
 
   const [githubUser, user] = await Promise.all([
     githubClient.query({
-      query: GITHUB_USER_BASIC_INFO,
+      query: GITHUB_GET_USER_BY_EMAIL,
     }),
     apolloClient.query({
-      query: USER_BASIC_INFO,
+      query: GET_USER_BY_EMAIL,
       variables: {
         email: session?.user?.email,
       },

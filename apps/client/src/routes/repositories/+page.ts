@@ -2,7 +2,7 @@ import { FETCH_REPOSITORIES_BY_TOPIC } from "$lib/graphql/queries/repositories.j
 import apolloClient from "$lib/graphql/apolloClient";
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { error } from "@sveltejs/kit";
-import { USER_BASIC_INFO } from "$lib/graphql/queries/user";
+import { GET_USER_BY_EMAIL } from "$lib/graphql/queries/user";
 import { redirectUnAuthenticatedUsers, refreshGitHubAccessToken, validateGitHubAccessToken } from "$lib/auth/helpers";
 
 
@@ -18,7 +18,7 @@ export const load = (async (event) => {
 
   try {
     const user = await apolloClient.query({
-      query: USER_BASIC_INFO,
+      query: GET_USER_BY_EMAIL,
       variables: {
         email: session?.user?.email,
       },

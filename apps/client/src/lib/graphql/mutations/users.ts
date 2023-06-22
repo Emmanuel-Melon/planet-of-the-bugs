@@ -16,3 +16,27 @@ export const INSERT_NEW_USER = gql`
     }
   }
 `;
+
+export const INSERT_NEW_VERIFICATION_TOKEN = gql`
+
+`;
+
+export const INSERT_NEW_ACCOUNT = gql`
+
+`;
+
+export const DELETE_SESSION = gql`
+
+`;
+
+export const UPADTE_SESSION = gql`
+
+`;
+
+export const UPADTE_USER = gql`
+
+`;
+
+export const INSERT_NEW_SESSION = gql`
+
+`;
