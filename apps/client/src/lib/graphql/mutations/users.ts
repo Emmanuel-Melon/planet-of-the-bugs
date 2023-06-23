@@ -5,7 +5,7 @@ import {
 
 export const INSERT_NEW_USER = gql`
   mutation addNewUser($username: String, $name: String, $email: String) {
-    insert_users_one(
+    insert_user_one(
       object: { email: $email, name: $name, username: $username }
     ) {
       id

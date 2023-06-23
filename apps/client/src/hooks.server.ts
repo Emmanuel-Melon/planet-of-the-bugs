@@ -4,7 +4,6 @@ import GitHub from "@auth/core/providers/github";
 import Google from "@auth/core/providers/google";
 import Linkedin from "@auth/core/providers/linkedin";
 import { sequence } from '@sveltejs/kit/hooks';
-import { redirect } from '@sveltejs/kit';
 import type { Handle } from "@sveltejs/kit";
 import BugsClientCustomAdapter from "$lib/auth/BugsClientCustomAdapter";
 import apolloClient from "$lib/graphql/apolloClient";
@@ -16,9 +15,9 @@ import {
   PUBLIC_AUTH_SECRET,
   PUBLIC_GITHUB_ID,
   PUBLIC_GITHUB_SECRET,
-  PUBLIC_GITHUB_API_ENDPOINT,
   PUBLIC_LINKEDIN_CLIENT_ID,
-  PUBLIC_LINKEDIN_CLIENT_SECRET
+  PUBLIC_LINKEDIN_CLIENT_SECRET,
+  PUBLIC_DATA_BASE_URL
 } from "$env/static/public";
 
 export const handleCors = async (data) => {
@@ -39,16 +38,9 @@ async function authorization(data) {
   return resolve();
 }
 
-const adapter = BugsClientCustomAdapter(apolloClient);
-
-console.log(adapter);
-
 export const handleAuth = SvelteKitAuth(async () => {
   const authOptions = {
-    adapter,
-    session: {
-      strategy: "jwt",
-    },
+    bugsClientCustomAdapter: BugsClientCustomAdapter(apolloClient),
     providers: [
       GitHub({
         clientId: PUBLIC_GITHUB_ID,
@@ -63,7 +55,11 @@ export const handleAuth = SvelteKitAuth(async () => {
         clientSecret: PUBLIC_LINKEDIN_CLIENT_SECRET,
       })
     ],
+    database: PUBLIC_DATA_BASE_URL,
     secret: PUBLIC_AUTH_SECRET,
+    session: {
+      strategy: "jwt",
+    },
     trustHost: true,
     pages: {
       signIn: '/auth/signin',
@@ -88,8 +84,6 @@ export const handleAuth = SvelteKitAuth(async () => {
       async jwt(data) {
         const { token, user, account, profile, isNewUser } = data;
         if (account) {
-          console.log("sirrrr")
-          console.log(account);
           token.accessToken = account.access_token
   
         } else if (Date.now() < token.expires_at!) {

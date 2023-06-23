@@ -2,24 +2,19 @@ import { GET_USER_BY_EMAIL, USER_BY_ACCOUNT, GET_SESSION_AND_USER, GET_USER_BY_I
 import { INSERT_NEW_ACCOUNT, INSERT_NEW_SESSION, INSERT_NEW_USER, UPADTE_SESSION, DELETE_SESSION, UPADTE_USER, INSERT_NEW_VERIFICATION_TOKEN } from "$lib/graphql/mutations/users";
 
 
-export default function BugsClientCustomAdapter(client, options = {}) {
+export default function BugsClientCustomAdapter(client) {
     return {
         async createUser(data) {
-            try {
-                console.log("welcome!");
-                console.log(data);
-                const user = await client.mutation({
-                    mutation: INSERT_NEW_USER,
-                    variables: {
-                        ...data
-                    },
-                });
-                console.log(user);
-                return user;
-
-            } catch (error) {
-                console.log(error);
-            }
+            console.log("welcome!");
+            console.log(data);
+            const user = await client.mutation({
+                mutation: INSERT_NEW_USER,
+                variables: {
+                    ...data
+                },
+            });
+            console.log(user);
+            return user;
         },
         async getUser(id) {
             const user = await client.query({
@@ -50,18 +45,14 @@ export default function BugsClientCustomAdapter(client, options = {}) {
             return account
         },
         async updateUser(user) {
-            try {
-                const updatedUser = await client.mutation({
-                    mutation: UPADTE_USER,
-                    variables: {
-                        ...user
-                    },
-                });
-                console.log(updatedUser);
-                return updatedUser;
-            } catch (error) {
-                console.log(error);
-            }
+            const updatedUser = await client.mutation({
+                mutation: UPADTE_USER,
+                variables: {
+                    ...user
+                },
+            });
+            console.log(updatedUser);
+            return updatedUser;
         },
         async linkAccount(data) {
             console.log("linking account!");

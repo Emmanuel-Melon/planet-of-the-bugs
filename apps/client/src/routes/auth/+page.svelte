@@ -6,7 +6,7 @@
 
   const handleGithubLogin = async () => {
     try {
-      const result = await signIn("github", { callbackUrl: "/" });
+      const result = await signIn("github");
     } catch (err) {
       console.log("error");
     }
@@ -30,7 +30,6 @@
 
   const handleGithubLogout = async () => {
     await signOut("github");
-    redirect(307, "/auth");
   };
 </script>
 

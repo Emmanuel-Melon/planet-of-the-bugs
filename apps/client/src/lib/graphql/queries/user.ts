@@ -150,7 +150,7 @@ export const REPOS_CONTRIBUTED_TO = gql`
 
 export const GET_USER_BY_EMAIL = gql`
   query getUserByEmail($email: String) {
-    user: users(where: { email: { _eq: $email } }) {
+    user: user(where: { email: { _eq: $email } }) {
       email
       created_at
       id
