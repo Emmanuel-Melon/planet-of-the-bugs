@@ -6,7 +6,7 @@
         placeholder="Search…"
         class="input input-bordered bg-base-500 w-4/5"
       />
-      <button class="btn btn-circle">
+      <button class="btn btn-square">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6"

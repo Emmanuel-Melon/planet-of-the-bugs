@@ -18,7 +18,7 @@
           >
         </h2>
         <div class="flex gap-2 items-center">
-          <div class="badge badge-lg py-2 badge-accent gap-2">
+          <div class="badge badge-lg py-4 badge-accent badge-outline gap-2">
             <iconify-icon icon="ri:bar-chart-2-line" />
             {course.complexity}
           </div>
@@ -27,11 +27,12 @@
     </div>
     <div class="divider">Description</div>
     <p>{course.description}</p>
-    <div class="card-actions justify-end gap-2">
-      <button class="btn btn-sm btn-square btn-ghost"
-        ><iconify-icon icon="ri:bookmark-line" /></button
-      >
+    <div class="card-actions items-center justify-start gap-2">
+
       <StartCourseButton {userId} course_id={course.id} slug={course.slug} />
+      <button class="btn btn-sm btn-square btn-ghost"
+      ><iconify-icon icon="ri:bookmark-line" height="25" width="25" /></button
+    >
     </div>
   </div>
 </div>

@@ -25,7 +25,7 @@
       <label
         id="close"
         for={`${id}-modal`}
-        class="modal-backdrop btn btn-sm btn-circle btn-ghost"
+        class="modal-backdrop btn btn-sm btn-square btn-ghost"
         ><iconify-icon icon="ri:close-line" /></label
       >
     </div>

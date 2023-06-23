@@ -10,7 +10,7 @@
   <div class="flex justify-between gap-2 items-center px-2 py-4 bg-base-200">
     <div class="flex gap-2 grow items-center">
       <button
-        class="btn btn-sm btn-circle btn-accent"
+        class="btn btn-sm btn-square btn-accent"
         type="submit"
       >
         <iconify-icon icon="ri:emotion-line" />
@@ -21,7 +21,7 @@
         bind:value={text}
       />
     </div>
-    <button class="btn btn-sm btn-circle btn-primary" type="submit">
+    <button class="btn btn-sm btn-square btn-primary" type="submit">
       <iconify-icon icon="ri:send-plane-2-line" />
     </button>
   </div>

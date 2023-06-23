@@ -12,13 +12,18 @@
   </div>
 </section>
 
-
 <style>
   .body {
-    background: #00467F;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #A5CC82, #00467F);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #A5CC82, #00467F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
+    background: #00467f; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #a5cc82,
+      #00467f
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #a5cc82,
+      #00467f
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 </style>

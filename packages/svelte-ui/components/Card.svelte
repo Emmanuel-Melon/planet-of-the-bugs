@@ -3,7 +3,7 @@
   export let bg: String = 'white';
   export let title: String = '';
   export let titleTag: String = 'h2';
-  export let bodyVerticalSpacing: number = 0;
+  export let bodyVerticalSpacing: number = 2;
 </script>
 
 <div class={`card card-compact bg-${bg} w-full shadow`}>

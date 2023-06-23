@@ -10,23 +10,23 @@
   isOutline={true}
 >
   <form>
-    <div class="my-5">
-      <label class="label">
+    <div class="my-5 space-y-2">
+      <label class="label" for="email">
         <span class="label-text"
           >Share Planet of the Bugs invitation with your friend via email</span
         >
       </label>
-      <input class="input input-bordered" placeholder="Enter Friend's email" />
-      <button class="btn btn-primary">Invite</button>
+      <input class="input input-sm input-bordered w-full" placeholder="Enter Friend's email" id="email" />
     </div>
+    <button class="btn btn-sm btn-primary">Invite</button>
 
     <div class="w-full">
-      <label class="label">
+      <label class="label" for="link">
         <span class="label-text"> Or invite them using this link </span>
       </label>
 
       <div class="flex relative">
-        <input readonly class="input input-bordered flex-1" />
+        <input readonly class="input input-bordered flex-1" id="link" />
         <button>
           <iconify-icon
             icon="ri:file-copy-line"

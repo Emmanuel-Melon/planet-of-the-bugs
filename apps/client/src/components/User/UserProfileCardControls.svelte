@@ -28,7 +28,7 @@
     </div>
   {/if}
   <div class="gap-2">
-    <button class="btn btn-sm btn-outline btn-circle">
+    <button class="btn btn-sm btn-outline btn-square">
       <iconify-icon icon="ri:more-line" />
     </button>
   </div>

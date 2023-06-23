@@ -6,7 +6,7 @@
 
 <aside class="h-screen shadow">
     <div class="flex items-center gap-2 p-2 bg-primary">
-        <button class="btn btn-sm btn-circle"><iconify-icon icon="ri:arrow-left-circle-line" /></button>
+        <button class="btn btn-sm btn-square"><iconify-icon icon="ri:arrow-left-circle-line" /></button>
         <p>Go Back to Course</p>
     </div>
     <ul class="steps steps-vertical">
