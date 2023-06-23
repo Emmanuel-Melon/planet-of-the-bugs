@@ -112,7 +112,7 @@
       {#if user}
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <div tabindex="0" class="btn btn-secondary shadow btn-circle avatar">
-          <div class="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+          <div class="w-10 rounded-full ring ring-offset-primary ring-offset-2 shadow">
             <img src={user.image} alt={user.name} />
           </div>
         </div>
