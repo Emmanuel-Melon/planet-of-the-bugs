@@ -42,7 +42,7 @@ export const GET_USER_BY_GITHUB_LOGIN = gql`
   }
 `;
 
-export const GITHUB_USER_BASIC_INFO = gql`
+export const GITHUB_GET_USER_BY_EMAIL = gql`
   {
     viewer {
       login
@@ -148,9 +148,9 @@ export const REPOS_CONTRIBUTED_TO = gql`
   }
 `;
 
-export const USER_BASIC_INFO = gql`
-  query fetchUserBasicInfo($email: String) {
-    user: users(where: { email: { _eq: $email } }) {
+export const GET_USER_BY_EMAIL = gql`
+  query getUserByEmail($email: String) {
+    user: user(where: { email: { _eq: $email } }) {
       email
       created_at
       id
@@ -160,4 +160,48 @@ export const USER_BASIC_INFO = gql`
       username
     }
   }
+`;
+
+export const GET_USER_BY_ID = gql`
+  query getUserById($id: uuid) {
+    user: users(where: { id: { _eq: $id } }) {
+      email
+      created_at
+      id
+      name
+      role
+      updated_at
+      username
+    }
+  }
+`;
+
+export const USER_BY_ACCOUNT = gql`
+  query getUserByAccount($providerAccountId: String, $provider: String) {
+    account: account(where: {provider: {_eq: $provider}, providerAccountId: {_eq: $providerAccountId}}) {
+      access_token
+      created_at
+      expires_at
+      id
+      id_token
+      provider
+      providerAccountId
+      refresh_token
+      scope
+      session_state
+      token_type
+      userId
+    }
+  }
+`;
+
+export const GET_SESSION_AND_USER = gql`
+query getSessionAndUser($sessionToken: String) {
+  session(where: {sessionToken: {_eq: $sessionToken}}) {
+    expires
+    id
+    sessionToken
+    userId
+  }
+}
 `;

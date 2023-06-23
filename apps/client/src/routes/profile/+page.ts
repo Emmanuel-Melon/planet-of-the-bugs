@@ -1,8 +1,8 @@
 import {
-  GITHUB_USER_BASIC_INFO,
+  GITHUB_GET_USER_BY_EMAIL,
   REPOS_CONTRIBUTED_TO,
   GET_PINNED_ITEMS,
-  USER_BASIC_INFO
+  GET_USER_BY_EMAIL
 } from "$lib/graphql/queries/user";
 
 import {
@@ -12,27 +12,27 @@ import {
 import apolloClient from "$lib/graphql/apolloClient";
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { destructureQueryResults } from "$lib/graphql/helpers";
+import { redirectUnAuthenticatedUsers } from "$lib/auth/helpers";
 
 export const load = async (event) => {
   const { params, url, setHeaders, route, parent, fetch, depends, data: pageData } = event;
 
   const { session } = await parent();
+  redirectUnAuthenticatedUsers(session, [307, '/auth']);
 
-  if (session?.token !== null || session?.token !== undefined) {
-    GITHUB_API.setSession(session?.token?.accessToken);
-  }
+  GITHUB_API.setSession(session?.token?.accessToken);
   const githubClient = GITHUB_API.getGithubClient();
 
   const { data } = await githubClient.query({
-    query: GITHUB_USER_BASIC_INFO,
+    query: GITHUB_GET_USER_BY_EMAIL,
   });
 
   const [githubUser, user] = await Promise.all([
     githubClient.query({
-      query: GITHUB_USER_BASIC_INFO,
+      query: GITHUB_GET_USER_BY_EMAIL,
     }),
     apolloClient.query({
-      query: USER_BASIC_INFO,
+      query: GET_USER_BY_EMAIL,
       variables: {
         email: session?.user?.email,
       },
@@ -49,7 +49,14 @@ export const load = async (event) => {
 
   const userInfo = destructuredUserObject[0];
 
-  const [contributedTo, pinnedItems, ownedRepos, subscribedRepos] = await Promise.all([
+  const subscribedRepos = await apolloClient.query({
+    query: GET_SUBSCRIBED_REPOS,
+    variables: {
+      user_id: userInfo.id,
+    },
+  });
+
+  const [contributedTo, pinnedItems, ownedRepos] = await Promise.all([
     githubClient.query({
       query: REPOS_CONTRIBUTED_TO,
     }),
@@ -64,12 +71,6 @@ export const load = async (event) => {
       variables: {
         login: data?.viewer?.login
       }
-    }),
-    apolloClient.query({
-      query: GET_SUBSCRIBED_REPOS,
-      variables: {
-        user_id: userInfo.id,
-      },
     })
   ]);
 

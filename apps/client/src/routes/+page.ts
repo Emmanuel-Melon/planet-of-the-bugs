@@ -1,5 +1,4 @@
-import { redirect } from '@sveltejs/kit';
-import { GITHUB_API } from "$lib/github/githubGraphQLClient";
+import { redirectUnAuthenticatedUsers } from "$lib/auth/helpers";
 
 export const load = async (event) => {
 
@@ -7,9 +6,8 @@ export const load = async (event) => {
 
   const { session } = await parent();
 
-  if (session === null) {
-    throw redirect(307, '/auth');
-  }
+  redirectUnAuthenticatedUsers(session, [307, '/auth']);
+
   return {
     session
   };

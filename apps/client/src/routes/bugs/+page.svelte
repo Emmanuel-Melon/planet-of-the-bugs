@@ -93,10 +93,32 @@ repositories"
         {#each issues as issue}
           <Card>
             <div class="card-body space-y-2">
+              <div
+              class="flex flex-wrap flex-grow-0 space-x-2 w-full lg:w-fit rounded"
+            >
+              <div
+                class="badge badge-outline py-2 rounded- text-center bg-yellow-200"
+              >
+                Frontend
+              </div>
+              <div class="badge badge-outline py-2 rounded- text-center bg-blue-200">
+                Backend
+              </div>
+              <div
+                class="badge badge-outline py-2 rounded- text-center bg-purple-200"
+              >
+                Architecture
+              </div>
+              <div
+                class="badge badge-outline py-2 rounded- text-center bg-orange-200"
+              >
+                DOC
+              </div>
+            </div>
               <div class="flex flex-col w-full items-start justify-between">
-                <h3 class="card-title text-lg">
+                <h2 class="card-title text-bold">
                   {issue.title}
-                </h3>
+                </h2>
                 <div
                   class="w-full flex justify-between lg:justify-start lg:space-x-8 text-xs"
                 >
@@ -116,29 +138,9 @@ repositories"
                 </div>
               </div>
               <p>{issue.title}</p>
-              <div
-                class="flex felx-wrap flex-grow-0 space-x-2 w-full lg:w-fit rounded"
-              >
-                <p
-                  class="flex-grow-0 px-2 rounded-md text-center bg-yellow-200"
-                >
-                  Frontend
-                </p>
-                <p class="flex-grow-0 px-2 rounded-md text-center bg-blue-200">
-                  Backend
-                </p>
-                <p
-                  class="flex-grow-0 px-2 rounded-md text-center bg-purple-200"
-                >
-                  Architecture
-                </p>
-                <p
-                  class="flex-grow-0 px-2 rounded-md text-center bg-orange-200"
-                >
-                  DOC
-                </p>
-              </div>
-              <div class="card-actions justify-end items-end">
+
+              <div class="card-actions justify-start items-center gap-2">
+                <Button CTA="Skip" icon="ri:close-line" bg="ghost" onClick={() =>{}} />
                 <Button CTA="Contribute" icon="ri:git-pull-request-line" onClick={() =>{}} />
               </div>
             </div>

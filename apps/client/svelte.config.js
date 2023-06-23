@@ -1,6 +1,5 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/kit/vite';
-import path from 'path';
 import { mdsvex } from "mdsvex";
 
 /** @type {import('@sveltejs/kit').Config} */

@@ -2,7 +2,7 @@ import {
   FETCH_COURSE_BY_SLUG,
 } from '$lib/graphql/queries/courses';
 import apolloClient from "$lib/graphql/apolloClient";
-import { USER_BASIC_INFO } from "$lib/graphql/queries/user";
+import { GET_USER_BY_EMAIL } from "$lib/graphql/queries/user";
 import { appwriteServer } from "$lib/appwrite/appwriteServer";
 import { destructureQueryResults } from "$lib/graphql/helpers";
 
@@ -12,7 +12,7 @@ export const load = async (event) => {
   const { session } = await parent();
 
   const user = await apolloClient.query({
-    query: USER_BASIC_INFO,
+    query: GET_USER_BY_EMAIL,
     variables: {
       email: session?.user?.email,
     },

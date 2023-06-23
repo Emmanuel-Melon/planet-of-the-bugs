@@ -2,7 +2,7 @@ import {
     FETCH_COURSE_BY_SLUG,
     FETCH_USER_COURSE_PROGRESS,
 } from '$lib/graphql/queries/courses';
-import { USER_BASIC_INFO } from '$lib/graphql/queries/user';
+import { GET_USER_BY_EMAIL } from '$lib/graphql/queries/user';
 import apolloClient from "$lib/graphql/apolloClient";
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { error } from '@sveltejs/kit';
@@ -20,7 +20,7 @@ export const load = async (event) => {
     });
 
     const { data: userInfo } = await apolloClient.query({
-        query: USER_BASIC_INFO,
+        query: GET_USER_BY_EMAIL,
         variables: {
             email: session?.user?.email
         }
