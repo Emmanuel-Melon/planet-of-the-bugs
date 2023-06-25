@@ -17,6 +17,15 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
+  build:
+    docker:
+      - image: node:16
+        environment:
+          DATA_BASE_URL: DATA_BASE_URL
+        
+    steps:
+      - checkout
+
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows

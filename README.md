@@ -4,6 +4,8 @@
 - [Support →](https://support.planetofthebugs.xyz/)
 - [Documentation →](https://docs.planetofthebugs.xyz/)
 
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Emmanuel-Melon/planet-of-the-bugs/tree/alpha-release.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Emmanuel-Melon/planet-of-the-bugs/tree/alpha-release)
+
 
 Welcome to Planet of the Bugs, an innovative app that uses AI to generate unique bug scenarios for developers to practice and improve their debugging skills. The app also provides personalized training for teams, a built-in AI assistant for rubber-duck debugging, and many other exciting features.
 
