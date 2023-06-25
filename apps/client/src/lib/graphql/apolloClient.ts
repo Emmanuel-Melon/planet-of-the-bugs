@@ -1,11 +1,11 @@
 
-import { PUBLIC_HASURA_ADMIN_SECRET, PUBLIC_GITHUB_ACCESS_CODE, PUBLIC_GITHUB_API_ENDPOINT } from "$env/static/public";
+import { PUBLIC_HASURA_ADMIN_SECRET, PUBLIC_GITHUB_ACCESS_CODE, PUBLIC_GITHUB_API_ENDPOINT, PUBLIC_HASURA_GRAPHQL_ENDPOINT } from "$env/static/public";
 import { HttpLink, InMemoryCache, ApolloClient } from '@apollo/client/core';
 
 
 
 const httpLink = new HttpLink({
-  uri: "https://planet-of-the-bugs.hasura.app/v1/graphql",
+  uri: PUBLIC_HASURA_GRAPHQL_ENDPOINT,
   credentials: "include",
   headers: {
     "x-hasura-admin-secret": PUBLIC_HASURA_ADMIN_SECRET,
