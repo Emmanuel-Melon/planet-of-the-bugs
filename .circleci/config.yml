@@ -3,15 +3,7 @@ orbs:
   node: circleci/node@5.0.2
 
 jobs:
-  say-hello:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
-  test:
+  format:
     docker:
       - image: cimg/node:lts
         environment:
@@ -21,9 +13,25 @@ jobs:
       - node/install-packages:
           pkg-manager: yarn
       - run:
-          command: yarn build
+          command: yarn format
+  lint:
+    docker:
+      - image: cimg/node:lts
+        environment:
+          DATA_BASE_URL: DATA_BASE_URL
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
       - run:
-          command: yarn test
+          command: yarn lint
+  test:
+    docker:
+      - image: cimg/node:lts
+        environment:
+          DATA_BASE_URL: DATA_BASE_URL
+    steps:
+      - checkout
   build:
     docker:
       - image: cimg/node:lts
@@ -34,12 +42,15 @@ jobs:
       - checkout
 
 workflows:
-  say-hello-workflow:
+  format:
     jobs:
-      - say-hello
+      - build
   test:
     jobs:
       - test
   build:
+    jobs:
+      - build
+  lint:
     jobs:
       - build

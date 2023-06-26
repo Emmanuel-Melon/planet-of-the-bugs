@@ -10,6 +10,24 @@ services:
       - 5173:5173
     networks:
       - app_network
+  docs:
+    container_name: docs
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-docs
+    restart: always
+    ports:
+      - 5173:5173
+    networks:
+      - app_network
+  support:
+    container_name: support
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-support
+    restart: always
+    ports:
+      - 5173:5173
   website:
     container_name: website
     build:
