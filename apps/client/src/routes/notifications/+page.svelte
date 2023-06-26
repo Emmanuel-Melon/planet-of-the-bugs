@@ -30,7 +30,7 @@
   ];
 </script>
 
-<section class="p-4">
+<section class="p-2">
 
   <Card>
     <div class="card-body">

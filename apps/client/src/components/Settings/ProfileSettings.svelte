@@ -75,7 +75,7 @@
             />
           </div>
         </div>
-        <div class="card-actions justify-end">
+        <div class="card-actions justify-start">
           <button class="btn btn-sm btn-primary gap-2">Update Info</button>
         </div>
       </div>

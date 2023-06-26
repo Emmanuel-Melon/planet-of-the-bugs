@@ -31,7 +31,7 @@
 <div class="card card-compact basis-2/5 grow bg-white shadow">
   <div class="card-body space-y-2">
     <div class="avatar">
-      <div class="w-12 rounded-full ring ring-offset-base-100 ring-offset-2">
+      <div class="w-12 rounded-full ring ring-offset-primary ring-offset-2 shadow">
         <img src={repo?.owner?.avatarUrl} alt="repo" />
       </div>
     </div>
@@ -67,11 +67,9 @@
     <p>{repo.description}</p>
     <div class="divider">Subscribe</div>
     <p class="text-neutral">Never miss an update from your favorite GitHub repositories</p>
-    <div class="card-actions justify-end">
-      <div class="flex gap-2 items-center">
-        <Button CTA="Dismiss" onClick={()=>{}} icon="ri:close-circle-line" bg="ghost"/>
-        <Button CTA="Subscribe" onClick={handleSubscribeToRepo} icon="ri:heart-add-line"/>
-      </div>
+    <div class="card-actions items-center justify-start gap-2">
+      <Button CTA="Subscribe" onClick={handleSubscribeToRepo} icon="ri:heart-add-line"/>
+      <Button CTA="Skip" onClick={()=>{}} icon="ri:close-line" bg="ghost"/>
     </div>
   </div>
 </div>

@@ -22,43 +22,33 @@
 </script>
 
 <div class="basis-3/4 space-y-2">
-  <Card>
-    <div class="card-body">
-      <h3 class="card-title">Notifications</h3>
-      <p>Manage your notification settings</p>
-
-    </div>
+  <Card title="Notifications">
+    <p>Manage your notification settings</p>
   </Card>
-  <Card>
-    <div class="card-body">
-      <h3 class="card-title">Email Notifications</h3>
-      <p>You will receive email notifications when the following happens:</p>
-      <form>
-        {#each options as { description, status }}
-          <div class="form-control">
-            <label class="label cursor-pointer">
-              <span class="label-text">{description}</span>
-              <input type="checkbox" class="toggle" checked={status} />
-            </label>
-          </div>
-        {/each}
-      </form>
-    </div>
+  <Card title="Email Notifications">
+    <p>You will receive email notifications when the following happens:</p>
+    <form>
+      {#each options as { description, status }}
+        <div class="form-control">
+          <label class="label cursor-pointer">
+            <span class="label-text">{description}</span>
+            <input type="checkbox" class="toggle" checked={status} />
+          </label>
+        </div>
+      {/each}
+    </form>
   </Card>
-  <Card>
-    <div class="card-body">
-      <h3 class="card-title">Push Notifications</h3>
-      <p>You will receive push notifications when the following happens:</p>
-      <form>
-        {#each options as { description, status }}
-          <div class="form-control">
-            <label class="label cursor-pointer">
-              <span class="label-text">{description}</span>
-              <input type="checkbox" class="toggle" checked={status} />
-            </label>
-          </div>
-        {/each}
-      </form>
-    </div>
+  <Card title="Push Notifications">
+    <p>You will receive push notifications when the following happens:</p>
+    <form>
+      {#each options as { description, status }}
+        <div class="form-control">
+          <label class="label cursor-pointer">
+            <span class="label-text">{description}</span>
+            <input type="checkbox" class="toggle" checked={status} />
+          </label>
+        </div>
+      {/each}
+    </form>
   </Card>
 </div>

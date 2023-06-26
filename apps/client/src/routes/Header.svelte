@@ -17,7 +17,7 @@
   ];
 
   $: dropdownLinks = [
-    { text: "My Profile", path: "/profile", icon: "ri:user-2-line" },
+    { text: "My Profile", path: `/${user?.username}`, icon: "ri:user-2-line" },
     { text: "Authored Courses", path: "/authored", icon: "ri:book-read-line" },
     { text: "Settings", path: "/settings", icon: "ri:settings-3-line" }
   ];
@@ -70,8 +70,8 @@
     <ul class="navbar-center hidden lg:flex items-center gap-2">
       {#each menuLinks as { icon, text, path }}
         <li
-          class={`hover:bg-base-200 hover:text-black transition-all rounded-md  ${path === current ? "p-2 hidden lg:flex hover:bg-primary hover:text-white bg-primary text-primary-content"
-          : "p-2 hidden lg:flex"} `}
+          class={`hover:bg-base-200 hover:text-black transition-all rounded-md  ${path === current ? "py-1 px-2 hidden lg:flex hover:bg-primary  bg-primary text-primary-content"
+          : "py-1 px-2 hidden lg:flex"} `}
         >
           <a href={path} class="flex items-center gap-2"><iconify-icon icon={icon}/> {text}</a>
         </li>
@@ -85,7 +85,7 @@
       </Dropdown>
     <div class="dropdown dropdown-end lg:hidden">
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-      <div tabindex="0" class="btn btn-ghost btn-circle text-3xl">
+      <div tabindex="0" class="btn btn-ghost btn-square text-3xl">
         <iconify-icon icon="ri:menu-4-line" />
       </div>
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
@@ -112,7 +112,7 @@
       {#if user}
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <div tabindex="0" class="btn btn-secondary shadow btn-circle avatar">
-          <div class="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+          <div class="w-10 rounded-full ring ring-offset-primary ring-offset-2 shadow">
             <img src={user.image} alt={user.name} />
           </div>
         </div>

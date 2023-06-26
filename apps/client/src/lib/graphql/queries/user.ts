@@ -42,9 +42,9 @@ export const GET_USER_BY_GITHUB_LOGIN = gql`
   }
 `;
 
-export const GITHUB_GET_USER_BY_EMAIL = gql`
-  {
-    viewer {
+export const GET_GITHUB_USER_BASIC_INFO_BY_GITHUB_USERNAME = gql`
+  query getGithubUserBasicInfoByGithubUsername($username: String!) {
+    user(login: $username) {
       login
       bio
       company
@@ -61,7 +61,7 @@ export const GITHUB_GET_USER_BY_EMAIL = gql`
       url
       twitterUsername
       pronouns
-      avatarUrl(size: 16)
+      avatarUrl
       createdAt
       followers {
         totalCount
@@ -80,9 +80,9 @@ export const GITHUB_GET_USER_BY_EMAIL = gql`
   }
 `;
 
-export const GET_PINNED_ITEMS = gql`
-  query getPinnedItems($login: String!) {
-    user(login: $login) {
+export const GET_PINNED_ITEMS_BY_GITHUB_USERNAME = gql`
+  query getPinnedItems($username: String!) {
+    user(login: $username) {
       pinnedItems(first: 2) {
         totalCount
         nodes {
@@ -116,9 +116,9 @@ export const GET_PINNED_ITEMS = gql`
   }
 `;
 
-export const REPOS_CONTRIBUTED_TO = gql`
-  {
-    viewer {
+export const GET_REPOS_CONTRIBUTED_TO_BY_GITHUB_USERNAME = gql`
+  query getReposContributedToByGithubUsername($username: String!) {
+    user(login: $username) {
       repositoriesContributedTo(last: 20) {
         totalCount
         nodes {
@@ -141,7 +141,6 @@ export const REPOS_CONTRIBUTED_TO = gql`
             }
             totalCount
           }
-          forkCount
         }
       }
     }
@@ -158,6 +157,24 @@ export const GET_USER_BY_EMAIL = gql`
       role
       updated_at
       username
+      hasConnectedGithub
+      githubUsername
+    }
+  }
+`;
+
+export const GET_USER_BASIC_INFO_BY_USERNAME = gql`
+  query getUserBasicInfoByUsername($username: String) {
+    user: users(where: { username: { _eq: $username } }) {
+      email
+      created_at
+      id
+      name
+      role
+      updated_at
+      username
+      hasConnectedGithub
+      githubUsername
     }
   }
 `;

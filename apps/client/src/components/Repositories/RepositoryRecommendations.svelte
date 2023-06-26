@@ -7,13 +7,13 @@
 <div class="basis-4/5">
   <div class="flex justify-between items-center px-2 py-1 rounded-md">
     <div class="flex gap-2 items-center">
-      <button class="btn btn-sm btn-circle btn-outline">
+      <button class="btn btn-sm btn-square btn-outline">
         <iconify-icon icon="ri:information-line" /></button
       >
       <h3 class="text-xl">Recommended Repositories</h3>
     </div>
-    <div class="flex justify-end space-x-1 mb-1 pr-2">
-      <button class="btn btn-sm btn-circle btn-outline"
+    <div class="flex justify-end">
+      <button class="btn btn-sm btn-square btn-outline"
         ><iconify-icon icon="ri:equalizer-line" /></button
       >
     </div>

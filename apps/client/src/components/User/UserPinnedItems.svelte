@@ -10,10 +10,10 @@
     </h3>
 
     <div>
-      <button class="btn btn-sm btn-circle btn-secondary">
+      <button class="btn btn-sm btn-square btn-secondary">
         <iconify-icon icon="ri:arrow-left-double-line" />
       </button>
-      <button class="btn btn-sm btn-circle btn-outline">
+      <button class="btn btn-sm btn-square btn-outline">
         <iconify-icon icon="ri:arrow-right-double-line" />
       </button>
     </div>

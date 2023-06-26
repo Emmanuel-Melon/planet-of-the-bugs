@@ -38,7 +38,7 @@ real-world issues from Github? By subscribing to a Github repo, you
 can receive issues with labels that match your interests such as
 language, bug, good-first-issue, or even bounty." heading="Practice makes perfect!" />
 
-<section class="p-4">
+<section class="p-2">
   <div class="flex flex-col lg:flex-row gap-2">
     <div class="grow">
       <SidebarFilter CTA="Filter Repositories" {criteria} />

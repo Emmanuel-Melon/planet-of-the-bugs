@@ -1,5 +1,5 @@
 <script lang="ts">
-  import NewLessonModal from './NewLessonModal.svelte';
+  import NewLessonModal from '../Modals/NewLessonModal.svelte';
   import LessonCreator from '$components/Lessons/LessonCreator.svelte';
   import LessonCreatorPreview from '$components/Lessons/LessonCreatorPreview.svelte';
   import Tabs from '$components/ProfileTabs.svelte';
