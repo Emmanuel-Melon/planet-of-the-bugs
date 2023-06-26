@@ -2,7 +2,7 @@ import {
   gql,
   // @ts-ignore
   // @ts-nocheck
-} from '@apollo/client/core/core.cjs';
+} from "@apollo/client/core/core.cjs";
 
 export const GET_USER_BY_GITHUB_LOGIN = gql`
   query ($username: String!) {
@@ -178,7 +178,12 @@ export const GET_USER_BY_ID = gql`
 
 export const USER_BY_ACCOUNT = gql`
   query getUserByAccount($providerAccountId: String, $provider: String) {
-    account: account(where: {provider: {_eq: $provider}, providerAccountId: {_eq: $providerAccountId}}) {
+    account: account(
+      where: {
+        provider: { _eq: $provider }
+        providerAccountId: { _eq: $providerAccountId }
+      }
+    ) {
       access_token
       created_at
       expires_at
@@ -196,12 +201,12 @@ export const USER_BY_ACCOUNT = gql`
 `;
 
 export const GET_SESSION_AND_USER = gql`
-query getSessionAndUser($sessionToken: String) {
-  session(where: {sessionToken: {_eq: $sessionToken}}) {
-    expires
-    id
-    sessionToken
-    userId
+  query getSessionAndUser($sessionToken: String) {
+    session(where: { sessionToken: { _eq: $sessionToken } }) {
+      expires
+      id
+      sessionToken
+      userId
+    }
   }
-}
 `;

@@ -16,36 +16,36 @@ export const GET_SUBSCRIBED_REPOS = gql`
 `;
 
 export const GET_USER_REPOS = gql`
-query getUserRepositories($login: String!) {
-  user(login: $login) {
-    repositories(
-      last: 20
-      privacy: PUBLIC
-      isFork: false
-      affiliations: OWNER
-      orderBy: {field: CREATED_AT, direction: DESC}
-    ) {
-      totalCount
-      nodes {
-        createdAt
-        description
-        forkCount
-        homepageUrl
-        id
-        name
-        nameWithOwner
-        url
-        updatedAt
-        visibility
-        stargazerCount
-        owner {
-          login
+  query getUserRepositories($login: String!) {
+    user(login: $login) {
+      repositories(
+        last: 20
+        privacy: PUBLIC
+        isFork: false
+        affiliations: OWNER
+        orderBy: { field: CREATED_AT, direction: DESC }
+      ) {
+        totalCount
+        nodes {
+          createdAt
+          description
+          forkCount
+          homepageUrl
+          id
+          name
+          nameWithOwner
           url
+          updatedAt
+          visibility
+          stargazerCount
+          owner {
+            login
+            url
+          }
         }
       }
     }
   }
-}
 `;
 
 export const GET_USER_PULL_REQUEST_CONTRIBUTIONS = gql`

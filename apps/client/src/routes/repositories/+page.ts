@@ -3,16 +3,26 @@ import apolloClient from "$lib/graphql/apolloClient";
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { error } from "@sveltejs/kit";
 import { GET_USER_BY_EMAIL } from "$lib/graphql/queries/user";
-import { redirectUnAuthenticatedUsers, refreshGitHubAccessToken, validateGitHubAccessToken } from "$lib/auth/helpers";
+import {
+  redirectUnAuthenticatedUsers,
+  refreshGitHubAccessToken,
+  validateGitHubAccessToken,
+} from "$lib/auth/helpers";
 
-
-export const load = (async (event) => {
-
-  const { params, url, setHeaders, parent, fetch, depends, data: pageData } = event;
+export const load = async (event) => {
+  const {
+    params,
+    url,
+    setHeaders,
+    parent,
+    fetch,
+    depends,
+    data: pageData,
+  } = event;
 
   const { session } = await parent();
 
-  redirectUnAuthenticatedUsers(session, [307, '/auth']);
+  redirectUnAuthenticatedUsers(session, [307, "/auth"]);
   GITHUB_API.setSession(session?.token?.accessToken);
   const githubClient = GITHUB_API.getGithubClient();
 
@@ -36,7 +46,5 @@ export const load = (async (event) => {
         data: user?.data?.user[0] || {},
       },
     };
-  } catch (err) {
-
-  }
-});
+  } catch (err) {}
+};

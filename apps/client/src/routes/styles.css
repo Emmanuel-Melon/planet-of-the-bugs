@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway&family=Sen&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway&family=Sen&display=swap");
 
 html,
 body {
-    font-family: "Sen", Arial, Helvetica, sans-serif;
+  font-family: "Sen", Arial, Helvetica, sans-serif;
 }
 
 h1,
@@ -11,6 +11,6 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Raleway", Arial, Helvetica, sans-serif;
-    font-weight: bold;
+  font-family: "Raleway", Arial, Helvetica, sans-serif;
+  font-weight: bold;
 }

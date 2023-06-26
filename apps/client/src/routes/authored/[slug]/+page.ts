@@ -1,6 +1,4 @@
-import {
-  FETCH_COURSE_BY_SLUG,
-} from '$lib/graphql/queries/courses';
+import { FETCH_COURSE_BY_SLUG } from "$lib/graphql/queries/courses";
 import apolloClient from "$lib/graphql/apolloClient";
 import { GET_USER_BY_EMAIL } from "$lib/graphql/queries/user";
 import { appwriteServer } from "$lib/appwrite/appwriteServer";
@@ -35,5 +33,5 @@ export const load = async (event) => {
     course,
 
     user: { ...userInfo, profileLoading },
-  }
-}
+  };
+};
