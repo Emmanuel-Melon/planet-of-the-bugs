@@ -65,10 +65,10 @@ export const UPDATE_USER = gql`
 `;
 
 export const UPDATE_USER_TOPICS = gql`
-  mutation updateUserTopics($userTopics: jsonb = "", $id: uuid = "") {
+  mutation updateUserTopics($userTopics: json = "", $uid: uuid = "uid") {
     update_user(
-      where: { id: { _eq: $id } }
       _set: { userTopics: $userTopics }
+      where: { id: { _eq: $uid } }
     ) {
       affected_rows
     }

@@ -16,9 +16,8 @@ export const GET_SUBSCRIBED_REPOS = gql`
 `;
 
 export const GET_AVAILABLE_TOPICS = gql`
-  query getAvailableTags($id: uuid_comparison_exp = {}) @cached {
-    tags {
-      isActive
+  query getAvailableTopics @cached {
+    repo_topics(where: { isActive: { _eq: true } }) {
       name
     }
   }

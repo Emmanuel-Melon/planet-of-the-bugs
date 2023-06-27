@@ -1,22 +1,14 @@
 <script lang="ts">
+  import { UPDATE_USER_TOPICS } from '$lib/graphql/mutations/users';
+  import { onDestroy } from 'svelte';
+  import { mutation } from 'svelte-apollo';
   import { Button, Modal } from 'svelte-ui';
   import Card from 'svelte-ui/components/Card.svelte';
-  export let userTopics: String[];
+  export let user: any;
+  export let topics: [];
 
+  let userTopics = user?.userTopics;
   let userInput = '';
-  let availableTopics = [
-    'react',
-    'svelte',
-    'node',
-    'flutter',
-    'javascript',
-    'firebase',
-    'redux',
-    'docker',
-    'github',
-    'ai',
-    'storage',
-  ];
   let filteredTopics: string[] = [];
 
   const handleInputChange = (event: Event) => {
@@ -25,10 +17,10 @@
   };
 
   const filterAvailableTopics = () => {
-    filteredTopics = availableTopics.filter(
-      (topic) =>
-        topic.toLowerCase().includes(userInput.toLowerCase()) &&
-        !userTopics.includes(topic.toLowerCase())
+    filteredTopics = topics.filter(
+      ({ name }) =>
+        name.toLowerCase().includes(userInput.toLowerCase()) &&
+        !userTopics.includes(name.toLowerCase())
     );
   };
 
@@ -40,10 +32,32 @@
   };
 
   const addTopic = (index: number) => {
-    userTopics = [...userTopics, filteredTopics[index]];
+    userTopics = [...userTopics, filteredTopics[index]?.name];
     userInput = '';
   };
-  
+
+  const updateUserTopics = async (topics: string[]) => {
+    const update = mutation(UPDATE_USER_TOPICS);
+
+    try {
+      const result = await update({
+        variables: {
+          userTopics: JSON.stringify(topics),
+          uid: user?.id,
+        },
+      });
+      console.log('User Topics updated!');
+      document.getElementById('close')?.click();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  onDestroy(() => {
+    filteredTopics = [];
+    userInput = '';
+  });
+
   $: userTopics;
 </script>
 
@@ -90,7 +104,7 @@
             <div class="tooltip" data-tip="add">
               <button
                 class="btn btn-sm btn-primary lowercase"
-                on:click={() => addTopic(index)}>{topic}</button
+                on:click={() => addTopic(index)}>{topic?.name}</button
               >
             </div>
           {/each}
@@ -98,7 +112,11 @@
       </Card>
     {/if}
     <div class="modal-action flex justify-start">
-      <Button CTA="Save Preference" icon="ri:refresh-line" onClick={() => {}} />
+      <Button
+        CTA="Save Preference"
+        icon="ri:refresh-line"
+        onClick={() => updateUserTopics(userTopics)}
+      />
     </div>
   </form>
 </Modal>
