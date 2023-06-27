@@ -165,7 +165,7 @@ export const GET_USER_BY_EMAIL = gql`
 
 export const GET_USER_BASIC_INFO_BY_USERNAME = gql`
   query getUserBasicInfoByUsername($username: String) {
-    user: users(where: { username: { _eq: $username } }) {
+    user: user(where: { username: { _eq: $username } }) {
       email
       created_at
       id

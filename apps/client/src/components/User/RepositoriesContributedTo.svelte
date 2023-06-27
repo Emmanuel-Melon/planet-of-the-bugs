@@ -6,6 +6,7 @@
   import ContributionsByRepo from './ContributionsByRepo.svelte';
   import { githubClient } from '$lib/graphql/apolloClient';
   let contributions;
+  import { Card } from "svelte-ui";
 
   function hexToHSL(hexColor) {
     // Remove the # if present
@@ -54,9 +55,9 @@
 
 <section class="flex gap-2 flex-wrap grow w-full">
   {#each repositories.nodes as node}
-    <div class="card card-compact basis-2/5 grow bg-white shadow-md">
-      <div class="card-body">
-        <div class="space-y-">
+    <div class="basis-2/5 grow">
+      <Card>
+        <div class="space-y-2">
           <h3 class="card-title">
             {node.nameWithOwner}
           </h3>
@@ -90,7 +91,8 @@
             </div>
           {/each}
         </div>
-      </div>
+      </Card>
     </div>
+
   {/each}
 </section>
