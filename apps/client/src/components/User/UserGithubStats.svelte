@@ -1,12 +1,13 @@
 <script>
+  import { Card } from "svelte-ui";
   export let repositoriesTotal;
   export let pullRequestsTotal;
   export let followersTotal;
   export let StarredTotal;
 </script>
 
-<div class="card card-compact bg-white w-full shadow">
-  <div class="card-body">
+<div class=" w-full">
+  <Card>
     <h2 class="card-title">Contributions Overview</h2>
     <div class="stats w-full">  
       <div class="stat place-items-center">
@@ -34,5 +35,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </Card>
 </div>
