@@ -20,7 +20,6 @@
   ];
   let filteredTopics: string[] = [];
 
-
   const handleInputChange = (event: { target: { value: string } }) => {
     userInput = event.target.value;
     filterAvailableTopics();
@@ -66,7 +65,7 @@
               {topic}
             </button>
           </div>
-          {:else}
+        {:else}
           <p>You don't have any selected topics!</p>
         {/each}
       </div>
@@ -85,16 +84,18 @@
       />
     </div>
     {#if filteredTopics.length && userInput.length > 0}
-      <ul
-        class="flex flex-wrap gap-2 items-start mt-2 p-2 bg-white rounded-md shadow"
-      >
-        {#each filteredTopics as topic, index}
-          <button
-            class="btn btn-sm btn-primary lowercase"
-            on:click={() => addTopic(index)}>{topic}</button
-          >
-        {/each}
-      </ul>
+      <Card bg="base-200 mt-1">
+        <div class="flex flex-wrap gap-2">
+          {#each filteredTopics as topic, index}
+            <div class="tooltip" data-tip="add">
+              <button
+                class="btn btn-sm btn-primary lowercase"
+                on:click={() => addTopic(index)}>{topic}</button
+              >
+            </div>
+          {/each}
+        </div>
+      </Card>
     {/if}
 
     <div class="modal-action flex justify-end">
