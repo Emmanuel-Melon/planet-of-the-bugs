@@ -13,8 +13,8 @@
       it from happening again.
     </p>
     <div class="gap-2">
-      <a href="/" class="link link-hover btn btn-outline">Back to Home</a>
-      <button class="btn btn-primary">Logout</button>
+      <a href="/" class="link link-hover btn-sm btn btn-outline">Back to Home</a>
+      <button class="btn btn-sm btn-primary">Logout</button>
     </div>
   </div>
 </section>

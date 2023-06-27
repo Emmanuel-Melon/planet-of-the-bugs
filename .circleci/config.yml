@@ -1,8 +1,19 @@
 version: 2.1
 orbs:
   node: circleci/node@5.0.2
+  1password: onepassword/secrets@1.0.0
 
 jobs:
+  load_secrets:
+    machine:
+      image: ubuntu-2204:current
+    steps:
+      - 1password/install-cli
+      - checkout
+      - run:
+          command: |
+            echo "This value will be masked: $DATA_BASE_URL"
+            ./scripts/deploy.sh
   format:
     docker:
       - image: cimg/node:lts
@@ -25,6 +36,7 @@ jobs:
           pkg-manager: yarn
       - run:
           command: yarn lint
+<<<<<<< Updated upstream
   test:
     docker:
       - image: cimg/node:lts
@@ -54,3 +66,64 @@ workflows:
   lint:
     jobs:
       - build
+=======
+  preview_deployment:
+    docker:
+      - image: circleci/node:latest
+    environment:
+      VERCEL_ORG_ID: $VERCEL_ORG_ID
+      VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
+    steps:
+      - checkout
+      - run:
+          command: |
+            echo "This value will be masked: $DATA_BASE_URL"
+            ./scripts/deploy.sh
+      - run:
+          name: Install Vercel CLI
+          command: npm install --global vercel@latest
+      - run:
+          name: Pull Vercel Environment Information
+          command: vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
+      - run:
+          name: Build Project Artifacts
+          command: vercel build --token=$VERCEL_TOKEN
+      - run:
+          name: Deploy Project Artifacts to Vercel
+          command: vercel deploy --prebuilt --token=$VERCEL_TOKEN
+  production_deployment:
+    docker:
+      - image: circleci/node:latest
+    environment:
+      VERCEL_ORG_ID: $VERCEL_ORG_ID
+      VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
+    steps:
+      - checkout
+      - run:
+          name: Install Vercel CLI
+          command: npm install --global vercel@latest
+      - run:
+          name: Pull Vercel Environment Information
+          command: vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+      - run:
+          name: Build Project Artifacts
+          command: vercel build --prod --token=$VERCEL_TOKEN
+      - run:
+          name: Deploy Project Artifacts to Vercel
+          command: vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+
+workflows:
+  preview_and_production:
+    jobs:
+      - format
+      - lint
+      - load_secrets
+      - preview_deployment:
+          filters:
+            branches:
+              ignore: /main/
+      - production_deployment:
+          filters:
+            branches:
+              only: /dev/
+>>>>>>> Stashed changes

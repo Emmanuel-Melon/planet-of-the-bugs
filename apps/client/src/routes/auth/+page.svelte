@@ -1,6 +1,7 @@
 <script lang="ts">
   /** @type {import('./$types').PageData} */
   import { signIn, signOut } from "@auth/sveltekit/client";
+  import { Card, Button } from "svelte-ui";
   import { page } from "$app/stores";
   import "iconify-icon";
 
@@ -33,10 +34,10 @@
   };
 </script>
 
-{#if $page.data.session}
-  <div class="card w-full md:w-2/3 max-w-xl bg-white shadow">
-    <div class="card-body">
-      <h2 class="card-title">Welcome to Planet of The Bugs</h2>
+<section class="w-4/12">
+  <div>
+    {#if $page.data.session}
+    <Card title="Welcome to Planet of The Bugs">
       <span class="signedInText">
         <small>Hello, Bug Slayer!</small><br />
       </span>
@@ -60,14 +61,9 @@
           ><iconify-icon icon="ri:logout-circle-line" /> Sign out</button
         >
       </div>
-    </div>
-  </div>
-{:else}
-  <div class="card h-96 card-compact w-full md:fit max-w-sm bg-white shadow">
-    <div class="card-body text-center">
-      <div class="mx-auto">
-        <h2 class="card-title">Planet of The Bugs</h2>
-      </div>
+    </Card>
+  {:else}
+    <Card title="Planet of The Bugs">
       <form class="space-y-2">
         <div class="form-control w-full">
           <label class="label" for="email">
@@ -120,6 +116,7 @@
         </button>
       </div>
       <span class="notSignedInText">Don't have an account?</span>
-    </div>
+    </Card>
+  {/if}
   </div>
-{/if}
+</section>

@@ -90,20 +90,20 @@ repositories"
             class="flex flex-wrap flex-grow-0 gap-2 w-full lg:w-fit rounded"
           >
             <div
-              class="badge badge-outline py-2 rounded- text-center bg-yellow-200"
+              class="badge badge-outline py-2 text-center "
             >
               Frontend
             </div>
-            <div class="badge badge-outline py-2 rounded- text-center bg-blue-200">
+            <div class="badge badge-outline py-2 text-center ">
               Backend
             </div>
             <div
-              class="badge badge-outline py-2 rounded- text-center bg-purple-200"
+              class="badge badge-outline py-2 text-center "
             >
               Architecture
             </div>
             <div
-              class="badge badge-outline py-2 rounded- text-center bg-orange-200"
+              class="badge badge-outline py-2 text-center "
             >
               DOC
             </div>

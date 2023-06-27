@@ -61,7 +61,7 @@
   ];
 </script>
 
-<header class="navbar bg-white shadow">
+<header class="navbar bg-base-100 shadow">
   <div class="navbar-start gap-4">
     <a href="/" class="normal-case text-md">Planet Of The Bugs</a>
   </div>
