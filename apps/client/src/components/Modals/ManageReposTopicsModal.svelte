@@ -50,35 +50,34 @@
   CTA=""
   icon="ri:equalizer-line"
   id="manage-topics"
-  heading="Repositories Based On These Topics"
+  heading="Manage Topics"
   isOutline={true}
 >
-  <form>
-    <Card bg="base-200">
-      <div class="flex flex-wrap gap-2">
-        {#each userTopics as topic, index}
-          <div class="tooltip" data-tip="remove">
-            <button
-              on:click={() => removeTopic(index)}
-              class="btn btn-sm btn-primary lowercase"
-            >
-              {topic}
-            </button>
-          </div>
-        {:else}
-          <p>You don't have any selected topics!</p>
-        {/each}
-      </div>
-    </Card>
+  <form class="space-y-2">
+    <p>Your current tags:</p>
+    <div class="flex flex-wrap gap-2">
+      {#each userTopics as topic, index}
+        <div class="tooltip" data-tip="remove">
+          <button
+            on:click={() => removeTopic(index)}
+            class="btn btn-sm btn-outline lowercase"
+          >
+            {topic}
+          </button>
+        </div>
+      {:else}
+        <p>You don't have any selected topics!</p>
+      {/each}
+    </div>
 
     <div class="form-control w-full mt-8">
       <div class="label">
-        <span class="label-text text-base">Add Topics</span>
+        <span class="label-text text-base">Add</span>
       </div>
       <input
         type="text"
-        placeholder="react,javascript,redux"
-        class="input input-bordered w-full"
+        placeholder="e.g react, javascript, redux"
+        class="input input-sm input-bordered w-full"
         on:input={handleInputChange}
         bind:value={userInput}
       />
@@ -97,8 +96,7 @@
         </div>
       </Card>
     {/if}
-
-    <div class="modal-action flex justify-end">
+    <div class="modal-action flex justify-start">
       <Button CTA="Save Preference" icon="ri:refresh-line" onClick={() => {}} />
     </div>
   </form>
