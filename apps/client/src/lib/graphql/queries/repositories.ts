@@ -15,6 +15,15 @@ export const GET_SUBSCRIBED_REPOS = gql`
   }
 `;
 
+export const GET_AVAILABLE_TOPICS = gql`
+  query getAvailableTags($id: uuid_comparison_exp = {}) @cached {
+    tags {
+      isActive
+      name
+    }
+  }
+`;
+
 export const GET_USER_REPOS_BY_GITHUB_USERNAME = gql`
   query GetUserRepositories($username: String!) {
     user(login: $username) {

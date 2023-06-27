@@ -47,7 +47,7 @@ export const DELETE_SESSION = gql`
   }
 `;
 
-export const UPADTE_SESSION = gql`
+export const UPDATE_SESSION = gql`
   mutation updateSession($sessionToken: String) {
     update_session(where: { sessionToken: { _eq: $sessionToken } }) {
       affected_rows
@@ -56,9 +56,20 @@ export const UPADTE_SESSION = gql`
   }
 `;
 
-export const UPADTE_USER = gql`
+export const UPDATE_USER = gql`
   mutation updateUser($id: uuid) {
     update_users(where: { id: { _eq: $id } }) {
+      affected_rows
+    }
+  }
+`;
+
+export const UPDATE_USER_TOPICS = gql`
+  mutation updateUserTopics($userTopics: jsonb = "", $id: uuid = "") {
+    update_user(
+      where: { id: { _eq: $id } }
+      _set: { userTopics: $userTopics }
+    ) {
       affected_rows
     }
   }

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   export let data;
   import { page } from "$app/stores";
   import { onMount, onDestroy } from "svelte";
@@ -31,6 +31,10 @@
       icon: "ph:git-pull-request-duotone",
     },
   ];
+
+  const updateUserTopics = (topics: string[]) => {
+    
+  }
 </script>
 
 <PageHeader description="Take your newly learned skills to the next level by practicing on
@@ -45,7 +49,7 @@ language, bug, good-first-issue, or even bounty." heading="Practice makes perfec
     </div>
     <RepositoryRecommendations
       repositories={data.repositories?.data?.edges}
-      user={data.repositories?.user}
+      user={data?.user}
     />
   </div>
 </section>

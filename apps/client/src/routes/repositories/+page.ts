@@ -8,6 +8,7 @@ import {
   refreshGitHubAccessToken,
   validateGitHubAccessToken,
 } from "$lib/auth/helpers";
+import { StringifyTopics } from "bugs-lib";
 
 export const load = async (event) => {
   const {
@@ -27,27 +28,27 @@ export const load = async (event) => {
   const githubClient = GITHUB_API.getGithubClient();
 
   try {
-    const user = await apolloClient.query({
+    const { data } = await apolloClient.query({
       query: GET_USER_BY_EMAIL,
       variables: {
         email: session?.user?.email,
       },
     });
+
+    const user = data?.user[0];
+
     const repositories = await githubClient.query({
       query: FETCH_REPOSITORIES_BY_TOPICS,
       variables: {
-        topics: "react,flutter,node",
+        topics: StringifyTopics(user?.userTopics),
       },
     });
 
     return {
       repositories: {
         data: repositories?.data?.search,
-        user: user?.data?.user[0] || {},
       },
-      user: {
-        data: user?.data?.user[0] || {},
-      },
+      user,
     };
   } catch (err) {}
 };

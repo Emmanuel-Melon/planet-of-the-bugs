@@ -8,9 +8,9 @@ import {
   INSERT_NEW_ACCOUNT,
   INSERT_NEW_SESSION,
   INSERT_NEW_USER,
-  UPADTE_SESSION,
+  UPDATE_SESSION,
   DELETE_SESSION,
-  UPADTE_USER,
+  UPDATE_USER,
   INSERT_NEW_VERIFICATION_TOKEN,
 } from "$lib/graphql/mutations/users";
 
@@ -58,7 +58,7 @@ export default function BugsClientCustomAdapter(client) {
     },
     async updateUser(user) {
       const updatedUser = await client.mutation({
-        mutation: UPADTE_USER,
+        mutation: UPDATE_USER,
         variables: {
           ...user,
         },
@@ -101,7 +101,7 @@ export default function BugsClientCustomAdapter(client) {
     },
     async updateSession({ sessionToken }) {
       const updatedSession = await client.mutation({
-        mutation: UPADTE_SESSION,
+        mutation: UPDATE_SESSION,
         variables: {
           sessionToken,
         },

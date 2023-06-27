@@ -1,8 +1,7 @@
 <script lang="ts">
   import { Button, Modal } from 'svelte-ui';
   import Card from 'svelte-ui/components/Card.svelte';
-
-  $: userTopics = ['react', 'svelte', 'node', 'flutter', 'javascript'];
+  export let userTopics: String[];
 
   let userInput = '';
   let availableTopics = [
@@ -20,8 +19,8 @@
   ];
   let filteredTopics: string[] = [];
 
-  const handleInputChange = (event: { target: { value: string } }) => {
-    userInput = event.target.value;
+  const handleInputChange = (event: Event) => {
+    userInput = event?.target?.value;
     filterAvailableTopics();
   };
 
@@ -44,6 +43,8 @@
     userTopics = [...userTopics, filteredTopics[index]];
     userInput = '';
   };
+  
+  $: userTopics;
 </script>
 
 <Modal
