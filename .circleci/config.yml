@@ -8,7 +8,6 @@ jobs:
     machine:
       image: ubuntu-2204:current
     steps:
-      - 1password/install-cli
       - checkout
       - run:
           command: |
@@ -36,37 +35,6 @@ jobs:
           pkg-manager: yarn
       - run:
           command: yarn lint
-<<<<<<< Updated upstream
-  test:
-    docker:
-      - image: cimg/node:lts
-        environment:
-          DATA_BASE_URL: DATA_BASE_URL
-    steps:
-      - checkout
-  build:
-    docker:
-      - image: cimg/node:lts
-        environment:
-          DATA_BASE_URL: DATA_BASE_URL
-        
-    steps:
-      - checkout
-
-workflows:
-  format:
-    jobs:
-      - build
-  test:
-    jobs:
-      - test
-  build:
-    jobs:
-      - build
-  lint:
-    jobs:
-      - build
-=======
   preview_deployment:
     docker:
       - image: circleci/node:latest
@@ -126,4 +94,3 @@ workflows:
           filters:
             branches:
               only: /dev/
->>>>>>> Stashed changes
