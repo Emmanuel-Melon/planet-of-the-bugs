@@ -46,7 +46,7 @@ export const load = async (event) => {
         githubClient.query({
           query: GET_GITHUB_USER_BASIC_INFO_BY_GITHUB_USERNAME,
           variables: {
-            username: user.githubUsername,
+            username: user.githubUsername
           },
         }),
         githubClient.query({
