@@ -1,6 +1,6 @@
 <script lang="ts">
   export let hasImage: Boolean = false;
-  export let bg: String = 'white';
+  export let bg: String = 'base-200';
   export let title: String = '';
   export let titleTag: String = 'h2';
   export let bodyVerticalSpacing: number = 2;

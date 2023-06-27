@@ -2,14 +2,11 @@
   export let repo;
   export let user;
   import "iconify-icon";
-
-  console.log(repo?.owner?.avatarUrl);
-
+  import { Card, Button } from "svelte-ui";
   import { SUBSCRIBE_TO_REPO } from "$lib/graphql/mutations/repositories";
   import { mutation } from "svelte-apollo";
   const subscribeToRepo = mutation(SUBSCRIBE_TO_REPO);
   import ManageRepoSubscription from "./ManageRepoSubscription.svelte";
-  import Button from "svelte-ui/components/Button.svelte";
 
   async function handleSubscribeToRepo() {
     try {
@@ -28,8 +25,8 @@
   }
 </script>
 
-<div class="card card-compact basis-2/5 grow bg-white shadow">
-  <div class="card-body space-y-2">
+<div class="basis-2/5 grow ">
+  <Card>
     <div class="avatar">
       <div class="w-12 rounded-full ring ring-offset-primary ring-offset-2 shadow">
         <img src={repo?.owner?.avatarUrl} alt="repo" />
@@ -71,5 +68,7 @@
       <Button CTA="Subscribe" onClick={handleSubscribeToRepo} icon="ri:heart-add-line"/>
       <Button CTA="Skip" onClick={()=>{}} icon="ri:close-line" bg="ghost"/>
     </div>
-  </div>
+  </Card>
+  
 </div>
+

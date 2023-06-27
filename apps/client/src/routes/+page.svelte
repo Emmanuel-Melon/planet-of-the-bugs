@@ -1,5 +1,6 @@
 <script>
   import { signIn, signOut } from "@auth/sveltekit/client";
+  import { Card, Button } from "svelte-ui";
   import { page } from "$app/stores";
   import { onMount, onDestroy } from "svelte";
   import { query } from "svelte-apollo";
@@ -42,19 +43,16 @@
         Continue Learning
       </h3>
     </div>
-    <div class="card card-compact bg-white w-full shadow">
-      <div class="card-body">
-        <h2 class="card-title">Introduction to Debugging</h2>
-        <progress class="progress progress-success w-56" value="70" max="100" />
-        <div class="card-actions justify-end gap-2">
-          <button class="btn btn-sm btn-primary">Resume Course</button>
-        </div>
+    <Card title="Introduction to Debugging">
+      <progress class="progress progress-success w-56" value="70" max="100" />
+      <div class="card-actions justify-end gap-2">
+        <button class="btn btn-sm btn-primary">Resume Course</button>
       </div>
-    </div>
+    </Card>
   </div>
 </section>
 
-<section class="p-4 gap-2">
+<section class="p-4">
   <div class="space-y-2">
     <div class="flex justify-between items-center">
       <h3 class="flex items-center gap-2">
@@ -66,43 +64,22 @@
       </div>
     </div>
   </div>
-  <div class="flex gap-4">
-    <div class="card card-compact bg-white w-full shadow">
-      <div class="card-body space-y-2">
-        <h2 class="card-title">
-          <iconify-icon icon="ri:git-repository-line" />
-          Subscribed Repositories
-        </h2>
-  
-        <div class="card-actions justify-end gap-2">
-          <button class="btn btn-sm btn-primary">Contribute</button>
-        </div>
+  <div class="flex items-center gap-2 space-y-2">
+    <Card title="Subscribed Repositories">
+      <div class="card-actions justify-end gap-2">
+        <button class="btn btn-sm btn-primary">Contribute</button>
       </div>
-    </div>
-    <div class="card card-compact bg-white w-full shadow">
-      <div class="card-body space-y-2">
-        <h2 class="card-title">
-          <iconify-icon icon="ri:git-repository-line" />
-          Subscribed Repositories
-        </h2>
-  
-        <div class="card-actions justify-end gap-2">
-          <button class="btn btn-sm btn-primary">Contribute</button>
-        </div>
+    </Card>
+    <Card title="Subscribed Repositories">
+      <div class="card-actions justify-end gap-2">
+        <button class="btn btn-sm btn-primary">Contribute</button>
       </div>
-    </div>
-    <div class="card card-compact bg-white w-full shadow">
-      <div class="card-body space-y-2">
-        <h2 class="card-title">
-          <iconify-icon icon="ri:git-repository-line" />
-          Explore Repositories
-        </h2>
-  
-        <div class="card-actions justify-end gap-2">
-          <button class="btn btn-sm btn-primary">Contribute</button>
-        </div>
+    </Card>
+    <Card title="Subscribed Repositories">
+      <div class="card-actions justify-end gap-2">
+        <button class="btn btn-sm btn-primary">Contribute</button>
       </div>
-    </div>
+    </Card>
   </div>
 
 </section>

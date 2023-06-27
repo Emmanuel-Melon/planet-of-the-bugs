@@ -37,7 +37,7 @@
   description="Discover a world of software defects, debugging techniques, and programming pitfalls. Join our community of curious developers and learn how to track down and squash those pesky bugs."
   heading="Explore the Planet of Bugs"
 />
-<section class="h-max min-h-full space-y-2 p-2">
+<section class="h-max min-h-full p-2">
   <div class="flex flex-col lg:flex-row gap-2">
     <div class="gap-2 grow">
       <SidebarFilter {criteria} CTA="Filter Courses" />
@@ -48,12 +48,7 @@
           <CourseCard {course} userId={user.id} />
         {/each}
       {:else}
-        <div class="card bg-black text-white">
-          <div class="card-body">
-            <h2 class="card-title">Loading</h2>
-            <span class="loading loading-bars loading-lg" />
-          </div>
-        </div>
+        <h2>Loading</h2>
       {/if}
     </div>
   </div>

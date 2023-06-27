@@ -5,7 +5,7 @@
 
 <div class="dropdown dropdown-bottom dropdown-end cursor-pointer">
     <label tabindex="0" class="m-1"><slot /></label>
-    <div tabindex="0" class="dropdown-content card card-compact w-96 shadow bg-white">
+    <div tabindex="0" class="dropdown-content card card-compact w-96 shadow bg-base-100">
         <div class="card-body">
             <ul>
                 {#each items as item}
