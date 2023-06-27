@@ -1,4 +1,4 @@
-import { FETCH_REPOSITORIES_BY_TOPIC } from "$lib/graphql/queries/repositories.js";
+import { FETCH_REPOSITORIES_BY_TOPICS } from "$lib/graphql/queries/repositories.js";
 import apolloClient from "$lib/graphql/apolloClient";
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { error } from "@sveltejs/kit";
@@ -34,7 +34,10 @@ export const load = async (event) => {
       },
     });
     const repositories = await githubClient.query({
-      query: FETCH_REPOSITORIES_BY_TOPIC,
+      query: FETCH_REPOSITORIES_BY_TOPICS,
+      variables: {
+        topics: "react,flutter,node",
+      },
     });
 
     return {

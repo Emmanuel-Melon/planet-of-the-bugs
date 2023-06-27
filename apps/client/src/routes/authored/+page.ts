@@ -15,7 +15,6 @@ export const load = async (event) => {
   const { parent, data: pageData } = event;
 
   const { session } = await parent();
-  
 
   redirectUnAuthenticatedUsers(session, [307, "/auth"]);
   let githubProfileData = null;

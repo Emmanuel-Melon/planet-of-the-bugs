@@ -1,5 +1,6 @@
 <script>
-  import RepoOverviewCard from '$components/Repositories/RepoOverviewCard.svelte';
+import ManageReposTopicsModal from '$components/Modals/ManageReposTopicsModal.svelte';
+import RepoOverviewCard from '$components/Repositories/RepoOverviewCard.svelte';
   export let repositories;
   export let user;
 </script>
@@ -13,9 +14,7 @@
       <h3 class="text-xl">Recommended Repositories</h3>
     </div>
     <div class="flex justify-end">
-      <button class="btn btn-sm btn-square btn-outline"
-        ><iconify-icon icon="ri:equalizer-line" /></button
-      >
+      <ManageReposTopicsModal />
     </div>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
