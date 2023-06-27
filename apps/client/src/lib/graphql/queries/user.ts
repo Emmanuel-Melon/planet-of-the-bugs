@@ -43,7 +43,7 @@ export const GET_USER_BY_GITHUB_LOGIN = gql`
 `;
 
 export const GET_GITHUB_USER_BASIC_INFO_BY_GITHUB_USERNAME = gql`
-  query getGithubUserBasicInfoByGithubUsername($username: String) {
+  query getGithubUserBasicInfoByGithubUsername($username: String!) {
     user(login: $username) {
       login
       bio

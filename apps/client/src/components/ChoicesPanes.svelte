@@ -1,5 +1,6 @@
 <script>
     import "iconify-icon";
+    import { Card } from "svelte-ui";
 </script>
 
 <header class="flex mx-auto items-center justify-center p-4">

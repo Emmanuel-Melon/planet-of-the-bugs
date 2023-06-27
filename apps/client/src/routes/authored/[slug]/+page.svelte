@@ -1,5 +1,6 @@
 <script>
   export let data;
+  import { Card } from "svelte-ui";
   import { onMount } from "svelte";
   import "iconify-icon";
   let { course, user } = data;
@@ -28,14 +29,14 @@
 
 <section class="p-4">
   <div
-    class="card h-fit basis-1/3 grow bg-white shadow-md max-w-screen-sm md:max-w-[360px] lg:max-w-sm xl:max-w-lg"
+    class="h-fit basis-1/3 grow max-w-screen-sm md:max-w-[360px] lg:max-w-sm xl:max-w-lg"
   >
-    <div class="card-body space-y-2">
+    <Card>
       <h2 class="card-title">{course.title}</h2>
       <p>{course.description}</p>
       <div class="card-actions justify-end gap-2">
         <button class="btn btn-sm btn-warning gap-2" on:click={handleCourseDeletion}><iconify-icon icon="ri:delete-bin-4-line"/> Delete Course</button>
       </div>
-    </div>
+    </Card>
   </div>
 </section>
