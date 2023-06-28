@@ -2,7 +2,7 @@ import {
   gql,
   // @ts-ignore
   // @ts-nocheck
-} from '@apollo/client/core/core.cjs';
+} from "@apollo/client/core/core.cjs";
 
 export const GET_SUBSCRIBED_REPOS = gql`
   query SubscribedRepos($user_id: uuid) {
@@ -11,6 +11,14 @@ export const GET_SUBSCRIBED_REPOS = gql`
       repo_name
       repo_owner
       repo_url
+    }
+  }
+`;
+
+export const GET_AVAILABLE_TOPICS = gql`
+  query getAvailableTopics @cached {
+    repo_topics(where: { isActive: { _eq: true } }) {
+      name
     }
   }
 `;
@@ -120,9 +128,9 @@ export const GET_CONTRIBUTIONS_BY_REPO = gql`
   }
 `;
 
-export const FETCH_REPOSITORIES_BY_TOPIC = gql`
-  query MyQuery {
-    search(query: "topic:react", type: REPOSITORY, first: 10) {
+export const FETCH_REPOSITORIES_BY_TOPICS = gql`
+  query fetchRepositoriesByTopics($topics: String = "") {
+    search(query: $topics, type: REPOSITORY, first: 10) {
       edges {
         node {
           ... on Repository {

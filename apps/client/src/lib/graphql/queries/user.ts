@@ -159,6 +159,7 @@ export const GET_USER_BY_EMAIL = gql`
       username
       hasConnectedGithub
       githubUsername
+      userTopics
     }
   }
 `;
@@ -175,6 +176,7 @@ export const GET_USER_BASIC_INFO_BY_USERNAME = gql`
       username
       hasConnectedGithub
       githubUsername
+      userTopics
     }
   }
 `;
@@ -189,6 +191,9 @@ export const GET_USER_BY_ID = gql`
       role
       updated_at
       username
+      hasConnectedGithub
+      githubUsername
+      userTopics
     }
   }
 `;

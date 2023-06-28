@@ -1,4 +1,7 @@
-import { FETCH_REPOSITORIES_BY_TOPIC } from "$lib/graphql/queries/repositories.js";
+import {
+  FETCH_REPOSITORIES_BY_TOPICS,
+  GET_AVAILABLE_TOPICS,
+} from "$lib/graphql/queries/repositories.js";
 import apolloClient from "$lib/graphql/apolloClient";
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { error } from "@sveltejs/kit";
@@ -8,6 +11,7 @@ import {
   refreshGitHubAccessToken,
   validateGitHubAccessToken,
 } from "$lib/auth/helpers";
+import { StringifyTopics } from "bugs-lib";
 
 export const load = async (event) => {
   const {
@@ -26,25 +30,33 @@ export const load = async (event) => {
   GITHUB_API.setSession(session?.token?.accessToken);
   const githubClient = GITHUB_API.getGithubClient();
 
-  try {
-    const user = await apolloClient.query({
-      query: GET_USER_BY_EMAIL,
-      variables: {
-        email: session?.user?.email,
-      },
-    });
-    const repositories = await githubClient.query({
-      query: FETCH_REPOSITORIES_BY_TOPIC,
-    });
+  const { data } = await apolloClient.query({
+    query: GET_USER_BY_EMAIL,
+    variables: {
+      email: session?.user?.email,
+    },
+  });
 
-    return {
-      repositories: {
-        data: repositories?.data?.search,
-        user: user?.data?.user[0] || {},
+  const user = data?.user[0];
+  const userTopics = JSON.parse(user?.userTopics);
+
+  const [repositories, topics] = await Promise.all([
+    githubClient?.query({
+      query: FETCH_REPOSITORIES_BY_TOPICS,
+      variables: {
+        topics: StringifyTopics(userTopics),
       },
-      user: {
-        data: user?.data?.user[0] || {},
-      },
-    };
-  } catch (err) {}
+    }),
+    apolloClient.query({
+      query: GET_AVAILABLE_TOPICS,
+    }),
+  ]);
+
+  return {
+    repositories: {
+      data: repositories?.data?.search,
+    },
+    user: { ...user, userTopics: userTopics },
+    topics: topics.data.repo_topics,
+  };
 };
