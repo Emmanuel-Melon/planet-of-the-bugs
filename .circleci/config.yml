@@ -47,7 +47,3 @@ workflows:
           filters:
             branches:
               ignore: /dev/
-      - production_deployment:
-          filters:
-            branches:
-              only: /alpha-release/
