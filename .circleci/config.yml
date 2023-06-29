@@ -4,37 +4,6 @@ orbs:
   1password: onepassword/secrets@1.0.0
 
 jobs:
-  load_secrets:
-    machine:
-      image: ubuntu-2204:current
-    steps:
-      - checkout
-      - run:
-          command: |
-            echo "This value will be masked: $DATA_BASE_URL"
-            ./scripts/deploy.sh
-  format:
-    docker:
-      - image: cimg/node:lts
-        environment:
-          DATA_BASE_URL: DATA_BASE_URL
-    steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: yarn
-      - run:
-          command: yarn format
-  lint:
-    docker:
-      - image: cimg/node:lts
-        environment:
-          DATA_BASE_URL: DATA_BASE_URL
-    steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: yarn
-      - run:
-          command: yarn lint
   preview_deployment:
     docker:
       - image: circleci/node:latest
@@ -83,9 +52,6 @@ jobs:
 workflows:
   preview_and_production:
     jobs:
-      - format
-      - lint
-      - load_secrets
       - preview_deployment:
           filters:
             branches:
