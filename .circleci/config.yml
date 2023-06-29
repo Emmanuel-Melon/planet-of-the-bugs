@@ -5,28 +5,23 @@ orbs:
 
 jobs:
   preview_deployment:
+    working_directory: ~/repo
     docker:
-      - image: circleci/node:latest
+      - image: cimg/node:lts
     environment:
       VERCEL_ORG_ID: $VERCEL_ORG_ID
       VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
     steps:
       - checkout
+      - node/install-packages:
+      - pkg-manager: yarn
       - run:
-          name: Install Vercel CLI
-          command: npm install --global vercel@latest
+        command: yarn build
       - run:
-          name: Pull Vercel Environment Information
-          command: vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
-      - run:
-          name: Build Project Artifacts
-          command: vercel build --token=$VERCEL_TOKEN
-      - run:
-          name: Deploy Project Artifacts to Vercel
-          command: vercel deploy --prebuilt --token=$VERCEL_TOKEN
+        command: yarn test
   production_deployment:
     docker:
-      - image: circleci/node:latest
+      - image: cimg/node:lts
     environment:
       VERCEL_ORG_ID: $VERCEL_ORG_ID
       VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
