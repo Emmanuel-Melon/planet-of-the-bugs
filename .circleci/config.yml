@@ -13,7 +13,7 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-          pkg-manager: yarn install
+          pkg-manager: yarn
 workflows:
   build:
     jobs:
