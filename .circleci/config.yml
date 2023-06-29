@@ -13,10 +13,6 @@ jobs:
     steps:
       - checkout
       - run:
-          command: |
-            echo "This value will be masked: $DATA_BASE_URL"
-            ./scripts/deploy.sh
-      - run:
           name: Install Vercel CLI
           command: npm install --global vercel@latest
       - run:
@@ -55,8 +51,8 @@ workflows:
       - preview_deployment:
           filters:
             branches:
-              ignore: /main/
+              ignore: /dev/
       - production_deployment:
           filters:
             branches:
-              only: /dev/
+              only: /alpha-release/
