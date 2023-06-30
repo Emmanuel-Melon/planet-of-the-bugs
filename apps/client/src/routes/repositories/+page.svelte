@@ -4,8 +4,9 @@
 
   import SidebarFilter from '$components/SidebarFilter.svelte';
   import RepositoryRecommendations from '$components/Repositories/RepositoryRecommendations.svelte';
+  import { subscribedRepos } from './subscribedRepos.js';
 
-  let { topics, user, } = data;
+  let { topics, user, repositories } = data;
 
   const criteria = [
     {
@@ -25,6 +26,7 @@
     },
   ];
     
+  subscribedRepos.set(user?.subscribedRepos)
 </script>
 
 <PageHeader
@@ -41,7 +43,7 @@ language, bug, good-first-issue, or even bounty."
       <SidebarFilter CTA="Filter Repositories" {criteria} />
     </div>
     <RepositoryRecommendations
-      repositories={data.repositories?.data?.edges}
+      repositories={repositories?.data?.edges}
       {user}
       {topics}
     />

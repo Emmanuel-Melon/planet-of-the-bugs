@@ -1,6 +1,7 @@
 import {
   FETCH_REPOSITORIES_BY_TOPICS,
   GET_AVAILABLE_TOPICS,
+  GET_SUBSCRIBED_REPOS,
 } from "$lib/graphql/queries/repositories.js";
 import apolloClient from "$lib/graphql/apolloClient";
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
@@ -40,7 +41,7 @@ export const load = async (event) => {
   const user = data?.user[0];
   const userTopics = JSON.parse(user?.userTopics);
 
-  const [repositories, topics] = await Promise.all([
+  const [repositories, topics, subscribed] = await Promise.all([
     githubClient?.query({
       query: FETCH_REPOSITORIES_BY_TOPICS,
       variables: {
@@ -50,13 +51,23 @@ export const load = async (event) => {
     apolloClient.query({
       query: GET_AVAILABLE_TOPICS,
     }),
+    apolloClient.query({
+      query: GET_SUBSCRIBED_REPOS,
+      variables: {
+        user_id: user.id,
+      },
+    }),
   ]);
 
   return {
     repositories: {
       data: repositories?.data?.search,
     },
-    user: { ...user, userTopics: userTopics },
+    user: {
+      ...user,
+      userTopics: userTopics,
+      subscribedRepos: subscribed.data.user_subscribed_repos,
+    },
     topics: topics.data.repo_topics,
   };
 };

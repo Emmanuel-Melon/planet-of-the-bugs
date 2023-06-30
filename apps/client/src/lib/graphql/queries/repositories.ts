@@ -157,12 +157,22 @@ export const FETCH_REPOSITORIES_BY_TOPICS = gql`
 `;
 
 export const GET_REPO_WITH_LATEST_ISSUES = gql`
-  query GetRepoWithLatestIssues($repoName: String!, $issueCount: Int!) {
-    repository(name: $repoName) {
+  query GetRepoWithLatestIssues(
+    $repoName: String!
+    $issueCount: Int!
+    $owner: String!
+  ) {
+    repository(name: $repoName, owner: $owner) {
       id
       name
+      forkCount
+      homepageUrl
+      description
+      stargazerCount
+      url
       owner {
         login
+        url
       }
       issues(
         first: $issueCount
@@ -173,6 +183,15 @@ export const GET_REPO_WITH_LATEST_ISSUES = gql`
             id
             title
             createdAt
+            bodyText
+            url
+            labels(first: 7, orderBy: { field: NAME, direction: ASC }) {
+              nodes {
+                color
+                description
+                name
+              }
+            }
           }
         }
       }
