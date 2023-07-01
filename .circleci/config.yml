@@ -23,32 +23,10 @@ jobs:
           command: vercel pull --confirm --yes --environment=production --token=$VERCEL_TOKEN
       - run:
           name: Build Project Artifacts
-          command: vercel build --confirm --prod --token=$VERCEL_TOKEN
+          command: vercel build --prod --token=$VERCEL_TOKEN
       - run:
           name: Deploy Project Artifacts to Vercel
-          command: vercel deploy --confirm --prebuilt --prod --token=$VERCEL_TOKEN
-  production_deployment:
-    docker:
-      - image: cimg/node:16.20.1
-    environment:
-        VERCEL_ORG_ID: $VERCEL_ORG_ID
-        VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
-    steps:
-      - checkout
-      - run:
-          name: Install Vercel CLI
-          command: npm install -g vercel
-  preview_deployment:
-    docker:
-      - image: cimg/node:16.20.1
-    environment:
-        VERCEL_ORG_ID: $VERCEL_ORG_ID
-        VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
-    steps:
-      - checkout
-      - run:
-          name: Install Vercel CLI
-          command: yarn build
+          command: yarn deploy
 workflows:
   build:
     jobs:
