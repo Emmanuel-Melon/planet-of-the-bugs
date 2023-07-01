@@ -48,6 +48,7 @@
       });
       console.log('User Topics updated!');
       document.getElementById('close')?.click();
+      location.reload();
     } catch (error) {
       console.log(error);
     }
