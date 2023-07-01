@@ -39,7 +39,7 @@ export const load = async (event) => {
   });
 
   const user = data?.user[0];
-  const userTopics = JSON.parse(user?.userTopics);
+  const userTopics = JSON.parse(user?.userTopics) || [];
 
   const [repositories, topics, subscribed] = await Promise.all([
     githubClient?.query({
