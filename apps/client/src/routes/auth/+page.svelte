@@ -7,7 +7,7 @@
 
   const handleGithubLogin = async () => {
     try {
-      const result = await signIn("github");
+      const result = await signIn("github", { callbackUrl: "/" });
     } catch (err) {
       console.log("error");
     }

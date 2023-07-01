@@ -63,7 +63,7 @@
 </script>
 
 <section class="code w-full">
-  <div class="bg-accent p-2 text-white flex justify-between items-center">
+  <div class="p-2 text-white flex justify-between items-center">
     <p>Code Editor</p>
     <div class="w-2/5 flex justify-evenly items-center">
       <div class="dropdown dropdown-hover">
@@ -102,5 +102,5 @@
       </button>
     </div>
   </div>
-  <div bind:this={divEl} class="min-h-[600px] w-full h-full" />
+  <div bind:this={divEl} class="min-h-[400px] w-full" />
 </section>

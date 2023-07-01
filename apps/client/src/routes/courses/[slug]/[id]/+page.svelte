@@ -60,27 +60,26 @@
     </div>
     <NextPrev />
   </div>
+
+  <div class="p-4">
+    {#if lesson.data.lessons_by_pk.type === "text" || lesson.data.lessons_by_pk.type === "Text"}
+    <div>{lesson.data.lessons_by_pk.content}
+    </div>
+  {:else if lesson.data.lessons_by_pk.type === "video" || lesson.data.lessons_by_pk.type === "Video"}
+    <p>{lesson.data.lessons_by_pk.title}</p>
+  {:else if lesson.data.lessons_by_pk.type === "Interactive" || lesson.data.lessons_by_pk.type === "interactive"}
   <div class="flex h-full">
-    <div class="basis-1/5 h-full">
-      <LessonSidebar lesson={lesson.data.lessons_by_pk} />
+    <div class="basis-2/5">
+      <CodeEditor {handleExpand} {isExpanded} />
     </div>
-    <div class="p-4">
-      {#if lesson.data.lessons_by_pk.type === "text"}
-      <div>{@html lesson.data.lessons_by_pk.content}
+    <div class="basis-2/5 h-full">
+      <div>
+        <EditorIFrame {sourceDoc} />
+        <EditorTerminal />
       </div>
-    {:else if lesson.data.lessons_by_pk.type === "video"}
-      <p>{lesson.data.lessons_by_pk.title}</p>
-    {:else if lesson.data.lessons_by_pk.type === "interactive"}
-      <div class="basis-2/5">
-        <CodeEditor {handleExpand} {isExpanded} />
-      </div>
-      <div class="basis-2/5 h-full">
-        <div>
-          <EditorIFrame {sourceDoc} />
-          <EditorTerminal />
-        </div>
-      </div>
-    {/if}
     </div>
+  </div>
+
+  {/if}
   </div>
 </section>
