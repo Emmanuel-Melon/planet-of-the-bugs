@@ -7,7 +7,7 @@
 </script>
 
 
-<div class={`card card-compact bg-${bg} w-full shadow-md`}>
+<div class={`card card-compact bg-${bg} w-full h-full shadow-md`}>
   <div class={`card-body space-y-${bodyVerticalSpacing}`}>
     {#if title}
       {@html `<${titleTag} class="card-title">${title}</${titleTag}>`}

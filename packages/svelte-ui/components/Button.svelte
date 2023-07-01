@@ -12,9 +12,13 @@
 
   const handleClick = async () => {
     isProcessing = true;
-    await Promise.resolve(onClick())?.then(() => {
+    if (onClick) {
+      await onClick().then(() => {
+        isProcessing = false;
+      });
+    } else {
       isProcessing = false;
-    });
+    }
   };
 
   onDestroy(() => {
