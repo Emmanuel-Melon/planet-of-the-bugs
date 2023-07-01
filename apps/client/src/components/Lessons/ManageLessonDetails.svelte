@@ -64,6 +64,8 @@
     isLessonSelected,
     selectedLesson,
     lessons;
+
+    const publishLessonContent = () => {}
 </script>
 
 <div class="flex flex-col space-y-4 w-full">
@@ -204,7 +206,7 @@
               isOutline={true}
               onClick={() => {}}
             />
-            <Button CTA="Publish" icon="ri:check-line" onClick={() => {}} />
+            <Button CTA="Publish" icon="ri:check-line" onClick={publishLessonContent} />
           </div>
         </div>
       </div>

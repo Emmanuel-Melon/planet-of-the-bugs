@@ -5,6 +5,18 @@
   export let chapter;
   export let course;
   import "iconify-icon";
+
+  const icons = {
+    interactive: "ri:code-line",
+    Interactive: "ri:code-line",
+    text: "ri:booklet-line",
+    video: "ri:video-line",
+    Video: "ri:video-line"
+  }
+
+  const mapLessonIcons = (type) => {
+    return icons[type] || icons["text"];
+  }
 </script>
 
 <div class="w-full space-y-4">
@@ -20,8 +32,8 @@
   <div class="space-y-2">
     {#each chapter.lessons as lesson}
       <div class="flex items-center gap-2">
-        <span class="flex items-center bg-accent text-white p-2 rounded-full shodow-md">
-          <iconify-icon icon="ri:booklet-line" />
+        <span class="flex items-center bg-base-200 border-2 border-secondary p-2 rounded-full shodow-md">
+          <iconify-icon icon={mapLessonIcons(lesson.type)} />
         </span>
         <a class="link link-hover" href={`/courses/${course.slug}/${lesson.id}`}
           >{lesson.title}</a

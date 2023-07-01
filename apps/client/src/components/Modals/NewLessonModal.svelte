@@ -24,7 +24,7 @@
         type="text"
         bind:value={title}
         on:input={(event) => (title = event.target.value)}
-        class="input input-bordered w-full max-w-lg bg-gray-100"
+        class="input input-bordered w-full max-w-lg bg-base-100"
         required
       />
     </div>
@@ -37,7 +37,7 @@
         type="textarea"
         bind:value={description}
         on:input={(event) => (description = event.target.value)}
-        class="input input-bordered w-full max-w-lg bg-gray-100"
+        class="input input-bordered w-full max-w-lg bg-base-100"
         required
       />
     </div>
@@ -71,7 +71,7 @@
         id="xp"
         bind:value={xp}
         on:input={(event) => (xp = event.target.value)}
-        class="input input-bordered w-full max-w-lg bg-gray-100"
+        class="input input-bordered w-full max-w-lg bg-base-100"
         required
       />
     </div>

@@ -3,16 +3,15 @@
   export let chapters;
   export let active;
   export let course;
+  import { Card } from "svelte-ui";
 </script>
 
 <section>
-  <div class="card card-compact bg-white shadow">
-    <div class="card-body">
-      <div class="w-full space-y-4">
-        {#each chapters as chapter}
-          <ChapterOverview {chapter} {course} />
-        {/each}
-      </div>
+  <Card>
+    <div class="w-full space-y-2">
+      {#each chapters as chapter}
+        <ChapterOverview {chapter} {course} />
+      {/each}
     </div>
-  </div>
+  </Card>
 </section>
