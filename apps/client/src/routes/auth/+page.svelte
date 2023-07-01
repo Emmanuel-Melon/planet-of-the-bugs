@@ -4,10 +4,14 @@
   import { Card, Button } from "svelte-ui";
   import { page } from "$app/stores";
   import "iconify-icon";
+  import {
+  PUBLIC_PASSAGE_APP_ID
+} from "$env/static/public";
 
+ 
   const handleGithubLogin = async () => {
     try {
-      const result = await signIn("github", { callbackUrl: "/" });
+      const result = await signIn("github", { callbackUrl: "/new-user" });
     } catch (err) {
       console.log("error");
     }
@@ -34,8 +38,8 @@
   };
 </script>
 
-<section class="w-4/12">
-  <div>
+<section class="flex w-full gap-4 p-4 items-center justify-center" >
+  <div class="flex-2">
     {#if $page.data.session}
     <Card title="Welcome to Planet of The Bugs">
       <span class="signedInText">
@@ -115,8 +119,14 @@
           Linkedin
         </button>
       </div>
+
       <span class="notSignedInText">Don't have an account?</span>
     </Card>
   {/if}
   </div>
+
+  <div class="text-white">      <passage-auth app-id={`${PUBLIC_PASSAGE_APP_ID}`}></passage-auth>
+    <script src="https://psg.so/web.js"></script>
+</div>
+
 </section>
