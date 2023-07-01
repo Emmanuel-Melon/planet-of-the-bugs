@@ -6,6 +6,7 @@
   export let bodyVerticalSpacing: number = 2;
 </script>
 
+
 <div class={`card card-compact bg-${bg} w-full shadow-md`}>
   <div class={`card-body space-y-${bodyVerticalSpacing}`}>
     {#if title}

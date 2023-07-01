@@ -25,6 +25,24 @@ export const SUBSCRIBE_TO_REPO = gql`
   }
 `;
 
+export const UNSUBSCRIBE_FROM_REPO = gql`
+  mutation unsubscribeFromRepo(
+    $repo_name: String = ""
+    $repo_owner: String = ""
+    $user_id: uuid = ""
+  ) {
+    delete_user_subscribed_repos(
+      where: {
+        repo_name: { _eq: $repo_name }
+        repo_owner: { _eq: $repo_owner }
+        user_id: { _eq: $user_id }
+      }
+    ) {
+      affected_rows
+    }
+  }
+`;
+
 // https://github.com/login/oauth/authorize?client_id=YOUR_CLIENT_ID&scope=user:email,repo,public_repo&redirect_uri=YOUR_REDIRECT_URI
 
 export const CREATE_REPO_WEBHOOK = gql`
