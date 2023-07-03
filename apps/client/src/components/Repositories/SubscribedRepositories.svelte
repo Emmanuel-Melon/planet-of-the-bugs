@@ -1,7 +1,7 @@
 <script>
     import "iconify-icon";
     export let repositories;
-    export let user;
+    // export let user;
   </script>
   
   <div class="flex gap-2 basis-4/5 flex-wrap">

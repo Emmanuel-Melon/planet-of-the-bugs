@@ -1,5 +1,6 @@
 <script>
   export let pinnedItems;
+  import { Card } from "svelte-ui";
   import "iconify-icon";
 </script>
 
@@ -10,18 +11,18 @@
     </h3>
 
     <div>
-      <button class="btn btn-sm btn-circle btn-secondary">
+      <button class="btn btn-sm btn-square btn-secondary">
         <iconify-icon icon="ri:arrow-left-double-line" />
       </button>
-      <button class="btn btn-sm btn-circle btn-outline">
+      <button class="btn btn-sm btn-square btn-outline">
         <iconify-icon icon="ri:arrow-right-double-line" />
       </button>
     </div>
   </div>
   <div class="flex gap-2 flex-wrap">
     {#each pinnedItems.nodes as pinnedItem}
-      <div class="card card-compact basis-2/5 grow bg-white max-h-min shadow">
-        <div class="card-body space-y-2">
+      <div class="basis-2/5 grow max-h-min">
+        <Card>
           <div class="flex justify-between items-center">
             <h2 class="card-title">{pinnedItem.name}</h2>
             <div class="badge badge-lg badge-accent gap-2">
@@ -30,7 +31,7 @@
             </div>
           </div>
           <p class="">{pinnedItem.description}</p>
-        </div>
+        </Card>
       </div>
     {/each}
   </div>

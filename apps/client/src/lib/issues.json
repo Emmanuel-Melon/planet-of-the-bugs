@@ -1,48 +1,48 @@
 {
-    "data": {
-      "search": {
-        "edges": [
-          {
-            "node": {
-              "id": "I_kwDOG6K31s5jSsci",
-              "title": "LSP not working correctly for unsaved/temporary files in VSCode",
-              "url": "https://github.com/Shopify/ruby-lsp/issues/633",
-              "body": "If I create a new ruby file without saving it in VSCode, the file is not being run through LSP even though it is activated, as you can see in the images below: \r\n\r\n![saved_file](https://user-images.githubusercontent.com/38805997/231679017-afe60a29-469b-4260-96a7-c36683c1b3bc.png)\r\n![unsaved_file](https://user-images.githubusercontent.com/38805997/231679024-91acfbf1-81b2-4377-96b7-94eeed1dbace.png)\r\n\r\nYou can observe a similar behavior when using VSCode to compare file changes.\r\n\r\nInformation about my environment:\r\n\r\n- Ruby LSP v0.2.4\r\n- ruby 3.1.0p0 (2021-12-25 revision fb4df44d16) [x86_64-linux]\r\n- Rails 7.0.4.2\r\n- Using rbenv as version manager, the project has a bundle.\r\n- Debian GNU/Linux 11",
-              "number": 633,
-              "state": "OPEN"
-            }
-          },
-          {
-            "node": {
-              "id": "I_kwDOCKVLsM5ZRqwW",
-              "title": "Error while lunarvim installation `unknown flag 'u'`",
-              "url": "https://github.com/LunarVim/LunarVim/issues/3612",
-              "body": "### Problem description\r\n\r\nI get the following error as the last line of the installation process (see screenshots)\r\nAnd i get the same error when i try to run lunarvim later using `lvim`\r\n```\r\nerror: unknown flag `u'\r\n```\r\n\r\n### LunarVim version\r\n\r\n1.2\r\n\r\n### Neovim version (>= 0.8.0)\r\n\r\nNVIM v0.8.1\r\n\r\n### Operating system/version\r\n\r\nCentOS Linux 7 (Core)\r\n\r\n### Steps to reproduce\r\n\r\n1. Install neovim\r\n\r\n### Screenshots\r\n![image](https://user-images.githubusercontent.com/13695228/207779006-c935374d-1e75-4e04-8d62-bb719007cc09.png)\r\n![image](https://user-images.githubusercontent.com/13695228/207777515-f35d391a-f341-409e-a1f9-7b3513dbbe38.png)\r\n![image](https://user-images.githubusercontent.com/13695228/207779214-e638c721-f42e-4e28-aa2f-fca9530afa52.png)\r\n",
-              "number": 3612,
-              "state": "OPEN"
-            }
-          },
-          {
-            "node": {
-              "id": "I_kwDOAGYMwM5Wz6VP",
-              "title": "MSVC: Compilation fails due to \"C requires that a struct or union have at least one member\"",
-              "url": "https://github.com/Mbed-TLS/mbedtls/issues/6628",
-              "body": "### Summary\r\nWhen disabling almost every component of mbedtls to only have the required features, Microsoft MSVC 19.30.30706.0 complains for `union mbedtls_ssl_premaster_secret`: `C requires that a struct or union have at least one member`.\r\n\r\nGCC/Clang on Linux do not complain.\r\n\r\nWhen looking at this struct, it indeed does not have any member, because all key exchanges have been disabled through the config header.\r\n\r\nAs  a temporary fix, I enabled `MBEDTLS_KEY_EXCHANGE_RSA_ENABLED`.\r\n\r\nmbedtls is built using a submodule within CMake.\r\n\r\n\r\n### System information\r\n\r\nMbed TLS version (number or commit id): tag v3.2.1\r\nOperating system and version: Windows 10 21H1 19043.2251\r\nConfiguration (if not default, please attach `mbedtls_config.h`): Attached as [mbedtls_config.txt](https://github.com/Mbed-TLS/mbedtls/files/10046987/mbedtls_config.txt) (.txt because .h is not an allowed extension)\r\nCompiler and options (if you used a pre-built binary, please indicate how you obtained it): Microsoft MSVC 19.30.30706.0 \r\nCMake Options:\r\n\r\n    set(ENABLE_TESTING OFF CACHE BOOL \"Disable tests\")\r\n    set(ENABLE_PROGRAMS OFF CACHE BOOL \"Disable programs\")\r\n    set(ENABLE_ZLIB_SUPPORT OFF CACHE BOOL \"Build mbed TLS with zlib library.\")\r\n    set(CMAKE_C_FLAGS \"${CMAKE_C_FLAGS} -I${CMAKE_CURRENT_LIST_DIR} -DMBEDTLS_CONFIG_FILE=\\\"<mbedtls_config.h>\\\"\")\r\n    add_subdirectory(mbedtls EXCLUDE_FROM_ALL)`\r\n\r\nAdditional environment information: Building as a static library\r\n\r\n### Expected behavior\r\n\r\nCompilation succeeds\r\n\r\n### Actual behavior\r\n\r\nCompilation does not succeed\r\n\r\n### Steps to reproduce\r\n\r\nCompile v3.2.1 with MSVC using the given mbedtls config header.\r\n\r\n### Additional information\r\n",
-              "number": 6628,
-              "state": "OPEN"
-            }
-          },
-          {
-            "node": {
-              "id": "I_kwDOCUGEHM5I0t44",
-              "title": "Support for background colors",
-              "url": "https://github.com/shikijs/shiki/issues/318",
-              "body": "Hey!\r\n\r\nI see that there’s internal support for background colors: \r\n\r\nhttps://github.com/shikijs/shiki/blob/747571082367aff6f1445318bad6b698df330e87/packages/shiki/src/stackElementMetadata.ts#L100\r\n\r\n…and that certain themes use background colors (e.g., GH). However, it doesn’t seem like they are being retrieved when creating tokens (): \r\n\r\nhttps://github.com/shikijs/shiki/blob/747571082367aff6f1445318bad6b698df330e87/packages/shiki/src/themedTokenizer.ts#L135-L137\r\n\r\n…Is there a reason they are not supported? Is it possible to support background?\r\n\r\n---\r\n\r\nFinally, a question, but not a blocker to me, the GH theme also includes:\r\n\r\n```json\r\n    {\r\n      \"scope\": \"carriage-return\",\r\n      \"settings\": {\r\n        \"fontStyle\": \"italic underline\",\r\n        \"background\": \"#ff7b72\",\r\n        \"foreground\": \"#f0f6fc\",\r\n        \"content\": \"^M\"\r\n      }\r\n    }\r\n```\r\n\r\nIs it correct that shiki does not support `content` and combined `fontStyle`s either, as it doesn’t fit in the binary format (https://github.com/shikijs/shiki/blob/747571082367aff6f1445318bad6b698df330e87/packages/shiki/src/stackElementMetadata.ts)",
-              "number": 318,
-              "state": "OPEN"
-            }
+  "data": {
+    "search": {
+      "edges": [
+        {
+          "node": {
+            "id": "I_kwDOG6K31s5jSsci",
+            "title": "LSP not working correctly for unsaved/temporary files in VSCode",
+            "url": "https://github.com/Shopify/ruby-lsp/issues/633",
+            "body": "If I create a new ruby file without saving it in VSCode, the file is not being run through LSP even though it is activated, as you can see in the images below: \r\n\r\n![saved_file](https://user-images.githubusercontent.com/38805997/231679017-afe60a29-469b-4260-96a7-c36683c1b3bc.png)\r\n![unsaved_file](https://user-images.githubusercontent.com/38805997/231679024-91acfbf1-81b2-4377-96b7-94eeed1dbace.png)\r\n\r\nYou can observe a similar behavior when using VSCode to compare file changes.\r\n\r\nInformation about my environment:\r\n\r\n- Ruby LSP v0.2.4\r\n- ruby 3.1.0p0 (2021-12-25 revision fb4df44d16) [x86_64-linux]\r\n- Rails 7.0.4.2\r\n- Using rbenv as version manager, the project has a bundle.\r\n- Debian GNU/Linux 11",
+            "number": 633,
+            "state": "OPEN"
           }
-        ]
-      }
+        },
+        {
+          "node": {
+            "id": "I_kwDOCKVLsM5ZRqwW",
+            "title": "Error while lunarvim installation `unknown flag 'u'`",
+            "url": "https://github.com/LunarVim/LunarVim/issues/3612",
+            "body": "### Problem description\r\n\r\nI get the following error as the last line of the installation process (see screenshots)\r\nAnd i get the same error when i try to run lunarvim later using `lvim`\r\n```\r\nerror: unknown flag `u'\r\n```\r\n\r\n### LunarVim version\r\n\r\n1.2\r\n\r\n### Neovim version (>= 0.8.0)\r\n\r\nNVIM v0.8.1\r\n\r\n### Operating system/version\r\n\r\nCentOS Linux 7 (Core)\r\n\r\n### Steps to reproduce\r\n\r\n1. Install neovim\r\n\r\n### Screenshots\r\n![image](https://user-images.githubusercontent.com/13695228/207779006-c935374d-1e75-4e04-8d62-bb719007cc09.png)\r\n![image](https://user-images.githubusercontent.com/13695228/207777515-f35d391a-f341-409e-a1f9-7b3513dbbe38.png)\r\n![image](https://user-images.githubusercontent.com/13695228/207779214-e638c721-f42e-4e28-aa2f-fca9530afa52.png)\r\n",
+            "number": 3612,
+            "state": "OPEN"
+          }
+        },
+        {
+          "node": {
+            "id": "I_kwDOAGYMwM5Wz6VP",
+            "title": "MSVC: Compilation fails due to \"C requires that a struct or union have at least one member\"",
+            "url": "https://github.com/Mbed-TLS/mbedtls/issues/6628",
+            "body": "### Summary\r\nWhen disabling almost every component of mbedtls to only have the required features, Microsoft MSVC 19.30.30706.0 complains for `union mbedtls_ssl_premaster_secret`: `C requires that a struct or union have at least one member`.\r\n\r\nGCC/Clang on Linux do not complain.\r\n\r\nWhen looking at this struct, it indeed does not have any member, because all key exchanges have been disabled through the config header.\r\n\r\nAs  a temporary fix, I enabled `MBEDTLS_KEY_EXCHANGE_RSA_ENABLED`.\r\n\r\nmbedtls is built using a submodule within CMake.\r\n\r\n\r\n### System information\r\n\r\nMbed TLS version (number or commit id): tag v3.2.1\r\nOperating system and version: Windows 10 21H1 19043.2251\r\nConfiguration (if not default, please attach `mbedtls_config.h`): Attached as [mbedtls_config.txt](https://github.com/Mbed-TLS/mbedtls/files/10046987/mbedtls_config.txt) (.txt because .h is not an allowed extension)\r\nCompiler and options (if you used a pre-built binary, please indicate how you obtained it): Microsoft MSVC 19.30.30706.0 \r\nCMake Options:\r\n\r\n    set(ENABLE_TESTING OFF CACHE BOOL \"Disable tests\")\r\n    set(ENABLE_PROGRAMS OFF CACHE BOOL \"Disable programs\")\r\n    set(ENABLE_ZLIB_SUPPORT OFF CACHE BOOL \"Build mbed TLS with zlib library.\")\r\n    set(CMAKE_C_FLAGS \"${CMAKE_C_FLAGS} -I${CMAKE_CURRENT_LIST_DIR} -DMBEDTLS_CONFIG_FILE=\\\"<mbedtls_config.h>\\\"\")\r\n    add_subdirectory(mbedtls EXCLUDE_FROM_ALL)`\r\n\r\nAdditional environment information: Building as a static library\r\n\r\n### Expected behavior\r\n\r\nCompilation succeeds\r\n\r\n### Actual behavior\r\n\r\nCompilation does not succeed\r\n\r\n### Steps to reproduce\r\n\r\nCompile v3.2.1 with MSVC using the given mbedtls config header.\r\n\r\n### Additional information\r\n",
+            "number": 6628,
+            "state": "OPEN"
+          }
+        },
+        {
+          "node": {
+            "id": "I_kwDOCUGEHM5I0t44",
+            "title": "Support for background colors",
+            "url": "https://github.com/shikijs/shiki/issues/318",
+            "body": "Hey!\r\n\r\nI see that there’s internal support for background colors: \r\n\r\nhttps://github.com/shikijs/shiki/blob/747571082367aff6f1445318bad6b698df330e87/packages/shiki/src/stackElementMetadata.ts#L100\r\n\r\n…and that certain themes use background colors (e.g., GH). However, it doesn’t seem like they are being retrieved when creating tokens (): \r\n\r\nhttps://github.com/shikijs/shiki/blob/747571082367aff6f1445318bad6b698df330e87/packages/shiki/src/themedTokenizer.ts#L135-L137\r\n\r\n…Is there a reason they are not supported? Is it possible to support background?\r\n\r\n---\r\n\r\nFinally, a question, but not a blocker to me, the GH theme also includes:\r\n\r\n```json\r\n    {\r\n      \"scope\": \"carriage-return\",\r\n      \"settings\": {\r\n        \"fontStyle\": \"italic underline\",\r\n        \"background\": \"#ff7b72\",\r\n        \"foreground\": \"#f0f6fc\",\r\n        \"content\": \"^M\"\r\n      }\r\n    }\r\n```\r\n\r\nIs it correct that shiki does not support `content` and combined `fontStyle`s either, as it doesn’t fit in the binary format (https://github.com/shikijs/shiki/blob/747571082367aff6f1445318bad6b698df330e87/packages/shiki/src/stackElementMetadata.ts)",
+            "number": 318,
+            "state": "OPEN"
+          }
+        }
+      ]
     }
   }
+}

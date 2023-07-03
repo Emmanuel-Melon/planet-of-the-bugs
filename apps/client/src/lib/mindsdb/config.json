@@ -1,6 +1,5 @@
-
 {
-    "host": "https://cloud.mindsdb.com",
-    "user": "",
-    "password": ""
-  }
+  "host": "https://cloud.mindsdb.com",
+  "user": "",
+  "password": ""
+}

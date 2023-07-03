@@ -1,35 +1,39 @@
 <script>
-  export let user;
+  import { Card } from "svelte-ui";
+  export let repositoriesTotal;
+  export let pullRequestsTotal;
+  export let followersTotal;
+  export let StarredTotal;
 </script>
 
-<div class="card card-compact bg-white w-full shadow">
-  <div class="card-body">
+<div class=" w-full">
+  <Card>
     <h2 class="card-title">Contributions Overview</h2>
     <div class="stats w-full">  
       <div class="stat place-items-center">
         <div class="stat-title">Repositories</div>
         <div class="stat-value">
-          {user.repositories.totalCount}
+          {repositoriesTotal}
         </div>
       </div>
   
       <div class="stat place-items-center">
         <div class="stat-title">Pull Requests</div>
         <div class="stat-value">
-          {user.pullRequests.totalCount}
+          {pullRequestsTotal}
         </div>
       </div>
   
       <div class="stat place-items-center">
         <div class="stat-title">Followers</div>
-        <div class="stat-value">{user.followers.totalCount}</div>
+        <div class="stat-value">{followersTotal}</div>
       </div>
       <div class="stat place-items-center">
         <div class="stat-title">Starred Repositories</div>
         <div class="stat-value">
-          {user.starredRepositories.totalCount}
+          {StarredTotal}
         </div>
       </div>
     </div>
-  </div>
+  </Card>
 </div>

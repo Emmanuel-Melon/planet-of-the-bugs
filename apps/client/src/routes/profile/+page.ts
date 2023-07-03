@@ -1,38 +1,49 @@
 import {
-  GITHUB_USER_BASIC_INFO,
+  GITHUB_GET_USER_BY_EMAIL,
   REPOS_CONTRIBUTED_TO,
   GET_PINNED_ITEMS,
-  USER_BASIC_INFO
+  GET_USER_BY_EMAIL,
 } from "$lib/graphql/queries/user";
 
 import {
-  GET_SUBSCRIBED_REPOS, GET_USER_REPOS, GET_CONTRIBUTIONS_BY_REPO,
+  GET_SUBSCRIBED_REPOS,
+  GET_USER_REPOS,
+  GET_CONTRIBUTIONS_BY_REPO,
   GET_USER_PULL_REQUEST_CONTRIBUTIONS,
 } from "$lib/graphql/queries/repositories";
 import apolloClient from "$lib/graphql/apolloClient";
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { destructureQueryResults } from "$lib/graphql/helpers";
+import { redirectUnAuthenticatedUsers } from "$lib/auth/helpers";
 
 export const load = async (event) => {
-  const { params, url, setHeaders, route, parent, fetch, depends, data: pageData } = event;
+  const {
+    params,
+    url,
+    setHeaders,
+    route,
+    parent,
+    fetch,
+    depends,
+    data: pageData,
+  } = event;
 
   const { session } = await parent();
+  redirectUnAuthenticatedUsers(session, [307, "/auth"]);
 
-  if (session?.token !== null || session?.token !== undefined) {
-    GITHUB_API.setSession(session?.token?.accessToken);
-  }
+  GITHUB_API.setSession(session?.token?.accessToken);
   const githubClient = GITHUB_API.getGithubClient();
 
   const { data } = await githubClient.query({
-    query: GITHUB_USER_BASIC_INFO,
+    query: GITHUB_GET_USER_BY_EMAIL,
   });
 
   const [githubUser, user] = await Promise.all([
     githubClient.query({
-      query: GITHUB_USER_BASIC_INFO,
+      query: GITHUB_GET_USER_BY_EMAIL,
     }),
     apolloClient.query({
-      query: USER_BASIC_INFO,
+      query: GET_USER_BY_EMAIL,
       variables: {
         email: session?.user?.email,
       },
@@ -45,11 +56,19 @@ export const load = async (event) => {
 
   const output = destructureQueryResults(githubUser);
 
-  const { result: destructuredGithubUser, loading: gitHubrofileLoading } = output;
+  const { result: destructuredGithubUser, loading: gitHubrofileLoading } =
+    output;
 
   const userInfo = destructuredUserObject[0];
 
-  const [contributedTo, pinnedItems, ownedRepos, subscribedRepos] = await Promise.all([
+  const subscribedRepos = await apolloClient.query({
+    query: GET_SUBSCRIBED_REPOS,
+    variables: {
+      user_id: userInfo.id,
+    },
+  });
+
+  const [contributedTo, pinnedItems, ownedRepos] = await Promise.all([
     githubClient.query({
       query: REPOS_CONTRIBUTED_TO,
     }),
@@ -62,15 +81,9 @@ export const load = async (event) => {
     githubClient.query({
       query: GET_USER_REPOS,
       variables: {
-        login: data?.viewer?.login
-      }
-    }),
-    apolloClient.query({
-      query: GET_SUBSCRIBED_REPOS,
-      variables: {
-        user_id: userInfo.id,
+        login: data?.viewer?.login,
       },
-    })
+    }),
   ]);
 
   const { data: contributionData } = contributedTo;
@@ -81,7 +94,7 @@ export const load = async (event) => {
   return {
     github_user: {
       destructuredGithubUser,
-      gitHubrofileLoading
+      gitHubrofileLoading,
     },
     currentUser: { ...userInfo, profileLoading },
     user: {
@@ -90,6 +103,6 @@ export const load = async (event) => {
     contributedTo: { ...contributionData.viewer.repositoriesContributedTo },
     pinnedItems: topRepoData.user.pinnedItems,
     repositories: repositories?.user?.repositories,
-    subscribedTo: subscribedTo?.user_subscribed_repos
+    subscribedTo: subscribedTo?.user_subscribed_repos,
   };
-}
+};

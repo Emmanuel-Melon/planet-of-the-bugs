@@ -1,6 +1,5 @@
-import adapter from '@sveltejs/adapter-auto';
-import { vitePreprocess } from '@sveltejs/kit/vite';
-import path from 'path';
+import adapter from "@sveltejs/adapter-vercel";
+import { vitePreprocess } from "@sveltejs/kit/vite";
 import { mdsvex } from "mdsvex";
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -16,13 +15,10 @@ const config = {
     adapter: adapter(),
 
     alias: {
-      '$components/*': 'src/components/*',
+      "$components/*": "src/components/*",
     },
   },
-  extensions: [
-    '.svelte',
-    '.svx'
-  ]
+  extensions: [".svelte", ".svx"],
 };
 
 export default config;

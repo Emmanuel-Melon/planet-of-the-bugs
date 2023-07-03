@@ -2,7 +2,7 @@
   import { Button, Card } from 'svelte-ui';
   export let courseId: string;
   export let chapters: Array<Object>;
-  import NewChapterModal from '$components/Courses/NewChapterModal.svelte';
+  import NewChapterModal from '$components/Modals/NewChapterModal.svelte';
 
   let isSelected: boolean = false;
   let selectedChapter: number;

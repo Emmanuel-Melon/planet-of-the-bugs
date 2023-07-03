@@ -6,7 +6,7 @@
   import { FETCH_AUTHORED_COURSES } from "$lib/graphql/queries/courses";
   import AuthoredCourseCard from "$components/AuthoredCourseCard.svelte";
   import "iconify-icon";
-  import NewCourseModal from "$components/Courses/NewCourseModal.svelte";
+  import NewCourseModal from "$components/Modals/NewCourseModal.svelte";
 
   const {
     data: { user },

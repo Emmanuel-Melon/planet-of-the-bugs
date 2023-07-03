@@ -10,8 +10,8 @@ class="flex justify-between items-center bg-base-300"
     <h3 class="flex items-center">😈 Muzan Kibutsuji</h3>
   </div>
   <div class="flex items-center gap-2">
-    <button class="btn btn-sm btn-circle"><iconify-icon icon="ri:equalizer-line" /></button>
-    <button class="btn btn-sm btn-circle">    <iconify-icon icon="ri:information-line" /></button>
+    <button class="btn btn-sm btn-square"><iconify-icon icon="ri:equalizer-line" /></button>
+    <button class="btn btn-sm btn-square">    <iconify-icon icon="ri:information-line" /></button>
   </div>
 </div>
 </div>

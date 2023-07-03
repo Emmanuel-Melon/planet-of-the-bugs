@@ -8,11 +8,8 @@ export const destructureQueryResults = (queryResult) => {
 
       return { result, loading };
     } else {
-      const {
-        data,
-        loading,
-      } = queryResult;
-      return {data, loading };
+      const { data, loading } = queryResult;
+      return { data, loading };
     }
   } catch (error) {
     throw new Error("Failed to destructures!");

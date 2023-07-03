@@ -15,37 +15,45 @@ export const GET_SUBSCRIBED_REPOS = gql`
   }
 `;
 
-export const GET_USER_REPOS = gql`
-query getUserRepositories($login: String!) {
-  user(login: $login) {
-    repositories(
-      last: 20
-      privacy: PUBLIC
-      isFork: false
-      affiliations: OWNER
-      orderBy: {field: CREATED_AT, direction: DESC}
-    ) {
-      totalCount
-      nodes {
-        createdAt
-        description
-        forkCount
-        homepageUrl
-        id
-        name
-        nameWithOwner
-        url
-        updatedAt
-        visibility
-        stargazerCount
-        owner {
-          login
+export const GET_AVAILABLE_TOPICS = gql`
+  query getAvailableTopics @cached {
+    repo_topics(where: { isActive: { _eq: true } }) {
+      name
+    }
+  }
+`;
+
+export const GET_USER_REPOS_BY_GITHUB_USERNAME = gql`
+  query GetUserRepositories($username: String!) {
+    user(login: $username) {
+      repositories(
+        last: 20
+        privacy: PUBLIC
+        isFork: false
+        affiliations: OWNER
+        orderBy: { field: CREATED_AT, direction: DESC }
+      ) {
+        totalCount
+        nodes {
+          createdAt
+          description
+          forkCount
+          homepageUrl
+          id
+          name
+          nameWithOwner
           url
+          updatedAt
+          visibility
+          stargazerCount
+          owner {
+            login
+            url
+          }
         }
       }
     }
   }
-}
 `;
 
 export const GET_USER_PULL_REQUEST_CONTRIBUTIONS = gql`
@@ -120,9 +128,9 @@ export const GET_CONTRIBUTIONS_BY_REPO = gql`
   }
 `;
 
-export const FETCH_REPOSITORIES_BY_TOPIC = gql`
-  query MyQuery {
-    search(query: "topic:react", type: REPOSITORY, first: 10) {
+export const FETCH_REPOSITORIES_BY_TOPICS = gql`
+  query fetchRepositoriesByTopics($topics: String = "") {
+    search(query: $topics, type: REPOSITORY, first: 10) {
       edges {
         node {
           ... on Repository {
@@ -137,6 +145,9 @@ export const FETCH_REPOSITORIES_BY_TOPIC = gql`
             stargazerCount
             owner {
               login
+              avatarUrl(size: 84)
+              id
+              url
             }
           }
         }
@@ -146,12 +157,22 @@ export const FETCH_REPOSITORIES_BY_TOPIC = gql`
 `;
 
 export const GET_REPO_WITH_LATEST_ISSUES = gql`
-  query GetRepoWithLatestIssues($repoName: String!, $issueCount: Int!) {
-    repository(name: $repoName) {
+  query GetRepoWithLatestIssues(
+    $repoName: String!
+    $issueCount: Int!
+    $owner: String!
+  ) {
+    repository(name: $repoName, owner: $owner) {
       id
       name
+      forkCount
+      homepageUrl
+      description
+      stargazerCount
+      url
       owner {
         login
+        url
       }
       issues(
         first: $issueCount
@@ -162,6 +183,15 @@ export const GET_REPO_WITH_LATEST_ISSUES = gql`
             id
             title
             createdAt
+            bodyText
+            url
+            labels(first: 7, orderBy: { field: NAME, direction: ASC }) {
+              nodes {
+                color
+                description
+                name
+              }
+            }
           }
         }
       }

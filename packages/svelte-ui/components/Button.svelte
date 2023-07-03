@@ -1,5 +1,6 @@
 <script lang="ts">
   import 'iconify-icon';
+  import { onDestroy } from 'svelte';
   export let bg: string = 'primary';
   export let size: string = 'sm';
   export let icon: string = null;
@@ -11,10 +12,18 @@
 
   const handleClick = async () => {
     isProcessing = true;
-    await onClick().then(() => {
+    if (onClick) {
+      await onClick().then(() => {
+        isProcessing = false;
+      });
+    } else {
       isProcessing = false;
-    });
+    }
   };
+
+  onDestroy(() => {
+    isProcessing = false;
+  });
 
   $: isProcessing;
 </script>

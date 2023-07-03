@@ -4,6 +4,10 @@
 - [Support →](https://support.planetofthebugs.xyz/)
 - [Documentation →](https://docs.planetofthebugs.xyz/)
 
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Emmanuel-Melon/planet-of-the-bugs/tree/alpha-release.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Emmanuel-Melon/planet-of-the-bugs/tree/alpha-release)
+
+[![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/Emmanuel-Melon/planet-of-the-bugs/dev/LICENSE)
+
 
 Welcome to Planet of the Bugs, an innovative app that uses AI to generate unique bug scenarios for developers to practice and improve their debugging skills. The app also provides personalized training for teams, a built-in AI assistant for rubber-duck debugging, and many other exciting features.
 
@@ -17,9 +21,9 @@ Planet of the Bugs uses AI to generate fake bug scenarios for developers to lear
 
 ## 🚀 Demo
 
-- First, watch our demo [video](https://www.loom.com/share/355eed805e624ffa8aae0835ea1b50af) to see how easy it is to use.
+- [Visit our Website](https://planetofthebugs.xyz)!
+- [Video Demo](https://www.loom.com/share/355eed805e624ffa8aae0835ea1b50af).
 - Clone the project and run it on your own computer (don't worry, we'll guide you through it!)
-- Sign up via Github on our [website](planetofthebugs.xyz) and try it out online!
 
 ## 🎨 Features
 ### AI-generated bug scenarios: Our app uses AI to generate unique bug scenarios for developers to practice and hone their skills.

@@ -2,10 +2,11 @@
   // @ts-nocheck
   export let course;
   import "iconify-icon";
+  import { Card } from "svelte-ui";
 </script>
 
-<div class="card card-compact grow bg-base-100 shadow max-w-screen-sm md:max-w-[360px] lg:max-w-lg">
-  <div class="card-body space-y-2">
+<div class="grow bg-base-100 max-w-screen-sm md:max-w-[360px] lg:max-w-lg">
+  <Card>
     <div class="flex gap-4">
       <div class="w-full flex justify-between items-center">
         <h2 class="card-title">
@@ -31,5 +32,5 @@
         >
       </div>
     </div>
-  </div>
+  </Card>
 </div>

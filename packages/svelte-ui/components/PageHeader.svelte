@@ -3,13 +3,27 @@
   export let description;
 </script>
 
-<div class="card card-compact bg-base-200 w-full border-none">
-  <div class="card-body">
-    <div class="prose prose-sm text-center mx-auto w-full">
-      <h1 class="text-center text-2xl w-fit mx-auto">{heading}</h1>
-      <p>
-        {description}
-      </p>
-    </div>
+<section class="body text-white p-4">
+  <div class="prose prose-sm text-center mx-auto w-full">
+    <h1 class="text-center text-2xl w-fit mx-auto">{heading}</h1>
+    <p>
+      {description}
+    </p>
   </div>
-</div>
+</section>
+
+<style>
+  .body {
+    background: #00467f; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #a5cc82,
+      #00467f
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #a5cc82,
+      #00467f
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+</style>

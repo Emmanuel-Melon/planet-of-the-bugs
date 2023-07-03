@@ -1,5 +1,5 @@
 import {
-    gql,
+  gql,
   // @ts-ignore
   // @ts-nocheck
-  } from "@apollo/client/core/core.cjs";
+} from "@apollo/client/core/core.cjs";
