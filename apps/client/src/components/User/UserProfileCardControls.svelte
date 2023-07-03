@@ -1,6 +1,10 @@
 <script lang="ts">
   export let user;
   export let currentUser: Boolean;
+
+  const connectWithUser = () => {
+    console.log(user);
+  }
 </script>
 
 <div class="card-actions justify-between">
@@ -21,7 +25,7 @@
         <iconify-icon icon="ri:chat-new-line" />
         Message
       </button>
-      <button class="btn btn-sm btn-primary gap-2">
+      <button class="btn btn-sm btn-primary gap-2" on:click={connectWithUser}>
         <iconify-icon icon="ri:user-add-line" />
         Connect</button
       >
