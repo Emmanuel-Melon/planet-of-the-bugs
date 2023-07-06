@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Button, Card } from 'svelte-ui';
+  import { enhance } from '$app/forms';
   export let courseId: string;
   export let chapters: Array<Object>;
   import NewChapterModal from '$components/Modals/NewChapterModal.svelte';
@@ -47,7 +48,7 @@
   {#if isSelected}
     <div class="card card-compact shadow space-y-4">
       <div class="card-body space-y-2">
-        <form class="w-full">
+        <form class="w-full" use:enhance>
           <div class="form-control w-full">
             <label class="label" for="index">
               <span class="label-text">Chapter Index:</span>

@@ -10,6 +10,8 @@
   import { Card } from "svelte-ui";
   let { currentUser, user, githubProfileData } = data;
 
+  // set contex for current user
+
   const items = [
     {
       label: "Repositories",
@@ -52,15 +54,15 @@
   ];
 </script>
 
-<div class="flex flex-col lg:flex-row gap-2">
-  <div class="lg:w-1/3">
+<div class="flex flex-col lg:flex-row gap-4">
+  <div class="lg:w-1/4 space-y-2">
     <UserProfileCard
       githubUser={githubProfileData?.githubUser}
       {user}
       {currentUser}
     />
   </div>
-  <div class="lg:w-2/3 space-y-2">
+  <div class="lg:w-3/4 space-y-2">
     {#if user?.hasConnectedGithub}
       <UserGithubStats
         repositoriesTotal={githubProfileData?.repositories.totalCount}

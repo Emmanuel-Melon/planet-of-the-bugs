@@ -6,7 +6,7 @@
 </script>
 
 <div class="grow bg-base-100 max-w-screen-sm md:max-w-[360px] lg:max-w-lg">
-  <Card>
+  <Card img="https://res.cloudinary.com/dwacr3zpp/image/upload/v1657997898/inspirers/images/abstract-chess.svg">
     <div class="flex gap-4">
       <div class="w-full flex justify-between items-center">
         <h2 class="card-title">

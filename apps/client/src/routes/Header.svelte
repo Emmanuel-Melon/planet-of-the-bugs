@@ -70,7 +70,7 @@
     <ul class="navbar-center hidden lg:flex items-center gap-2">
       {#each menuLinks as { icon, text, path }}
         <li
-          class={`hover:bg-base-200 hover:text-black transition-all rounded-md  ${path === current ? "py-1 px-2 hidden lg:flex hover:bg-primary  bg-primary text-primary-content"
+          class={`hover:bg-base-200 hover:text-black transition-all  ${path === current ? "py-1 px-2 hidden lg:flex hover:bg-primary  bg-primary text-primary-content"
           : "py-1 px-2 hidden lg:flex"} `}
         >
           <a href={path} class="flex items-center gap-2"><iconify-icon icon={icon}/> {text}</a>

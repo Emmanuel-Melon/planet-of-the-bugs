@@ -17,6 +17,18 @@ export const INSERT_NEW_USER = gql`
   }
 `;
 
+export const SEND_CONNECTION_REQUEST = gql`
+  mutation sendConnectionRequest($connectionRequestInput: connection_request_input!) {
+    insert_connection_requests_one(object: connectionRequestInput) {
+      created_at
+      id
+      receiver_id
+      sender_id
+      status
+    }
+  }
+`;
+
 export const INSERT_NEW_VERIFICATION_TOKEN = gql`
   mutation insertVerificationToken(
     $verificationTokenInput: verification_token_input!

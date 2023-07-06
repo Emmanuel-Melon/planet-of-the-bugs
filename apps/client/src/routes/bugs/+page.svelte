@@ -1,25 +1,34 @@
 <script>
-  import 'iconify-icon';
-  import Card from 'svelte-ui/components/Card.svelte';
-  import { PageHeader } from 'svelte-ui';
-  import Pagination from 'svelte-ui/components/Pagination.svelte';
-  import Button from 'svelte-ui/components/Button.svelte';
+  import "iconify-icon";
+  import Card from "svelte-ui/components/Card.svelte";
+  import { PageHeader } from "svelte-ui";
+  import Pagination from "svelte-ui/components/Pagination.svelte";
+  import Button from "svelte-ui/components/Button.svelte";
 
   const issues = [
     {
       id: 1,
-      title: 'Analyze and recommend GitHub issues via MindsDB',
-      description: '',
+      title: "Analyze and recommend GitHub issues via MindsDB",
+      description: "",
+      createdAt: "2 July, 2023",
+      repo: "planet-of-the-bugs",
+      labels: ["backend"]
     },
     {
       id: 2,
-      title: 'Execute code from Monaco Editor',
-      description: '',
+      title: "Microsoft Teams working in the same way as Slack",
+      description: "",
+      createdAt: "4 July, 2023",
+      repo: "mindsdB",
+      labels: ["integration"]
     },
     {
       id: 3,
-      title: ' Mark Course as Completed',
-      description: '',
+      title: "Add Confirmation Dialog for Logout Feature",
+      description: "",
+      createdAt: "5 July, 2023",
+      repo: "todo-react-redux",
+      labels: ["bug"]
     },
   ];
 </script>
@@ -33,44 +42,38 @@ repositories"
 <section class="p-2">
   <div class="flex flex-col justify-center md:flex-row gap-2 mb-4">
     <div class="grow">
-      <Card title="Filter Issues">
+      <div>
+        <h3 class="text-xl">Filter Issues</h3>
         <div class="form-control">
           <label class="label cursor-pointer">
             <span class="label-text">Today</span>
-            <input
-              type="checkbox"
-              checked
-              class="checkbox checkbox-sm"
-            />
+            <input type="checkbox" class="checkbox checkbox-sm" />
           </label>
         </div>
         <div class="form-control">
           <label class="label cursor-pointer">
             <span class="label-text">React</span>
-            <input
-              type="checkbox"
-              checked
-              class="checkbox checkbox-sm"
-            />
+            <input type="checkbox" class="checkbox checkbox-sm" />
           </label>
         </div>
         <div class="form-control">
           <label class="label cursor-pointer">
             <span class="label-text">Flutter</span>
-            <input
-              type="checkbox"
-              checked
-              class="checkbox checkbox-sm"
-            />
+            <input type="checkbox" class="checkbox checkbox-sm" />
           </label>
         </div>
-      </Card>
+      </div>
     </div>
     <div class="basis-3/5 lg:basis-4/5">
       <div
-        class="flex justify-between items-center space-x-1 px-2 py-1 rounded-md"
+        class="flex justify-between items-center space-x-1 py-1 rounded-md"
       >
-        <h3>Open Source Bugs</h3>
+        <div class="flex gap-2 items-center">
+          <button class="btn btn-sm btn-square btn-outline">
+            <iconify-icon icon="ri:information-line" /></button
+          >
+          <h3 class="text-xl">Open Source Bugs</h3>
+        </div>
         <div>
           <button class="btn btn-sm btn-square btn-secondary">
             <iconify-icon icon="ri:arrow-left-double-line" />
@@ -78,36 +81,18 @@ repositories"
           <button class="btn btn-sm btn-square btn-outline">
             <iconify-icon icon="ri:arrow-right-double-line" />
           </button>
-          <button class="btn btn-sm btn-square btn-outline">
-            <iconify-icon icon="ri:information-line" /></button
-          >
         </div>
       </div>
       <div class="space-y-2">
         {#each issues as issue}
           <Card>
             <div
-            class="flex flex-wrap flex-grow-0 gap-2 w-full lg:w-fit rounded"
-          >
-            <div
-              class="badge badge-outline py-2 text-center "
+              class="flex flex-wrap flex-grow-0 gap-2 w-full lg:w-fit rounded"
             >
-              Frontend
+            {#each issue.labels as label}
+            <div class="badge badge-outline py-2 text-center">{label}</div>
+            {/each}
             </div>
-            <div class="badge badge-outline py-2 text-center ">
-              Backend
-            </div>
-            <div
-              class="badge badge-outline py-2 text-center "
-            >
-              Architecture
-            </div>
-            <div
-              class="badge badge-outline py-2 text-center "
-            >
-              DOC
-            </div>
-          </div>
             <div class="flex flex-col w-full items-start justify-between">
               <h2 class="card-title text-bold">
                 {issue.title}
@@ -117,24 +102,31 @@ repositories"
               >
                 <div class="flex items-center justify-center space-x-1">
                   <iconify-icon icon="ri:git-repository-line" />
-                  <a
-                    href="https://github.com"
-                    target="_blank"
-                    class="underline">Planet of the Bugs</a
+                  <a href="https://github.com" target="_blank" class="underline"
+                    >{issue.repo}</a
                   >
                 </div>
 
                 <div class="flex items-center justify-center space-x-1">
                   <iconify-icon icon="ri:calendar-todo-line" />
-                  <p>14 June, 2023</p>
+                  <p>{issue.createdAt}</p>
                 </div>
               </div>
             </div>
-            <p>{issue.title}</p>
+            <p>{issue.description}</p>
 
             <div class="card-actions justify-start items-center gap-2">
-              <Button CTA="Contribute" icon="ri:git-pull-request-line" onClick={() =>{}} />
-                <Button CTA="Skip" icon="ri:close-line" bg="ghost" onClick={() =>{}} />
+              <Button
+                CTA="Contribute"
+                icon="ri:git-pull-request-line"
+                onClick={() => {}}
+              />
+              <Button
+                CTA="Skip"
+                icon="ri:close-line"
+                bg="ghost"
+                onClick={() => {}}
+              />
             </div>
           </Card>
         {/each}

@@ -11,7 +11,7 @@
  
   const handleGithubLogin = async () => {
     try {
-      const result = await signIn("github", { callbackUrl: "/new-user" });
+      const result = await signIn("github", { callbackUrl: "/auth/new-user" });
     } catch (err) {
       console.log("error");
     }

@@ -48,7 +48,7 @@
           <CourseCard {course} userId={user.id} />
         {/each}
       {:else}
-        <h2>Loading</h2>
+      <span class="loading loading-bars loading-sm"></span>
       {/if}
     </div>
   </div>

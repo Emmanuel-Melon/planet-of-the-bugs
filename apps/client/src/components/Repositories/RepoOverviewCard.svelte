@@ -55,7 +55,7 @@
   <Card>
     <div class="avatar">
       <div
-        class="w-12 rounded-full ring ring-offset-primary ring-offset-2 shadow"
+        class="w-12 rounded-full ring ring-offset-2 shadow"
       >
         <img src={repo?.owner?.avatarUrl} alt="repo" />
       </div>
