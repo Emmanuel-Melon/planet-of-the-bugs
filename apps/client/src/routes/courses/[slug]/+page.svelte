@@ -21,8 +21,7 @@
 <section class="p-4">
   <div class="flex flex-col lg:flex-row gap-2">
     <div class="basis-2/5">
-      <Card>
-        <h2 class="card-title">{course.title}</h2>
+      <Card height="fit" title={course.title}>
         <p>{course.description}</p>
         <div class="card-actions justify-end">
           <StartCourseButton
