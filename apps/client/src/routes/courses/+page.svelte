@@ -9,6 +9,7 @@
   import SidebarFilter from "$components/SidebarFilter.svelte";
   import { PageHeader } from "svelte-ui";
   let { user } = data;
+  import autoAnimate from '@formkit/auto-animate';
 
   const courses = query(FETCH_COURSES);
 
@@ -42,7 +43,7 @@
     <div class="gap-2 grow">
       <SidebarFilter {criteria} CTA="Filter Courses" />
     </div>
-    <div class="flex gap-2 items-start flex-wrap basis-4/5">
+    <div use:autoAnimate class="flex gap-2 items-start flex-wrap basis-4/5">
       {#if $courses.data}
         {#each $courses.data.courses as course}
           <CourseCard {course} userId={user.id} />

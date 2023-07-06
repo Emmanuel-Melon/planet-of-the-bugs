@@ -47,6 +47,7 @@
     "@apollo/client": "^3.7.11",
     "@auth/core": "^0.5.1",
     "@auth/sveltekit": "^0.3.0",
+    "@formkit/auto-animate": "^0.7.0",
     "@sveltestack/svelte-query": "^1.6.0",
     "@svelteuidev/composables": "^0.10.0",
     "@svelteuidev/core": "^0.10.0",

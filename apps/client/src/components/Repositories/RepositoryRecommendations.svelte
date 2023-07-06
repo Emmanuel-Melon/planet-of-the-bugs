@@ -4,6 +4,7 @@
   export let repositories: [];
   export let user: any;
   export let topics: [];
+  import autoAnimate from '@formkit/auto-animate';
 
 </script>
 
@@ -19,7 +20,7 @@
       <ManageReposTopicsModal {topics} {user} />
     </div>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
+  <div use:autoAnimate class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
     {#each repositories as edge}
       <RepoOverviewCard repo={edge?.node} {user} />
     {:else}

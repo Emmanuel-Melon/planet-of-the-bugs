@@ -10,7 +10,7 @@
   import { Card } from "svelte-ui";
   let { currentUser, user, githubProfileData } = data;
 
-  // set contex for current user
+  // set context for current user
 
   const items = [
     {

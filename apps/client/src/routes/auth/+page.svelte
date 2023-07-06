@@ -124,9 +124,4 @@
     </Card>
   {/if}
   </div>
-
-  <div>      <passage-auth app-id={`${PUBLIC_PASSAGE_APP_ID}`}></passage-auth>
-    <script src="https://psg.so/web.js"></script>
-</div>
-
 </section>
