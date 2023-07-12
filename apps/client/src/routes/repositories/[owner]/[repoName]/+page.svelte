@@ -7,7 +7,6 @@
   import "iconify-icon";
 
   const { repo } = data;
-  console.log(repo);
 
   const items = [
     {
