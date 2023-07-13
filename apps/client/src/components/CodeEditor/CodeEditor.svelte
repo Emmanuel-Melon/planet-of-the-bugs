@@ -63,44 +63,41 @@
 </script>
 
 <section class="code w-full">
-  <div class="p-2 text-white flex justify-between items-center">
+  <div class="p-2 bg-base-200 flex justify-between items-center">
     <p>Code Editor</p>
     <div class="w-2/5 flex justify-evenly items-center">
       <div class="dropdown dropdown-hover">
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <!-- svelte-ignore a11y-label-has-associated-control -->
-        <label tabindex="0" class="btn btn-sm gap-2">
+        <label tabindex="0" class="btn btn-sm btn-outline">
           <p>{languages[currentLang]}</p>
-          <iconify-icon icon="ri:arrow-down-double-line" />
         </label>
 
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <ul
           tabindex="0"
-          class="dropdown-content menu p-2 shadow rounded-box w-52"
+          class="dropdown-content menu p-2 shadow rounded-box w-52 bg-base-100"
         >
           {#each languages as lang, index}
             <li>
-              <button on:click|preventDefault={() => (currentLang = index)}
-                >{lang}</button
-              >
+              {lang}
             </li>
           {/each}
         </ul>
       </div>
 
       <button on:click={handleCodeExecution}>
-        <iconify-icon icon="ri:play-circle-line" />
+        <iconify-icon icon="ri:play-circle-line" height="20" width="20" />
       </button>
 
       <button on:click|preventDefault={() => handleExpand()}>
-        <iconify-icon icon="ri:aspect-ratio-line" />
+        <iconify-icon icon="ri:aspect-ratio-line" height="20" width="20" />
       </button>
 
       <button>
-        <iconify-icon icon="ri:settings-2-line" />
+        <iconify-icon icon="ri:equalizer-line" height="20" width="20" />
       </button>
     </div>
   </div>
-  <div bind:this={divEl} class="min-h-[400px] w-full" />
+  <div bind:this={divEl} class="min-h-[450px] w-full" />
 </section>

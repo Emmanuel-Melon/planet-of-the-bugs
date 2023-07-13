@@ -16,23 +16,15 @@
   <div class="space-y-4 w-1/8 mx-auto p-4">
     <h1 class="text-5xl">{course.title}</h1>
     <p>{course.description}</p>
+    <StartCourseButton
+    status={active?.status}
+    course_id={course.id}
+    slug={course.slug}
+  />
 </section>
 
 <section class="p-4">
   <div class="flex flex-col lg:flex-row gap-2">
-    <div class="basis-2/5">
-      <Card>
-        <h2 class="card-title">{course.title}</h2>
-        <p>{course.description}</p>
-        <div class="card-actions justify-end">
-          <StartCourseButton
-          status={active?.status}
-          course_id={course.id}
-          slug={course.slug}
-        />
-        </div>
-      </Card>
-    </div>
     <div class="basis-3/5 space-y-2">
       <div class="flex justify-between items-center w-full gap-2">
         <h3 class="text-xl font-bold">Course Chapters</h3>
