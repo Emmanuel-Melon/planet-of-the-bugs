@@ -1,7 +1,7 @@
 <script lang="ts">
   export let data;
   import { PageHeader } from 'svelte-ui';
-  import autoAnimate from '@formkit/auto-animate';
+
   import SidebarFilter from '$components/SidebarFilter.svelte';
   import RepositoryRecommendations from '$components/Repositories/RepositoryRecommendations.svelte';
   import { subscribedRepos } from './subscribedRepos.js';

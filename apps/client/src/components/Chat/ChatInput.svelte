@@ -10,9 +10,10 @@
   <div class="flex justify-between gap-2 items-center px-2 py-4 bg-base-200">
     <div class="flex gap-2 grow items-center">
       <button
-        class="btn btn-sm btn-square btn-ghost"
+        class="btn btn-sm btn-square btn-accent"
+        type="submit"
       >
-        <iconify-icon icon="ri:emotion-line" height="25" width="25" />
+        <iconify-icon icon="ri:emotion-line" />
       </button>
       <textarea
         placeholder="Start a new message"

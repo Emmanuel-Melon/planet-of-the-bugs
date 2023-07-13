@@ -11,7 +11,7 @@
  
   const handleGithubLogin = async () => {
     try {
-      const result = await signIn("github", { callbackUrl: "/auth/new-user" });
+      const result = await signIn("github", { callbackUrl: "/new-user" });
     } catch (err) {
       console.log("error");
     }
@@ -60,7 +60,7 @@
         <h2 class="card-title">{$page.data.session.user?.name ?? "User"}</h2>
       </div>
 
-      <div class="card-actions justify-start">
+      <div class="card-actions justify-end">
         <button on:click={handleGithubLogout} class="btn btn-sm gap-2"
           ><iconify-icon icon="ri:logout-circle-line" /> Sign out</button
         >
@@ -124,4 +124,9 @@
     </Card>
   {/if}
   </div>
+
+  <div>      <passage-auth app-id={`${PUBLIC_PASSAGE_APP_ID}`}></passage-auth>
+    <script src="https://psg.so/web.js"></script>
+</div>
+
 </section>

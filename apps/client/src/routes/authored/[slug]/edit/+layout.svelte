@@ -29,22 +29,24 @@
 <section class="mx-auto w-11/12 lg:w-3/4 space-y-2 p-4">
   <Card>
     <h1 class="card-title gap-2">
-      <iconify-icon icon="ri:equalizer-line" /> Manage Course
+      <iconify-icon icon="ri:settings-5-line" /> Manage Course
     </h1>
   </Card>
   <div class="flex flex-col md:flex-row w-full gap-2">
     <div class="basis-2/5 grow">
-      <ul class="menu bg-transparent w-full">
-        {#each tabs as { id, name }}
-          <li>
-            <button
-              on:click={() => handleTabChange(id)}
-              class={selectedTabValue === id ? "active bg-secondary" : ""}
-              >{name}</button
-            >
-          </li>
-        {/each}
-      </ul>
+      <Card>
+        <ul class="menu bg-transparent w-full">
+          {#each tabs as { id, name }}
+            <li>
+              <button
+                on:click={() => handleTabChange(id)}
+                class={selectedTabValue === id ? "active bg-secondary" : ""}
+                >{name}</button
+              >
+            </li>
+          {/each}
+        </ul>
+      </Card>
     </div>
     <div class="basis-3/5 grow mb-10">
       <slot />

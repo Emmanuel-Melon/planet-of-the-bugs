@@ -1,8 +1,8 @@
 <script lang="ts">
-  import 'iconify-icon';
-  import { onDestroy } from 'svelte';
-  export let bg: string = 'primary';
-  export let size: string = 'sm';
+  import "iconify-icon";
+  import { onDestroy } from "svelte";
+  export let bg: string = "primary";
+  export let size: string = "sm";
   export let icon: string = null;
   export let CTA: string;
   export let isOutline: boolean = false;

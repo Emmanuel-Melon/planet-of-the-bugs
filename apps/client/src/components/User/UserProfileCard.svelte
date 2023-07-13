@@ -53,10 +53,12 @@
   const booleanObjects = extractBooleanProps(githubUser);
 </script>
 
-<div class="space-y-2">
-  <div class="flex items-center gap-4 space-y-2">
-    <div class="avatar">
-
+<Card bodyVerticalSpacing={2}>
+  <div class="flex items-center gap-4">
+    <div class="avatar indicator">
+      <span class="indicator-item badge badge-lg badge-accent -top-3"
+        >Hirable</span
+      >
       <div class="w-24 mask mask-squircle shadow">
         <img
           src={githubUser?.avatarUrl || avatar}
@@ -64,10 +66,23 @@
         />
       </div>
     </div>
-    <div >
+    <div>
       <h2 class="card-title">{user?.name}</h2>
       <span class="flex flex-col gap-2">
         <p>@{user?.username}</p>
+        {#if githubUser}
+          <div class="flex gap-2">
+            <div class="flex place-items-center space-x-1">
+              <iconify-icon icon="ri:github-line" />
+              <a href={githubUser?.url} class="link link-hover"
+                >{githubUser?.login}</a
+              >
+            </div>
+            <p class="">
+              ({githubUser?.pronouns})
+            </p>
+          </div>
+        {/if}
       </span>
     </div>
   </div>
@@ -75,8 +90,6 @@
   {#if githubUser}
     <p>{githubUser?.bio}</p>
   {/if}
-
-  <p class="flex items-center gap-2"><iconify-icon icon="ri:group-line" /> <span class="font-bold">72</span> Connnections</p>
   
   <UserProfileCardControls user={githubUser} {currentUser} />
 
@@ -88,7 +101,7 @@
           class="link link-hover flex items-center gap-2"
           href={githubUser?.websiteUrl}
         >
-          <iconify-icon icon="ri:earth-line" />{githubUser?.websiteUrl}</a
+          <iconify-icon icon="ri:earth-line" />Website</a
         >
       </li>
       <li class="flex items-center gap-2">
@@ -125,4 +138,4 @@
       {/each}
     </div>
   {/if}
-</div>
+</Card>
