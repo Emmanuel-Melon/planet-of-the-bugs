@@ -118,7 +118,7 @@
   </div>
   <div class="flex items-center gap-2 space-y-2">
     <Card title="Subscribed Repositories">
-      <div class="card-actions justify-start gap-2">
+      <div class="card-actions justify-end gap-2">
         <button class="btn btn-sm btn-primary">Contribute</button>
       </div>
     </Card>
