@@ -45,7 +45,7 @@
     </div>
     <Card title="Introduction to Debugging">
       <progress class="progress progress-success w-56" value="70" max="100" />
-      <div class="card-actions justify-start gap-2">
+      <div class="card-actions justify-end gap-2">
         <button class="btn btn-sm btn-primary">Resume Course</button>
       </div>
     </Card>
@@ -66,17 +66,17 @@
   </div>
   <div class="flex items-center gap-2 space-y-2">
     <Card title="Subscribed Repositories">
-      <div class="card-actions justify-start gap-2">
+      <div class="card-actions justify-end gap-2">
         <button class="btn btn-sm btn-primary">Contribute</button>
       </div>
     </Card>
     <Card title="Subscribed Repositories">
-      <div class="card-actions justify-start gap-2">
+      <div class="card-actions justify-end gap-2">
         <button class="btn btn-sm btn-primary">Contribute</button>
       </div>
     </Card>
     <Card title="Subscribed Repositories">
-      <div class="card-actions justify-start gap-2">
+      <div class="card-actions justify-end gap-2">
         <button class="btn btn-sm btn-primary">Contribute</button>
       </div>
     </Card>
