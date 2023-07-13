@@ -24,7 +24,7 @@
     class="w-full flex flex-col md:flex-row justify-between items-center space-y-4"
   >
     <div class="space-y-4">
-      <h3 class="text-xl text-primary">{chapter.title}</h3>
+      <h3 class="text-xl">{chapter.title}</h3>
       <p>{chapter.description}</p>
     </div>
 
