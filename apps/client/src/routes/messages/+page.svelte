@@ -57,8 +57,8 @@
   ];
 </script>
 
-<section class="mx-auto p-4">
-  <div class="flex w-full shadow">
+<section class="mx-auto h-full">
+  <div class="flex w-full h-full">
     <div class="basis-2/5 border-r-2">
       <div
         class="flex justify-between items-center p-2 bg-base-300"

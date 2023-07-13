@@ -69,9 +69,6 @@ repositories"
         class="flex justify-between items-center space-x-1 py-1 rounded-md"
       >
         <div class="flex gap-2 items-center">
-          <button class="btn btn-sm btn-square btn-outline">
-            <iconify-icon icon="ri:information-line" /></button
-          >
           <h3 class="text-xl">Open Source Bugs</h3>
         </div>
         <div>

@@ -19,7 +19,7 @@
   $: dropdownLinks = [
     { text: "My Profile", path: `/${user?.username}`, icon: "ri:user-2-line" },
     { text: "Authored Courses", path: "/authored", icon: "ri:book-read-line" },
-    { text: "Settings", path: "/settings", icon: "ri:settings-3-line" }
+    { text: "Settings", path: "/settings", icon: "ri:equalizer-line" }
   ];
 
   onMount(() => {

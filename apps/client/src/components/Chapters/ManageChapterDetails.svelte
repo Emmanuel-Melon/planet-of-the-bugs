@@ -26,22 +26,20 @@
 <div class="flex flex-col space-y-4 w-full">
   <div class="h-max">
     <Card>
-      <div class="card-body space-y-2">
-        <div class="flex justify-between item-center w-full">
-          <h2 class="card-title">Chapters Details</h2>
-          <NewChapterModal {courseId} chaptersLength={chapters.length} />
-        </div>
-
-        <select
-          on:change={handleChapterChange}
-          class="select select-bordered w-full"
-        >
-          <option disabled selected>Pick a chapter</option>
-          {#each chapters as chapter}
-            <option>{chapter.title}</option>
-          {/each}
-        </select>
+      <div class="flex justify-between item-center w-full">
+        <h2 class="card-title">Chapters Details</h2>
+        <NewChapterModal {courseId} chaptersLength={chapters.length} />
       </div>
+
+      <select
+        on:change={handleChapterChange}
+        class="select select-bordered w-full"
+      >
+        <option disabled selected>Pick a chapter</option>
+        {#each chapters as chapter}
+          <option>{chapter.title}</option>
+        {/each}
+      </select>
     </Card>
   </div>
 
