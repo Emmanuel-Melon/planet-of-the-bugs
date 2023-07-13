@@ -47,6 +47,7 @@
     "@apollo/client": "^3.7.11",
     "@auth/core": "^0.5.1",
     "@auth/sveltekit": "^0.3.0",
+    "@formkit/auto-animate": "^0.7.0",
     "@sveltestack/svelte-query": "^1.6.0",
     "@svelteuidev/composables": "^0.10.0",
     "@svelteuidev/core": "^0.10.0",
@@ -58,7 +59,7 @@
     "apollo-link-ws": "^1.0.20",
     "cors": "^2.8.5",
     "daisyui": "^2.51.4",
-    "dayjs": "^1.11.7",
+    "dayjs": "^1.11.9",
     "dotenv": "^16.0.3",
     "gql": "^1.1.2",
     "graphql": "^16.6.0",
@@ -68,6 +69,7 @@
     "node-appwrite": "^9.0.0",
     "sanitize-html": "^2.10.0",
     "socket.io": "^4.6.1",
-    "svelte-apollo": "^0.5.0"
+    "svelte-apollo": "^0.5.0",
+    "swr": "^2.2.0"
   }
 }

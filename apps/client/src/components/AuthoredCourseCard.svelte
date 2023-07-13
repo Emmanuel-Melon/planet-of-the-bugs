@@ -6,7 +6,7 @@
 </script>
 
 <div class="grow bg-base-100 max-w-screen-sm md:max-w-[360px] lg:max-w-lg">
-  <Card>
+  <Card img="https://res.cloudinary.com/dwacr3zpp/image/upload/v1657997898/inspirers/images/abstract-chess.svg">
     <div class="flex gap-4">
       <div class="w-full flex justify-between items-center">
         <h2 class="card-title">
@@ -22,7 +22,7 @@
     </div>
     <div class="divider">Description</div>
     <p>{course.description}</p>
-    <div class="card-actions justify-end">
+    <div class="card-actions justify-start">
       <div class="flex gap-2">
         <a href={`/authored/${course.slug}/analytics`} class="btn btn-sm btn-outline gap-2">
           <iconify-icon icon="ri:bubble-chart-line" /> Analytics</a

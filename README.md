@@ -1,4 +1,5 @@
 # Planet of the Bugs
+Beta Release
 
 - [Official website →](https://planetofthebugs.xyz/)
 - [Support →](https://support.planetofthebugs.xyz/)

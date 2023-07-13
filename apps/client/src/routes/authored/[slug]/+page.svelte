@@ -34,7 +34,7 @@
     <Card>
       <h2 class="card-title">{course.title}</h2>
       <p>{course.description}</p>
-      <div class="card-actions justify-end gap-2">
+      <div class="card-actions justify-start gap-2">
         <button class="btn btn-sm btn-warning gap-2" on:click={handleCourseDeletion}><iconify-icon icon="ri:delete-bin-4-line"/> Delete Course</button>
       </div>
     </Card>

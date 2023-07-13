@@ -6,12 +6,8 @@
   import { Card } from "svelte-ui";
 </script>
 
-<section>
-  <Card>
-    <div class="w-full space-y-2">
-      {#each chapters as chapter}
-        <ChapterOverview {chapter} {course} />
-      {/each}
-    </div>
-  </Card>
-</section>
+<div class="w-full space-y-2">
+  {#each chapters as chapter}
+    <ChapterOverview {chapter} {course} />
+  {/each}
+</div>

@@ -5,7 +5,7 @@
 </script>
 
 <div class="basis-3/4 space-y-4">
-  <Card title="Password Management">
+  <Card title="Password Management" height="fit">
     <p class="text-neutral">Change or manage your passwords.</p>
     <form>
       <div class="form-control w-full">

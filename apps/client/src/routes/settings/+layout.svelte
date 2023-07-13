@@ -33,19 +33,17 @@
 
   <div class="flex flex-col md:flex-row w-full gap-2">
     <div class="basis-2/5 grow">
-      <Card>
-        <ul class="menu bg-transparent w-full">
-          {#each items as { id, name }}
-            <li>
-              <button
-                on:click={() => handleItemChange(id)}
-                class={selectedItemValue === id ? "active bg-secondary" : ""}
-                >{name}</button
-              >
-            </li>
-          {/each}
-        </ul>
-      </Card>
+      <ul class="menu bg-transparent w-full">
+        {#each items as { id, name }}
+          <li>
+            <button
+              on:click={() => handleItemChange(id)}
+              class={selectedItemValue === id ? "active bg-secondary" : ""}
+              >{name}</button
+            >
+          </li>
+        {/each}
+      </ul>
     </div>
     <div class="basis-3/4 space-y-4">
       <slot />
