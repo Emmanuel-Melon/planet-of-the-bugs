@@ -2,7 +2,7 @@
 module.exports = {
   content: ["./src/**/*.{html,js,svelte,ts}"],
   daisyui: {
-    themes: ["fantasy"],
+    themes: ["cupcake"],
   },
   plugins: [require("daisyui"), require("@tailwindcss/typography")],
 };

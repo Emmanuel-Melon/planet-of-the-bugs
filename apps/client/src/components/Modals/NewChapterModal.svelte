@@ -63,7 +63,7 @@
       />
     </div>
 
-    <div class="modal-action flex justify-end">
+    <div class="modal-action flex justify-start">
       <Button CTA="Save Chapter" icon="ri:add-line" onClick={handleSubmit} />
 
     </div>

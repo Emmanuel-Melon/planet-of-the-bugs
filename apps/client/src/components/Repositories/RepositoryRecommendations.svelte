@@ -13,7 +13,7 @@
     <div class="flex gap-2 items-center">
       <h3 class="text-xl">Recommended Repositories</h3>
     </div>
-    <div class="flex justify-end">
+    <div class="flex justify-start">
       <ManageReposTopicsModal {topics} {user} />
     </div>
   </div>

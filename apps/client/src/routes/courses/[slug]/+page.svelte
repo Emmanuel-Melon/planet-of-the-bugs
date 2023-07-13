@@ -23,7 +23,7 @@
     <div class="basis-2/5">
       <Card height="fit" title={course.title}>
         <p>{course.description}</p>
-        <div class="card-actions justify-end">
+        <div class="card-actions justify-start">
           <StartCourseButton
           status={active?.status}
           course_id={course.id}

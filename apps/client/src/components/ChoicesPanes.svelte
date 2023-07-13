@@ -17,7 +17,7 @@
             <div class="card-body">
               <h2 class="card-title">Ready to jump in</h2>
               <p>Are you an experienced developer seeking challenges? We've got you covered with a variety of bugs to fix across multiple tech stacks. Whether it's a quick or complex issue, you'll find something that suits you. Roll up your sleeves and start now!</p>
-              <div class="card-actions justify-end">
+              <div class="card-actions justify-start">
                 <button class="btn btn-sm btn-primary gap-2 border-solid border-neutral border-y">
                     <iconify-icon icon="ri:star-line" />
                  Hunt Bugs</button>
@@ -28,7 +28,7 @@
             <div class="card-body">
               <h2 class="card-title">New to bug fixing?</h2>
               <p>Our training program will guide you through identifying, reproducing, and fixing bugs with real-world simulations. <br /> Get hands-on practice and build your confidence before taking on actual bugs!</p>
-              <div class="card-actions justify-end">
+              <div class="card-actions justify-start">
                 <button class="btn btn-sm btn-secondary gap-2 border-solid border-neutral border-y">
                     <iconify-icon icon="ri:star-line" />
                     Start Practicing</button>

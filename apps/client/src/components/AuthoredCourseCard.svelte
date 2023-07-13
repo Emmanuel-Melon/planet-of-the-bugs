@@ -22,7 +22,7 @@
     </div>
     <div class="divider">Description</div>
     <p>{course.description}</p>
-    <div class="card-actions justify-end">
+    <div class="card-actions justify-start">
       <div class="flex gap-2">
         <a href={`/authored/${course.slug}/analytics`} class="btn btn-sm btn-outline gap-2">
           <iconify-icon icon="ri:bubble-chart-line" /> Analytics</a
