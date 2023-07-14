@@ -5,7 +5,7 @@
     "https://rare-gallery.com/thumbnail/1375991-tengen-uzui-sound-hashira-demon-slayer-anime-kimetsu-no-yaiba.jpg";
 </script>
 
-<div class="p-2 bg-base-100 h-2/4 overflow-y-auto">
+<div class="p-2 bg-base-200 h-2/4 overflow-y-auto">
   <div class="chat chat-start">
     <div class="chat-image avatar">
       <div class="w-8 rounded-full">

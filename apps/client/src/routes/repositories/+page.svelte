@@ -1,7 +1,7 @@
 <script lang="ts">
   export let data;
   import { PageHeader } from 'svelte-ui';
-  import autoAnimate from '@formkit/auto-animate';
+
   import SidebarFilter from '$components/SidebarFilter.svelte';
   import RepositoryRecommendations from '$components/Repositories/RepositoryRecommendations.svelte';
   import { subscribedRepos } from './subscribedRepos.js';
@@ -39,7 +39,13 @@ language, bug, good-first-issue, or even bounty."
 
 <section class="p-2">
   <div class="flex flex-col lg:flex-row gap-2">
-    <div class="grow">
+    <div class="grow p-2">
+      <h3>Followed tags: </h3>
+      <div class="flex flex-wrap gap-2 p-2">
+        <div class="badge badge-outline">react</div>
+        <div class="badge badge-primary badge-outline">redux</div>
+        <div class="badge badge-secondary badge-outline">firebase</div>
+      </div>
       <SidebarFilter CTA="Filter Repositories" {criteria} />
     </div>
     <RepositoryRecommendations

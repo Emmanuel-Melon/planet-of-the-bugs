@@ -12,7 +12,7 @@ import {
   refreshGitHubAccessToken,
   validateGitHubAccessToken,
 } from "$lib/auth/helpers";
-import { StringifyTopics } from "bugs-lib";
+import { stringifyTopics } from "bugs-lib";
 
 export const load = async (event) => {
   const {
@@ -45,7 +45,7 @@ export const load = async (event) => {
     githubClient?.query({
       query: FETCH_REPOSITORIES_BY_TOPICS,
       variables: {
-        topics: StringifyTopics(userTopics),
+        topics: stringifyTopics(userTopics),
       },
     }),
     apolloClient.query({
