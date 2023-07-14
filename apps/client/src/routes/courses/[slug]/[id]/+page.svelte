@@ -1,85 +1,43 @@
 <script>
-  import { onMount } from "svelte";
   export let data;
   let { lesson } = data;
-  import CodeEditor from "$components/CodeEditor/CodeEditor.svelte";
-  import EditorTerminal from "$components/CodeEditor/EditorTerminal.svelte";
-  import EditorIFrame from "$components/CodeEditor/EditorIFrame.svelte";
-  import LessonSidebar from "$components/Lessons/LessonSidebar.svelte";
   import { NextPrev } from "svelte-ui";
-
-  import MarkdownIt from "markdown-it";
-  import sanitizeHtml from "sanitize-html";
-  import { query, mutation } from "svelte-apollo";
-  import { afterUpdate } from "svelte";
-  import { CREATE_LESSON } from "$lib/graphql/mutations/lessons";
-
-  let markdown = "";
-  let result = "";
-
-  afterUpdate(() => {
-    result = sanitizeHtml(md.render(markdown), {
-      allowedTags: sanitizeHtml.defaults.allowedTags.concat([
-        "h1",
-        "h2",
-        "img",
-      ]),
-    });
-  });
-  
-  export let sourceDoc = `<div>
-      <h1>Planet Of The Bugs!</h1>
-      <p>Learn How to Debug</p>
-    </div>`;
-
-  $: isExpanded = false;
-
-  const handleExpand = () => {
-    isExpanded = !isExpanded;
-  };
-
-  console.log(lesson.data.lessons_by_pk);
-  const md = new MarkdownIt();
+  import LessonTextContent from "$components/Lessons/LessonTextContent.svelte";
+  import LessonVideoContent from "$components/Lessons/LessonVideoContent.svelte";
+  import LessonInteracticeContent from "$components/Lessons/LessonInteracticeContent.svelte";
 </script>
 
-
 <section class="h-screen">
-  <div class="flex justify-between items-center p-2 bg-base-200">
-    <div class="text-md breadcrumbs">
-      <ul>
-        <li>
-          <a href="/">
-            <iconify-icon icon="ri:arrow-right-double-line" />
-            Home
-          </a>
-        </li> 
-      </ul>
-    </div>
-    <div>
-      <h1 class="text-xl">{lesson.data.lessons_by_pk.title}</h1>
-    </div>
-    <NextPrev />
-  </div>
-
-  <div class="p-4">
-    {#if lesson.data.lessons_by_pk.type === "text" || lesson.data.lessons_by_pk.type === "Text"}
-    <div>{lesson.data.lessons_by_pk.content}
-    </div>
-  {:else if lesson.data.lessons_by_pk.type === "video" || lesson.data.lessons_by_pk.type === "Video"}
-    <p>{lesson.data.lessons_by_pk.title}</p>
-  {:else if lesson.data.lessons_by_pk.type === "Interactive" || lesson.data.lessons_by_pk.type === "interactive"}
-  <div class="flex h-full">
-    <div class="basis-2/5">
-      <CodeEditor {handleExpand} {isExpanded} />
-    </div>
-    <div class="basis-2/5 h-full">
-      <div>
-        <EditorIFrame {sourceDoc} />
-        <EditorTerminal />
+  <div class="p-4 bg-base-200">
+    <button class="btn btn-sm btn-outline">Back</button>
+    <div class="flex justify-between items-center">
+      <div class="text-md breadcrumbs">
+        <ul>
+          <li><a>Courses</a></li>
+          <li><a>Course</a></li>
+          <li>{lesson.data.lessons_by_pk.title}</li>
+        </ul>
       </div>
     </div>
   </div>
 
-  {/if}
+  <div class="p-2 space-y-2">
+    {#if lesson.data.lessons_by_pk.type === "text" || lesson.data.lessons_by_pk.type === "Text"}
+      <LessonTextContent lesson={lesson.data.lessons_by_pk} />
+    {:else if lesson.data.lessons_by_pk.type === "video" || lesson.data.lessons_by_pk.type === "Video"}
+      <LessonVideoContent lesson={lesson.data.lessons_by_pk} />
+    {:else if lesson.data.lessons_by_pk.type === "Interactive" || lesson.data.lessons_by_pk.type === "interactive"}
+      <LessonInteracticeContent lesson={lesson.data.lessons_by_pk} />
+    {/if}
+
+    <div class="flex justify-between items-center">
+      <NextPrev />
+    </div>
+    <div class="form-control w-fit">
+      <label class="cursor-pointer label  gap-2">
+        <input type="checkbox" checked="checked" class="checkbox checkbox-sm checkbox-success" />
+        <span class="label-text">Mark as Completed</span>
+      </label>
+    </div>
   </div>
 </section>
