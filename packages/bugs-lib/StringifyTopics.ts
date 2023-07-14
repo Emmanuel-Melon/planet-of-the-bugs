@@ -1,6 +1,6 @@
-export const StringifyTopics = (topics: String[]) => {
+export const stringifyTopics = (topics: String[]) => {
   const str:  String = topics.join(',');
   return str;
 };
 
-export default StringifyTopics;
+export default stringifyTopics;
