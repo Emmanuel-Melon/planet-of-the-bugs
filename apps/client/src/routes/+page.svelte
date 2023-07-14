@@ -122,18 +122,5 @@
         <button class="btn btn-sm btn-primary">Contribute</button>
       </div>
     </Card>
-<<<<<<< HEAD
-    <Card title="Subscribed Repositories">
-      <div class="card-actions justify-end gap-2">
-        <button class="btn btn-sm btn-primary">Contribute</button>
-      </div>
-    </Card>
-    <Card title="Subscribed Repositories">
-      <div class="card-actions justify-end gap-2">
-        <button class="btn btn-sm btn-primary">Contribute</button>
-      </div>
-    </Card>
-=======
->>>>>>> ef15cc0 (feat: refactor courses)
   </div>
 </section>
