@@ -13,7 +13,6 @@
     { text: "Repositories", path: "/repositories", icon: "ri:git-repository-line" },
     { text: "BugsHub", path: "/bugs", icon: "ri:bug-line" },
     { text: "Messages", path: "/messages", icon: "ri:message-3-line" },
-    { text: "Resources", path: "/resources", icon: "ri:folder-5-line" },
   ];
 
   $: dropdownLinks = [
