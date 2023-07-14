@@ -3,7 +3,7 @@
     //  class="prose prose-sm"
 </script>
 <div
-class="flex justify-between items-center bg-base-300"
+class="flex justify-between items-center"
 >
 <div class="flex justify-between items-center w-full p-2">
   <div class="flex items-center gap-4 prose prose-sm">
