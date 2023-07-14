@@ -22,7 +22,10 @@
 </script>
 
 <div class="basis-3/4 space-y-2">
-  <Card title="Email Notifications"  height="fit">
+  <Card title="Notifications">
+    <p>Manage your notification settings</p>
+  </Card>
+  <Card title="Email Notifications">
     <p>You will receive email notifications when the following happens:</p>
     <form>
       {#each options as { description, status }}

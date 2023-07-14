@@ -56,5 +56,5 @@
   };
 </script>
 
-<Button CTA={buttons[status].text} icon="ri:add-line" onClick={buttons[status].logic} />
+<Button CTA={buttons[status].text} icon="ri:add-circle-line" onClick={buttons[status].logic} />
 

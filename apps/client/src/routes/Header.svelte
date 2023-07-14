@@ -19,7 +19,7 @@
   $: dropdownLinks = [
     { text: "My Profile", path: `/${user?.username}`, icon: "ri:user-2-line" },
     { text: "Authored Courses", path: "/authored", icon: "ri:book-read-line" },
-    { text: "Settings", path: "/settings", icon: "ri:equalizer-line" }
+    { text: "Settings", path: "/settings", icon: "ri:settings-3-line" }
   ];
 
   onMount(() => {
@@ -70,7 +70,7 @@
     <ul class="navbar-center hidden lg:flex items-center gap-2">
       {#each menuLinks as { icon, text, path }}
         <li
-          class={`hover:bg-base-200 hover:text-black transition-all  ${path === current ? "py-1 px-2 hidden lg:flex bg-primary text-primary-content"
+          class={`hover:bg-base-200 hover:text-black transition-all rounded-md  ${path === current ? "py-1 px-2 hidden lg:flex hover:bg-primary  bg-primary text-primary-content"
           : "py-1 px-2 hidden lg:flex"} `}
         >
           <a href={path} class="flex items-center gap-2"><iconify-icon icon={icon}/> {text}</a>
@@ -91,7 +91,7 @@
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
       <ul
         tabindex="0"
-        class="menu menu-compact dropdown-content mt-3 p-2 shadow-lg rounded-box w-52 bg-base-100"
+        class="menu menu-compact dropdown-content mt-3 p-2 shadow-lg w-52 bg-base-100"
       >
         {#each menuLinks as { text, path, icon }}
           <li>
@@ -119,7 +119,7 @@
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <ul
           tabindex="0"
-          class="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52 bg-base-100"
+          class="menu menu-compact dropdown-content mt-3 p-2 shadow w-52 bg-base-100"
         >
           {#each dropdownLinks as { text, path, icon }}
             <li>

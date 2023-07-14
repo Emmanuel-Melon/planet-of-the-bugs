@@ -110,7 +110,7 @@
             />
           </div>
 
-          <div class="card-actions justify-start gap-2">
+          <div class="card-actions justify-end gap-2">
             <button class="btn btn-sm btn-outline gap-2"
               ><iconify-icon icon="ri:close-circle-line" /> Skip</button
             >

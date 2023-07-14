@@ -75,7 +75,7 @@
         required
       />
     </div>
-    <div class="modal-action flex justify-start">
+    <div class="modal-action flex justify-end">
       <Button
         CTA="Add Lesson"
         icon="ri:add-line"

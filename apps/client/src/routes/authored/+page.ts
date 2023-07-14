@@ -10,9 +10,6 @@ import {
   refreshGitHubAccessToken,
   validateGitHubAccessToken,
 } from "$lib/auth/helpers";
-// import useSWR from 'swr';
-
-// const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 export const load = async (event) => {
   const { parent, data: pageData } = event;
