@@ -4,7 +4,7 @@
   import { Card, Button } from 'svelte-ui';
   import { page } from '$app/stores';
   import 'iconify-icon';
-  import { PUBLIC_PASSAGE_APP_ID } from '$env/static/public';
+  // import { PUBLIC_PASSAGE_APP_ID } from '$env/static/public';
 
   const handleGithubLogin = async () => {
     try {
@@ -122,8 +122,8 @@
     {/if}
   </div>
 
-  <div>
+  <!-- <div>
     <passage-auth app-id={`${PUBLIC_PASSAGE_APP_ID}`} />
     <script src="https://psg.so/web.js"></script>
-  </div>
+  </div> -->
 </section>

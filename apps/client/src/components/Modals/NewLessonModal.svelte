@@ -89,7 +89,7 @@
       />
     </div>
     <div class="modal-action flex justify-end">
-      <Button text="Add Lesson" icon="ri:add-line" on:buttonClick={forward} />
+      <Button CTA="Add Lesson" icon="ri:add-line" on:buttonClick={forward} />
     </div>
   </form>
 </Modal>

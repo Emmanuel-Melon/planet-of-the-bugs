@@ -5,13 +5,13 @@
 
   $: buttons = [
     {
-      text: 'Connect GitHub',
+      CTA: 'Connect GitHub',
       icon: 'ri:github-line',
       isProcessing: false,
       onClick: connectGithub,
     },
     {
-      text: 'Connect LinkedIn',
+      CTA: 'Connect LinkedIn',
       icon: 'ri:linkedin-box-line',
       isProcessing: false,
       onClick: connectLinkedIn,
@@ -57,14 +57,14 @@
     <p class="text-neutral">Connect your social accounts.</p>
     <div class="flex gap-2">
       <Button
-        text={buttons[0].text}
+        CTA={buttons[0].CTA}
         icon={buttons[0].icon}
         isProcessing={buttons[0].isProcessing}
         on:buttonClick={buttons[0].onClick}
         bg="base-200"
       />
       <Button
-        text={buttons[1].text}
+        CTA={buttons[1].CTA}
         icon={buttons[1].icon}
         isProcessing={buttons[1].isProcessing}
         on:buttonClick={buttons[1].onClick}

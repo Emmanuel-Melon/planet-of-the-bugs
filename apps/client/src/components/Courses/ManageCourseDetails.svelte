@@ -88,7 +88,7 @@
 
         <div class="card-actions justify-end mt-2 py-2">
           <Button
-            text="Update Course Details"
+            CTA="Update Course Details"
             icon="ri:check-line"
             on:buttonClick={updateCourse}
           />
@@ -110,7 +110,7 @@
           bg="error"
           icon="ri:delete-bin-7-line"
           on:buttonClick={deleteCourse}
-          text="Delete Course"
+          CTA="Delete Course"
         />
       </div>
     </div>

@@ -102,7 +102,7 @@
     {/if}
     <div class="modal-action flex justify-start">
       <Button
-        text="Save Preference"
+        CTA="Save Preference"
         icon="ri:refresh-line"
         on:buttonClick={forward}
         {isProcessing}

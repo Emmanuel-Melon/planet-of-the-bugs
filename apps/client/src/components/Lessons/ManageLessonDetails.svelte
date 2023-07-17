@@ -184,7 +184,7 @@
 
           <div class="card-actions justify-end mt-2 py-2">
             <Button
-              text="Update Lesson Details"
+              CTA="Update Lesson Details"
               icon="ri:check-line"
               on:buttonClick={() => {}}
             />
@@ -201,13 +201,13 @@
           <Tabs {items} />
           <div class="card-actions justify-end">
             <Button
-              text="Draft"
+              CTA="Draft"
               icon="ri:edit-2-line"
               isOutline={true}
               on:buttonClick={() => {}}
             />
             <Button
-              text="Publish"
+              CTA="Publish"
               icon="ri:check-line"
               on:buttonClick={publishLessonContent}
             />
@@ -230,7 +230,7 @@
         </p>
         <div class="card-actions justify-end">
           <Button
-            text="Delete Lesson"
+            CTA="Delete Lesson"
             icon="ri:delete-bin-7-line"
             bg="error"
             on:buttonClick={() => {}}

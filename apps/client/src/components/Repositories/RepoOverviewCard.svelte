@@ -60,16 +60,22 @@
 
   $: buttons = [
     {
-      text: 'Unsubscribe',
+      CTA: 'Unsubscribe',
       icon: 'ri:delete-bin-7-line',
       isProcessing: false,
       onClick: handleUnsubscribeFromRepo,
     },
     {
-      text: 'Subscribe',
+      CTA: 'Subscribe',
       icon: 'ri:heart-add-line',
       isProcessing: false,
       onClick: handleSubscribeToRepo,
+    },
+    {
+      CTA: 'Skip',
+      icon: 'ri:close-line',
+      isProcessing: false,
+      onClick: () => {},
     },
   ];
 </script>
@@ -135,7 +141,7 @@
           Manage</a
         >
         <Button
-          text={buttons[0].text}
+          CTA={buttons[0].CTA}
           icon={buttons[0].icon}
           isProcessing={buttons[0].isProcessing}
           on:buttonClick={buttons[0].onClick}
@@ -143,17 +149,17 @@
         />
       {:else}
         <Button
-          text={buttons[1].text}
+          CTA={buttons[1].CTA}
           icon={buttons[1].icon}
           isProcessing={buttons[1].isProcessing}
           on:buttonClick={buttons[1].onClick}
         />
 
         <Button
-          text="Skip"
-          icon="ri:close-line"
+          CTA={buttons[2].CTA}
+          icon={buttons[2].icon}
+          on:buttonClick={buttons[2].onClick}
           bg="ghost"
-          on:buttonClick={() => {}}
         />
       {/if}
     </div>
