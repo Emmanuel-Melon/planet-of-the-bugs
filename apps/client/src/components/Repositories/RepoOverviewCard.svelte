@@ -17,7 +17,29 @@
     (item) => item.repo_name === repo?.name
   );
 
+  async function handleUnsubscribeFromRepo() {
+    buttons[0].isProcessing = true;
+    try {
+      const result = await unsubscribeFromRepo({
+        variables: {
+          user_id: user?.id,
+          repo_name: repo?.name,
+          repo_owner: repo?.owner?.login,
+        },
+      });
+      isSubscribed = false;
+      buttons[0].isProcessing = false;
+    } catch (error) {
+      console.log(error);
+      buttons[0].isProcessing = false;
+
+      // TODO
+    }
+  }
+
   async function handleSubscribeToRepo() {
+    buttons[1].isProcessing = true;
+
     try {
       const result = await subscribeToRepo({
         variables: {
@@ -28,27 +50,28 @@
         },
       });
       isSubscribed = true;
+      buttons[1].isProcessing = false;
     } catch (error) {
+      buttons[1].isProcessing = false;
       console.log(error);
       // TODO
     }
   }
 
-  async function handleUnsubscribeFromRepo() {
-    try {
-      const result = await unsubscribeFromRepo({
-        variables: {
-          user_id: user?.id,
-          repo_name: repo?.name,
-          repo_owner: repo?.owner?.login,
-        },
-      });
-      isSubscribed = false;
-    } catch (error) {
-      console.log(error);
-      // TODO
-    }
-  }
+  $: buttons = [
+    {
+      text: 'Unsubscribe',
+      icon: 'ri:delete-bin-7-line',
+      isProcessing: false,
+      onClick: handleUnsubscribeFromRepo,
+    },
+    {
+      text: 'Subscribe',
+      icon: 'ri:heart-add-line',
+      isProcessing: false,
+      onClick: handleSubscribeToRepo,
+    },
+  ];
 </script>
 
 <div class="basis-2/5 grow">
@@ -112,18 +135,26 @@
           Manage</a
         >
         <Button
-          CTA="Unsubscribe"
-          onClick={handleUnsubscribeFromRepo}
-          icon="ri:delete-bin-7-line"
+          text={buttons[0].text}
+          icon={buttons[0].icon}
+          isProcessing={buttons[0].isProcessing}
+          on:buttonClick={buttons[0].onClick}
           bg="ghost"
         />
       {:else}
         <Button
-          CTA="Subscribe"
-          onClick={handleSubscribeToRepo}
-          icon="ri:heart-add-line"
+          text={buttons[1].text}
+          icon={buttons[1].icon}
+          isProcessing={buttons[1].isProcessing}
+          on:buttonClick={buttons[1].onClick}
         />
-        <Button CTA="Skip" onClick={() => {}} icon="ri:close-line" bg="ghost" />
+
+        <Button
+          text="Skip"
+          icon="ri:close-line"
+          bg="ghost"
+          on:buttonClick={() => {}}
+        />
       {/if}
     </div>
   </Card>

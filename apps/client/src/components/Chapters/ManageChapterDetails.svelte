@@ -10,12 +10,6 @@
   const handleChapterChange = (event) => {
     isSelected = true;
     selectedChapter = event.target.selectedIndex - 1;
-    // const fetchLessons = query(FETCH_LESSON_BY_INDEX_CHAPTER_ID, {
-    //   variables: {
-    //   index : chapterIndex,
-    //   chapterId : "dsadnajda",
-    //   }
-    // });
   };
 
   $: isSelected, selectedChapter;
@@ -86,9 +80,9 @@
           </div>
           <div class="card-actions justify-end mt-2 py-2">
             <Button
-              CTA="Update Chapter Details"
+              text="Update Chapter Details"
               icon="ri:check-line"
-              onClick={() => {}}
+              on:buttonClick={() => {}}
             />
           </div>
 
@@ -127,10 +121,10 @@
         </p>
         <div class="card-actions justify-end">
           <Button
-            CTA="Delete Chapter"
+            text="Delete Chapter"
             icon="ri:delete-bin-7-line"
             bg="error"
-            onClick={() => {}}
+            on:buttonClick={() => {}}
           />
         </div>
       </div>

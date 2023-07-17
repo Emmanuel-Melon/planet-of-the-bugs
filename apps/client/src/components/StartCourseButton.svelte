@@ -2,17 +2,18 @@
   // @ts-nocheck
   export let course_id;
   export let slug;
-  export let status = "Unsubscribed";
+  export let status = 'Unsubscribed';
   export let userId;
 
-  import { mutation } from "svelte-apollo";
-  import { START_COURSE } from "$lib/graphql/mutations/courses";
-  import "iconify-icon";
-  import Button from "svelte-ui/components/Button.svelte";
+  import { mutation } from 'svelte-apollo';
+  import { START_COURSE } from '$lib/graphql/mutations/courses';
+  import 'iconify-icon';
+  import Button from 'svelte-ui/components/Button.svelte';
 
   const startCourse = mutation(START_COURSE);
 
   async function handleStart() {
+    buttons[status].isProcessing = true;
     try {
       const result = await startCourse({
         variables: {
@@ -22,13 +23,16 @@
       });
 
       if (result.data.insert_user_courses.affected_rows === 1) {
-        console.log("Mutation successful!");
+        console.log('Mutation successful!');
         //  Change the URL to the Svelte page
         window.location.href = `/courses/${slug}`;
       } else {
-        console.log("Mutation failed");
+        console.log('Mutation failed');
       }
+      buttons[status].isProcessing = false;
     } catch (error) {
+      buttons[status].isProcessing = false;
+
       console.log(error);
       // TODO
     }
@@ -37,24 +41,31 @@
   function handleContinue() {}
   function handleCompleted() {}
 
-  const buttons = {
+  $: buttons = {
     Completed: {
-      text: "Course Completed",
-      style: "btn btn-success",
+      text: 'Course Completed',
+      style: 'btn btn-success',
+      isProcessing: false,
       logic: handleCompleted,
     },
     Unsubscribed: {
-      text: "Start Course",
-      style: "btn btn-primary",
+      text: 'Start Course',
+      style: 'btn btn-primary',
+      isProcessing: false,
       logic: handleStart,
     },
     Subscribed: {
-      text: "Continue Course",
-      style: "btn btn-primary",
+      text: 'Continue Course',
+      style: 'btn btn-primary',
+      isProcessing: false,
       logic: handleContinue,
     },
   };
 </script>
 
-<Button CTA={buttons[status].text} icon="ri:add-circle-line" onClick={buttons[status].logic} />
-
+<Button
+  text={buttons[status].text}
+  icon="ri:add-circle-line"
+  isProcessing={buttons[status].isProcessing}
+  on:buttonClick={buttons[status].logic}
+/>

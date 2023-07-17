@@ -44,11 +44,11 @@
     selectedLesson = event.target.selectedIndex - 1;
   };
 
-  const handleSubmit = async (lessonInput) => {
+  const handleSubmit = async (event) => {
     try {
       const result = await addLesson({
         variables: {
-          lessonInput,
+          lessonInput: event.detail,
         },
       });
       console.log('New lesson added successfully!');
@@ -65,7 +65,7 @@
     selectedLesson,
     lessons;
 
-    const publishLessonContent = () => {}
+  const publishLessonContent = () => {};
 </script>
 
 <div class="flex flex-col space-y-4 w-full">
@@ -79,7 +79,7 @@
             chapterId={chapters[selectedChapter].id}
             idx={lessons.length + 1}
             {lessonTypes}
-            {handleSubmit}
+            on:buttonClick={handleSubmit}
           />
         {/if}
       </div>
@@ -184,9 +184,9 @@
 
           <div class="card-actions justify-end mt-2 py-2">
             <Button
-              CTA="Update Lesson Details"
+              text="Update Lesson Details"
               icon="ri:check-line"
-              onClick={() => {}}
+              on:buttonClick={() => {}}
             />
           </div>
         </form>
@@ -201,12 +201,16 @@
           <Tabs {items} />
           <div class="card-actions justify-end">
             <Button
-              CTA="Draft"
+              text="Draft"
               icon="ri:edit-2-line"
               isOutline={true}
-              onClick={() => {}}
+              on:buttonClick={() => {}}
             />
-            <Button CTA="Publish" icon="ri:check-line" onClick={publishLessonContent} />
+            <Button
+              text="Publish"
+              icon="ri:check-line"
+              on:buttonClick={publishLessonContent}
+            />
           </div>
         </div>
       </div>
@@ -226,10 +230,10 @@
         </p>
         <div class="card-actions justify-end">
           <Button
-            CTA="Delete Lesson"
+            text="Delete Lesson"
             icon="ri:delete-bin-7-line"
             bg="error"
-            onClick={() => {}}
+            on:buttonClick={() => {}}
           />
         </div>
       </div>

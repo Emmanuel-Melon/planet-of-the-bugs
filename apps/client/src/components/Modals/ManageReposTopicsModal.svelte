@@ -1,11 +1,10 @@
 <script lang="ts">
-  import { UPDATE_USER_TOPICS } from '$lib/graphql/mutations/users';
-  import { onDestroy } from 'svelte';
-  import { mutation } from 'svelte-apollo';
+  import { onDestroy, createEventDispatcher } from 'svelte';
   import { Button, Modal } from 'svelte-ui';
   import Card from 'svelte-ui/components/Card.svelte';
   export let user: any;
   export let topics: [];
+  export let isProcessing: boolean = false;
 
   let userTopics = user?.userTopics;
   let userInput = '';
@@ -36,22 +35,11 @@
     userInput = '';
   };
 
-  const updateUserTopics = async (topics: string[]) => {
-    const update = mutation(UPDATE_USER_TOPICS);
-
-    try {
-      const result = await update({
-        variables: {
-          userTopics: JSON.stringify(topics),
-          uid: user?.id,
-        },
-      });
-      console.log('User Topics updated!');
-      document.getElementById('close')?.click();
-      location.reload();
-    } catch (error) {
-      console.log(error);
-    }
+  const dispatch = createEventDispatcher();
+  const forward = () => {
+    dispatch('buttonClick', {
+      userTopics,
+    });
   };
 
   onDestroy(() => {
@@ -114,9 +102,10 @@
     {/if}
     <div class="modal-action flex justify-start">
       <Button
-        CTA="Save Preference"
+        text="Save Preference"
         icon="ri:refresh-line"
-        onClick={() => updateUserTopics(userTopics)}
+        on:buttonClick={forward}
+        {isProcessing}
       />
     </div>
   </form>
