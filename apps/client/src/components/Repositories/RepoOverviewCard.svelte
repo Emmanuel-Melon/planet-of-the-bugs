@@ -18,7 +18,7 @@
   );
 
   async function handleUnsubscribeFromRepo() {
-    buttons[0].isProcessing = true;
+    buttons[0].requestState = 'processing';
     try {
       const result = await unsubscribeFromRepo({
         variables: {
@@ -28,17 +28,17 @@
         },
       });
       isSubscribed = false;
-      buttons[0].isProcessing = false;
+      buttons[0].requestState = 'completed';
     } catch (error) {
       console.log(error);
-      buttons[0].isProcessing = false;
+      buttons[0].requestState = 'failed';
 
       // TODO
     }
   }
 
   async function handleSubscribeToRepo() {
-    buttons[1].isProcessing = true;
+    buttons[1].requestState = 'processing';
 
     try {
       const result = await subscribeToRepo({
@@ -50,34 +50,43 @@
         },
       });
       isSubscribed = true;
-      buttons[1].isProcessing = false;
+      buttons[1].requestState = 'completed';
     } catch (error) {
-      buttons[1].isProcessing = false;
+      buttons[1].requestState = 'failed';
       console.log(error);
       // TODO
     }
   }
 
-  $: buttons = [
+  interface Button {
+    CTA: string;
+    icon: string;
+    requestState: 'idle' | 'processing' | 'completed' | 'failed';
+    onClick: () => void;
+  }
+
+  let buttons: Button[] = [
     {
       CTA: 'Unsubscribe',
       icon: 'ri:delete-bin-7-line',
-      isProcessing: false,
+      requestState: 'idle',
       onClick: handleUnsubscribeFromRepo,
     },
     {
       CTA: 'Subscribe',
       icon: 'ri:heart-add-line',
-      isProcessing: false,
+      requestState: 'idle',
       onClick: handleSubscribeToRepo,
     },
     {
       CTA: 'Skip',
       icon: 'ri:close-line',
-      isProcessing: false,
+      requestState: 'idle',
       onClick: () => {},
     },
   ];
+
+  $: buttons;
 </script>
 
 <div class="basis-2/5 grow">
@@ -143,7 +152,7 @@
         <Button
           CTA={buttons[0].CTA}
           icon={buttons[0].icon}
-          isProcessing={buttons[0].isProcessing}
+          requestState={buttons[0].requestState}
           on:buttonClick={buttons[0].onClick}
           type="ghost"
         />
@@ -151,7 +160,7 @@
         <Button
           CTA={buttons[1].CTA}
           icon={buttons[1].icon}
-          isProcessing={buttons[1].isProcessing}
+          requestState={buttons[1].requestState}
           on:buttonClick={buttons[1].onClick}
         />
 

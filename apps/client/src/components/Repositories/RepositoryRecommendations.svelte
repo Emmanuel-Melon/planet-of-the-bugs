@@ -9,7 +9,7 @@
   const update = mutation(UPDATE_USER_TOPICS);
 
   const updateUserTopics = async (event) => {
-    isProcessing = true;
+    requestState = 'processing';
     try {
       const result = await update({
         variables: {
@@ -17,16 +17,18 @@
           uid: user?.id,
         },
       });
-      isProcessing = false;
+      requestState = 'completed';
       console.log('User Topics updated!');
       location.reload();
     } catch (error) {
-      isProcessing = false;
+      requestState = 'completed';
       console.log(error);
     }
   };
 
-  $: isProcessing = false;
+  let requestState: 'idle' | 'processing' | 'completed' | 'failed' = 'idle';
+
+  $: requestState;
 </script>
 
 <div class="basis-4/5">
@@ -41,7 +43,7 @@
       <ManageReposTopicsModal
         {topics}
         {user}
-        {isProcessing}
+        {requestState}
         on:buttonClick={updateUserTopics}
       />
     </div>

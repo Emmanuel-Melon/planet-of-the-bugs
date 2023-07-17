@@ -13,7 +13,7 @@
   const startCourse = mutation(START_COURSE);
 
   async function handleStart() {
-    buttons[status].isProcessing = true;
+    buttons[status].requestState = 'processing';
     try {
       const result = await startCourse({
         variables: {
@@ -29,9 +29,9 @@
       } else {
         console.log('Mutation failed');
       }
-      buttons[status].isProcessing = false;
+      buttons[status].requestState = 'completed';
     } catch (error) {
-      buttons[status].isProcessing = false;
+      buttons[status].requestState = 'failed';
 
       console.log(error);
       // TODO
@@ -45,19 +45,19 @@
     Completed: {
       CTA: 'Course Completed',
       style: 'btn btn-success',
-      isProcessing: false,
+      requestState: 'idle',
       logic: handleCompleted,
     },
     Unsubscribed: {
       CTA: 'Start Course',
       style: 'btn btn-primary',
-      isProcessing: false,
+      requestState: 'idle',
       logic: handleStart,
     },
     Subscribed: {
       CTA: 'Continue Course',
       style: 'btn btn-primary',
-      isProcessing: false,
+      requestState: 'idle',
       logic: handleContinue,
     },
   };
@@ -66,6 +66,6 @@
 <Button
   CTA={buttons[status].CTA}
   icon="ri:add-circle-line"
-  isProcessing={buttons[status].isProcessing}
+  requestState={buttons[status].requestState}
   on:buttonClick={buttons[status].logic}
 />

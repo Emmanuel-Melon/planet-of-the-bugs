@@ -4,7 +4,8 @@
   import Card from 'svelte-ui/components/Card.svelte';
   export let user: any;
   export let topics: [];
-  export let isProcessing: boolean = false;
+  export let requestState: 'idle' | 'processing' | 'completed' | 'failed' =
+    'idle';
 
   let userTopics = user?.userTopics;
   let userInput = '';
@@ -105,7 +106,7 @@
         CTA="Save Preference"
         icon="ri:refresh-line"
         on:buttonClick={forward}
-        {isProcessing}
+        {requestState}
       />
     </div>
   </form>

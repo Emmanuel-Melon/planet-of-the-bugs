@@ -123,7 +123,7 @@
           <Button
             CTA="Delete Chapter"
             icon="ri:delete-bin-7-line"
-            type="error"
+            state="error"
             on:buttonClick={() => {}}
           />
         </div>
