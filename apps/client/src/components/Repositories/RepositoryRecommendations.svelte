@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { goto } from '$app/navigation';
   import { mutation } from 'svelte-apollo';
   import { UPDATE_USER_TOPICS } from '$lib/graphql/mutations/users';
   import ManageReposTopicsModal from '$components/Modals/ManageReposTopicsModal.svelte';
@@ -13,13 +14,13 @@
     try {
       const result = await update({
         variables: {
-          userTopics: JSON.stringify(event.detail.userTopics),
+          userTopics: JSON.stringify(event.detail),
           uid: user?.id,
         },
       });
       requestState = 'completed';
       console.log('User Topics updated!');
-      location.reload();
+      goto(location.href, { replaceState: true, noScroll: true });
     } catch (error) {
       requestState = 'completed';
       console.log(error);

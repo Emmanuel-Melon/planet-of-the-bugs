@@ -1,18 +1,15 @@
 <script lang="ts">
-  import 'iconify-icon';
-  export let courseId;
-  export let chaptersLength;
+  import { goto } from '$app/navigation';
   import { ADD_CHAPTER } from '$lib/graphql/mutations/courses';
   import { mutation } from 'svelte-apollo';
   import { Button, Modal } from 'svelte-ui';
+  import 'iconify-icon';
+  export let courseId;
+  export let chaptersLength;
   const addChapter = mutation(ADD_CHAPTER);
 
   let title = '';
   let description = '';
-
-  function createSlug(str: string) {
-    return str.toLowerCase().replace(/\s+/g, '_');
-  }
 
   const handleSubmit = async () => {
     try {
@@ -27,7 +24,7 @@
         },
       });
       console.log('New chapter added successfully!');
-      location.reload();
+      goto(location.href, { replaceState: true, noScroll: true });
     } catch (error) {
       console.log(error);
     }

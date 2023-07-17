@@ -39,7 +39,7 @@
   const dispatch = createEventDispatcher();
   const forward = () => {
     dispatch('buttonClick', {
-      userTopics,
+      ...userTopics,
     });
   };
 
