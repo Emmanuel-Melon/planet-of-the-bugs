@@ -1,48 +1,33 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
   import 'iconify-icon';
+  import Button from 'svelte-ui/components/Button.svelte';
+  import Modal from 'svelte-ui/components/Modal.svelte';
   export let user;
-  import { CREATE_COURSE } from '$lib/graphql/mutations/courses';
-  import { mutation } from 'svelte-apollo';
-  const createCourse = mutation(CREATE_COURSE);
+  export let requestState: 'idle' | 'processing' | 'completed' | 'failed' =
+    'idle';
+
   let slug = '';
   let title = '';
   let description = '';
   let complexity = 'Beginner';
-  import 'iconify-icon';
-  import Button from 'svelte-ui/components/Button.svelte';
-  import Modal from 'svelte-ui/components/Modal.svelte';
 
   function createSlug(str: string) {
     return str.toLowerCase().replace(/\s+/g, '_');
   }
 
-  const handleSubmit = async () => {
-    try {
-      button.isProcessing = true;
-      const result = await createCourse({
-        variables: {
-          courseInput: {
-            creator: user.id,
-            slug: createSlug(title),
-            title,
-            description,
-            complexity,
-          },
-        },
-      });
-      button.isProcessing = false;
-      location.reload();
-    } catch (error) {
-      button.isProcessing = false;
-    }
+  const dispatch = createEventDispatcher();
+  const forward = () => {
+    dispatch('buttonClick', {
+      creator: user.id,
+      slug: createSlug(title),
+      title,
+      description,
+      complexity,
+    });
   };
 
-  $: button = {
-    text: 'Create Course',
-    icon: 'ri:booklet-line',
-    isProcessing: false,
-    onClick: handleSubmit,
-  };
+  $: requestState;
 </script>
 
 <Modal
@@ -92,10 +77,10 @@
 
     <div class="modal-action">
       <Button
-        text={button.text}
-        icon={button.icon}
-        isProcessing={button.isProcessing}
-        on:buttonClick={button.onClick}
+        CTA="Create Course"
+        icon="ri:add-line"
+        {requestState}
+        on:buttonClick={forward}
       />
     </div>
   </form>

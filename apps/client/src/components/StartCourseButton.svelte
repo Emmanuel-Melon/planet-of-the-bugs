@@ -5,6 +5,7 @@
   export let status = 'Unsubscribed';
   export let userId;
 
+  import { goto } from '$app/navigation';
   import { mutation } from 'svelte-apollo';
   import { START_COURSE } from '$lib/graphql/mutations/courses';
   import 'iconify-icon';
@@ -24,8 +25,7 @@
 
       if (result.data.insert_user_courses.affected_rows === 1) {
         console.log('Mutation successful!');
-        //  Change the URL to the Svelte page
-        window.location.href = `/courses/${slug}`;
+        goto(`/courses/${slug}`, { replaceState: true });
       } else {
         console.log('Mutation failed');
       }

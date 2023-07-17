@@ -1,14 +1,15 @@
 <script>
   // @ts-nocheck
-  import { page } from "$app/stores";
-  import { INSERT_NEW_USER } from "$lib/graphql/mutations/users";
-  import { onMount } from "svelte";
-  import { mutation } from "svelte-apollo";
-  import "iconify-icon";
+  import { goto } from '$app/navigation';
+  import { page } from '$app/stores';
+  import { INSERT_NEW_USER } from '$lib/graphql/mutations/users';
+  import { onMount } from 'svelte';
+  import { mutation } from 'svelte-apollo';
+  import 'iconify-icon';
 
-  let username = "";
-  let name = "";
-  let email = "";
+  let username = '';
+  let name = '';
+  let email = '';
 
   let usernamePattern = new RegExp(/^[a-zA-Z][a-zA-Z0-9_-]{3,19}$/);
   let emailPattern = new RegExp(
@@ -41,10 +42,10 @@
       });
 
       if (result.data.insert_users_one) {
-        console.log("Mutation successful!");
-        window.location.href = `/`;
+        console.log('Mutation successful!');
+        goto('/', { replaceState: false });
       } else {
-        console.log("Mutation failed");
+        console.log('Mutation failed');
       }
     } catch (error) {
       console.log(error);
@@ -64,8 +65,11 @@
   <div class="flex justify-center items-center gap-4">
     <div class="card card-compact shadow w-2/5">
       <div class="card-body space-y-2">
-        <h2 class="card-title"> Let's Get to Know You!</h2>
-        <p>Hey there! To get started on this awesome journey together, we'd love to learn a bit more about you.</p>
+        <h2 class="card-title">Let's Get to Know You!</h2>
+        <p>
+          Hey there! To get started on this awesome journey together, we'd love
+          to learn a bit more about you.
+        </p>
         <form class="form-control gap-4 w-full">
           <div>
             <label for="username" class="label">
@@ -77,7 +81,7 @@
               bind:value={username}
               on:input={(event) =>
                 (username = event.target.value.toLowerCase())}
-              pattern={"^[a-zA-Z][a-zA-Z0-9_-]{3,19}$"}
+              pattern={'^[a-zA-Z][a-zA-Z0-9_-]{3,19}$'}
               title="Must start with a letter, have at least 4 characters and contain only letters, numbers, hyphens, or underscores."
               class="input input-bordered w-full"
               required
