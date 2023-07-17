@@ -13,7 +13,7 @@
   export let size: 'xs' | 'sm' | 'base' | 'lg' = 'sm';
   export let icon: string = null;
   export let CTA: string;
-  export let isOutline: boolean = false;
+  export let state: 'info' | 'success' | 'warning' | 'error' = null;
   export let isProcessing: boolean = false;
 
   const dispatch = createEventDispatcher();
@@ -31,7 +31,7 @@
 </script>
 
 <button
-  class={`btn btn-${size} gap-2 ${isOutline ? 'btn-outline' : `btn-${type}`}`}
+  class={`btn btn-${size} gap-2 ${state ? `btn-${state}` : `btn-${type}`}`}
   on:click={handleClick}
 >
   {#if isProcessing}
