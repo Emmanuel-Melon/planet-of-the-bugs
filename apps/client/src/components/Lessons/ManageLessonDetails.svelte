@@ -203,7 +203,7 @@
             <Button
               CTA="Draft"
               icon="ri:edit-2-line"
-              isOutline={true}
+              type="outline"
               on:buttonClick={() => {}}
             />
             <Button
@@ -232,7 +232,7 @@
           <Button
             CTA="Delete Lesson"
             icon="ri:delete-bin-7-line"
-            type="error"
+            state="error"
             on:buttonClick={() => {}}
           />
         </div>

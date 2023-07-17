@@ -1,7 +1,8 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
-  import { onDestroy } from 'svelte';
   import 'iconify-icon';
+  export let CTA: string;
+  export let icon: string = null;
   export let type:
     | 'neutral'
     | 'primary'
@@ -9,12 +10,11 @@
     | 'accent'
     | 'ghost'
     | 'link'
-    | 'error' = 'primary';
+    | 'outline' = 'primary';
   export let size: 'xs' | 'sm' | 'base' | 'lg' = 'sm';
-  export let icon: string = null;
-  export let CTA: string;
   export let state: 'info' | 'success' | 'warning' | 'error' = null;
-  export let isProcessing: boolean = false;
+  export let requestState: 'idle' | 'processing' | 'completed' | 'failed' =
+    'idle';
 
   const dispatch = createEventDispatcher();
   const handleClick = () => {
@@ -23,21 +23,17 @@
     });
   };
 
-  onDestroy(() => {
-    isProcessing = false;
-  });
-
-  $: isProcessing;
+  $: requestState;
 </script>
 
 <button
   class={`btn btn-${size} gap-2 ${state ? `btn-${state}` : `btn-${type}`}`}
   on:click={handleClick}
 >
-  {#if isProcessing}
-    <span class="loading loading-spinner animate-spin" />
-  {:else}
+  {#if requestState === 'idle' || requestState === 'completed'}
     <iconify-icon {icon} />
+  {:else if requestState === 'processing'}
+    <span class="loading loading-spinner animate-spin" />
   {/if}
   {CTA}
 </button>

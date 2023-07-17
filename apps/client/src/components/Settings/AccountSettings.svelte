@@ -1,22 +1,31 @@
-<script>
+<script lang="ts">
   import { Card, Button } from 'svelte-ui';
   const connectGithub = () => {};
   const connectLinkedIn = () => {};
 
-  $: buttons = [
+  interface Button {
+    CTA: string;
+    icon: string;
+    requestState: 'idle' | 'processing' | 'completed' | 'failed';
+    onClick: () => void;
+  }
+
+  let buttons: Button[] = [
     {
       CTA: 'Connect GitHub',
       icon: 'ri:github-line',
-      isProcessing: false,
+      requestState: 'idle',
       onClick: connectGithub,
     },
     {
       CTA: 'Connect LinkedIn',
       icon: 'ri:linkedin-box-line',
-      isProcessing: false,
+      requestState: 'idle',
       onClick: connectLinkedIn,
     },
   ];
+
+  $: buttons;
 </script>
 
 <div class="basis-3/4 space-y-4">
@@ -59,13 +68,13 @@
       <Button
         CTA={buttons[0].CTA}
         icon={buttons[0].icon}
-        isProcessing={buttons[0].isProcessing}
+        requestState={buttons[0].requestState}
         on:buttonClick={buttons[0].onClick}
       />
       <Button
         CTA={buttons[1].CTA}
         icon={buttons[1].icon}
-        isProcessing={buttons[1].isProcessing}
+        requestState={buttons[1].requestState}
         on:buttonClick={buttons[1].onClick}
       />
     </div>
