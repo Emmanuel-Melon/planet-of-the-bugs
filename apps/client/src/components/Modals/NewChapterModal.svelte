@@ -70,7 +70,7 @@
 
     <div class="modal-action flex justify-end">
       <Button
-        text="Save Chapter"
+        CTA="Save Chapter"
         icon="ri:add-line"
         on:buttonClick={handleSubmit}
       />

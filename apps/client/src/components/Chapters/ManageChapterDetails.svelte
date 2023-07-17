@@ -80,7 +80,7 @@
           </div>
           <div class="card-actions justify-end mt-2 py-2">
             <Button
-              text="Update Chapter Details"
+              CTA="Update Chapter Details"
               icon="ri:check-line"
               on:buttonClick={() => {}}
             />
@@ -121,7 +121,7 @@
         </p>
         <div class="card-actions justify-end">
           <Button
-            text="Delete Chapter"
+            CTA="Delete Chapter"
             icon="ri:delete-bin-7-line"
             bg="error"
             on:buttonClick={() => {}}

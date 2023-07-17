@@ -5,7 +5,7 @@
   export let bg: string = 'primary';
   export let size: string = 'sm';
   export let icon: string = null;
-  export let text: string;
+  export let CTA: string;
   export let isOutline: boolean = false;
   export let isProcessing: boolean = false;
 
@@ -35,7 +35,7 @@
     {#if icon}
       <iconify-icon {icon} />
     {/if}
-    {text}
+    {CTA}
   {/if}
 </button>
 

@@ -43,19 +43,19 @@
 
   $: buttons = {
     Completed: {
-      text: 'Course Completed',
+      CTA: 'Course Completed',
       style: 'btn btn-success',
       isProcessing: false,
       logic: handleCompleted,
     },
     Unsubscribed: {
-      text: 'Start Course',
+      CTA: 'Start Course',
       style: 'btn btn-primary',
       isProcessing: false,
       logic: handleStart,
     },
     Subscribed: {
-      text: 'Continue Course',
+      CTA: 'Continue Course',
       style: 'btn btn-primary',
       isProcessing: false,
       logic: handleContinue,
@@ -64,7 +64,7 @@
 </script>
 
 <Button
-  text={buttons[status].text}
+  CTA={buttons[status].CTA}
   icon="ri:add-circle-line"
   isProcessing={buttons[status].isProcessing}
   on:buttonClick={buttons[status].logic}
