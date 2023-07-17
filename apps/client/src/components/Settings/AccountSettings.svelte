@@ -61,14 +61,12 @@
         icon={buttons[0].icon}
         isProcessing={buttons[0].isProcessing}
         on:buttonClick={buttons[0].onClick}
-        bg="base-200"
       />
       <Button
         CTA={buttons[1].CTA}
         icon={buttons[1].icon}
         isProcessing={buttons[1].isProcessing}
         on:buttonClick={buttons[1].onClick}
-        bg="blue-100"
       />
     </div>
   </Card>

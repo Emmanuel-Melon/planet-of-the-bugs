@@ -107,7 +107,7 @@
       </p>
       <div class="card-actions justify-end">
         <Button
-          bg="error"
+          type="error"
           icon="ri:delete-bin-7-line"
           on:buttonClick={deleteCourse}
           CTA="Delete Course"

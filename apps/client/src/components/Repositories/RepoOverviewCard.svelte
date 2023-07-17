@@ -145,7 +145,7 @@
           icon={buttons[0].icon}
           isProcessing={buttons[0].isProcessing}
           on:buttonClick={buttons[0].onClick}
-          bg="ghost"
+          type="ghost"
         />
       {:else}
         <Button
@@ -159,7 +159,7 @@
           CTA={buttons[2].CTA}
           icon={buttons[2].icon}
           on:buttonClick={buttons[2].onClick}
-          bg="ghost"
+          type="ghost"
         />
       {/if}
     </div>

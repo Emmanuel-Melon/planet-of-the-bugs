@@ -1,9 +1,16 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
-  import 'iconify-icon';
   import { onDestroy } from 'svelte';
-  export let bg: string = 'primary';
-  export let size: string = 'sm';
+  import 'iconify-icon';
+  export let type:
+    | 'neutral'
+    | 'primary'
+    | 'secondary'
+    | 'accent'
+    | 'ghost'
+    | 'link'
+    | 'error' = 'primary';
+  export let size: 'xs' | 'sm' | 'base' | 'lg' = 'sm';
   export let icon: string = null;
   export let CTA: string;
   export let isOutline: boolean = false;
@@ -24,19 +31,15 @@
 </script>
 
 <button
-  class={isOutline
-    ? `btn btn-outline btn-${size} gap-2`
-    : `btn btn-${bg} btn-${size} gap-2`}
+  class={`btn btn-${size} gap-2 ${isOutline ? 'btn-outline' : `btn-${type}`}`}
   on:click={handleClick}
 >
   {#if isProcessing}
     <span class="loading loading-spinner animate-spin" />
   {:else}
-    {#if icon}
-      <iconify-icon {icon} />
-    {/if}
-    {CTA}
+    <iconify-icon {icon} />
   {/if}
+  {CTA}
 </button>
 
 <style>
@@ -49,7 +52,7 @@
     pointer-events: none;
     display: inline-block;
     aspect-ratio: 1/1;
-    width: 1.5rem;
+    width: 14px;
     background-color: currentColor;
     -webkit-mask-size: 100%;
     mask-size: 100%;
