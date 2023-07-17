@@ -1,11 +1,24 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
   import 'iconify-icon';
   import { Button } from 'svelte-ui';
   import Modal from 'svelte-ui/components/Modal.svelte';
   export let chapterId: string;
   export let idx: number;
   export let lessonTypes: Array<string>;
-  export let handleSubmit: Function;
+
+  const dispatch = createEventDispatcher();
+
+  function forward() {
+    dispatch('buttonClick', {
+      title,
+      description,
+      type,
+      XP: xp,
+      index: idx,
+      chapter_id: chapterId,
+    });
+  }
 
   let title = '';
   let description = '';
@@ -76,18 +89,7 @@
       />
     </div>
     <div class="modal-action flex justify-end">
-      <Button
-        CTA="Add Lesson"
-        icon="ri:add-line"
-        onClick={()=>handleSubmit({
-          title,
-          description,
-          index: idx,
-          chapter_id: chapterId,
-          type: type,
-          XP: xp,
-        })}
-      />
+      <Button text="Add Lesson" icon="ri:add-line" on:buttonClick={forward} />
     </div>
   </form>
 </Modal>

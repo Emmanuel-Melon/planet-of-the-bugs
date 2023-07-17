@@ -1,9 +1,7 @@
 <script>
-  import RepoOverviewCard from "$components/Repositories/RepoOverviewCard.svelte";
   export let repositories;
-  export let user;
-  import "iconify-icon";
-  import { Card } from "svelte-ui";
+  import 'iconify-icon';
+  import { Card } from 'svelte-ui';
 </script>
 
 <div class="flex gap-2 basis-4/5 flex-wrap">
@@ -13,17 +11,21 @@
         <div class="flex items-center justify-between">
           <h3 class="card-title">{repo.name}</h3>
           <div class="flex items-center justify-center gap-2">
-            <div class="badge badge-lg py-2 badge-accent badge-outline flex gap-2 items-center">
+            <div
+              class="badge badge-lg py-2 badge-accent badge-outline flex gap-2 items-center"
+            >
               <iconify-icon icon="ri:star-line" />
               {repo.stargazerCount}
             </div>
-            <div class="badge badge-lg py-2 badge-accent badge-outline flex gap-2 items-center">
+            <div
+              class="badge badge-lg py-2 badge-accent badge-outline flex gap-2 items-center"
+            >
               <iconify-icon icon="iconoir:git-fork" />{repo.forkCount}
             </div>
           </div>
         </div>
         <div class="divider">Description</div>
-        <p>{repo.description || "This repo has no description available."}</p>
+        <p>{repo.description || 'This repo has no description available.'}</p>
         <div class="card-actions justify-end">
           <a
             href={repo.url}

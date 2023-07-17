@@ -26,15 +26,20 @@
           },
         },
       });
-      console.log('New lesson added successfully!');
-      document.getElementById('close')?.click();
+      console.log('New chapter added successfully!');
+      location.reload();
     } catch (error) {
       console.log(error);
     }
   };
 </script>
 
-<Modal CTA="Chapter" icon="ri:add-line" id="new-chapter" heading="Add New Chapter" >
+<Modal
+  CTA="Chapter"
+  icon="ri:add-line"
+  id="new-chapter"
+  heading="Add New Chapter"
+>
   <form>
     <div>
       <label for="title" class="label">
@@ -64,8 +69,11 @@
     </div>
 
     <div class="modal-action flex justify-end">
-      <Button CTA="Save Chapter" icon="ri:add-line" onClick={handleSubmit} />
-
+      <Button
+        text="Save Chapter"
+        icon="ri:add-line"
+        on:buttonClick={handleSubmit}
+      />
     </div>
   </form>
 </Modal>

@@ -1,24 +1,19 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
   import 'iconify-icon';
   import { onDestroy } from 'svelte';
   export let bg: string = 'primary';
   export let size: string = 'sm';
   export let icon: string = null;
-  export let CTA: string;
+  export let text: string;
   export let isOutline: boolean = false;
-  export let onClick: Function;
+  export let isProcessing: boolean = false;
 
-  let isProcessing: boolean = false;
-
-  const handleClick = async () => {
-    isProcessing = true;
-    if (onClick) {
-      await onClick().then(() => {
-        isProcessing = false;
-      });
-    } else {
-      isProcessing = false;
-    }
+  const dispatch = createEventDispatcher();
+  const handleClick = () => {
+    dispatch('buttonClick', {
+      text: 'Preforming task...',
+    });
   };
 
   onDestroy(() => {
@@ -32,7 +27,7 @@
   class={isOutline
     ? `btn btn-outline btn-${size} gap-2`
     : `btn btn-${bg} btn-${size} gap-2`}
-  on:click|preventDefault={handleClick}
+  on:click={handleClick}
 >
   {#if isProcessing}
     <span class="loading loading-spinner animate-spin" />
@@ -40,7 +35,7 @@
     {#if icon}
       <iconify-icon {icon} />
     {/if}
-    {CTA}
+    {text}
   {/if}
 </button>
 

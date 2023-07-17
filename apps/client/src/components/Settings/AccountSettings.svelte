@@ -1,7 +1,22 @@
 <script>
-  import { Card, Button } from "svelte-ui";
+  import { Card, Button } from 'svelte-ui';
   const connectGithub = () => {};
   const connectLinkedIn = () => {};
+
+  $: buttons = [
+    {
+      text: 'Connect GitHub',
+      icon: 'ri:github-line',
+      isProcessing: false,
+      onClick: connectGithub,
+    },
+    {
+      text: 'Connect LinkedIn',
+      icon: 'ri:linkedin-box-line',
+      isProcessing: false,
+      onClick: connectLinkedIn,
+    },
+  ];
 </script>
 
 <div class="basis-3/4 space-y-4">
@@ -42,15 +57,17 @@
     <p class="text-neutral">Connect your social accounts.</p>
     <div class="flex gap-2">
       <Button
-        CTA="Connect GitHub"
-        icon="ri:github-line"
-        onClick={connectGithub}
+        text={buttons[0].text}
+        icon={buttons[0].icon}
+        isProcessing={buttons[0].isProcessing}
+        on:buttonClick={buttons[0].onClick}
         bg="base-200"
       />
       <Button
-        CTA="Connect LinkedIn"
-        icon="ri:linkedin-box-line"
-        onClick={connectLinkedIn}
+        text={buttons[1].text}
+        icon={buttons[1].icon}
+        isProcessing={buttons[1].isProcessing}
+        on:buttonClick={buttons[1].onClick}
         bg="blue-100"
       />
     </div>

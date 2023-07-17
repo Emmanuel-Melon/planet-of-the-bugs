@@ -18,6 +18,7 @@
 
   const handleSubmit = async () => {
     try {
+      button.isProcessing = true;
       const result = await createCourse({
         variables: {
           courseInput: {
@@ -29,7 +30,18 @@
           },
         },
       });
-    } catch (error) {}
+      button.isProcessing = false;
+      location.reload();
+    } catch (error) {
+      button.isProcessing = false;
+    }
+  };
+
+  $: button = {
+    text: 'Create Course',
+    icon: 'ri:booklet-line',
+    isProcessing: false,
+    onClick: handleSubmit,
   };
 </script>
 
@@ -80,9 +92,10 @@
 
     <div class="modal-action">
       <Button
-        CTA="Create Course"
-        icon="ri:booklet-line"
-        onClick={handleSubmit}
+        text={button.text}
+        icon={button.icon}
+        isProcessing={button.isProcessing}
+        on:buttonClick={button.onClick}
       />
     </div>
   </form>
