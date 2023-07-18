@@ -1,20 +1,13 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
   import 'iconify-icon';
+  import type { ButtonProps, RequestState } from 'svelte-ui/types';
   export let CTA: string;
   export let icon: string = null;
-  export let type:
-    | 'neutral'
-    | 'primary'
-    | 'secondary'
-    | 'accent'
-    | 'ghost'
-    | 'link'
-    | 'outline' = 'primary';
-  export let size: 'xs' | 'sm' | 'base' | 'lg' = 'sm';
-  export let state: 'info' | 'success' | 'warning' | 'error' = null;
-  export let requestState: 'idle' | 'processing' | 'completed' | 'failed' =
-    'idle';
+  export let ButtonType: ButtonProps['ButtonType'] = 'primary';
+  export let ButtonSize: ButtonProps['ButtonSize'] = 'sm';
+  export let state: ButtonProps['state'] = null;
+  export let requestState: RequestState = 'idle';
 
   const dispatch = createEventDispatcher();
   const handleClick = () => {
@@ -27,7 +20,9 @@
 </script>
 
 <button
-  class={`btn btn-${size} gap-2 ${state ? `btn-${state}` : `btn-${type}`}`}
+  class={`btn btn-${ButtonSize} gap-2 ${
+    state ? `btn-${state}` : `btn-${ButtonType}`
+  }`}
   on:click={handleClick}
 >
   {#if requestState === 'idle' || requestState === 'completed'}

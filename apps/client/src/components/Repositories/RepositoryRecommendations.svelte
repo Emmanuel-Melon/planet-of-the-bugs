@@ -4,6 +4,7 @@
   import { UPDATE_USER_TOPICS } from '$lib/graphql/mutations/users';
   import ManageReposTopicsModal from '$components/Modals/ManageReposTopicsModal.svelte';
   import RepoOverviewCard from '$components/Repositories/RepoOverviewCard.svelte';
+  import type { RequestState } from 'svelte-ui/Types';
   export let repositories: [];
   export let user: any;
   export let topics: [];
@@ -27,7 +28,7 @@
     }
   };
 
-  let requestState: 'idle' | 'processing' | 'completed' | 'failed' = 'idle';
+  let requestState: RequestState = 'idle';
 
   $: requestState;
 </script>

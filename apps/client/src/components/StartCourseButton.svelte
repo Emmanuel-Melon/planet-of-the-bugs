@@ -8,8 +8,8 @@
   import { goto } from '$app/navigation';
   import { mutation } from 'svelte-apollo';
   import { START_COURSE } from '$lib/graphql/mutations/courses';
+  import { Button } from 'svelte-ui/';
   import 'iconify-icon';
-  import Button from 'svelte-ui/components/Button.svelte';
 
   const startCourse = mutation(START_COURSE);
 

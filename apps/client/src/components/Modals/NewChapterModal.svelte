@@ -1,33 +1,19 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
-  import { ADD_CHAPTER } from '$lib/graphql/mutations/courses';
-  import { mutation } from 'svelte-apollo';
+  import { createEventDispatcher } from 'svelte';
   import { Button, Modal } from 'svelte-ui';
   import 'iconify-icon';
-  export let courseId;
-  export let chaptersLength;
-  const addChapter = mutation(ADD_CHAPTER);
+  import type { RequestState } from 'svelte-ui/Types';
+  export let requestState: RequestState = 'idle';
 
   let title = '';
   let description = '';
 
-  const handleSubmit = async () => {
-    try {
-      const result = await addChapter({
-        variables: {
-          chapterInput: {
-            title,
-            description,
-            index: chaptersLength + 1,
-            course_id: courseId,
-          },
-        },
-      });
-      console.log('New chapter added successfully!');
-      goto(location.href, { replaceState: true, noScroll: true });
-    } catch (error) {
-      console.log(error);
-    }
+  const dispatch = createEventDispatcher();
+  const forward = () => {
+    dispatch('buttonClick', {
+      title,
+      description,
+    });
   };
 </script>
 
@@ -69,7 +55,8 @@
       <Button
         CTA="Save Chapter"
         icon="ri:add-line"
-        on:buttonClick={handleSubmit}
+        {requestState}
+        on:buttonClick={forward}
       />
     </div>
   </form>
