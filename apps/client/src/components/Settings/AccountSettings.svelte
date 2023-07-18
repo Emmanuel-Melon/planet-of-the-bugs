@@ -1,16 +1,10 @@
 <script lang="ts">
   import { Card, Button } from 'svelte-ui';
+  import type { ButtonProps } from 'svelte-ui/Types';
   const connectGithub = () => {};
   const connectLinkedIn = () => {};
 
-  interface Button {
-    CTA: string;
-    icon: string;
-    requestState: 'idle' | 'processing' | 'completed' | 'failed';
-    onClick: () => void;
-  }
-
-  let buttons: Button[] = [
+  let buttons: ButtonProps[] = [
     {
       CTA: 'Connect GitHub',
       icon: 'ri:github-line',
@@ -65,18 +59,9 @@
   <Card title="Connected Accounts">
     <p class="text-neutral">Connect your social accounts.</p>
     <div class="flex gap-2">
-      <Button
-        CTA={buttons[0].CTA}
-        icon={buttons[0].icon}
-        requestState={buttons[0].requestState}
-        on:buttonClick={buttons[0].onClick}
-      />
-      <Button
-        CTA={buttons[1].CTA}
-        icon={buttons[1].icon}
-        requestState={buttons[1].requestState}
-        on:buttonClick={buttons[1].onClick}
-      />
+      {#each buttons as { CTA, icon, requestState, onClick }}
+        <Button {CTA} {icon} {requestState} on:buttonClick={onClick} />
+      {/each}
     </div>
   </Card>
 

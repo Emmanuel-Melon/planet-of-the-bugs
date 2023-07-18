@@ -203,7 +203,7 @@
             <Button
               CTA="Draft"
               icon="ri:edit-2-line"
-              type="outline"
+              ButtonType="outline"
               on:buttonClick={() => {}}
             />
             <Button

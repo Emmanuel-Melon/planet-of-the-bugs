@@ -3,9 +3,9 @@
   import 'iconify-icon';
   import Button from 'svelte-ui/components/Button.svelte';
   import Modal from 'svelte-ui/components/Modal.svelte';
+  import type { RequestState } from 'svelte-ui/Types';
   export let user;
-  export let requestState: 'idle' | 'processing' | 'completed' | 'failed' =
-    'idle';
+  export let requestState: RequestState = 'idle';
 
   let slug = '';
   let title = '';

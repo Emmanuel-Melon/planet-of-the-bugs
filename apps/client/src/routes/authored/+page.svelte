@@ -9,6 +9,7 @@
   import AuthoredCourseCard from '$components/AuthoredCourseCard.svelte';
   import NewCourseModal from '$components/Modals/NewCourseModal.svelte';
   import 'iconify-icon';
+  import type { RequestState } from 'svelte-ui';
 
   const {
     data: { user },
@@ -41,7 +42,7 @@
   onMount(async () => {
     courses.refetch();
   });
-  let requestState: 'idle' | 'processing' | 'completed' | 'failed' = 'idle';
+  let requestState: RequestState = 'idle';
   $: courses.refetch(), requestState;
 </script>
 

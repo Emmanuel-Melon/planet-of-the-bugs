@@ -1,11 +1,11 @@
 <script lang="ts">
   import { onDestroy, createEventDispatcher } from 'svelte';
   import { Button, Modal } from 'svelte-ui';
+  import type { RequestState } from 'svelte-ui/Types';
   import Card from 'svelte-ui/components/Card.svelte';
   export let user: any;
   export let topics: [];
-  export let requestState: 'idle' | 'processing' | 'completed' | 'failed' =
-    'idle';
+  export let requestState: RequestState = 'idle';
 
   let userTopics = user?.userTopics;
   let userInput = '';

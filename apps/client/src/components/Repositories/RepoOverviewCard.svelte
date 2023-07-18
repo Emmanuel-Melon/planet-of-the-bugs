@@ -3,6 +3,7 @@
   export let user;
   import 'iconify-icon';
   import { Card, Button } from 'svelte-ui';
+  import type { ButtonProps } from 'svelte-ui/Types';
   import {
     SUBSCRIBE_TO_REPO,
     UNSUBSCRIBE_FROM_REPO,
@@ -58,14 +59,7 @@
     }
   }
 
-  interface Button {
-    CTA: string;
-    icon: string;
-    requestState: 'idle' | 'processing' | 'completed' | 'failed';
-    onClick: () => void;
-  }
-
-  let buttons: Button[] = [
+  let buttons: ButtonProps[] = [
     {
       CTA: 'Unsubscribe',
       icon: 'ri:delete-bin-7-line',
@@ -154,7 +148,7 @@
           icon={buttons[0].icon}
           requestState={buttons[0].requestState}
           on:buttonClick={buttons[0].onClick}
-          type="ghost"
+          ButtonType="ghost"
         />
       {:else}
         <Button
@@ -168,7 +162,7 @@
           CTA={buttons[2].CTA}
           icon={buttons[2].icon}
           on:buttonClick={buttons[2].onClick}
-          type="ghost"
+          ButtonType="ghost"
         />
       {/if}
     </div>
