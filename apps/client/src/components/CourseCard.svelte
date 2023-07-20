@@ -7,11 +7,8 @@
   import { Card } from "svelte-ui";
 </script>
 
-<div
-  class="basis-1/3 grow max-w-screen-sm md:max-w-[360px] lg:max-w-sm xl:max-w-lg"
->
-<Card>
-  <div class="flex gap-3">
+<div class="grow">
+  <Card img={course.cover} height="96">
     <div class="w-full flex justify-between items-center">
       <h2 class="card-title">
         <a class="link link-hover" href={`/courses/${course.slug}`}
@@ -24,7 +21,7 @@
           {course.complexity}
         </div>
       </div>
-    </div>
+   
   </div>
   <div class="divider">Description</div>
   <p>{course.description}</p>

@@ -12,7 +12,7 @@
 <label
   for={`${id}-modal`}
   class={isOutline
-    ? `cursor-pointer gap-2 flex justify-center items-center `
+    ? `cursor-pointer gap-2 flex justify-center items-center`
     : `flex justify-center items-center btn btn-sm btn-${btnBg} gap-2`}><iconify-icon {icon} />{CTA}</label
 >
 

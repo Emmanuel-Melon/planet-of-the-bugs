@@ -2,6 +2,6 @@
   let user;
 </script>
 
-<section class="w-full p-4">
+<section class="w-full">
   <slot />
 </section>

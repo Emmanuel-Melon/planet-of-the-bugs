@@ -27,7 +27,20 @@ jobs:
       - run:
           name: Deploy Project Artifacts to Vercel
           command: yarn deploy
+  hasura-migrations:
+    docker:
+      - image: cimg/node:16.20.1
+    steps:
+      - checkout
+  hasura-metadata:
+    docker:
+      - image: cimg/node:16.20.1
+    steps:
+      - checkout
 workflows:
   build:
     jobs:
       - build
+
+
+# write an article about API Gateways and data access layers.
