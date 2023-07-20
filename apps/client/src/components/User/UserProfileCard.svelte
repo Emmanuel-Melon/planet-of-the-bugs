@@ -88,9 +88,9 @@
   </div>
 
   {#if githubUser}
-    <p>{githubUser?.bio}</p>
+    <p class="grow-0">{githubUser?.bio}</p>
   {/if}
-  
+
   <UserProfileCardControls user={githubUser} {currentUser} />
 
   {#if githubUser}

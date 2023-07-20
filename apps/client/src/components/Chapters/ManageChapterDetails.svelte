@@ -1,8 +1,14 @@
 <script lang="ts">
+  import { goto } from '$app/navigation';
+  import { mutation } from 'svelte-apollo';
+  import { ADD_CHAPTER } from '$lib/graphql/mutations/courses';
   import { Button, Card } from 'svelte-ui';
+  import type { RequestState } from 'svelte-ui/Types';
+  import NewChapterModal from '$components/Modals/NewChapterModal.svelte';
   export let courseId: string;
   export let chapters: Array<Object>;
-  import NewChapterModal from '$components/Modals/NewChapterModal.svelte';
+
+  const addChapter = mutation(ADD_CHAPTER);
 
   let isSelected: boolean = false;
   let selectedChapter: number;
@@ -10,16 +16,38 @@
   const handleChapterChange = (event) => {
     isSelected = true;
     selectedChapter = event.target.selectedIndex - 1;
-    // const fetchLessons = query(FETCH_LESSON_BY_INDEX_CHAPTER_ID, {
-    //   variables: {
-    //   index : chapterIndex,
-    //   chapterId : "dsadnajda",
-    //   }
-    // });
   };
 
+  const handleNewChapterSubmit = async (event) => {
+    requestState = 'processing';
+    const chapterInput = {
+      ...event.detail,
+      index: chapters.length + 1,
+      course_id: courseId,
+    };
+    try {
+      const result = await addChapter({
+        variables: {
+          chapterInput,
+        },
+      });
+      requestState = 'completed';
+      console.log('New chapter added successfully!');
+      document.getElementById('close')?.click();
+      goto(location.href, {
+        replaceState: true,
+        noScroll: true,
+        keepFocus: true,
+      });
+    } catch (error) {
+      requestState = 'failed';
+      console.log(error);
+    }
+  };
+
+  let requestState: RequestState = 'idle';
+
   $: isSelected, selectedChapter;
-  console.log(chapters);
 </script>
 
 <div class="flex flex-col space-y-4 w-full">
@@ -28,7 +56,10 @@
       <div class="card-body space-y-2">
         <div class="flex justify-between item-center w-full">
           <h2 class="card-title">Chapters Details</h2>
-          <NewChapterModal {courseId} chaptersLength={chapters.length} />
+          <NewChapterModal
+            {requestState}
+            on:buttonClick={handleNewChapterSubmit}
+          />
         </div>
 
         <select
@@ -88,7 +119,7 @@
             <Button
               CTA="Update Chapter Details"
               icon="ri:check-line"
-              onClick={() => {}}
+              on:buttonClick={() => {}}
             />
           </div>
 
@@ -129,8 +160,8 @@
           <Button
             CTA="Delete Chapter"
             icon="ri:delete-bin-7-line"
-            bg="error"
-            onClick={() => {}}
+            state="error"
+            on:buttonClick={() => {}}
           />
         </div>
       </div>

@@ -44,11 +44,11 @@
     selectedLesson = event.target.selectedIndex - 1;
   };
 
-  const handleSubmit = async (lessonInput) => {
+  const handleSubmit = async (event) => {
     try {
       const result = await addLesson({
         variables: {
-          lessonInput,
+          lessonInput: event.detail,
         },
       });
       console.log('New lesson added successfully!');
@@ -65,7 +65,7 @@
     selectedLesson,
     lessons;
 
-    const publishLessonContent = () => {}
+  const publishLessonContent = () => {};
 </script>
 
 <div class="flex flex-col space-y-4 w-full">
@@ -79,7 +79,7 @@
             chapterId={chapters[selectedChapter].id}
             idx={lessons.length + 1}
             {lessonTypes}
-            {handleSubmit}
+            on:buttonClick={handleSubmit}
           />
         {/if}
       </div>
@@ -186,7 +186,7 @@
             <Button
               CTA="Update Lesson Details"
               icon="ri:check-line"
-              onClick={() => {}}
+              on:buttonClick={() => {}}
             />
           </div>
         </form>
@@ -203,10 +203,14 @@
             <Button
               CTA="Draft"
               icon="ri:edit-2-line"
-              isOutline={true}
-              onClick={() => {}}
+              ButtonType="outline"
+              on:buttonClick={() => {}}
             />
-            <Button CTA="Publish" icon="ri:check-line" onClick={publishLessonContent} />
+            <Button
+              CTA="Publish"
+              icon="ri:check-line"
+              on:buttonClick={publishLessonContent}
+            />
           </div>
         </div>
       </div>
@@ -228,8 +232,8 @@
           <Button
             CTA="Delete Lesson"
             icon="ri:delete-bin-7-line"
-            bg="error"
-            onClick={() => {}}
+            state="error"
+            on:buttonClick={() => {}}
           />
         </div>
       </div>

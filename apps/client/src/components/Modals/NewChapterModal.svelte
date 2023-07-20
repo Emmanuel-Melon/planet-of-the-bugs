@@ -1,40 +1,28 @@
 <script lang="ts">
-  import 'iconify-icon';
-  export let courseId;
-  export let chaptersLength;
-  import { ADD_CHAPTER } from '$lib/graphql/mutations/courses';
-  import { mutation } from 'svelte-apollo';
+  import { createEventDispatcher } from 'svelte';
   import { Button, Modal } from 'svelte-ui';
-  const addChapter = mutation(ADD_CHAPTER);
+  import 'iconify-icon';
+  import type { RequestState } from 'svelte-ui/Types';
+  export let requestState: RequestState = 'idle';
 
   let title = '';
   let description = '';
 
-  function createSlug(str: string) {
-    return str.toLowerCase().replace(/\s+/g, '_');
-  }
-
-  const handleSubmit = async () => {
-    try {
-      const result = await addChapter({
-        variables: {
-          chapterInput: {
-            title,
-            description,
-            index: chaptersLength + 1,
-            course_id: courseId,
-          },
-        },
-      });
-      console.log('New lesson added successfully!');
-      document.getElementById('close')?.click();
-    } catch (error) {
-      console.log(error);
-    }
+  const dispatch = createEventDispatcher();
+  const forward = () => {
+    dispatch('buttonClick', {
+      title,
+      description,
+    });
   };
 </script>
 
-<Modal CTA="Chapter" icon="ri:add-line" id="new-chapter" heading="Add New Chapter" >
+<Modal
+  CTA="Chapter"
+  icon="ri:add-line"
+  id="new-chapter"
+  heading="Add New Chapter"
+>
   <form>
     <div>
       <label for="title" class="label">
@@ -64,8 +52,12 @@
     </div>
 
     <div class="modal-action flex justify-end">
-      <Button CTA="Save Chapter" icon="ri:add-line" onClick={handleSubmit} />
-
+      <Button
+        CTA="Save Chapter"
+        icon="ri:add-line"
+        {requestState}
+        on:buttonClick={forward}
+      />
     </div>
   </form>
 </Modal>

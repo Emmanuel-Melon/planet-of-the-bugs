@@ -37,31 +37,19 @@ repositories"
         <div class="form-control">
           <label class="label cursor-pointer">
             <span class="label-text">Today</span>
-            <input
-              type="checkbox"
-              checked
-              class="checkbox checkbox-sm"
-            />
+            <input type="checkbox" checked class="checkbox checkbox-sm" />
           </label>
         </div>
         <div class="form-control">
           <label class="label cursor-pointer">
             <span class="label-text">React</span>
-            <input
-              type="checkbox"
-              checked
-              class="checkbox checkbox-sm"
-            />
+            <input type="checkbox" checked class="checkbox checkbox-sm" />
           </label>
         </div>
         <div class="form-control">
           <label class="label cursor-pointer">
             <span class="label-text">Flutter</span>
-            <input
-              type="checkbox"
-              checked
-              class="checkbox checkbox-sm"
-            />
+            <input type="checkbox" checked class="checkbox checkbox-sm" />
           </label>
         </div>
       </Card>
@@ -87,27 +75,15 @@ repositories"
         {#each issues as issue}
           <Card>
             <div
-            class="flex flex-wrap flex-grow-0 gap-2 w-full lg:w-fit rounded"
-          >
-            <div
-              class="badge badge-outline py-2 text-center "
+              class="flex flex-wrap flex-grow-0 gap-2 w-full lg:w-fit rounded"
             >
-              Frontend
+              <div class="badge badge-outline py-2 text-center">Frontend</div>
+              <div class="badge badge-outline py-2 text-center">Backend</div>
+              <div class="badge badge-outline py-2 text-center">
+                Architecture
+              </div>
+              <div class="badge badge-outline py-2 text-center">DOC</div>
             </div>
-            <div class="badge badge-outline py-2 text-center ">
-              Backend
-            </div>
-            <div
-              class="badge badge-outline py-2 text-center "
-            >
-              Architecture
-            </div>
-            <div
-              class="badge badge-outline py-2 text-center "
-            >
-              DOC
-            </div>
-          </div>
             <div class="flex flex-col w-full items-start justify-between">
               <h2 class="card-title text-bold">
                 {issue.title}
@@ -117,10 +93,8 @@ repositories"
               >
                 <div class="flex items-center justify-center space-x-1">
                   <iconify-icon icon="ri:git-repository-line" />
-                  <a
-                    href="https://github.com"
-                    target="_blank"
-                    class="underline">Planet of the Bugs</a
+                  <a href="https://github.com" target="_blank" class="underline"
+                    >Planet of the Bugs</a
                   >
                 </div>
 
@@ -133,8 +107,17 @@ repositories"
             <p>{issue.title}</p>
 
             <div class="card-actions justify-start items-center gap-2">
-              <Button CTA="Contribute" icon="ri:git-pull-request-line" onClick={() =>{}} />
-                <Button CTA="Skip" icon="ri:close-line" bg="ghost" onClick={() =>{}} />
+              <Button
+                text="Contribute"
+                icon="ri:git-pull-request-line"
+                onClick={() => {}}
+              />
+              <Button
+                text="Skip"
+                icon="ri:close-line"
+                bg="ghost"
+                onClick={() => {}}
+              />
             </div>
           </Card>
         {/each}

@@ -1,36 +1,33 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
   import 'iconify-icon';
+  import Button from 'svelte-ui/components/Button.svelte';
+  import Modal from 'svelte-ui/components/Modal.svelte';
+  import type { RequestState } from 'svelte-ui/Types';
   export let user;
-  import { CREATE_COURSE } from '$lib/graphql/mutations/courses';
-  import { mutation } from 'svelte-apollo';
-  const createCourse = mutation(CREATE_COURSE);
+  export let requestState: RequestState = 'idle';
+
   let slug = '';
   let title = '';
   let description = '';
   let complexity = 'Beginner';
-  import 'iconify-icon';
-  import Button from 'svelte-ui/components/Button.svelte';
-  import Modal from 'svelte-ui/components/Modal.svelte';
 
   function createSlug(str: string) {
     return str.toLowerCase().replace(/\s+/g, '_');
   }
 
-  const handleSubmit = async () => {
-    try {
-      const result = await createCourse({
-        variables: {
-          courseInput: {
-            creator: user.id,
-            slug: createSlug(title),
-            title,
-            description,
-            complexity,
-          },
-        },
-      });
-    } catch (error) {}
+  const dispatch = createEventDispatcher();
+  const forward = () => {
+    dispatch('buttonClick', {
+      creator: user.id,
+      slug: createSlug(title),
+      title,
+      description,
+      complexity,
+    });
   };
+
+  $: requestState;
 </script>
 
 <Modal
@@ -81,8 +78,9 @@
     <div class="modal-action">
       <Button
         CTA="Create Course"
-        icon="ri:booklet-line"
-        onClick={handleSubmit}
+        icon="ri:add-line"
+        {requestState}
+        on:buttonClick={forward}
       />
     </div>
   </form>

@@ -2,12 +2,12 @@
   export let course: any;
   let title: string = course.title;
   let description: string = course.description;
-  import { Button, Card } from "svelte-ui";
+  import { Button, Card } from 'svelte-ui';
 
   const complexity = [
-    { id: 0, name: "Beginner" },
-    { id: 1, name: "Intermediate" },
-    { id: 2, name: "Advanced" },
+    { id: 0, name: 'Beginner' },
+    { id: 1, name: 'Intermediate' },
+    { id: 2, name: 'Advanced' },
   ];
 
   let index = 0;
@@ -17,7 +17,8 @@
 
   $: index, title, description;
 
-  const deleteCourse = () => {}
+  const deleteCourse = () => {};
+  const updateCourse = () => {};
 </script>
 
 <section class="space-y-4">
@@ -86,7 +87,11 @@
         </div>
 
         <div class="card-actions justify-end mt-2 py-2">
-          <Button CTA="Update Course Details" icon="ri:check-line" onClick={()=>{}} />
+          <Button
+            CTA="Update Course Details"
+            icon="ri:check-line"
+            on:buttonClick={updateCourse}
+          />
         </div>
       </form>
     </div>
@@ -101,7 +106,12 @@
         >. You’ll get a chance to confirm your choice.
       </p>
       <div class="card-actions justify-end">
-        <Button bg="error" icon="ri:delete-bin-7-line" onClick={deleteCourse} CTA="Delete Course" />
+        <Button
+          state="error"
+          icon="ri:delete-bin-7-line"
+          on:buttonClick={deleteCourse}
+          CTA="Delete Course"
+        />
       </div>
     </div>
   </Card>

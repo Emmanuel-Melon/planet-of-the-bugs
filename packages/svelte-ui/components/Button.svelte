@@ -1,47 +1,36 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
   import 'iconify-icon';
-  import { onDestroy } from 'svelte';
-  export let bg: string = 'primary';
-  export let size: string = 'sm';
-  export let icon: string = null;
+  import type { ButtonProps, RequestState } from 'svelte-ui/types';
   export let CTA: string;
-  export let isOutline: boolean = false;
-  export let onClick: Function;
+  export let icon: string = null;
+  export let ButtonType: ButtonProps['ButtonType'] = 'primary';
+  export let ButtonSize: ButtonProps['ButtonSize'] = 'sm';
+  export let state: ButtonProps['state'] = null;
+  export let requestState: RequestState = 'idle';
 
-  let isProcessing: boolean = false;
-
-  const handleClick = async () => {
-    isProcessing = true;
-    if (onClick) {
-      await onClick().then(() => {
-        isProcessing = false;
-      });
-    } else {
-      isProcessing = false;
-    }
+  const dispatch = createEventDispatcher();
+  const handleClick = () => {
+    dispatch('buttonClick', {
+      text: 'Preforming task...',
+    });
   };
 
-  onDestroy(() => {
-    isProcessing = false;
-  });
-
-  $: isProcessing;
+  $: requestState;
 </script>
 
 <button
-  class={isOutline
-    ? `btn btn-outline btn-${size} gap-2`
-    : `btn btn-${bg} btn-${size} gap-2`}
-  on:click|preventDefault={handleClick}
+  class={`btn btn-${ButtonSize} gap-2 ${
+    state ? `btn-${state}` : `btn-${ButtonType}`
+  }`}
+  on:click={handleClick}
 >
-  {#if isProcessing}
+  {#if requestState === 'idle' || requestState === 'completed'}
+    <iconify-icon {icon} />
+  {:else if requestState === 'processing'}
     <span class="loading loading-spinner animate-spin" />
-  {:else}
-    {#if icon}
-      <iconify-icon {icon} />
-    {/if}
-    {CTA}
   {/if}
+  {CTA}
 </button>
 
 <style>
@@ -54,7 +43,7 @@
     pointer-events: none;
     display: inline-block;
     aspect-ratio: 1/1;
-    width: 1.5rem;
+    width: 14px;
     background-color: currentColor;
     -webkit-mask-size: 100%;
     mask-size: 100%;

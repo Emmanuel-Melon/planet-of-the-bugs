@@ -3,6 +3,7 @@
   export let user;
   import 'iconify-icon';
   import { Card, Button } from 'svelte-ui';
+  import type { ButtonProps } from 'svelte-ui/Types';
   import {
     SUBSCRIBE_TO_REPO,
     UNSUBSCRIBE_FROM_REPO,
@@ -17,7 +18,29 @@
     (item) => item.repo_name === repo?.name
   );
 
+  async function handleUnsubscribeFromRepo() {
+    buttons[0].requestState = 'processing';
+    try {
+      const result = await unsubscribeFromRepo({
+        variables: {
+          user_id: user?.id,
+          repo_name: repo?.name,
+          repo_owner: repo?.owner?.login,
+        },
+      });
+      isSubscribed = false;
+      buttons[0].requestState = 'completed';
+    } catch (error) {
+      console.log(error);
+      buttons[0].requestState = 'failed';
+
+      // TODO
+    }
+  }
+
   async function handleSubscribeToRepo() {
+    buttons[1].requestState = 'processing';
+
     try {
       const result = await subscribeToRepo({
         variables: {
@@ -28,27 +51,36 @@
         },
       });
       isSubscribed = true;
+      buttons[1].requestState = 'completed';
     } catch (error) {
+      buttons[1].requestState = 'failed';
       console.log(error);
       // TODO
     }
   }
 
-  async function handleUnsubscribeFromRepo() {
-    try {
-      const result = await unsubscribeFromRepo({
-        variables: {
-          user_id: user?.id,
-          repo_name: repo?.name,
-          repo_owner: repo?.owner?.login,
-        },
-      });
-      isSubscribed = false;
-    } catch (error) {
-      console.log(error);
-      // TODO
-    }
-  }
+  let buttons: ButtonProps[] = [
+    {
+      CTA: 'Unsubscribe',
+      icon: 'ri:delete-bin-7-line',
+      requestState: 'idle',
+      onClick: handleUnsubscribeFromRepo,
+    },
+    {
+      CTA: 'Subscribe',
+      icon: 'ri:heart-add-line',
+      requestState: 'idle',
+      onClick: handleSubscribeToRepo,
+    },
+    {
+      CTA: 'Skip',
+      icon: 'ri:close-line',
+      requestState: 'idle',
+      onClick: () => {},
+    },
+  ];
+
+  $: buttons;
 </script>
 
 <div class="basis-2/5 grow">
@@ -112,18 +144,26 @@
           Manage</a
         >
         <Button
-          CTA="Unsubscribe"
-          onClick={handleUnsubscribeFromRepo}
-          icon="ri:delete-bin-7-line"
-          bg="ghost"
+          CTA={buttons[0].CTA}
+          icon={buttons[0].icon}
+          requestState={buttons[0].requestState}
+          on:buttonClick={buttons[0].onClick}
+          ButtonType="ghost"
         />
       {:else}
         <Button
-          CTA="Subscribe"
-          onClick={handleSubscribeToRepo}
-          icon="ri:heart-add-line"
+          CTA={buttons[1].CTA}
+          icon={buttons[1].icon}
+          requestState={buttons[1].requestState}
+          on:buttonClick={buttons[1].onClick}
         />
-        <Button CTA="Skip" onClick={() => {}} icon="ri:close-line" bg="ghost" />
+
+        <Button
+          CTA={buttons[2].CTA}
+          icon={buttons[2].icon}
+          on:buttonClick={buttons[2].onClick}
+          ButtonType="ghost"
+        />
       {/if}
     </div>
   </Card>
