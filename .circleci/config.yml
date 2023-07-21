@@ -7,27 +7,28 @@ jobs:
   build:
     docker:
       - image: cimg/node:16.20.1
-    environment:
-      VERCEL_ORG_ID: $VERCEL_ORG_ID
-      VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
-      VERCEL_TOKEN: $VERCEL_TOKEN
     steps:
       - checkout
       - node/install-packages:
           pkg-manager: yarn
-      - run:
-          name: Install Vercel CLI
-          command: npm install -g vercel
-      - run:
-          name: Pull Vercel Environment Information
-          command: vercel pull --confirm --yes --environment=production --token=$VERCEL_TOKEN
-      - run:
-          name: Build Project Artifacts
-          command: vercel build --prod --token=$VERCEL_TOKEN
-      - run:
-          name: Deploy Project Artifacts to Vercel
-          command: yarn deploy
+      - run: echo "Building Planet of the Bugs"
+  test:
+    docker:
+      - image: cimg/node:16.20.1
+    steps:
+      - checkout
+      - run: echo "this is the build job"
+  deploy:
+    docker:
+      - image: cimg/node:16.20.1
+    steps:
+      - checkout
+      - run: echo "this is the build job"
 workflows:
-  build:
+  build_and_test:
     jobs:
       - build
+      - test:
+          requires:
+            - build
+      - deploy
