@@ -3,11 +3,10 @@
   import UserGithubStats from "$components/User/UserGithubStats.svelte";
   import UserProfileCard from "$components/User/UserProfileCard.svelte";
   import RepositoriesContributedTo from "$components/User/RepositoriesContributedTo.svelte";
-  import Tabs from "$components/ProfileTabs.svelte";
   import OwnedRepositories from "$components/Repositories/OwnedRepositories.svelte";
   import SubscribedRepositories from "$components/Repositories/SubscribedRepositories.svelte";
   import UserPinnedItems from "$components/User/UserPinnedItems.svelte";
-  import { Card } from "svelte-ui";
+  import { Card, Tabs } from "svelte-ui";
   let { currentUser, user, githubProfileData } = data;
 
   const items = [
