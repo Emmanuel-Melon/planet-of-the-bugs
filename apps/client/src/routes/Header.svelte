@@ -70,7 +70,7 @@
     <ul class="navbar-center hidden lg:flex items-center gap-2 text-neutral-content">
       {#each menuLinks as { icon, text, path }}
         <li
-          class={` transition-all  ${path === current ? "py-1 px-2 hidden lg:flex text-primary-focus"
+          class={` transition-all  ${path === current ? "py-1 px-2 hidden lg:flex"
           : "py-1 px-2 hidden lg:flex"} `}
         >
           <a href={path} class="flex items-center gap-2"><iconify-icon icon={icon}/> {text}</a>
