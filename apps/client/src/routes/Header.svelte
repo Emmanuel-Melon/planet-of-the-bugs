@@ -5,6 +5,7 @@
   import { signOut } from "@auth/sveltekit/client";
   import "iconify-icon";
   import { Dropdown } from "svelte-ui";
+  import { createEventDispatcher } from 'svelte';
 
   let user;
   $: current = $page.url.pathname;
@@ -60,16 +61,16 @@
   ];
 </script>
 
-<header class="navbar bg-base-100 shadow">
-  <div class="navbar-start gap-4">
+<header class="navbar bg-neutral  shadow">
+  <div class="navbar-start text-neutral-content">
     <a href="/" class="normal-case text-md">Planet Of The Bugs</a>
   </div>
 
   <nav>
-    <ul class="navbar-center hidden lg:flex items-center gap-2">
+    <ul class="navbar-center hidden lg:flex items-center gap-2 text-neutral-content">
       {#each menuLinks as { icon, text, path }}
         <li
-          class={`hover:bg-base-200 hover:text-black transition-all rounded-md  ${path === current ? "py-1 px-2 hidden lg:flex hover:bg-primary  bg-primary text-primary-content"
+          class={` transition-all  ${path === current ? "py-1 px-2 hidden lg:flex text-primary-focus"
           : "py-1 px-2 hidden lg:flex"} `}
         >
           <a href={path} class="flex items-center gap-2"><iconify-icon icon={icon}/> {text}</a>
@@ -79,13 +80,23 @@
   </nav>
 
   <div class="navbar-end relative gap-2 items-center">
+    <button class="btn btn-sm btn-circle">
+      <iconify-icon icon="ri:search-line" width="20" height="20" /> 
+    </button>
     <Dropdown items={notifications}>
-      <iconify-icon icon="ri:notification-line" height="20" width="20" /> 
+      <button class="btn btn-sm btn-circle">
+        <div class="indicator">
+          <iconify-icon icon="ri:notification-line" width="20" height="20" /> 
+          <span class="badge badge-sm badge-accent indicator-item">2</span>
+        </div>
+
+      </button>
       </Dropdown>
+
     <div class="dropdown dropdown-end lg:hidden">
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
       <div tabindex="0" class="btn btn-ghost btn-square text-3xl">
-        <iconify-icon icon="ri:menu-4-line" />
+        <iconify-icon icon="ri:menu-4-line"  />
       </div>
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
       <ul
@@ -111,7 +122,7 @@
       {#if user}
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <div tabindex="0" class="btn btn-secondary shadow btn-circle avatar">
-          <div class="w-10 rounded-full ring ring-offset-primary ring-offset-2 shadow">
+          <div class="w-10 rounded-full ring ring-offset-secondary ring-offset-2 shadow">
             <img src={user.image} alt={user.name} />
           </div>
         </div>

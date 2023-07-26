@@ -1,25 +1,34 @@
 <script>
-  import 'iconify-icon';
-  import Card from 'svelte-ui/components/Card.svelte';
-  import { PageHeader } from 'svelte-ui';
-  import Pagination from 'svelte-ui/components/Pagination.svelte';
-  import Button from 'svelte-ui/components/Button.svelte';
-
+  import "iconify-icon";
+  import Card from "svelte-ui/components/Card.svelte";
+  import { PageHeader } from "svelte-ui";
+  import Pagination from "svelte-ui/components/Pagination.svelte";
+  import Button from "svelte-ui/components/Button.svelte";
+  import autoAnimate from "@formkit/auto-animate";
   const issues = [
     {
       id: 1,
-      title: 'Analyze and recommend GitHub issues via MindsDB',
-      description: '',
+      title: "Analyze and recommend GitHub issues via MindsDB",
+      description: "",
+      createdAt: "2 July, 2023",
+      repo: "planet-of-the-bugs",
+      labels: ["backend"],
     },
     {
       id: 2,
-      title: 'Execute code from Monaco Editor',
-      description: '',
+      title: "Microsoft Teams working in the same way as Slack",
+      description: "",
+      createdAt: "4 July, 2023",
+      repo: "mindsdB",
+      labels: ["integration"],
     },
     {
       id: 3,
-      title: ' Mark Course as Completed',
-      description: '',
+      title: "Add Confirmation Dialog for Logout Feature",
+      description: "",
+      createdAt: "5 July, 2023",
+      repo: "todo-react-redux",
+      labels: ["bug"],
     },
   ];
 </script>
@@ -55,10 +64,10 @@ repositories"
       </Card>
     </div>
     <div class="basis-3/5 lg:basis-4/5">
-      <div
-        class="flex justify-between items-center space-x-1 px-2 py-1 rounded-md"
-      >
-        <h3>Open Source Bugs</h3>
+      <div class="flex justify-between items-center space-x-1 py-1 rounded-md">
+        <div class="flex gap-2 items-center">
+          <h3 class="text-xl">Open Source Bugs</h3>
+        </div>
         <div>
           <button class="btn btn-sm btn-square btn-secondary">
             <iconify-icon icon="ri:arrow-left-double-line" />
@@ -71,18 +80,15 @@ repositories"
           >
         </div>
       </div>
-      <div class="space-y-2">
+      <div use:autoAnimate class="space-y-2">
         {#each issues as issue}
           <Card>
             <div
               class="flex flex-wrap flex-grow-0 gap-2 w-full lg:w-fit rounded"
             >
-              <div class="badge badge-outline py-2 text-center">Frontend</div>
-              <div class="badge badge-outline py-2 text-center">Backend</div>
-              <div class="badge badge-outline py-2 text-center">
-                Architecture
-              </div>
-              <div class="badge badge-outline py-2 text-center">DOC</div>
+              {#each issue.labels as label}
+                <div class="badge badge-outline py-2 text-center">{label}</div>
+              {/each}
             </div>
             <div class="flex flex-col w-full items-start justify-between">
               <h2 class="card-title text-bold">

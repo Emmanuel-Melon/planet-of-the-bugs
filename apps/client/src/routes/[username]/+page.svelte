@@ -3,11 +3,10 @@
   import UserGithubStats from "$components/User/UserGithubStats.svelte";
   import UserProfileCard from "$components/User/UserProfileCard.svelte";
   import RepositoriesContributedTo from "$components/User/RepositoriesContributedTo.svelte";
-  import Tabs from "$components/ProfileTabs.svelte";
   import OwnedRepositories from "$components/Repositories/OwnedRepositories.svelte";
   import SubscribedRepositories from "$components/Repositories/SubscribedRepositories.svelte";
   import UserPinnedItems from "$components/User/UserPinnedItems.svelte";
-  import { Card } from "svelte-ui";
+  import { Card, Tabs } from "svelte-ui";
   let { currentUser, user, githubProfileData } = data;
 
   const items = [
@@ -52,15 +51,15 @@
   ];
 </script>
 
-<div class="flex flex-col lg:flex-row gap-2">
-  <div class="lg:w-1/3">
+<div class="flex flex-col lg:flex-row">
+  <div class="lg:w-1/4 space-y-2 p-4">
     <UserProfileCard
       githubUser={githubProfileData?.githubUser}
       {user}
       {currentUser}
     />
   </div>
-  <div class="lg:w-2/3 space-y-2">
+  <div class="lg:w-3/4 space-y-2 p-4">
     {#if user?.hasConnectedGithub}
       <UserGithubStats
         repositoriesTotal={githubProfileData?.repositories.totalCount}

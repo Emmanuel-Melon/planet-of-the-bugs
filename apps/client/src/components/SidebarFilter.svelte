@@ -7,7 +7,8 @@
   export let filter = false;
 </script>
 
-<Card title={CTA}>
+<div class="p-2">
+  <h3 class="text-xl">{CTA}</h3>
   {#each criteria as criterion}
     <div class="form-control">
       <label class="cursor-pointer label">
@@ -19,9 +20,4 @@
       </label>
     </div>
   {/each}
-  <div class="card-actions justify-end">
-    {#if filter}
-      <button class="btn btn-sm btn-ghost">Clear</button>
-    {/if}
-  </div>
-</Card>
+</div>

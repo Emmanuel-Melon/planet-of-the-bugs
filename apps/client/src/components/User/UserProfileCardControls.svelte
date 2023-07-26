@@ -6,13 +6,13 @@
 <div class="card-actions justify-between">
   {#if currentUser}
     <div class="gap-2">
-      <a href="/settings" class="btn btn-sm btn-outline gap-2">
-        <iconify-icon icon="ri:settings-3-line" />
-        Settings
+      <a href="/settings" class="btn btn-sm btn-primary gap-2">
+        <iconify-icon icon="ri:equalizer-line" />
+        Edit Profile
       </a>
-      <a href="/authored" class="btn btn-sm btn-primary gap-2">
-        <iconify-icon icon="ri:book-read-line" />
-        Authored</a
+      <a href="/authored" class="btn btn-sm btn-outline gap-2">
+        <iconify-icon icon="ri:share-line" />
+        Share</a
       >
     </div>
   {:else}
@@ -27,9 +27,4 @@
       >
     </div>
   {/if}
-  <div class="gap-2">
-    <button class="btn btn-sm btn-outline btn-square">
-      <iconify-icon icon="ri:more-line" />
-    </button>
-  </div>
 </div>
