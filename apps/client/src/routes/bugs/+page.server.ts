@@ -12,7 +12,7 @@ import {
     refreshGitHubAccessToken,
     validateGitHubAccessToken,
 } from "$lib/auth/helpers";
-import { stringifyTopics } from "bugs-lib";
+
 
 const issues = [
     {
