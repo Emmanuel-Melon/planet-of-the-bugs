@@ -17,7 +17,10 @@ jobs:
           pkg-manager: yarn
       - run:
           name: Install Vercel CLI
-          command: eco "building app"
+          command: npm install -g vercel
+      - run:
+          name: Building app
+          command: yarn build # or any other command to build your app
   hasura-migrations:
     docker:
       - image: cimg/node:16.20.1
@@ -28,10 +31,24 @@ jobs:
       - image: cimg/node:16.20.1
     steps:
       - checkout
+
+# Deployment job to Vercel
+deploy-to-vercel:
+  docker:
+    - image: cimg/node:16.20.1
+  steps:
+    - checkout
+    - run:
+        name: Install Vercel CLI
+        command: npm install -g vercel
+    - run:
+        name: Deploy to Vercel
+        command: vercel --prod # or any other Vercel deployment command you need
+
 workflows:
-  build:
+  build-and-deploy:
     jobs:
       - build
-
-
-# write an article about API Gateways and data access layers.
+      - deploy-to-vercel:
+          requires:
+          - build
