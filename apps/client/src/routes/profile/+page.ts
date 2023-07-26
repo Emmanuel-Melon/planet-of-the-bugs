@@ -4,7 +4,7 @@ import {
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { destructureQueryResults } from "$lib/graphql/helpers";
 import { redirectUnAuthenticatedUsers } from "$lib/auth/helpers";
-import { getUserPinnedItems, getGitHubAccountInfo, getOwnedRepositories, getRepoContributions, getRepoSubscriptions, getUserByEmail } from "$lib/data/user.js";
+import { getUserPinnedItems, getGitHubAccountInfo, getOwnedRepositories, getRepoContributions, getRepoSubscriptions, getUserByEmail } from "$lib/data/user";
 
 
 export const load = async (event) => {
