@@ -208,7 +208,7 @@ export const USER_BY_ACCOUNT = gql`
     ) {
       access_token
       created_at
-      expires_at
+      expires_a
       id
       id_token
       provider

@@ -1,30 +1,15 @@
 import {
   GET_USER_BY_EMAIL,
-  REPOS_CONTRIBUTED_TO,
-  GET_PINNED_ITEMS,
-
 } from "$lib/graphql/queries/user";
-
-import {
-  GET_SUBSCRIBED_REPOS,
-  GET_USER_REPOS,
-  GET_CONTRIBUTIONS_BY_REPO,
-  GET_USER_PULL_REQUEST_CONTRIBUTIONS,
-} from "$lib/graphql/queries/repositories";
-import apolloClient from "$lib/graphql/apolloClient";
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { destructureQueryResults } from "$lib/graphql/helpers";
 import { redirectUnAuthenticatedUsers } from "$lib/auth/helpers";
+import { getUserPinnedItems, getGitHubAccountInfo, getOwnedRepositories, getRepoContributions, getRepoSubscriptions, getUserByEmail } from "$lib/data/user.js";
+
 
 export const load = async (event) => {
   const {
-    params,
-    url,
-    setHeaders,
-    route,
     parent,
-    fetch,
-    depends,
     data: pageData,
   } = event;
 
@@ -38,16 +23,9 @@ export const load = async (event) => {
     query: GET_USER_BY_EMAIL,
   });
 
-  const [githubUser, user] = await Promise.all([
-    githubClient.query({
-      query: GITHUB_GET_USER_BY_EMAIL,
-    }),
-    apolloClient.query({
-      query: GET_USER_BY_EMAIL,
-      variables: {
-        email: session?.user?.email,
-      },
-    }),
+  const [githubUser, data] = await Promise.all([
+    getGitHubAccountInfo(),
+    getUserByEmail(session?.user?.email)
   ]);
 
   const {
@@ -61,29 +39,12 @@ export const load = async (event) => {
 
   const userInfo = destructuredUserObject[0];
 
-  const subscribedRepos = await apolloClient.query({
-    query: GET_SUBSCRIBED_REPOS,
-    variables: {
-      user_id: userInfo.id,
-    },
-  });
 
-  const [contributedTo, pinnedItems, ownedRepos] = await Promise.all([
-    githubClient.query({
-      query: REPOS_CONTRIBUTED_TO,
-    }),
-    githubClient.query({
-      query: GET_PINNED_ITEMS,
-      variables: {
-        login: data?.viewer?.login,
-      },
-    }),
-    githubClient.query({
-      query: GET_USER_REPOS,
-      variables: {
-        login: data?.viewer?.login,
-      },
-    }),
+  const [contributedTo, pinnedItems, subscribedRepos, ownedRepos] = await Promise.all([
+    getRepoContributions(),
+    getUserPinnedItems(data?.viewer?.login),
+    getRepoSubscriptions(userInfo.id),
+    getOwnedRepositories(data?.viewer?.login)
   ]);
 
   const { data: contributionData } = contributedTo;
