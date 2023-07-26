@@ -32,11 +32,11 @@ jobs:
     steps:
       - checkout
 
-# Deployment job to Vercel
-deploy-to-vercel:
-  docker:
-    - image: cimg/node:16.20.1
-  steps:
+  # Deployment job to Vercel
+  deploy-to-vercel:
+    docker:
+      - image: cimg/node:16.20.1
+    steps:
     - checkout
     - run:
         name: Install Vercel CLI
@@ -51,4 +51,4 @@ workflows:
       - build
       - deploy-to-vercel:
           requires:
-          - build
+            - build
