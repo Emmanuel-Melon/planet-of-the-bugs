@@ -9,6 +9,7 @@
   import SidebarFilter from "$components/SidebarFilter.svelte";
   import { PageHeader } from "svelte-ui";
   let { user } = data;
+  import autoAnimate from "@formkit/auto-animate";
 
   const courses = query(FETCH_COURSES);
 

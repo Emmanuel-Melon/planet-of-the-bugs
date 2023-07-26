@@ -1,36 +1,11 @@
-<script>
+<script lang="ts">
   import "iconify-icon";
   import Card from "svelte-ui/components/Card.svelte";
   import { PageHeader } from "svelte-ui";
   import Pagination from "svelte-ui/components/Pagination.svelte";
   import Button from "svelte-ui/components/Button.svelte";
   import autoAnimate from "@formkit/auto-animate";
-  const issues = [
-    {
-      id: 1,
-      title: "Analyze and recommend GitHub issues via MindsDB",
-      description: "",
-      createdAt: "2 July, 2023",
-      repo: "planet-of-the-bugs",
-      labels: ["backend"],
-    },
-    {
-      id: 2,
-      title: "Microsoft Teams working in the same way as Slack",
-      description: "",
-      createdAt: "4 July, 2023",
-      repo: "mindsdB",
-      labels: ["integration"],
-    },
-    {
-      id: 3,
-      title: "Add Confirmation Dialog for Logout Feature",
-      description: "",
-      createdAt: "5 July, 2023",
-      repo: "todo-react-redux",
-      labels: ["bug"],
-    },
-  ];
+  export let data: PageData;
 </script>
 
 <PageHeader
@@ -81,7 +56,7 @@ repositories"
         </div>
       </div>
       <div use:autoAnimate class="space-y-2">
-        {#each issues as issue}
+        {#each data.issues as issue}
           <Card>
             <div
               class="flex flex-wrap flex-grow-0 gap-2 w-full lg:w-fit rounded"
