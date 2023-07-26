@@ -43,7 +43,7 @@ jobs:
         command: npm install -g vercel
     - run:
         name: Deploy to Vercel
-        command: vercel --prod # or any other Vercel deployment command you need
+        command: cd apps/client && vercel --prod # or any other Vercel deployment command you need
 
 workflows:
   build-and-deploy:
