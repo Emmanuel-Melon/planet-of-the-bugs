@@ -80,9 +80,9 @@ export const FETCH_AUTHORED_COURSES = gql`
 `;
 
 export const FETCH_USER_COURSE_PROGRESS = gql`
-  query fetchUserCourseProgress($courseId: uuid, $userId: uuid) {
+  query fetchUserCourseProgress($userId: uuid, $slug: String = "") {
     user_courses(
-      where: { course_id: { _eq: $courseId }, user_id: { _eq: $userId } }
+      where: { user_id: { _eq: $userId }, course_slug: { _eq: $slug } }
     ) {
       progress
       id

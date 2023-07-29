@@ -27,13 +27,13 @@
   const criteria = [
     {
       id: 1,
-      title: "Complexity",
-      icon: "ri:bar-chart-2-line",
+      title: 'Complexity',
+      icon: 'ri:bar-chart-2-line',
     },
     {
       id: 2,
-      title: "Duration",
-      icon: "ri:time-line",
+      title: 'Duration',
+      icon: 'ri:time-line',
     },
   ];
 

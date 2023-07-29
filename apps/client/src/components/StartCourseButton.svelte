@@ -20,6 +20,7 @@
         variables: {
           user_id: userId,
           course_id,
+          slug,
         },
       });
 

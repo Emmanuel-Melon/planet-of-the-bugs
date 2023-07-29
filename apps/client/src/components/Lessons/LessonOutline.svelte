@@ -1,9 +1,8 @@
 <script>
-  import ChapterOverview from "../Chapters/ChapterOverview.svelte";
+  import ChapterOverview from '../Chapters/ChapterOverview.svelte';
   export let chapters;
-  export let active;
   export let course;
-  import { Card } from "svelte-ui";
+  import { Card } from 'svelte-ui';
 </script>
 
 <section>
