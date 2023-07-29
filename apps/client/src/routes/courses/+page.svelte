@@ -1,15 +1,15 @@
 <script>
   // @ts-nocheck
   export let data;
-  import { onMount } from "svelte";
-  import { FETCH_COURSES } from "$lib/graphql/queries/courses";
-  import { query, mutation } from "svelte-apollo";
-  import CourseCard from "$components/CourseCard.svelte";
-  import SearchBar from "$components/SearchBar.svelte";
-  import SidebarFilter from "$components/SidebarFilter.svelte";
-  import { PageHeader } from "svelte-ui";
+  import { onMount } from 'svelte';
+  import { FETCH_COURSES } from '$lib/graphql/queries/courses';
+  import { query, mutation } from 'svelte-apollo';
+  import CourseCard from '$components/CourseCard.svelte';
+  import SearchBar from '$components/SearchBar.svelte';
+  import SidebarFilter from '$components/SidebarFilter.svelte';
+  import { PageHeader } from 'svelte-ui';
   let { user } = data;
-  import autoAnimate from "@formkit/auto-animate";
+  import autoAnimate from '@formkit/auto-animate';
 
   const courses = query(FETCH_COURSES);
 
@@ -21,13 +21,13 @@
   const criteria = [
     {
       id: 1,
-      title: "Complexity",
-      icon: "ri:bar-chart-2-line",
+      title: 'Complexity',
+      icon: 'ri:bar-chart-2-line',
     },
     {
       id: 2,
-      title: "Duration",
-      icon: "ri:time-line",
+      title: 'Duration',
+      icon: 'ri:time-line',
     },
   ];
 
@@ -57,7 +57,10 @@
           >
         </div>
       </div>
-      <div use:autoAnimate class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-2">
+      <div
+        use:autoAnimate
+        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-2"
+      >
         {#if $courses.data}
           {#each $courses.data.courses as course}
             <CourseCard {course} userId={user.id} />

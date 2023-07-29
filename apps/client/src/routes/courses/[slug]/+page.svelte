@@ -1,15 +1,14 @@
 <script>
-  import { onMount } from "svelte";
-  import StartCourseButton from "$components/StartCourseButton.svelte";
-  import LessonOutline from "$components/Lessons/LessonOutline.svelte";
+  import { onMount } from 'svelte';
+  import StartCourseButton from '$components/StartCourseButton.svelte';
+  import LessonOutline from '$components/Lessons/LessonOutline.svelte';
   export let data;
-  import "iconify-icon";
-  let { course, active } = data;
-  import { Card } from "svelte-ui";
+  import 'iconify-icon';
+  let { session, course, progress } = data;
+  import { Card } from 'svelte-ui';
   onMount(async () => {});
 
-  $: course, active;;
-
+  $: course;
 </script>
 
 <section class="w-full body h-fit p-4 text-primary-content">
@@ -17,10 +16,12 @@
     <h1 class="text-5xl">{course.title}</h1>
     <p>{course.description}</p>
     <StartCourseButton
-    status={active?.status}
-    course_id={course.id}
-    slug={course.slug}
-  />
+      userId={session?.user?.id}
+      status={progress?.status}
+      course_id={course.id}
+      slug={course.slug}
+    />
+  </div>
 </section>
 
 <section class="p-4">
@@ -40,11 +41,9 @@
           </div>
         </div>
       </div>
-      <LessonOutline chapters={course.course_chapters} {course} {active} />
+      <LessonOutline chapters={course.course_chapters} {course} />
     </div>
   </div>
-
-
 </section>
 
 <style>
