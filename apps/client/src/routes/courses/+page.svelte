@@ -10,6 +10,7 @@
   import { PageHeader } from "svelte-ui";
   let { user } = data;
   import autoAnimate from "@formkit/auto-animate";
+  import CoursesList from "$components/Courses/CoursesList.svelte";
 
   const courses = query(FETCH_COURSES);
 
@@ -57,13 +58,13 @@
           >
         </div>
       </div>
-      <div use:autoAnimate class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-2">
+      <div use:autoAnimate>
         {#if $courses.data}
-          {#each $courses.data.courses as course}
-            <CourseCard {course} userId={user.id} />
-          {/each}
-        {:else}
-          <span class="loading loading-bars loading-sm" />
+          <CoursesList courses={$courses.data.courses} {user} />
+        {:else if $courses.error}
+          <h3>Error</h3>
+        {:else if $courses.loading}
+          <div>Loading</div>
         {/if}
       </div>
     </div>
