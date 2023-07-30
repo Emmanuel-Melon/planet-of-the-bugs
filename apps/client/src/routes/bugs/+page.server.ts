@@ -1,5 +1,5 @@
-import { fail, redirect } from '@sveltejs/kit';
-import type { PageServerLoad, Actions } from './$types';
+import { fail, redirect } from "@sveltejs/kit";
+import type { PageServerLoad, Actions } from "./$types";
 import {
     FETCH_REPOSITORIES_BY_TOPICS,
     GET_AVAILABLE_TOPICS,

@@ -1,15 +1,11 @@
-import type { LayoutServerLoad } from './$types';
+import type { LayoutServerLoad } from "./$types";
 import {
   FETCH_COURSE_BY_SLUG,
   FETCH_USER_COURSE_PROGRESS,
-} from '$lib/graphql/queries/courses';
-import { GET_USER_BY_EMAIL } from '$lib/graphql/queries/user';
-import apolloClient from '$lib/graphql/apolloClient';
-import { GITHUB_API } from '$lib/github/githubGraphQLClient';
-import { error } from '@sveltejs/kit';
+} from "$lib/graphql/queries/courses";
+import apolloClient from "$lib/graphql/apolloClient";
 
-export const load: LayoutServerLoad = async (event) => {
-  const { params, parent } = event;
+export const load: LayoutServerLoad = async ({ params, parent }) => {
   const { session } = await parent();
 
   const { slug } = params;
