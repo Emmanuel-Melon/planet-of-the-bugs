@@ -26,7 +26,7 @@
         </div>
         <div class="divider">Description</div>
         <p>{repo.description || 'This repo has no description available.'}</p>
-        <div class="card-actions justify-end">
+        <div class="card-actions justify-start">
           <a
             href={repo.url}
             class="btn btn-sm btn-outline link link-hover flex gap-2 items-center"

@@ -88,7 +88,7 @@
         required
       />
     </div>
-    <div class="modal-action flex justify-end">
+    <div class="modal-action flex justify-start">
       <Button CTA="Add Lesson" icon="ri:add-line" on:buttonClick={forward} />
     </div>
   </form>
