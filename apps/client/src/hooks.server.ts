@@ -22,13 +22,11 @@ interface User {
 }
 
 import {
-  PUBLIC_GOOGLE_CLIENT_ID,
-  PUBLIC_GOOGLE_CLIENT_SECRET,
+
   PUBLIC_AUTH_SECRET,
   PUBLIC_GITHUB_ID,
   PUBLIC_GITHUB_SECRET,
-  PUBLIC_LINKEDIN_CLIENT_ID,
-  PUBLIC_LINKEDIN_CLIENT_SECRET,
+
   PUBLIC_DATA_BASE_URL,
 } from "$env/static/public";
 
@@ -63,14 +61,6 @@ export const handleAuth = SvelteKitAuth(async () => {
       GitHub({
         clientId: PUBLIC_GITHUB_ID,
         clientSecret: PUBLIC_GITHUB_SECRET,
-      }),
-      Google({
-        clientId: PUBLIC_GOOGLE_CLIENT_ID,
-        clientSecret: PUBLIC_GOOGLE_CLIENT_SECRET,
-      }),
-      Linkedin({
-        clientId: PUBLIC_LINKEDIN_CLIENT_ID,
-        clientSecret: PUBLIC_LINKEDIN_CLIENT_SECRET,
       }),
     ],
     database: PUBLIC_DATA_BASE_URL,

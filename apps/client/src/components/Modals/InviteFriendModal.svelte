@@ -25,14 +25,13 @@
         <span class="label-text"> Or invite them using this link </span>
       </label>
 
-      <div class="flex relative">
-        <input readonly class="input input-bordered flex-1" id="link" />
+      <div class="flex items-center relative">
+        <input readonly class="input input-sm input-bordered flex-1" id="link" />
         <button>
           <iconify-icon
             icon="ri:file-copy-line"
-            width="20"
-            height="20"
-            class="absolute right-4 top-4"
+  
+            class="absolute right-4 top-2"
           />
         </button>
       </div>

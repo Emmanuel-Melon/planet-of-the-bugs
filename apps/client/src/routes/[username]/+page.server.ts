@@ -1,6 +1,5 @@
-import { fail, redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
-import { error } from "@sveltejs/kit";
+import { fail, redirect } from '@sveltejs/kit';
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { destructureQueryResults } from "$lib/graphql/helpers";
 import apolloClient from "$lib/graphql/apolloClient";
@@ -24,10 +23,10 @@ export const load: PageServerLoad = async (event) => {
     const { session } = await parent();
     let sessionUser = session.user;
     if (!session?.token) {
-        return;
+        return fail(400, {
+            error: 'Unauthorized'
+        });
     }
-
-    console.log(session);
 
     if (!sessionUser?.hasConnectedGithub) {
         return;

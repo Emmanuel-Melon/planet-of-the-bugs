@@ -133,7 +133,7 @@
       onClick={handleSubscribeToRepo}
       icon="ri:heart-add-line"
     />
-    <Button CTA="Skip" onClick={() => {}} icon="ri:close-line" bg="ghost" />
+    <Button CTA="Skip" onClick={() => {}} icon="ri:close-line" ButtonType="ghost" />
     </div>
   </Card>
 </div>

@@ -24,14 +24,7 @@
       url: "https://docs.planetofthebugs.xyz",
       icon: "ri:article-line",
       target: "_blank",
-    },
-    {
-      id: 3,
-      name: "About",
-      url: "/about",
-      icon: "ri:information-line",
-      target: "_blank",
-    },
+    }
   ];
 </script>
 
