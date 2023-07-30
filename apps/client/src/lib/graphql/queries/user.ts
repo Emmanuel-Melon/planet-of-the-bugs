@@ -3,8 +3,8 @@ import {
 } from "@apollo/client/core";
 
 export const GET_USER_BY_GITHUB_LOGIN = gql`
-  query ($username: String!) {
-    user(login: $username) {
+  query ($login: String!) {
+    user(login: $login) {
       login
       bio
       company
@@ -125,7 +125,7 @@ export const GET_USER_BY_EMAIL = gql`
 `;
 
 export const GET_USER_BY_USERNAME = gql`
-  query getUserByUsername($username: String) {
+  query getUserByUsername($username: String!) {
     user: user(where: { username: { _eq: $username } }) {
       email
       created_at

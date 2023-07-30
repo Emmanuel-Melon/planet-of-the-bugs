@@ -19,45 +19,45 @@ import {
     GET_USER_PULL_REQUEST_CONTRIBUTIONS,
 } from "$lib/graphql/queries/repositories";
 
-
-
 export const load: PageServerLoad = async (event) => {
     const { params, parent } = event;
-
-
     const { session } = await parent();
-    let user = session?.user;
+    let sessionUser = session.user;
     if (!session?.token) {
         return;
     }
 
-    if (!user?.hasConnectedGithub) {
+    console.log(session);
+
+    if (!sessionUser?.hasConnectedGithub) {
         return;
     }
 
-
     let githubProfileData = null;
-    const currentUser = user?.username === params?.username;
+    const currentUser = sessionUser?.username === params?.username;
+
+    console.log(currentUser);
+
     if (!currentUser) {
         const { data } = await apolloClient.query({
             query: GET_USER_BY_USERNAME,
             variables: {
-                username: "junnubiman",
+                username: params?.username,
             },
         });
 
-        user = data.user[0];
+        sessionUser = data.user[0];
     }
 
 
-    GITHUB_API.setSession(session.token.accessToken);
+    GITHUB_API.setSession(session?.token?.accessToken);
     const githubClient = GITHUB_API.getGithubClient();
 
-    const getUserPinnedItems = (gitHubUsername: string): Promise<any[]> => {
+    const getUserPinnedItems = (gitHubUsername): Promise<any[]> => {
         return githubClient.query({
             query: GET_USER_PINNED_ITEMS,
             variables: {
-                login: gitHubUsername,
+                username: "Emmanuel-Melon"
             },
         })
     };
@@ -65,10 +65,13 @@ export const load: PageServerLoad = async (event) => {
     const getRepoContributions = (): Promise<any[]> => {
         return githubClient.query({
             query: GET_REPOS_CONTRIBUTED_TO,
+            variables: {
+                username: "Emmanuel-Melon"
+            }
         })
     };
 
-    const getRepoSubscriptions = (userId: string): Promise<any[]> => {
+    const getRepoSubscriptions = (userId): Promise<any[]> => {
         return apolloClient.query({
             query: GET_SUBSCRIBED_REPOS,
             variables: {
@@ -77,16 +80,16 @@ export const load: PageServerLoad = async (event) => {
         });
     };
 
-    const getOwnedRepositories = (gitHubUsername: string): Promise<any[]> => {
+    const getOwnedRepositories = (gitHubUsername): Promise<any[]> => {
         return githubClient.query({
             query: GET_USER_REPOS_BY_GITHUB_USERNAME,
             variables: {
-                login: gitHubUsername,
+                username: "Emmanuel-Melon",
             },
         })
     };
 
-    const getUserByEmail = (email: string): Promise<any> => {
+    const getUserByEmail = (email): Promise<any> => {
         return apolloClient.query({
             query: GET_USER_BY_EMAIL,
             variables: {
@@ -95,57 +98,45 @@ export const load: PageServerLoad = async (event) => {
         });
     };
 
-    const getGitHubAccountInfo = (): Promise<any> => {
+    const getGitHubAccountInfo = (gitHubLogin: String): Promise<any> => {
         return githubClient.query({
             query: GET_USER_BY_GITHUB_LOGIN,
             variaables: {
-                username: params.username
+                login: gitHubLogin
             }
         });
     };
 
-    const [githubUser, data] = await Promise.all([
-        getGitHubAccountInfo(),
-        getUserByEmail(session?.user?.email)
-    ]);
-
+    const user = await getUserByEmail(session?.user?.email);
     const {
         data: { user: destructuredUserObject, loading: profileLoading },
     } = user;
-
-    const output = destructureQueryResults(githubUser);
-
-    const { result: destructuredGithubUser, loading: gitHubrofileLoading } =
-        output;
-
     const userInfo = destructuredUserObject[0];
 
+    // const gitHubUser = await getGitHubAccountInfo(userInfo?.githubUsername);
+    // console.log(gitHubUser);
 
-    const [contributedTo, pinnedItems, subscribedRepos, ownedRepos] = await Promise.all([
-        getRepoContributions(),
-        getUserPinnedItems(data?.viewer?.login),
-        getRepoSubscriptions(userInfo.id),
-        getOwnedRepositories(data?.viewer?.login)
-    ]);
+    // const output = destructureQueryResults(githubUser);
 
-    const { data: contributionData } = contributedTo;
-    const { data: topRepoData } = pinnedItems;
-    const { data: repositories } = ownedRepos;
-    const { data: subscribedTo } = subscribedRepos;
+    // const { result: destructuredGithubUser, loading: gitHubrofileLoading } =
+    //     output;
+
+    //console.log(gitHubUser);
+
+    // const [contributedTo, pinnedItems, subscribedRepos, ownedRepos] = await Promise.all([
+    //     getRepoContributions(),
+    //     getUserPinnedItems(data?.viewer?.login),
+    //     getRepoSubscriptions(userInfo.id),
+    //     getOwnedRepositories(data?.viewer?.login)
+    // ]);
+
+    // const { data: contributionData } = contributedTo;
+    // const { data: topRepoData } = pinnedItems;
+    // const { data: repositories } = ownedRepos;
+    // const { data: subscribedTo } = subscribedRepos;
 
     return {
-        github_user: {
-            destructuredGithubUser,
-            gitHubrofileLoading,
-        },
-        currentUser: { ...userInfo, profileLoading },
-        user: {
-            ...data,
-        },
-        contributedTo: { ...contributionData.viewer.repositoriesContributedTo },
-        pinnedItems: topRepoData.user.pinnedItems,
-        repositories: repositories?.user?.repositories,
-        subscribedTo: subscribedTo?.user_subscribed_repos,
+
     };
 
 };
