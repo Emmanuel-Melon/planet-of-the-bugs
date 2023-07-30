@@ -59,7 +59,6 @@ export const load = async (event) => {
     }),
   ]);
 
-  console.log(repositories);
   return {
     repositories: {
       data: repositories?.data?.search,
