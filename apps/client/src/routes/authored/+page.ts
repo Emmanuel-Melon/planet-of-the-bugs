@@ -1,5 +1,4 @@
 import {
-  GET_GITHUB_USER_BASIC_INFO_BY_GITHUB_USERNAME,
   GET_USER_BY_EMAIL,
 } from "$lib/graphql/queries/user";
 import apolloClient from "$lib/graphql/apolloClient";

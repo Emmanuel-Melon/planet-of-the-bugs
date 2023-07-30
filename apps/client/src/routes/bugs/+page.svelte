@@ -1,10 +1,7 @@
 <script lang="ts">
   import "iconify-icon";
-  import Card from "svelte-ui/components/Card.svelte";
   import { PageHeader } from "svelte-ui";
-  import Pagination from "svelte-ui/components/Pagination.svelte";
-  import Button from "svelte-ui/components/Button.svelte";
-  import autoAnimate from "@formkit/auto-animate";
+  import IssueRecommendationsList from "$components/Issues/IssueRecommendationsList.svelte";
   export let data: PageData;
 </script>
 
@@ -17,26 +14,24 @@ repositories"
 <section class="p-2">
   <div class="flex flex-col justify-center md:flex-row gap-2 mb-4">
     <div class="grow">
-      <Card title="Filter Issues">
-        <div class="form-control">
-          <label class="label cursor-pointer">
-            <span class="label-text">Today</span>
-            <input type="checkbox" checked class="checkbox checkbox-sm" />
-          </label>
-        </div>
-        <div class="form-control">
-          <label class="label cursor-pointer">
-            <span class="label-text">React</span>
-            <input type="checkbox" checked class="checkbox checkbox-sm" />
-          </label>
-        </div>
-        <div class="form-control">
-          <label class="label cursor-pointer">
-            <span class="label-text">Flutter</span>
-            <input type="checkbox" checked class="checkbox checkbox-sm" />
-          </label>
-        </div>
-      </Card>
+      <div class="form-control">
+        <label class="label cursor-pointer">
+          <span class="label-text">Today</span>
+          <input type="checkbox" checked class="checkbox checkbox-sm" />
+        </label>
+      </div>
+      <div class="form-control">
+        <label class="label cursor-pointer">
+          <span class="label-text">React</span>
+          <input type="checkbox" checked class="checkbox checkbox-sm" />
+        </label>
+      </div>
+      <div class="form-control">
+        <label class="label cursor-pointer">
+          <span class="label-text">Flutter</span>
+          <input type="checkbox" checked class="checkbox checkbox-sm" />
+        </label>
+      </div>
     </div>
     <div class="basis-3/5 lg:basis-4/5">
       <div class="flex justify-between items-center space-x-1 py-1 rounded-md">
@@ -55,54 +50,11 @@ repositories"
           >
         </div>
       </div>
-      <div use:autoAnimate class="space-y-2">
-        {#each data.issues as issue}
-          <Card>
-            <div
-              class="flex flex-wrap flex-grow-0 gap-2 w-full lg:w-fit rounded"
-            >
-              {#each issue.labels as label}
-                <div class="badge badge-outline py-2 text-center">{label}</div>
-              {/each}
-            </div>
-            <div class="flex flex-col w-full items-start justify-between">
-              <h2 class="card-title text-bold">
-                {issue.title}
-              </h2>
-              <div
-                class="w-full flex justify-between lg:justify-start lg:space-x-8 text-xs"
-              >
-                <div class="flex items-center justify-center space-x-1">
-                  <iconify-icon icon="ri:git-repository-line" />
-                  <a href="https://github.com" target="_blank" class="underline"
-                    >Planet of the Bugs</a
-                  >
-                </div>
-
-                <div class="flex items-center justify-center space-x-1">
-                  <iconify-icon icon="ri:calendar-todo-line" />
-                  <p>14 June, 2023</p>
-                </div>
-              </div>
-            </div>
-            <p>{issue.title}</p>
-
-            <div class="card-actions justify-start items-center gap-2">
-              <Button
-                text="Contribute"
-                icon="ri:git-pull-request-line"
-                onClick={() => {}}
-              />
-              <Button
-                text="Skip"
-                icon="ri:close-line"
-                bg="ghost"
-                onClick={() => {}}
-              />
-            </div>
-          </Card>
-        {/each}
-      </div>
+      {#if data}
+        <IssueRecommendationsList issues={data.issues} />
+      {:else}
+        <p>Loading issues</p>
+      {/if}
     </div>
   </div>
 </section>

@@ -8,7 +8,7 @@
 
   const handleGithubLogin = async () => {
     try {
-      const result = await signIn('github', { callbackUrl: '/auth/new-user' });
+      const result = await signIn('github', { callbackUrl: '/' });
     } catch (err) {
       console.log('error');
     }
@@ -57,7 +57,7 @@
           <h2 class="card-title">{$page.data.session.user?.name ?? 'User'}</h2>
         </div>
 
-        <div class="card-actions justify-end">
+        <div class="card-actions justify-start">
           <button on:click={handleGithubLogout} class="btn btn-sm gap-2"
             ><iconify-icon icon="ri:logout-circle-line" /> Sign out</button
           >
