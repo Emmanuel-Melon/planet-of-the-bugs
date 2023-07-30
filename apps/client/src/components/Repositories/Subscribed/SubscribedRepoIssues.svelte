@@ -26,6 +26,9 @@
             <div>
                 <h3 class="text-bold">{contributor.name}</h3>
                 <p class="text-gray-600">{contributor.bio}</p>
+                <div class="flex">
+                    <div class="badge badge-secondary gap-2"><iconify-icon icon="ri:git-pull-request-line" /> 56 PRs</div>
+                </div>
             </div>
         </div>
       </div>

@@ -33,10 +33,10 @@
   $: requestState;
 </script>
 
-<div class="basis-4/5">
+<div class="basis-4/5 space-y-2">
   <div class="flex justify-between items-center rounded-md">
     <div class="flex gap-2 items-center">
-      <h3 class="text-xl">Recommended Repositories</h3>
+      <button class="btn btn-sm btn-outline">Preferences</button>
     </div>
     <div class="flex justify-start">
       <ManageReposTopicsModal

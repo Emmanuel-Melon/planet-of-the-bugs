@@ -13,6 +13,21 @@ export const GET_SUBSCRIBED_REPOS = gql`
   }
 `;
 
+export const GET_REPO_CONTRIBUTORS = gql`
+query GetContributors($owner: String!, $repoName: String!) {
+  repository(owner: $owner, name: $repoName) {
+    collaborators(affiliation: ALL, first: 10) {
+      edges {
+        node {
+          login
+          contributions
+        }
+      }
+    }
+  }
+}
+`;
+
 export const GET_AVAILABLE_TOPICS = gql`
   query getAvailableTopics @cached {
     repo_topics(where: { isActive: { _eq: true } }) {

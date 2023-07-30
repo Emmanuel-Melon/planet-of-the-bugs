@@ -79,10 +79,7 @@ language, bug, good-first-issue, or even bounty."
 />
 
 <section class="p-2">
-  <div class="flex flex-col lg:flex-row gap-2">
-
-    <div>
-      <Tabs {items} />
-    </div>
+  <div class="flex flex-col lg:flex-row gap-2 w-4/5 mx-auto">
+    <Tabs {items} />
   </div>
 </section>
