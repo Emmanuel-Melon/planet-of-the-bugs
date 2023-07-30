@@ -1,22 +1,22 @@
 <script>
-  import { Card } from "svelte-ui";
+  import { Card } from 'svelte-ui';
   export let lesson;
-  import { afterUpdate } from "svelte";
-  import MarkdownIt from "markdown-it";
-  import sanitizeHtml from "sanitize-html";
+  import { afterUpdate } from 'svelte';
+  import MarkdownIt from 'markdown-it';
+  import sanitizeHtml from 'sanitize-html';
 
   afterUpdate(() => {
     result = sanitizeHtml(md.render(markdown), {
       allowedTags: sanitizeHtml.defaults.allowedTags.concat([
-        "h1",
-        "h2",
-        "img",
+        'h1',
+        'h2',
+        'img',
       ]),
     });
   });
 
-  let markdown = "";
-  let result = "";
+  let markdown = '';
+  let result = '';
   const md = new MarkdownIt();
 </script>
 
@@ -24,7 +24,7 @@
   <Card title={lesson.title}>
     {lesson.description}
   </Card>
-  <div>
+  <!-- <div>
     {lesson.description}
-  </div>
+  </div> -->
 </section>

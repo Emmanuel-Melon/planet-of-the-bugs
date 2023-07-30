@@ -1,41 +1,72 @@
-<script>
+<script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
+  import { NextPrev } from 'svelte-ui';
+  import LessonTextContent from '$components/Lessons/LessonTextContent.svelte';
+  import LessonVideoContent from '$components/Lessons/LessonVideoContent.svelte';
+  import LessonInteractiveContent from '$components/Lessons/LessonInteractiveContent.svelte';
+  import navigationStore, { updateNavigationStore } from './navigationStore.js';
+
   export let data;
-  let { lesson } = data;
-  import { NextPrev } from "svelte-ui";
-  import LessonTextContent from "$components/Lessons/LessonTextContent.svelte";
-  import LessonVideoContent from "$components/Lessons/LessonVideoContent.svelte";
-  import LessonInteracticeContent from "$components/Lessons/LessonInteracticeContent.svelte";
+  $: ({ lesson, course } = data);
+
+  let nav: {
+    nextLesson: any;
+    previousLesson: any;
+    currentChapterIndex: number;
+    currentLessonIndex: number;
+  };
+
+  const unSubscribe = navigationStore.subscribe((store) => {
+    nav = store;
+  });
+
+  onMount(() => {
+    updateNavigationStore(course.course_chapters, lesson.chapter_id, lesson.id);
+  });
+
+  onDestroy(() => {
+    unSubscribe();
+  });
+
+  $: {
+    // Whenever the route changes, update the navigation store
+    updateNavigationStore(course.course_chapters, lesson.chapter_id, lesson.id);
+    nav;
+  }
 </script>
 
-<section class="h-screen">
-  <div class="p-4 bg-base-200">
-    <button class="btn btn-sm btn-outline">Back</button>
-    <div class="flex justify-between items-center">
-      <div class="text-md breadcrumbs">
-        <ul>
-          <li><a>Courses</a></li>
-          <li><a>Course</a></li>
-          <li>{lesson.data.lessons_by_pk.title}</li>
-        </ul>
-      </div>
-    </div>
+<section class="">
+  <div class="text-sm breadcrumbs pl-8 my-4">
+    <ul>
+      <li>{course.course_chapters[nav.currentChapterIndex].title}</li>
+      <li>{lesson.index}. {lesson.title}</li>
+    </ul>
   </div>
 
   <div class="p-2 space-y-2">
-    {#if lesson.data.lessons_by_pk.type === "text" || lesson.data.lessons_by_pk.type === "Text"}
-      <LessonTextContent lesson={lesson.data.lessons_by_pk} />
-    {:else if lesson.data.lessons_by_pk.type === "video" || lesson.data.lessons_by_pk.type === "Video"}
-      <LessonVideoContent lesson={lesson.data.lessons_by_pk} />
-    {:else if lesson.data.lessons_by_pk.type === "Interactive" || lesson.data.lessons_by_pk.type === "interactive"}
-      <LessonInteracticeContent lesson={lesson.data.lessons_by_pk} />
-    {/if}
+    <LessonTextContent {lesson} />
+    <!-- {#if lesson.type === 'text' || lesson.type === 'Text'}
+      <LessonTextContent lesson={lesson} />
+    {:else if lesson.type === 'video' || lesson.type === 'Video'}
+      <LessonVideoContent lesson={lesson} />
+    {:else if lesson.type === 'Interactive' || lesson.type === 'interactive'}
+      <LessonInteractiveContent lesson={lesson} />
+    {/if} -->
 
     <div class="flex justify-between items-center">
-      <NextPrev />
+      <NextPrev
+        slug={course.slug}
+        next={nav?.nextLesson}
+        prev={nav?.previousLesson}
+      />
     </div>
     <div class="form-control w-fit">
-      <label class="cursor-pointer label  gap-2">
-        <input type="checkbox" checked="checked" class="checkbox checkbox-sm checkbox-success" />
+      <label class="cursor-pointer label gap-2">
+        <input
+          type="checkbox"
+          checked="checked"
+          class="checkbox checkbox-sm checkbox-success"
+        />
         <span class="label-text">Mark as Completed</span>
       </label>
     </div>

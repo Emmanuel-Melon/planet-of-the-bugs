@@ -1,3 +1,90 @@
-<script>
+<script lang="ts">
+  import LessonInteractiveContent from '$components/Lessons/LessonInteractiveContent.svelte';
+  import { page } from '$app/stores';
+  export let data;
+  const { course, progress } = data;
+
+  const chapters = course.course_chapters;
+
+  // Create an array to store the open state for each chapter
+  let chapterOpenStates = Array(chapters.length).fill(false);
+
+  // Function to handle chapter expansion for a given index
+  const handleChapterExpand = (index: number) => {
+    chapterOpenStates[index] = !chapterOpenStates[index];
+    chapterOpenStates = [...chapterOpenStates]; // Trigger reactivity
+  };
+
+  const currentLessonId = $page.url.pathname.split('/').pop();
+
+  let currentLesson: { title: string } | null = null;
+
+  // Find the current lesson based on the lesson ID from the URL
+  $: {
+    for (const chapter of chapters) {
+      currentLesson = chapter.lessons.find(
+        (lesson: { id: string | undefined }) => lesson.id === currentLessonId
+      );
+    }
+    currentLessonId;
+  }
 </script>
-<slot />
+
+<div class="drawer">
+  <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content">
+    <!-- Page content here -->
+    <div class="flex flex-col lg:flex-row">
+      <div class="lg:w-1/2">
+        <div class="h-12 flex w-full border border-neutral">
+          <label
+            for="my-drawer"
+            class="drawer-button text-3xl cursor-pointer grid place-items-center max-w-fit"
+          >
+            <iconify-icon icon="ri:menu-line" />
+          </label>
+
+          <div class="w-full px-4 flex items-center justify-center">
+            <h1 class="font-bold text-xl">{course.title}</h1>
+          </div>
+        </div>
+        <slot />
+      </div>
+      <div class="lg:w-1/2">
+        <LessonInteractiveContent lesson={currentLesson} />
+      </div>
+    </div>
+  </div>
+  <div class="drawer-side">
+    <label for="my-drawer" class="drawer-overlay" />
+    <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content">
+      <!-- Sidebar content here -->
+      <p class="font-bold">{course.title}</p>
+      {#each chapters as { title, lessons, id }, index}
+        <li>
+          <button
+            on:click={() => handleChapterExpand(index)}
+            class="h-8 hover:bg-transparent focus:bg-transparent"
+          >
+            {#if chapterOpenStates[index]}
+              <iconify-icon icon="ri:arrow-down-s-line" />
+            {:else}
+              <iconify-icon icon="ri:arrow-right-s-line" />
+            {/if}
+            <p class="-ml-2">{title}</p>
+          </button>
+
+          {#if chapterOpenStates[index]}
+            <div
+              class="flex flex-col items-start hover:bg-transparent pl-10 -mt-2"
+            >
+              {#each lessons as { index, title, id }}
+                <a href={`/courses/${course.slug}/${id}`}>{index}. {title}</a>
+              {/each}
+            </div>
+          {/if}
+        </li>
+      {/each}
+    </ul>
+  </div>
+</div>

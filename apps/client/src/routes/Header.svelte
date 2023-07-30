@@ -1,25 +1,29 @@
 <script>
   // @ts-nocheck
-  import { page } from "$app/stores";
-  import { onMount, onDestroy } from "svelte";
-  import { signOut } from "@auth/sveltekit/client";
-  import "iconify-icon";
-  import { Dropdown } from "svelte-ui";
+  import { page } from '$app/stores';
+  import { onMount, onDestroy } from 'svelte';
+  import { signOut } from '@auth/sveltekit/client';
+  import 'iconify-icon';
+  import { Dropdown } from 'svelte-ui';
   import { createEventDispatcher } from 'svelte';
 
   let user;
   $: current = $page.url.pathname;
   $: menuLinks = [
-    { text: "Learn", path: "/courses", icon: "ri:graduation-cap-line" },
-    { text: "Repositories", path: "/repositories", icon: "ri:git-repository-line" },
-    { text: "BugsHub", path: "/bugs", icon: "ri:bug-line" },
-    { text: "Messages", path: "/messages", icon: "ri:message-3-line" },
+    { text: 'Learn', path: '/courses', icon: 'ri:graduation-cap-line' },
+    {
+      text: 'Repositories',
+      path: '/repositories',
+      icon: 'ri:git-repository-line',
+    },
+    { text: 'BugsHub', path: '/bugs', icon: 'ri:bug-line' },
+    { text: 'Messages', path: '/messages', icon: 'ri:message-3-line' },
   ];
 
   $: dropdownLinks = [
-    { text: "My Profile", path: `/${user?.username}`, icon: "ri:user-2-line" },
-    { text: "Authored Courses", path: "/authored", icon: "ri:book-read-line" },
-    { text: "Settings", path: "/settings", icon: "ri:settings-3-line" }
+    { text: 'My Profile', path: `/${user?.username}`, icon: 'ri:user-2-line' },
+    { text: 'Authored Courses', path: '/authored', icon: 'ri:book-read-line' },
+    { text: 'Settings', path: '/settings', icon: 'ri:settings-3-line' },
   ];
 
   onMount(() => {
@@ -36,44 +40,51 @@
   const notifications = [
     {
       id: 1,
-      name: "Gyomei Himejima",
+      name: 'Gyomei Himejima',
       avatar:
-        "https://staticg.sportskeeda.com/editor/2021/12/d8fd2-16407278993535-1920.jpg",
-      text: "We are proud to live and die as human beings.",
+        'https://staticg.sportskeeda.com/editor/2021/12/d8fd2-16407278993535-1920.jpg',
+      text: 'We are proud to live and die as human beings.',
       active: false,
     },
     {
       id: 2,
-      name: "Muzan Kibutsuji",
+      name: 'Muzan Kibutsuji',
       avatar:
-        "https://m.media-amazon.com/images/M/MV5BMzcyZjYxYzktMWZhMi00ZGFkLTllMTEtNjJjZjU4ODdlYzRmXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg",
-      text: "Prepare to witness the true terror of the Demong King!",
+        'https://m.media-amazon.com/images/M/MV5BMzcyZjYxYzktMWZhMi00ZGFkLTllMTEtNjJjZjU4ODdlYzRmXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg',
+      text: 'Prepare to witness the true terror of the Demong King!',
       active: true,
     },
     {
       id: 3,
-      name: "Ryuk",
+      name: 'Ryuk',
       avatar:
-        "https://cdn.europosters.eu/image/750/canvas-print-death-note-ryuk-checkered-i147611.jpg",
-      text: "Hahahahaha",
+        'https://cdn.europosters.eu/image/750/canvas-print-death-note-ryuk-checkered-i147611.jpg',
+      text: 'Hahahahaha',
       active: false,
     },
   ];
 </script>
 
-<header class="navbar bg-neutral  shadow">
+<header class="navbar bg-neutral shadow">
   <div class="navbar-start text-neutral-content">
     <a href="/" class="normal-case text-md">Planet Of The Bugs</a>
   </div>
 
   <nav>
-    <ul class="navbar-center hidden lg:flex items-center gap-2 text-neutral-content">
+    <ul
+      class="navbar-center hidden lg:flex items-center gap-2 text-neutral-content"
+    >
       {#each menuLinks as { icon, text, path }}
         <li
-          class={` transition-all  ${path === current ? "py-1 px-2 hidden lg:flex text-primary-focus"
-          : "py-1 px-2 hidden lg:flex"} `}
+          class={` transition-all  ${
+            path === current
+              ? 'py-1 px-2 hidden lg:flex text-primary-focus'
+              : 'py-1 px-2 hidden lg:flex'
+          } `}
         >
-          <a href={path} class="flex items-center gap-2"><iconify-icon icon={icon}/> {text}</a>
+          <a href={path} class="flex items-center gap-2"
+            ><iconify-icon {icon} /> {text}</a
+          >
         </li>
       {/each}
     </ul>
@@ -81,22 +92,21 @@
 
   <div class="navbar-end relative gap-2 items-center">
     <button class="btn btn-sm btn-circle">
-      <iconify-icon icon="ri:search-line" width="20" height="20" /> 
+      <iconify-icon icon="ri:search-line" width="20" height="20" />
     </button>
     <Dropdown items={notifications}>
       <button class="btn btn-sm btn-circle">
         <div class="indicator">
-          <iconify-icon icon="ri:notification-line" width="20" height="20" /> 
+          <iconify-icon icon="ri:notification-line" width="20" height="20" />
           <span class="badge badge-sm badge-accent indicator-item">2</span>
         </div>
-
       </button>
-      </Dropdown>
+    </Dropdown>
 
     <div class="dropdown dropdown-end lg:hidden">
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-      <div tabindex="0" class="btn btn-ghost btn-square text-3xl">
-        <iconify-icon icon="ri:menu-4-line"  />
+      <div tabindex="0" class="btn btn-square text-3xl">
+        <iconify-icon icon="ri:menu-line" />
       </div>
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
       <ul
@@ -105,12 +115,14 @@
       >
         {#each menuLinks as { text, path, icon }}
           <li>
-            <a href={path}><iconify-icon icon={icon}/>  {text}</a>
+            <a href={path}><iconify-icon {icon} /> {text}</a>
           </li>
         {/each}
         <li>
           {#if user}
-            <button on:click|preventDefault={() => signOut()}><iconify-icon icon="ri:logout-circle-line" /> Sign Out</button>
+            <button on:click|preventDefault={() => signOut()}
+              ><iconify-icon icon="ri:logout-circle-line" /> Sign Out</button
+            >
           {:else}
             <a href="/auth">Sign In</a>
           {/if}
@@ -122,7 +134,9 @@
       {#if user}
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <div tabindex="0" class="btn btn-secondary shadow btn-circle avatar">
-          <div class="w-10 rounded-full ring ring-offset-secondary ring-offset-2 shadow">
+          <div
+            class="w-10 rounded-full ring ring-offset-secondary ring-offset-2 shadow"
+          >
             <img src={user.image} alt={user.name} />
           </div>
         </div>
@@ -133,19 +147,22 @@
         >
           {#each dropdownLinks as { text, path, icon }}
             <li>
-              <a href={path}><iconify-icon icon={icon}/> {text}</a>
+              <a href={path}><iconify-icon {icon} /> {text}</a>
             </li>
           {/each}
           <li>
-            <button on:click|preventDefault={() => signOut()}><iconify-icon icon="ri:logout-circle-line" /> Sign Out</button>
+            <button on:click|preventDefault={() => signOut()}
+              ><iconify-icon icon="ri:logout-circle-line" /> Sign Out</button
+            >
           </li>
         </ul>
       {:else}
-      <div class="flex gap-2 items-center">
-        <a href="/auth" class="btn btn-primary btn-sm gap-2"><iconify-icon icon="ri:login-circle-line" /> Sign In</a>
-      </div>
+        <div class="flex gap-2 items-center">
+          <a href="/auth" class="btn btn-primary btn-sm gap-2"
+            ><iconify-icon icon="ri:login-circle-line" /> Sign In</a
+          >
+        </div>
       {/if}
     </div>
-
   </div>
 </header>
