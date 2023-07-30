@@ -1,7 +1,7 @@
 import {
     GET_USER_BY_EMAIL,
-    GET_REPOS_CONTRIBUTED_TO_BY_GITHUB_USERNAME,
-    GET_PINNED_ITEMS_BY_GITHUB_USERNAME,
+    GET_REPOS_CONTRIBUTED_TO,
+    GET_USER_PINNED_ITEMS,
 } from "$lib/graphql/queries/user";
 
 import {
@@ -13,7 +13,7 @@ import {
 
 export const getUserPinnedItems = (gitHubUsername: string): Promise<any[]> => {
     return githubClient.query({
-        query: GET_PINNED_ITEMS_BY_GITHUB_USERNAME,
+        query: GET_USER_PINNED_ITEMS,
         variables: {
             login: gitHubUsername,
         },
@@ -22,7 +22,7 @@ export const getUserPinnedItems = (gitHubUsername: string): Promise<any[]> => {
 
 export const getRepoContributions = (): Promise<any[]> => {
     return githubClient.query({
-        query: GET_REPOS_CONTRIBUTED_TO_BY_GITHUB_USERNAME,
+        query: GET_REPOS_CONTRIBUTED_TO,
     })
 };
 
@@ -55,6 +55,6 @@ export const getUserByEmail = (email: string): Promise<any> => {
 
 export const getGitHubAccountInfo = (): Promise<any> => {
     return githubClient.query({
-        query: GITHUB_GET_USER_BY_EMAIL,
+        query: GET_USER_BY_GITHUB_LOGIN,
     });
 };
