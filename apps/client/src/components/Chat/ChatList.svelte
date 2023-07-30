@@ -1,5 +1,6 @@
 <script lang="ts">
   export let chats;
+  import autoAnimate from "@formkit/auto-animate";
   const handleChatClick = (chat) => {
     console.log(chat);
   };
@@ -9,30 +10,30 @@
 <div class="h-full">
   <div class="flex justify-between items-center p-2 bg-base-200">
     <div>
-      <h3>My Conversations</h3>
+      <h3 class="text-xl"> My Conversations</h3>
     </div>
     <NewConversationModal />
   </div>
-  <div>
+  <div use:autoAnimate>
     {#each chats as chat}
       <div
-        class={`flex items-start gap-2 hover:bg-slate-100 cursor-pointer p-2 ${
-          chat.active ? "bg-base-200 border-r-4 border-rose-900" : "bg-white"
+        class={`flex items-start gap-2 hover:bg-base-200 cursor-pointer p-2 ${
+          chat.active ? "border-r-4 border-rose-900" : "bg-white"
         }`}
       >
-        <div class="avatar online">
-          <div class="w-12 mask mask-squircle">
+        <div class="avatar">
+          <div class="w-10 rounded-full">
             <img src={chat.avatar} alt={chat.name} />
           </div>
         </div>
         <div class="grow">
           <div class="flex items-start justify-between">
             <div>
-              <h4>{chat.name}</h4>
-              <p>{chat.text}</p>
+              <h4 class="text-xl text-bold">{chat.name}</h4>
+              <p class="text-truncate">{chat.text}</p>
             </div>
             <div>
-              <p>Yesterday</p>
+              <p class="text-secondary">{chat.timestamp}</p>
             </div>
           </div>
         </div>

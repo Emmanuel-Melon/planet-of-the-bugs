@@ -1,8 +1,6 @@
 import {
-  gql,
-  // @ts-ignore
-  // @ts-nocheck
-} from "@apollo/client/core/core.cjs";
+  gql
+} from "@apollo/client/core";
 
 export const GET_USER_BY_GITHUB_LOGIN = gql`
   query ($username: String!) {

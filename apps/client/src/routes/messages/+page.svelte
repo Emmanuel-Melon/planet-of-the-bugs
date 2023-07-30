@@ -5,8 +5,8 @@
   export let data: PageData;
 </script>
 
-<section class="flex bg-red-900">
-  <div class="basis-2/5 h-full grow">
+<section class="flex ">
+  <div class="basis-2/5">
     {#if data}
       <ChatList chats={data.chats} />
     {/if}

@@ -87,7 +87,7 @@
       <button class="btn btn-sm btn-circle">
         <div class="indicator">
           <iconify-icon icon="ri:notification-line" width="20" height="20" /> 
-          <span class="badge badge-sm badge-accent indicator-item">2</span>
+          <span class="badge badge-sm bg-rose-900 indicator-item">2</span>
         </div>
 
       </button>
@@ -122,7 +122,7 @@
       {#if user}
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <div tabindex="0" class="btn btn-secondary shadow btn-circle avatar">
-          <div class="w-10 rounded-full ring ring-offset-secondary ring-offset-2 shadow">
+          <div class="w-10 rounded-full shadow">
             <img src={user.image} alt={user.name} />
           </div>
         </div>
