@@ -15,6 +15,11 @@
     chapterOpenStates = [...chapterOpenStates]; // Trigger reactivity
   };
 
+  // Function to handle closing drawer after navigation
+  const handleCloseDrawer = () => {
+    document.getElementById('my-drawer')?.click();
+  };
+
   const currentLessonId = $page.url.pathname.split('/').pop();
 
   let currentLesson: { title: string } | null = null;
@@ -79,7 +84,12 @@
               class="flex flex-col items-start hover:bg-transparent pl-10 -mt-2"
             >
               {#each lessons as { index, title, id }}
-                <a href={`/courses/${course.slug}/${id}`}>{index}. {title}</a>
+                <a
+                  on:click={handleCloseDrawer}
+                  href={`/courses/${course.slug}/${id}`}
+                  class={$page.params.id === id ? 'font-bold' : ''}
+                  >{index}. {title}
+                </a>
               {/each}
             </div>
           {/if}
