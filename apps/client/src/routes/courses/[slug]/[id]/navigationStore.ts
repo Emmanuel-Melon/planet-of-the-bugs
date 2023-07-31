@@ -27,8 +27,6 @@ export function updateNavigationStore(
     (lesson: { id: any }) => lesson.id === lessonId
   );
 
-  console.log("current lessons: " + lessons[0]);
-
   // Index database field start at 1
   const currentChapterIndex = currentChapter.index - 1;
   const currentLessonIndex = currentLesson.index - 1;

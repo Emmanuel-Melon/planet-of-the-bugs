@@ -1,6 +1,7 @@
 <script lang="ts">
-  import LessonInteractiveContent from '$components/Lessons/LessonInteractiveContent.svelte';
+  import { onDestroy, onMount } from 'svelte';
   import { page } from '$app/stores';
+  import LessonInteractiveContent from '$components/Lessons/LessonInteractiveContent.svelte';
   export let data;
   const { course, progress } = data;
 
@@ -20,18 +21,42 @@
     document.getElementById('my-drawer')?.click();
   };
 
+  let toggleEditor = false;
+
+  // Detect screen size and set the toggleEditor variable accordingly
+  const setToggleEditorBasedOnScreenSize = () => {
+    toggleEditor = window.innerWidth < 1024; // Example breakpoint at 1024px, adjust as needed
+  };
+
+  // Add event listener to window to detect screen size changes
+  onMount(() => {
+    if (typeof window !== 'undefined') {
+      setToggleEditorBasedOnScreenSize();
+      window.addEventListener('resize', setToggleEditorBasedOnScreenSize);
+    }
+  });
+
+  // Cleanup the event listener on component destruction
+  onDestroy(() => {
+    window.removeEventListener('resize', setToggleEditorBasedOnScreenSize);
+  });
+
   const currentLessonId = $page.url.pathname.split('/').pop();
 
-  let currentLesson: { title: string } | null = null;
+  let currentLesson = findCurrentLesson(chapters, currentLessonId);
 
   // Find the current lesson based on the lesson ID from the URL
-  $: {
+  function findCurrentLesson(
+    chapters: any,
+    currentLessonId: string | undefined
+  ) {
     for (const chapter of chapters) {
-      currentLesson = chapter.lessons.find(
-        (lesson: { id: string | undefined }) => lesson.id === currentLessonId
+      const lesson = chapter.lessons.find(
+        (lesson: { id: any }) => lesson.id === currentLessonId
       );
+      if (lesson) return lesson;
     }
-    currentLessonId;
+    return null;
   }
 </script>
 
@@ -53,9 +78,25 @@
             <h1 class="font-bold text-xl">{course.title}</h1>
           </div>
         </div>
-        <slot />
+        {#if toggleEditor}
+          <LessonInteractiveContent lesson={currentLesson} />
+        {:else}
+          <slot />
+        {/if}
+        <div class="form-control lg:hidden">
+          <label class="label cursor-pointer justify-center space-x-4">
+            <span class="label-text">Lesson</span>
+            <input
+              type="checkbox"
+              class="toggle"
+              checked={toggleEditor}
+              on:change={() => (toggleEditor = !toggleEditor)}
+            />
+            <span class="label-text">Editor</span>
+          </label>
+        </div>
       </div>
-      <div class="lg:w-1/2">
+      <div class="hidden lg:block lg:w-1/2">
         <LessonInteractiveContent lesson={currentLesson} />
       </div>
     </div>
