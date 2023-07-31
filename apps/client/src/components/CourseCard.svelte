@@ -8,7 +8,8 @@
 </script>
 
 <div class="grow">
-  <Card img={course.cover} height="96">
+  <Card h="96">
+    <img src={course.cover} />
     <div class="w-full flex justify-between items-center">
       <h2 class="card-title">
         <a class="link link-hover" href={`/courses/${course.slug}`}

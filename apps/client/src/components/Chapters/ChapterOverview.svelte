@@ -32,7 +32,7 @@
   <div class="space-y-2">
     {#each chapter.lessons as lesson}
       <div class="flex items-center gap-2">
-        <span class="flex items-center bg-base-200 border-2 border-secondary p-2 rounded-full shodow-md">
+        <span class="flex items-center bg-base-200 border-2 p-2 rounded-full shodow-md">
           <iconify-icon icon={mapLessonIcons(lesson.type)} />
         </span>
         <a class="link link-hover" href={`/courses/${course.slug}/${lesson.id}`}

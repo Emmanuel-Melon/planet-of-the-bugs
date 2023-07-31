@@ -14,7 +14,7 @@ repositories"
 <section class="p-2">
   <div class="flex flex-col justify-center md:flex-row gap-2 mb-4">
     <div class="grow">
-      <h3>Hey</h3>
+ 
       <div class="form-control">
         <label class="label cursor-pointer">
           <span class="label-text">Today</span>
