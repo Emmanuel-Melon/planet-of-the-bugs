@@ -22,11 +22,9 @@ interface User {
 }
 
 import {
-
   PUBLIC_AUTH_SECRET,
   PUBLIC_GITHUB_ID,
   PUBLIC_GITHUB_SECRET,
-
   PUBLIC_DATA_BASE_URL,
 } from "$env/static/public";
 

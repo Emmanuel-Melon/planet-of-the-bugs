@@ -1,6 +1,4 @@
-import {
-  gql
-} from "@apollo/client/core";
+import { gql } from "@apollo/client/core";
 
 export const FETCH_ISSUES_BY_DIFFICULTY = gql`
   query MyQuery {

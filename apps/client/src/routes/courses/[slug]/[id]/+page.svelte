@@ -2,8 +2,8 @@
   import { onMount, onDestroy } from 'svelte';
   import { NextPrev } from 'svelte-ui';
   import LessonTextContent from '$components/Lessons/LessonTextContent.svelte';
-  import LessonVideoContent from '$components/Lessons/LessonVideoContent.svelte';
-  import LessonInteractiveContent from '$components/Lessons/LessonInteractiveContent.svelte';
+  // import LessonVideoContent from '$components/Lessons/LessonVideoContent.svelte';
+  // import LessonInteractiveContent from '$components/Lessons/LessonInteractiveContent.svelte';
   import navigationStore, { updateNavigationStore } from './navigationStore.js';
 
   export let data;
@@ -31,7 +31,6 @@
   $: {
     // Whenever the route changes, update the navigation store
     updateNavigationStore(course.course_chapters, lesson.chapter_id, lesson.id);
-    nav;
   }
 </script>
 
@@ -64,7 +63,7 @@
       <label class="cursor-pointer label gap-2">
         <input
           type="checkbox"
-          checked="checked"
+          checked
           class="checkbox checkbox-sm checkbox-success"
         />
         <span class="label-text">Mark as Completed</span>

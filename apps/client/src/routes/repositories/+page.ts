@@ -5,7 +5,7 @@ import {
 } from "$lib/graphql/queries/repositories.js";
 import apolloClient from "$lib/graphql/apolloClient";
 import { GITHUB_API } from "$lib/github/githubGraphQLClient";
-import { fail, redirect } from '@sveltejs/kit';
+import { fail, redirect } from "@sveltejs/kit";
 import { GET_USER_BY_EMAIL } from "$lib/graphql/queries/user";
 import {
   redirectUnAuthenticatedUsers,
