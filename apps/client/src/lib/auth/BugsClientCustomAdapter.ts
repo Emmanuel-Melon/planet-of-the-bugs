@@ -17,8 +17,6 @@ import {
 export default function BugsClientCustomAdapter(client) {
   return {
     async createUser(data) {
-      console.log("welcome!");
-      console.log(data);
       const user = await client.mutation({
         mutation: INSERT_NEW_USER,
         variables: {

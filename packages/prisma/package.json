@@ -1,0 +1,19 @@
+{
+  "name": "@bugs/prisma",
+  "version": "1.0.0",
+  "description": "prisma wrapper for planet of the bugs",
+  "main": "index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "^5.0.0",
+    "dotenv-cli": "^7.2.1",
+    "zod": "^3.21.4",
+    "zod-prisma": "^0.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.5",
+    "prisma": "^5.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  }
+}

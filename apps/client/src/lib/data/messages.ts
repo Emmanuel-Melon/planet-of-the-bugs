@@ -11,7 +11,7 @@ const chats = [
       "https://staticg.sportskeeda.com/editor/2021/12/d8fd2-16407278993535-1920.jpg",
     text: "We are proud to live and die as human beings.",
     active: false,
-    timestamp: "2 hours ago",
+    timestamp: "20:12",
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const chats = [
       "https://m.media-amazon.com/images/M/MV5BMzcyZjYxYzktMWZhMi00ZGFkLTllMTEtNjJjZjU4ODdlYzRmXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg",
     text: "Prepare to witness the true terror of the Demong King!",
     active: true,
-    timestamp: "2 hours ago",
+    timestamp: "20:09",
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const chats = [
       "https://cdn.europosters.eu/image/750/canvas-print-death-note-ryuk-checkered-i147611.jpg",
     text: "Hahahahaha",
     active: false,
-    timestamp: "2 hours ago",
+    timestamp: "6 hours ago",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const chats = [
     avatar: "https://practicaltyping.com/wp-content/uploads/2020/11/ban.jpg",
     text: "Something good Might Happen.",
     active: false,
-    timestamp: "2 hours ago",
+    timestamp: "4 hours ago",
   },
   {
     id: 5,
@@ -46,7 +46,7 @@ const chats = [
       "https://staticg.sportskeeda.com/editor/2022/02/40498-16437334600644-1920.jpg",
     text: "Hmmmmm, hmmm",
     active: false,
-    timestamp: "2 hours ago",
+    timestamp: "12 hours ago",
   },
 ];
 
@@ -61,36 +61,50 @@ const messages = [
     text: "Ah, the Sound Hashira. It seems we have finally crossed paths. Quite flashy!",
     senderAvatar: muzanURL,
     senderName: "Muzan Kibutsuji",
-    timestamp: "2 hours ago",
+    timestamp: "20:01",
   },
   {
     id: 2,
     text: "Muzan Kibutsuji, your reign of terror ends here.",
     senderAvatar: tengenURL,
     senderName: "tengen Uzui",
-    timestamp: "2 hours ago",
+    timestamp: "20:01",
   },
   {
     id: 3,
     text: "Your resistance is futile. I will crush you and all the Demon Slayers who dare oppose me.",
     senderAvatar: muzanURL,
     senderName: "Muzan Kibutsuji",
-    timestamp: "2 hours ago",
+    timestamp: "20:02",
   },
   {
     id: 4,
     text: "Your empty threats won't intimidate me, Muzan.",
     senderAvatar: tengenURL,
     senderName: "tengen Uzui",
-    timestamp: "2 hours ago",
+    timestamp: "20:04",
   },
   {
     id: 5,
     text: "Your arrogance blinds you, Muzan. We fight for a cause greater than ourselves, a cause that protects humanity from the darkness you embody.",
     senderAvatar: tengenURL,
     senderName: "tengen Uzui",
-    timestamp: "2 hours ago",
+    timestamp: "20:05",
   },
+  {
+    id: 6,
+    text: "I do not remember a single human being I have killed. Flesh dies and that is the end.",
+    senderAvatar: muzanURL,
+    senderName: "Muzan Kibutsuji",
+    timestamp: "20:07",
+  },
+  {
+    id: 7,
+    text: "Your resistance is futile. I will crush you and all the Demon Slayers who dare oppose me.",
+    senderAvatar: muzanURL,
+    senderName: "Muzan Kibutsuji",
+    timestamp: "20:09",
+  }
 ];
 
 export const fetchChats = (): Promise<any[]> => {
