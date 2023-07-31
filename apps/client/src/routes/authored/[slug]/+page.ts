@@ -1,7 +1,6 @@
 import { FETCH_COURSE_BY_SLUG } from "$lib/graphql/queries/courses";
 import apolloClient from "$lib/graphql/apolloClient";
 import { GET_USER_BY_EMAIL } from "$lib/graphql/queries/user";
-import { appwriteServer } from "$lib/appwrite/appwriteServer";
 import { destructureQueryResults } from "$lib/graphql/helpers";
 
 export const load = async (event) => {
@@ -27,11 +26,9 @@ export const load = async (event) => {
 
   const course = data.courses[0];
   const userInfo = destructuredUserObject[0];
-  // let files = await appwriteServer.storage.listFiles(course.bucketId);
   return {
     slug,
     course,
-
     user: { ...userInfo, profileLoading },
   };
 };

@@ -1,8 +1,6 @@
 import {
-  gql,
-  // @ts-ignore
-  // @ts-nocheck
-} from "@apollo/client/core/core.cjs";
+  gql
+} from "@apollo/client/core";
 
 export const GET_SUBSCRIBED_REPOS = gql`
   query SubscribedRepos($user_id: uuid) {
@@ -13,6 +11,21 @@ export const GET_SUBSCRIBED_REPOS = gql`
       repo_url
     }
   }
+`;
+
+export const GET_REPO_CONTRIBUTORS = gql`
+query GetContributors($owner: String!, $repoName: String!) {
+  repository(owner: $owner, name: $repoName) {
+    collaborators(affiliation: ALL, first: 10) {
+      edges {
+        node {
+          login
+          contributions
+        }
+      }
+    }
+  }
+}
 `;
 
 export const GET_AVAILABLE_TOPICS = gql`

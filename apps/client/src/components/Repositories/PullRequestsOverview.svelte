@@ -1,17 +1,34 @@
 <script>
-  import { Card } from "svelte-ui";
-  export let pullRequests = [
+  export let contributors = [
     {
-      title: "hello",
-      description: "hello"
+      name: "Emmanuel Gatwech",
+      bio: "Eman and the E is for Energy!",
+      avatar: "https://avatars.githubusercontent.com/u/21015204?v=4"
     },
+    {
+      name: "Maged Faiz",
+      bio: "Software Developer",
+      avatar: "https://avatars.githubusercontent.com/u/91534137?v=4"
+    },
+    {
+      name: "Leona Magaya",
+      bio: "Data analyst with 2 years of experience. Python | SQL | Software Engineering Enthusiast | ALX Student",
+      avatar: "https://avatars.githubusercontent.com/u/111906246?v=4"
+    }
   ];
 </script>
 
 <section>
-  {#each pullRequests as pullRequest}
-    <Card title={pullRequest.title}>
-      <p>{pullRequest.description}</p>
-    </Card>
-  {/each}
+  <div class="space-y-4">
+    {#each contributors as contributor}
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <div>
+                <h3 class="text-bold">{contributor.name}</h3>
+                <p class="text-gray-600">{contributor.bio}</p>
+            </div>
+        </div>
+      </div>
+    {/each}
+  </div>
 </section>

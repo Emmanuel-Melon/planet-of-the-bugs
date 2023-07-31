@@ -1,35 +1,43 @@
-<script>
+<script lang="ts">
   export let chats;
-
-  const handleConversationClick = (conversation) => {
-    console.log(conversation);
-  }
+  import autoAnimate from "@formkit/auto-animate";
+  const handleChatClick = (chat) => {
+    console.log(chat);
+  };
+  import NewConversationModal from "$components/Modals/NewConversationModal.svelte";
 </script>
 
-<div>
-  {#each chats as chat}
-    <div on:click={() => handleConversationClick(chat)}
-      class={`flex items-start gap-2 hover:bg-slate-100 cursor-pointer p-2 ${
-        chat.active ? "bg-base-200 border-l-4 border-primary" : "bg-white"
-      }`}
-    >
-      <div class="avatar online">
-        <div class="w-12 mask mask-squircle">
-          <img src={chat.avatar} alt={chat.name} />
-        </div>
-      </div>
-      <div class="grow">
-        <div class="flex items-start justify-between">
-            <div>
-                <h4>{chat.name}</h4>
-                <p>{chat.text}</p>
-            </div>
-            <div>
-                <p>Yesterday</p>
-            </div>
-        </div>
-
-      </div>
+<div class="h-full">
+  <div class="flex justify-between items-center p-2 bg-base-200">
+    <div>
+      <h3 class="text-xl"> My Conversations</h3>
     </div>
-  {/each}
+    <NewConversationModal />
+  </div>
+  <div use:autoAnimate>
+    {#each chats as chat}
+      <div
+        class={`flex items-start gap-2 hover:bg-base-200 cursor-pointer p-2 ${
+          chat.active ? "border-r-4 border-rose-900" : "bg-white"
+        }`}
+      >
+        <div class="avatar">
+          <div class="w-10 rounded-full">
+            <img src={chat.avatar} alt={chat.name} />
+          </div>
+        </div>
+        <div class="grow">
+          <div class="flex items-start justify-between">
+            <div>
+              <h4 class="text-xl text-bold">{chat.name}</h4>
+              <p class="text-truncate">{chat.text}</p>
+            </div>
+            <div>
+              <p class="text-secondary">{chat.timestamp}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    {/each}
+  </div>
 </div>

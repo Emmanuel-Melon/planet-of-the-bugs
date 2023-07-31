@@ -75,15 +75,12 @@
       class="navbar-center hidden lg:flex items-center gap-2 text-neutral-content"
     >
       {#each menuLinks as { icon, text, path }}
-        <li
-          class={` transition-all  ${
-            path === current
-              ? 'py-1 px-2 hidden lg:flex text-primary-focus'
-              : 'py-1 px-2 hidden lg:flex'
-          } `}
-        >
-          <a href={path} class="flex items-center gap-2"
-            ><iconify-icon {icon} /> {text}</a
+        <li>
+          <a
+            href={path}
+            class={`btn btn-sm gap-2 hover:bg-base-300 ${
+              path === current ? 'hidden lg:flex bg-rose-900' : 'hidden lg:flex'
+            }`}><iconify-icon {icon} /> {text}</a
           >
         </li>
       {/each}
@@ -98,7 +95,7 @@
       <button class="btn btn-sm btn-circle">
         <div class="indicator">
           <iconify-icon icon="ri:notification-line" width="20" height="20" />
-          <span class="badge badge-sm badge-accent indicator-item">2</span>
+          <span class="badge badge-sm bg-rose-900 indicator-item">2</span>
         </div>
       </button>
     </Dropdown>
@@ -134,9 +131,7 @@
       {#if user}
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <div tabindex="0" class="btn btn-secondary shadow btn-circle avatar">
-          <div
-            class="w-10 rounded-full ring ring-offset-secondary ring-offset-2 shadow"
-          >
+          <div class="w-10 rounded-full shadow">
             <img src={user.image} alt={user.name} />
           </div>
         </div>

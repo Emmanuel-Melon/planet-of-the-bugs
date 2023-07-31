@@ -1,8 +1,6 @@
 import {
-  gql,
-  // @ts-ignore
-  // @ts-nocheck
-} from "@apollo/client/core/core.cjs";
+  gql
+} from "@apollo/client/core";
 
 export const FETCH_ISSUES_BY_DIFFICULTY = gql`
   query MyQuery {

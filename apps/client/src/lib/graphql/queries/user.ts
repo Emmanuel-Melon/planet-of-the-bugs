@@ -1,12 +1,10 @@
 import {
-  gql,
-  // @ts-ignore
-  // @ts-nocheck
-} from "@apollo/client/core/core.cjs";
+  gql
+} from "@apollo/client/core";
 
 export const GET_USER_BY_GITHUB_LOGIN = gql`
-  query ($username: String!) {
-    user(login: $username) {
+  query ($login: String!) {
+    user(login: $login) {
       login
       bio
       company
@@ -42,46 +40,8 @@ export const GET_USER_BY_GITHUB_LOGIN = gql`
   }
 `;
 
-export const GET_GITHUB_USER_BASIC_INFO_BY_GITHUB_USERNAME = gql`
-  query getGithubUserBasicInfoByGithubUsername($username: String!) {
-    user(login: $username) {
-      login
-      bio
-      company
-      email
-      id
-      isBountyHunter
-      isCampusExpert
-      isDeveloperProgramMember
-      isEmployee
-      isGitHubStar
-      isHireable
-      name
-      websiteUrl
-      url
-      twitterUsername
-      pronouns
-      avatarUrl
-      createdAt
-      followers {
-        totalCount
-      }
-      location
-      pullRequests {
-        totalCount
-      }
-      repositories {
-        totalCount
-      }
-      starredRepositories {
-        totalCount
-      }
-    }
-  }
-`;
-
-export const GET_PINNED_ITEMS_BY_GITHUB_USERNAME = gql`
-  query getPinnedItems($username: String!) {
+export const GET_USER_PINNED_ITEMS = gql`
+  query getUserPinnedItems($username: String!) {
     user(login: $username) {
       pinnedItems(first: 2) {
         totalCount
@@ -116,8 +76,8 @@ export const GET_PINNED_ITEMS_BY_GITHUB_USERNAME = gql`
   }
 `;
 
-export const GET_REPOS_CONTRIBUTED_TO_BY_GITHUB_USERNAME = gql`
-  query getReposContributedToByGithubUsername($username: String!) {
+export const GET_REPOS_CONTRIBUTED_TO = gql`
+  query getReposContributedTo($username: String!) {
     user(login: $username) {
       repositoriesContributedTo(last: 20) {
         totalCount
@@ -164,8 +124,8 @@ export const GET_USER_BY_EMAIL = gql`
   }
 `;
 
-export const GET_USER_BASIC_INFO_BY_USERNAME = gql`
-  query getUserBasicInfoByUsername($username: String) {
+export const GET_USER_BY_USERNAME = gql`
+  query getUserByUsername($username: String!) {
     user: user(where: { username: { _eq: $username } }) {
       email
       created_at
@@ -208,7 +168,7 @@ export const USER_BY_ACCOUNT = gql`
     ) {
       access_token
       created_at
-      expires_at
+      expires_a
       id
       id_token
       provider

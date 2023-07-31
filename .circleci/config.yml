@@ -19,14 +19,8 @@ jobs:
           name: Install Vercel CLI
           command: npm install -g vercel
       - run:
-          name: Pull Vercel Environment Information
-          command: vercel pull --confirm --yes --environment=production --token=$VERCEL_TOKEN
-      - run:
-          name: Build Project Artifacts
-          command: vercel build --prod --token=$VERCEL_TOKEN
-      - run:
-          name: Deploy Project Artifacts to Vercel
-          command: yarn deploy
+          name: Building app
+          command: yarn build # or any other command to build your app
   hasura-migrations:
     docker:
       - image: cimg/node:16.20.1
@@ -37,10 +31,39 @@ jobs:
       - image: cimg/node:16.20.1
     steps:
       - checkout
+
+  # Deployment job to Vercel
+  deploy-to-vercel:
+    docker:
+      - image: cimg/node:16.20.1
+    steps:
+    - checkout
+    - run:
+        name: Install Vercel CLI
+        command: npm install -g vercel
+    - run:
+        name: Deploy to Vercel
+        command: vercel --prod # or any other Vercel deployment command you need
+  test:
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          name: "build phase"
+          command: yarn build
+      - run:
+          name: "run tests"
+          command: yarn test
+
 workflows:
-  build:
+  build-and-deploy:
     jobs:
       - build
-
-
-# write an article about API Gateways and data access layers.
+      - test
+      - deploy-to-vercel:
+          requires:
+            - build
+            - test

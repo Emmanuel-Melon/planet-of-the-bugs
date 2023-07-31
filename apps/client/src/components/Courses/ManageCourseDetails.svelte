@@ -86,7 +86,7 @@
           </div>
         </div>
 
-        <div class="card-actions justify-end mt-2 py-2">
+        <div class="card-actions justify-start mt-2 py-2">
           <Button
             CTA="Update Course Details"
             icon="ri:check-line"
@@ -105,7 +105,7 @@
           >Planet Of The Bugs</span
         >. You’ll get a chance to confirm your choice.
       </p>
-      <div class="card-actions justify-end">
+      <div class="card-actions justify-start">
         <Button
           state="error"
           icon="ri:delete-bin-7-line"
