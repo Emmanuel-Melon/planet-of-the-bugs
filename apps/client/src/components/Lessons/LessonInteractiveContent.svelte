@@ -1,5 +1,5 @@
-<script>
-  export let lesson;
+<script lang="ts">
+  export let lesson: Object;
   import CodeEditor from '$components/CodeEditor/CodeEditor.svelte';
   import EditorTerminal from '$components/CodeEditor/EditorTerminal.svelte';
   import EditorIFrame from '$components/CodeEditor/EditorIFrame.svelte';
