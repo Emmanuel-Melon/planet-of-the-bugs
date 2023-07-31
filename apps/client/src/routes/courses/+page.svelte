@@ -1,22 +1,22 @@
 <script lang="ts">
   // @ts-nocheck
   export let data;
-  import { onMount } from "svelte";
-  import { FETCH_COURSES } from "$lib/graphql/queries/courses";
-  import { query } from "svelte-apollo";
-  import SidebarFilter from "$components/SidebarFilter.svelte";
-  import { PageHeader } from "svelte-ui";
+  import { onMount } from 'svelte';
+  import { FETCH_COURSES } from '$lib/graphql/queries/courses';
+  import { query } from 'svelte-apollo';
+  import SidebarFilter from '$components/SidebarFilter.svelte';
+  import { PageHeader } from 'svelte-ui';
   let { user } = data;
-  import autoAnimate from "@formkit/auto-animate";
-  import CoursesList from "$components/Courses/CoursesList.svelte";
+  import autoAnimate from '@formkit/auto-animate';
+  import CoursesList from '$components/Courses/CoursesList.svelte';
   let offset = 2;
   let limit = 2;
 
   let courses = query(FETCH_COURSES, {
     variables: {
       limit,
-      offset
-    }
+      offset,
+    },
   });
 
   onMount(async () => {
@@ -27,29 +27,26 @@
   const criteria = [
     {
       id: 1,
-      title: "Complexity",
-      icon: "ri:bar-chart-2-line",
+      title: 'Complexity',
+      icon: 'ri:bar-chart-2-line',
     },
     {
       id: 2,
-      title: "Duration",
-      icon: "ri:time-line",
+      title: 'Duration',
+      icon: 'ri:time-line',
     },
   ];
 
   $: user;
 
-
   const loadMoreCourses = () => {
     limit = limit + 1;
     courses.fetchMore({
       variables: {
-        limit
-      }
+        limit,
+      },
     });
-  }
-
-
+  };
 </script>
 
 <PageHeader
