@@ -22,9 +22,6 @@
 
 <section class="space-y-2">
   <Card title={lesson.title}>
-    {lesson.description}
+    {lesson.content}
   </Card>
-  <div>
-    {lesson.description}
-  </div>
 </section>

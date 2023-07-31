@@ -12,7 +12,7 @@
 
 </script>
 
-<section class="w-full body h-fit p-4 text-primary-content">
+<section class="w-full bg-rose-900 h-fit p-4 text-primary-content">
   <div class="space-y-4 w-1/8 mx-auto p-4">
     <h1 class="text-5xl">{course.title}</h1>
     <p>{course.description}</p>
