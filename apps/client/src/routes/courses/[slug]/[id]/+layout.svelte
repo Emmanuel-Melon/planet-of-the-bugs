@@ -41,9 +41,9 @@
     window.removeEventListener('resize', setToggleEditorBasedOnScreenSize);
   });
 
-  const currentLessonId = $page.url.pathname.split('/').pop();
+  $: currentLessonId = $page.url.pathname.split('/').pop();
 
-  let currentLesson = findCurrentLesson(chapters, currentLessonId);
+  $: currentLesson = findCurrentLesson(chapters, currentLessonId);
 
   // Find the current lesson based on the lesson ID from the URL
   function findCurrentLesson(
@@ -79,25 +79,45 @@
           </div>
         </div>
         {#if toggleEditor}
-          <LessonInteractiveContent lesson={currentLesson} />
+          {#if currentLesson.type.toLowerCase() === 'text'}
+            <p>This lesson has no interactive content</p>
+          {:else if currentLesson.type.toLowerCase() === 'video'}
+            <p>Lesson Video Component</p>
+          {:else}
+            <LessonInteractiveContent lesson={currentLesson} />
+          {/if}
         {:else}
           <slot />
         {/if}
-        <div class="form-control lg:hidden">
-          <label class="label cursor-pointer justify-center space-x-4">
-            <span class="label-text">Lesson</span>
-            <input
-              type="checkbox"
-              class="toggle"
-              checked={toggleEditor}
-              on:change={() => (toggleEditor = !toggleEditor)}
-            />
-            <span class="label-text">Editor</span>
-          </label>
-        </div>
+        {#if currentLesson.type.toLowerCase() !== 'text'}
+          <div class="form-control lg:hidden">
+            <label class="label cursor-pointer justify-center space-x-4">
+              <span class="label-text">Lesson</span>
+              <input
+                type="checkbox"
+                class="toggle"
+                checked={toggleEditor}
+                on:change={() => (toggleEditor = !toggleEditor)}
+              />
+              <span class="label-text">
+                {#if currentLesson.type.toLowerCase() === 'video'}
+                  Video
+                {:else}
+                  Editor
+                {/if}
+              </span>
+            </label>
+          </div>
+        {/if}
       </div>
       <div class="hidden lg:block lg:w-1/2">
-        <LessonInteractiveContent lesson={currentLesson} />
+        {#if currentLesson.type.toLowerCase() === 'text'}
+          <p>This lesson has no interactive content</p>
+        {:else if currentLesson.type.toLowerCase() === 'video'}
+          <p>Lesson Video Component</p>
+        {:else}
+          <LessonInteractiveContent lesson={currentLesson} />
+        {/if}
       </div>
     </div>
   </div>
