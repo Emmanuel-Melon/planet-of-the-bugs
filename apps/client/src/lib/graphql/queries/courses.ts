@@ -3,8 +3,8 @@ import {
 } from "@apollo/client/core";
 
 export const FETCH_COURSES = gql`
-  query fetchCourses {
-    courses {
+  query fetchCourses($limit: Int, $offset: Int) {
+    courses(limit: $limit, offset: $offset) {
       id
       title
       description
