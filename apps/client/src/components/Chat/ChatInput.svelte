@@ -1,6 +1,5 @@
 <script>
   let text = "";
-
   function handleMessage() {
     console.log(`hello: ${text}`);
   }

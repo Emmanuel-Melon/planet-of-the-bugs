@@ -9,7 +9,7 @@
 >
 
   <div class="chat-header">
-    <time class="text-xs opacity-50">{message.timestamp}</time>
+    <time class="text-xs opacity-50">{message.createdAt}</time>
   </div>
   <div class={`chat-bubble ${
     message?.senderName === "Muzan Kibutsuji" ? "bg-base-200" : "bg-rose-200"

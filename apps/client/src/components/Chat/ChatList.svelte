@@ -1,9 +1,8 @@
 <script lang="ts">
   export let chats;
+  export let loading;
+  export let onChatSelected;
   import autoAnimate from "@formkit/auto-animate";
-  const handleChatClick = (chat) => {
-    console.log(chat);
-  };
   import NewConversationModal from "$components/Modals/NewConversationModal.svelte";
 </script>
 
@@ -20,6 +19,7 @@
         class={`flex items-start gap-2 hover:bg-base-200 cursor-pointer p-2 ${
           chat.active ? "border-r-4 border-rose-900" : "bg-white"
         }`}
+        on:click={() => onChatSelected(chat)}
       >
         <div class="avatar">
           <div class="w-10 rounded-full">
@@ -31,9 +31,6 @@
             <div>
               <h4 class="text-xl text-bold">{chat.name}</h4>
               <p class="text-truncate">{chat.text}</p>
-            </div>
-            <div>
-              <p class="text-secondary">{chat.timestamp}</p>
             </div>
           </div>
         </div>

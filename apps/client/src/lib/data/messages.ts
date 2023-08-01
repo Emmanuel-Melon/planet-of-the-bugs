@@ -1,126 +1,41 @@
-import {
-  FETCH_REPOSITORIES_BY_TOPICS,
-  GET_AVAILABLE_TOPICS,
-  GET_SUBSCRIBED_REPOS,
-} from "$lib/graphql/queries/repositories.js";
-const chats = [
-  {
-    id: 1,
-    name: "Gyomei Himejima",
-    avatar:
-      "https://staticg.sportskeeda.com/editor/2021/12/d8fd2-16407278993535-1920.jpg",
-    text: "We are proud to live and die as human beings.",
-    active: false,
-    timestamp: "20:12",
-  },
-  {
-    id: 2,
-    name: "Muzan Kibutsuji",
-    avatar:
-      "https://m.media-amazon.com/images/M/MV5BMzcyZjYxYzktMWZhMi00ZGFkLTllMTEtNjJjZjU4ODdlYzRmXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg",
-    text: "Prepare to witness the true terror of the Demong King!",
-    active: true,
-    timestamp: "20:09",
-  },
-  {
-    id: 3,
-    name: "Ryuk",
-    avatar:
-      "https://cdn.europosters.eu/image/750/canvas-print-death-note-ryuk-checkered-i147611.jpg",
-    text: "Hahahahaha",
-    active: false,
-    timestamp: "6 hours ago",
-  },
-  {
-    id: 4,
-    name: "Ban",
-    avatar: "https://practicaltyping.com/wp-content/uploads/2020/11/ban.jpg",
-    text: "Something good Might Happen.",
-    active: false,
-    timestamp: "4 hours ago",
-  },
-  {
-    id: 5,
-    name: "Nezuko",
-    avatar:
-      "https://staticg.sportskeeda.com/editor/2022/02/40498-16437334600644-1920.jpg",
-    text: "Hmmmmm, hmmm",
-    active: false,
-    timestamp: "12 hours ago",
-  },
-];
+import { INSERT_NEW_CHAT, INSERT_NEW_MESSAGE } from "$lib/graphql/mutations/messages";
+import { FETCH_CHAT_MESSAGES, FETCH_CHATS } from "$lib/graphql/queries/messages";
+import { mutation, query } from 'svelte-apollo';
+import type { FetchResult } from "@apollo/client/link/core/types";
+import apolloClient from "$lib/graphql/apolloClient";
 
-const muzanURL =
-  "https://m.media-amazon.com/images/M/MV5BMzcyZjYxYzktMWZhMi00ZGFkLTllMTEtNjJjZjU4ODdlYzRmXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg";
-const tengenURL =
-  "https://rare-gallery.com/thumbnail/1375991-tengen-uzui-sound-hashira-demon-slayer-anime-kimetsu-no-yaiba.jpg";
-
-const messages = [
-  {
-    id: 1,
-    text: "Ah, the Sound Hashira. It seems we have finally crossed paths. Quite flashy!",
-    senderAvatar: muzanURL,
-    senderName: "Muzan Kibutsuji",
-    timestamp: "20:01",
-  },
-  {
-    id: 2,
-    text: "Muzan Kibutsuji, your reign of terror ends here.",
-    senderAvatar: tengenURL,
-    senderName: "tengen Uzui",
-    timestamp: "20:01",
-  },
-  {
-    id: 3,
-    text: "Your resistance is futile. I will crush you and all the Demon Slayers who dare oppose me.",
-    senderAvatar: muzanURL,
-    senderName: "Muzan Kibutsuji",
-    timestamp: "20:02",
-  },
-  {
-    id: 4,
-    text: "Your empty threats won't intimidate me, Muzan.",
-    senderAvatar: tengenURL,
-    senderName: "tengen Uzui",
-    timestamp: "20:04",
-  },
-  {
-    id: 5,
-    text: "Your arrogance blinds you, Muzan. We fight for a cause greater than ourselves, a cause that protects humanity from the darkness you embody.",
-    senderAvatar: tengenURL,
-    senderName: "tengen Uzui",
-    timestamp: "20:05",
-  },
-  {
-    id: 6,
-    text: "I do not remember a single human being I have killed. Flesh dies and that is the end.",
-    senderAvatar: muzanURL,
-    senderName: "Muzan Kibutsuji",
-    timestamp: "20:07",
-  },
-  {
-    id: 7,
-    text: "Your resistance is futile. I will crush you and all the Demon Slayers who dare oppose me.",
-    senderAvatar: muzanURL,
-    senderName: "Muzan Kibutsuji",
-    timestamp: "20:09",
-  }
-];
-
-export const fetchChats = (): Promise<any[]> => {
-  return new Promise((resolve, reject) => {
-    setInterval(() => resolve(chats), 1000);
+export const fetchChats = (userId: string): Promise<any[]> => {
+  return apolloClient.query({
+    query: FETCH_CHATS,
+    variables: {
+      userId
+    }
   });
 };
 
-export const fetchMessages = (): Promise<any[]> => {
-  return new Promise((resolve, reject) => {
-    setInterval(() => resolve(messages), 1000);
+export const fetchMessages = (chatId: string) => {
+  return apolloClient.query( {
+    query: FETCH_CHAT_MESSAGES,
+    variables: {
+      chatId
+    }
   });
 };
 
-export const sendMessages = (): Promise<void> => {
-  return new Promise((resolve, reject) => {
-    setInterval(() => resolve(), 1000);
+export const sendChatMessage = (message: any): Promise<FetchResult<unknown>> => {
+  const newMessageMutation = mutation(INSERT_NEW_MESSAGE);
+  return newMessageMutation({
+    variables: {
+      ...message
+    }
+  });
+};
+
+export const startNewChat = async (chat: any): Promise<FetchResult<unknown>> => {
+  const newChatMutation = mutation(INSERT_NEW_CHAT);
+  return newChatMutation({
+    variables: {
+      ...chat
+    }
   });
 };

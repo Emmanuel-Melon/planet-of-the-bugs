@@ -39,7 +39,6 @@
 
   $: user;
 
-
   const loadMoreCourses = () => {
     limit = limit + 1;
     courses.fetchMore({
@@ -48,8 +47,6 @@
       }
     });
   }
-
-
 </script>
 
 <PageHeader

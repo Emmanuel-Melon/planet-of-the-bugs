@@ -1,7 +1,4 @@
-import {
-  gql,
-  // @ts-ignore
-} from "@apollo/client/core/core.cjs";
+import { gql } from "@apollo/client/core";
 
 export const CREATE_LESSON = gql`
   mutation insertLessonsOne($lessonInput: lessons_insert_input!) {
