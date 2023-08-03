@@ -7,6 +7,18 @@ declare global {
     // interface PageData {}
     // interface Platform {}
   }
+
+  /// <reference types="lucia" />
+
+  namespace Lucia {
+		type Auth = import("$lib/server/lucia").Auth;
+		type DatabaseUserAttributes = {
+			username: string;
+		};
+		type DatabaseSessionAttributes = {};
+	}
 }
+
+
 
 export {};

@@ -322,6 +322,16 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
+"@lucia-auth/adapter-prisma@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@lucia-auth/adapter-prisma/-/adapter-prisma-3.0.0.tgz#64ca28260031ada65699be5f4597b4feaf701d73"
+  integrity sha512-qrFA5IID4AulINQbLQLQPIXqE9+M3zjmN558VDhrS3Y7Fdn5dyObPbHijUWw7lGYgOrhxDox9UUG8oyZ3+D1MA==
+
+"@lucia-auth/oauth@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@lucia-auth/oauth/-/oauth-2.0.1.tgz#7603b114c4eccc6cfae1a140dbeff79cd4dfb014"
+  integrity sha512-tjrV7H+7OEyWH+wc9g9+APt7u3mU4/vU4QShln+zN/Yepug3TU5EShE7T8x5SUGVcZV9dysOosyezY2AOC9p0A==
+
 "@mapbox/node-pre-gyp@^1.0.5":
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/@mapbox/node-pre-gyp/-/node-pre-gyp-1.0.10.tgz#8e6735ccebbb1581e5a7e652244cadc8a844d03c"

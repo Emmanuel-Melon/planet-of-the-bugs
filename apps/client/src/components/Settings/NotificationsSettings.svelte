@@ -22,11 +22,8 @@
 </script>
 
 <div class="basis-3/4 space-y-2">
-  <Card title="Notifications">
-    <p>Manage your notification settings</p>
-  </Card>
   <Card title="Email Notifications">
-    <p>You will receive email notifications when the following happens:</p>
+    <p class="text-neutral-500 font-light">You will receive email notifications when the following happens:</p>
     <form>
       {#each options as { description, status }}
         <div class="form-control">
@@ -39,7 +36,7 @@
     </form>
   </Card>
   <Card title="Push Notifications">
-    <p>You will receive push notifications when the following happens:</p>
+    <p class="text-neutral-500 font-light">You will receive push notifications when the following happens:</p>
     <form>
       {#each options as { description, status }}
         <div class="form-control">

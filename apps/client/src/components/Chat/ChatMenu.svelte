@@ -2,7 +2,7 @@
   export let chat;
 </script>
 
-<div class="flex justify-between bg-base-200 items-center">
+<div class="flex justify-between items-center">
   <div class="flex justify-between items-center w-full p-2">
     <div class="flex items-center gap-4">
       <div class="chat-image avatar">

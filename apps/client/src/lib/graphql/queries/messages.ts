@@ -3,6 +3,7 @@ import { gql } from "@apollo/client/core";
 export const FETCH_CHAT_MESSAGES = gql`
   query fetchChatMessages($chatId: uuid!) {
     message(where: {chat_id: {_eq: $chatId}}) {
+      created_at
       chat_id
       text
       user {
