@@ -1,22 +1,22 @@
 <script lang="ts">
   // @ts-nocheck
   export let data;
-  import { onMount } from 'svelte';
-  import { FETCH_COURSES } from '$lib/graphql/queries/courses';
-  import { query } from 'svelte-apollo';
-  import SidebarFilter from '$components/SidebarFilter.svelte';
-  import { PageHeader } from 'svelte-ui';
+  import { onMount } from "svelte";
+  import { FETCH_COURSES } from "$lib/graphql/queries/courses";
+  import { query } from "svelte-apollo";
+  import SidebarFilter from "$components/SidebarFilter.svelte";
+  import { PageHeader } from "svelte-ui";
   let { user } = data;
-  import autoAnimate from '@formkit/auto-animate';
-  import CoursesList from '$components/Courses/CoursesList.svelte';
+  import autoAnimate from "@formkit/auto-animate";
+  import CoursesList from "$components/Courses/CoursesList.svelte";
   let offset = 2;
   let limit = 2;
 
   let courses = query(FETCH_COURSES, {
     variables: {
       limit,
-      offset,
-    },
+      offset
+    }
   });
 
   onMount(async () => {
@@ -43,10 +43,10 @@
     limit = limit + 1;
     courses.fetchMore({
       variables: {
-        limit,
-      },
+        limit
+      }
     });
-  };
+  }
 </script>
 
 <PageHeader

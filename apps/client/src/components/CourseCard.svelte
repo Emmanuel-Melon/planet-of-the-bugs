@@ -8,8 +8,8 @@
 </script>
 
 <div class="grow">
-  <Card h="96">
-    <img src={course.cover} />
+  <Card h="56">
+    
     <div class="w-full flex justify-between items-center">
       <h2 class="card-title">
         <a class="link link-hover" href={`/courses/${course.slug}`}
@@ -17,7 +17,7 @@
         >
       </h2>
       <div class="flex gap-2 items-center ">
-        <div class=" badge badge-lg bg-rose-900 badge-outline gap-2">
+        <div class=" badge badge-lg badge-outline gap-2">
           <iconify-icon icon="ri:bar-chart-2-line" />
           {course.complexity}
         </div>

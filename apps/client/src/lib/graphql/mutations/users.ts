@@ -1,7 +1,4 @@
-import {
-  gql,
-  // @ts-ignore
-} from "@apollo/client/core/core.cjs";
+import { gql } from "@apollo/client/core";
 
 export const INSERT_NEW_USER = gql`
   mutation addNewUser($username: String, $name: String, $email: String) {

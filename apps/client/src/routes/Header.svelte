@@ -72,16 +72,12 @@
 
   <nav>
     <ul
-      class="navbar-center hidden lg:flex items-center gap-2 text-neutral-content"
+      class="navbar-center hidden lg:flex items-center text-neutral-content"
     >
       {#each menuLinks as { icon, text, path }}
         <li>
-          <a
-            href={path}
-            class={`btn btn-sm gap-2 hover:bg-base-300 ${
-              path === current ? 'hidden lg:flex bg-rose-900' : 'hidden lg:flex'
-            }`}><iconify-icon {icon} /> {text}</a
-          >
+          <a href={path} class={`btn btn-sm gap-2 hover:bg-rose-50 hover:text-black ${path === current ? "hidden lg:flex bg-rose-900"
+          : "hidden lg:flex"}`}><iconify-icon icon={icon}/> {text}</a>
         </li>
       {/each}
     </ul>
@@ -94,7 +90,7 @@
     <Dropdown items={notifications}>
       <button class="btn btn-sm btn-circle">
         <div class="indicator">
-          <iconify-icon icon="ri:notification-line" width="20" height="20" />
+          <iconify-icon icon="ri:notification-line" width="20" height="20" /> 
           <span class="badge badge-sm bg-rose-900 indicator-item">2</span>
         </div>
       </button>

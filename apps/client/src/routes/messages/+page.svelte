@@ -1,17 +1,27 @@
 <script lang="ts">
   import "iconify-icon";
-  import ChatList from "$components/Chat/ChatList.svelte";
-  import Conversation from "$components/Chat/Conversation.svelte";
+  import { setContext } from "svelte";
+  import { onDestroy, onMount } from "svelte";
+  import { selectedChat } from "./store";
+  import ChatDetails from "$components/Chat/ChatDetails.svelte";
+  import ChatMenu from "$components/Chat/ChatMenu.svelte";
+  import ChatInput from "$components/Chat/ChatInput.svelte";
   export let data: PageData;
+  import { createEventDispatcher, getContext } from "svelte";
+  let currentChat;
+  const unsubscribe = selectedChat.subscribe((value) => {
+    currentChat = value;
+  });
+
+  setContext("user", data.user);
+  setContext("selectedChat", selectedChat);
+
+  $: currentChat;
+  onDestroy(unsubscribe);
 </script>
 
-<section class="flex ">
-  <div class="basis-2/5">
-    {#if data}
-      <ChatList chats={data.chats} />
-    {/if}
-  </div>
-  <div class="basis-3/5">
-    <Conversation />
-  </div>
-</section>
+<div class="full">
+  <ChatMenu />
+  <ChatDetails />
+  <ChatInput />
+</div>

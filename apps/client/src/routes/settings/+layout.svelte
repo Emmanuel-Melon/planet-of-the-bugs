@@ -3,6 +3,7 @@
   import "iconify-icon";
   import { selectedItem } from "./store";
   import { Card } from "svelte-ui";
+  import autoAnimate from "@formkit/auto-animate";
 
   let selectedItemValue: number;
 
@@ -24,28 +25,27 @@
 </script>
 
 <section class="mx-auto w-11/12 lg:w-3/4 space-y-2 p-2">
-  <Card title="Settings">
+  <div class="py-2 border-b-2 border-primary space-y-2">
+    <h1 class="text-2xl">Settings</h1>
     <p>
       Here, you have full control over customizing your experience and
       personalizing your account according to your preferences.
     </p>
-  </Card>
+  </div>
 
   <div class="flex flex-col md:flex-row w-full gap-2">
     <div class="basis-2/5 grow">
-      <Card>
-        <ul class="menu bg-transparent w-full">
+        <ul class="menu bg-transparent w-full" use:autoAnimate>
           {#each items as { id, name }}
             <li>
               <button
                 on:click={() => handleItemChange(id)}
-                class={selectedItemValue === id ? "active bg-secondary" : ""}
+                class={selectedItemValue === id ? "active bg-secondary border-l-4 border-rose-900" : ""}
                 >{name}</button
               >
             </li>
           {/each}
         </ul>
-      </Card>
     </div>
     <div class="basis-3/4 space-y-4">
       <slot />

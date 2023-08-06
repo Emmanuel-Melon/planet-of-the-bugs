@@ -1,7 +1,4 @@
-import {
-  gql,
-  // @ts-ignore
-} from "@apollo/client/core/core.cjs";
+import { gql } from "@apollo/client/core";
 
 export const ADD_CHAPTER = gql`
   mutation addNewChapter($chapterInput: course_chapters_insert_input!) {
