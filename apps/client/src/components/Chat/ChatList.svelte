@@ -2,6 +2,7 @@
   export let chats;
   export let loading;
   import { createEventDispatcher, getContext } from "svelte";
+  import { onMount, onDestroy } from "svelte";
   import autoAnimate from "@formkit/auto-animate";
   import NewConversationModal from "$components/Modals/NewConversationModal.svelte";
   import ChatItemOverview from "./ChatItemOverview.svelte";
@@ -11,8 +12,12 @@
   const dispatch = createEventDispatcher();
 
   const displayLatestChat = (event) => {
-    selectedChat.set(event.detail);
+    // selectedChat.update(event.detail);
   }
+
+  onMount(async () => {
+    
+  });
 </script>
 
 <div class="h-full w-full">

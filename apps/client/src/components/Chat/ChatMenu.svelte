@@ -1,5 +1,16 @@
 <script lang="ts">
-  export let participants;
+  let participants;
+  import { onMount, onDestroy } from "svelte";
+  import { getContext } from "svelte";
+  const selectedChat = getContext("selectedChat");
+  
+  const unsubscribe = selectedChat.subscribe((value) => {
+    participants = value?.chat_participants;
+  });
+
+  $: participants;
+  onDestroy(unsubscribe);
+
 </script>
 
 <div class="flex justify-between items-center">

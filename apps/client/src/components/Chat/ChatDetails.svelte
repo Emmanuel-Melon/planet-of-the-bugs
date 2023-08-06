@@ -1,12 +1,12 @@
 <script lang="ts">
   import { getContext } from "svelte";
-
   import { onMount, onDestroy } from "svelte";
   import { query } from "svelte-apollo";
   import { FETCH_CHAT_MESSAGES } from "$lib/graphql/queries/messages";
   import ListMessages from "./ListMessages.svelte";
   const selectedChat = getContext("selectedChat");
-  export let chat;
+  let chat;
+
 
   onMount(async () => {
     messages.refetch();
@@ -15,8 +15,11 @@
   $: messages.refetch();
 
   const unsubscribe = selectedChat.subscribe((value) => {
+    console.log(value);
     chat = value;
   });
+
+  $: chat;
 
   onDestroy(unsubscribe);
 
@@ -25,6 +28,8 @@
       chatId: chat?.id,
     },
   });
+
+
 
   console.log(chat);
 </script>

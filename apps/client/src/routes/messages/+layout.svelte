@@ -5,21 +5,18 @@
   import { selectedChat } from "./store";
   import ChatList from "$components/Chat/ChatList.svelte";
   import { page } from "$app/stores";
-  export let data;
 
   let activeChat;
 
   const unsubscribe = selectedChat.subscribe((value) => {
-    console.log(value);
     activeChat = value;
   });
 
-  const setChatSelected = (chat) => {
-    selectedChat.set(chat);
-  };
+  onMount(async () => {
+    selectedChat.set($page.data.chats[0]);
+  });
 
   $: activeChat;
-
   onDestroy(unsubscribe);
 </script>
 

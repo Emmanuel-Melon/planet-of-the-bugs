@@ -1,21 +1,20 @@
 <script lang="ts">
   export let chat;
   import { createEventDispatcher } from "svelte";
+  import { getContext } from "svelte";
+  const selectedChat = getContext("selectedChat");
   const dispatch = createEventDispatcher();
-
   const setChatSelected = () => {
-    console.log("dispatching!");
     dispatch("message", {
       ...chat,
     });
   };
 
-  console.log(chat?.chat_participants[0]);
 </script>
 
 <div
-  class={`flex items-center gap-2 hover:bg-base-200 bg-base-200 cursor-pointer p-2 ${
-    chat.active ? "border-r-4 border-rose-900 " : "bg-white"
+  class={`flex items-center gap-2 hover:bg-base-200 bg-base-100 cursor-pointer p-2 ${
+    chat?.id === selectedChat?.id ? "border-r-4 border-rose-900 " : "border-l-4 border-rose-900"
   }`}
   on:click={setChatSelected}
 >
