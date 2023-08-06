@@ -6,15 +6,19 @@
   import ChatList from "$components/Chat/ChatList.svelte";
   import { page } from "$app/stores";
   export let data;
-  let selectedChatValue;
+
+  let activeChat;
 
   const unsubscribe = selectedChat.subscribe((value) => {
-    selectedChatValue = value;
+    console.log(value);
+    activeChat = value;
   });
 
   const setChatSelected = (chat) => {
     selectedChat.set(chat);
   };
+
+  $: activeChat;
 
   onDestroy(unsubscribe);
 </script>
@@ -26,6 +30,6 @@
     {/if}
   </div>
   <div class="basis-3/4 ">
-    <slot />
+    <slot chat={activeChat}/>
   </div>
 </section>

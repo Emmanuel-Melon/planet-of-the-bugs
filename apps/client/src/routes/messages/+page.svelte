@@ -9,12 +9,17 @@
   setContext("selectedChat", selectedChat);
 
   let currentChat;
+  let currentChatId: number;
   const unsubscribe = selectedChat.subscribe((value) => {
-  
+    console.log(value);
     currentChat = value;
   });
   onDestroy(unsubscribe);
 
 </script>
+
+
+
+
 
 <ChatDetails />

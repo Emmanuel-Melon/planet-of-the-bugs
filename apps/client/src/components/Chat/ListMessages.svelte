@@ -1,6 +1,7 @@
 <script lang="ts">
   export let messages;
   import ChatBubble from "./ChatBubble.svelte";
+  
 </script>
 
 {#if messages.length === 0}

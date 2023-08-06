@@ -16,11 +16,21 @@ export const FETCH_CHAT_MESSAGES = gql`
 `;
 
 export const FETCH_CHATS = gql`
-  query fetchChats {
+  query fetchChats($userId: uuid!) {
     chats(limit: 10, order_by: {created_at: asc}) {
       id
       created_at
       updated_at
+      chat_participants(where: {user: {id: {_neq: $userId }}}) {
+        chat_id
+        user {
+          name
+          username
+          id
+          email
+          avatar
+        }
+      }
     }
   }
 `;

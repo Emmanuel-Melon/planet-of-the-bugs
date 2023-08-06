@@ -24,7 +24,7 @@
   </div>
   <div use:autoAnimate class="h-full space-y-2 p-2">
     {#each chats as chat}
-      <ChatItemOverview {chat} on:message|once={displayLatestChat} />
+      <ChatItemOverview {chat} on:message={displayLatestChat} />
     {/each}
   </div>
 </div>

@@ -7,9 +7,7 @@
   import { FETCH_CHAT_MESSAGES } from "$lib/graphql/queries/messages";
   import ListMessages from "./ListMessages.svelte";
   const selectedChat = getContext("selectedChat");
-  let chat;
-
-
+  export let chat;
 
   onMount(async () => {
     messages.refetch();
@@ -17,13 +15,10 @@
 
   $: messages.refetch();
 
-
-
-
   const unsubscribe = selectedChat.subscribe((value) => {
-     chat = value;
+    chat = value;
   });
-  $: chat;
+
   onDestroy(unsubscribe);
 
   let messages = query(FETCH_CHAT_MESSAGES, {
@@ -32,15 +27,11 @@
     },
   });
 
-
   console.log(chat);
-
 </script>
 
-
-
 <div class="h-full">
-  <ChatMenu />
+  <ChatMenu participants={chat?.chat_participants} />
   {#if $messages.data}
     <ListMessages messages={$messages?.data.message} />
   {:else if $messages.error}

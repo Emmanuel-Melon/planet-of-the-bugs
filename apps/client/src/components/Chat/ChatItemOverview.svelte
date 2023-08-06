@@ -6,9 +6,11 @@
   const setChatSelected = () => {
     console.log("dispatching!");
     dispatch("message", {
-      ...chat
+      ...chat,
     });
   };
+
+  console.log(chat?.chat_participants[0]);
 </script>
 
 <div
@@ -17,17 +19,21 @@
   }`}
   on:click={setChatSelected}
 >
-  <div class="avatar">
-    <div class="w-10 rounded-full">
-      <img src={chat.avatar} alt={chat.name} />
-    </div>
-  </div>
-  <div class="grow">
-    <div class="flex items-start justify-between">
-      <div>
-        <h4 class="text-xl text-bold">{chat.name}</h4>
-        <p class="text-truncate">{chat.text}</p>
+  {#if chat?.chat_participants.length === 1}
+    <div class="avatar">
+      <div class="w-10 rounded-full">
+        <img src={chat?.chat_participants[0].user?.avatar} alt={chat.name} />
       </div>
     </div>
-  </div>
+    <div class="grow">
+      <div class="flex items-start justify-between">
+        <div>
+          <h4 class="text-xl text-bold">
+            {chat?.chat_participants[0].user?.name}
+          </h4>
+          <p class="text-truncate">{chat.text}</p>
+        </div>
+      </div>
+    </div>
+  {/if}
 </div>
