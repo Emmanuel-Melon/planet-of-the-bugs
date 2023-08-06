@@ -54,10 +54,8 @@
 </script>
 
 <div class="flex items-center gap-4">
-  <div class="avatar indicator">
-    <span class="indicator-item badge badge-lg badge-accent -top-3"
-      >Hirable</span
-    >
+  <div class="avatar">
+
     <div class="w-24 mask mask-squircle shadow">
       <img
         src={githubUser?.avatarUrl || avatar}

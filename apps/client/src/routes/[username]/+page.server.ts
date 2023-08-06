@@ -93,7 +93,7 @@ export const load: PageServerLoad = async (event) => {
   const getGitHubAccountInfo = (gitHubLogin: String): Promise<any> => {
     return apolloClient.query({
       query: GET_USER_BY_GITHUB_LOGIN,
-      variaables: {
+      variables: {
         login: gitHubLogin,
       },
     });
@@ -105,27 +105,32 @@ export const load: PageServerLoad = async (event) => {
   } = user;
   const userInfo = destructuredUserObject[0];
 
-  // const gitHubUser = await getGitHubAccountInfo(userInfo?.githubUsername);
-  // console.log(gitHubUser);
+  const gitHubUser = await getGitHubAccountInfo(userInfo?.githubUsername);
 
-  // const output = destructureQueryResults(githubUser);
 
-  // const { result: destructuredGithubUser, loading: gitHubrofileLoading } =
-  //     output;
+  const output = destructureQueryResults(gitHubUser);
 
-  //console.log(gitHubUser);
+  const { result: destructuredGithubUser, loading: gitHubrofileLoading } = output;
 
-  // const [contributedTo, pinnedItems, subscribedRepos, ownedRepos] = await Promise.all([
-  //     getRepoContributions(),
-  //     getUserPinnedItems(data?.viewer?.login),
-  //     getRepoSubscriptions(userInfo.id),
-  //     getOwnedRepositories(data?.viewer?.login)
-  // ]);
+  const [contributedTo, pinnedItems, subscribedRepos, ownedRepos] = await Promise.all([
+      getRepoContributions(),
+      getUserPinnedItems(gitHubUser?.data?.user?.login),
+      getRepoSubscriptions(userInfo.id),
+      getOwnedRepositories(gitHubUser?.data?.user?.login)
+  ]);
 
-  // const { data: contributionData } = contributedTo;
-  // const { data: topRepoData } = pinnedItems;
-  // const { data: repositories } = ownedRepos;
-  // const { data: subscribedTo } = subscribedRepos;
+  const { data: contributionData } = contributedTo;
+  const { data: topRepoData } = pinnedItems;
+  const { data: repositories } = ownedRepos;
+  const { data: subscribedTo } = subscribedRepos;
 
-  return {};
+  return {
+    currentUser,
+    user,
+    githubProfileData,
+    contributionData,
+    topRepoData,
+    repositories,
+    subscribedTo
+  };
 };
