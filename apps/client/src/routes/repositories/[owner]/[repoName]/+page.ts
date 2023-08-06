@@ -1,6 +1,6 @@
 import { redirectUnAuthenticatedUsers } from "$lib/auth/helpers";
-import { GITHUB_API } from "$lib/graphql/apolloClient";
 import { GET_REPO_WITH_LATEST_ISSUES } from "$lib/graphql/queries/repositories.js";
+import apolloClient from "$lib/graphql/apolloClient";
 
 export const load = async (event) => {
   const { params, parent, data: pageData } = event;
@@ -11,11 +11,7 @@ export const load = async (event) => {
 
   redirectUnAuthenticatedUsers(session, [307, "/auth"]);
 
-  GITHUB_API.setSession(session?.token?.accessToken);
-
-  const githubClient = GITHUB_API.getGithubClient();
-
-  const { data } = await githubClient.query({
+  const { data } = await apolloClient.query({
     query: GET_REPO_WITH_LATEST_ISSUES,
     variables: {
       owner: owner,

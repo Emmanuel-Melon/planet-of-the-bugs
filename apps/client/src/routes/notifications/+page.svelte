@@ -58,7 +58,7 @@
         {#each notifications as notification}
           <div
             class={`flex items-center gap-2 cursor-pointer p-2 ${
-              notification.active ? "bg-base-200 border-l-4 border-rose-900" : "bg-base-100"
+              notification.active ? "bg-base-200" : "bg-base-100"
             }`}
           >
             <div>

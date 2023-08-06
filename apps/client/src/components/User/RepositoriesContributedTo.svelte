@@ -4,8 +4,6 @@
   export let user;
   import 'iconify-icon';
   import ContributionsByRepo from './ContributionsByRepo.svelte';
-  import { githubClient } from '$lib/graphql/apolloClient';
-  let contributions;
   import { Card } from "svelte-ui";
 
   function hexToHSL(hexColor) {

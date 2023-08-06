@@ -4,7 +4,6 @@ import {
   GET_SUBSCRIBED_REPOS,
 } from "$lib/graphql/queries/repositories.js";
 import apolloClient from "$lib/graphql/apolloClient";
-import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { fail, redirect } from "@sveltejs/kit";
 import { GET_USER_BY_EMAIL } from "$lib/graphql/queries/user";
 import {
@@ -28,9 +27,6 @@ export const load = async (event) => {
   const { session } = await parent();
 
   redirectUnAuthenticatedUsers(session, [307, "/auth"]);
-  GITHUB_API.setSession(session?.token?.accessToken);
-  const githubClient = GITHUB_API.getGithubClient();
-
   const { data } = await apolloClient.query({
     query: GET_USER_BY_EMAIL,
     variables: {
@@ -42,7 +38,7 @@ export const load = async (event) => {
   const userTopics = JSON.parse(user?.userTopics) || [];
 
   const [repositories, topics, subscribed] = await Promise.all([
-    githubClient?.query({
+    apolloClient.query({
       query: FETCH_REPOSITORIES_BY_TOPICS,
       variables: {
         topics: stringifyTopics(userTopics),

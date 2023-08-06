@@ -107,7 +107,7 @@ export const GET_REPOS_CONTRIBUTED_TO = gql`
 
 export const GET_USER_BY_EMAIL = gql`
   query getUserByEmail($email: String) {
-    user: user(where: { email: { _eq: $email } }) {
+    user: users(where: { email: { _eq: $email } }) {
       email
       created_at
       id
@@ -124,7 +124,7 @@ export const GET_USER_BY_EMAIL = gql`
 
 export const GET_USER_BY_USERNAME = gql`
   query getUserByUsername($username: String!) {
-    user: user(where: { username: { _eq: $username } }) {
+    user: users(where: { username: { _eq: $username } }) {
       email
       created_at
       id

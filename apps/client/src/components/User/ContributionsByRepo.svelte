@@ -7,12 +7,10 @@
   export let user;
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
-  import { GITHUB_API } from "$lib/graphql/apolloClient";
-
-  const githubClient = GITHUB_API.getGithubClient();
+  import apolloClient from "$lib/graphql/apolloClient";
 
   const getContributions = async () => {
-    const { data } = await githubClient.query({
+    const { data } = await apolloClient.query({
       query: GET_CONTRIBUTIONS_BY_REPO,
       variables: {
         author: user.login,
@@ -24,7 +22,7 @@
   };
 
   const getPullRequestContributions = async () => {
-    const { data } = await githubClient.query({
+    const { data } = await apolloClient.query({
       query: GET_USER_PULL_REQUEST_CONTRIBUTIONS,
       variables: {
         author: user.login,
