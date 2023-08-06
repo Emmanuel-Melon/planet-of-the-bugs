@@ -4,7 +4,7 @@
 </script>
 
 {#if messages.length === 0}
-<div class="flex items-center justify-center h-full p-4">
+<div class="flex items-center justify-center p-4">
     <div class="prose prose-sm">
       <h3>No Messages</h3>
       <p>Some description</p>

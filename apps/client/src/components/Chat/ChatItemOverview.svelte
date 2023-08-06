@@ -1,12 +1,21 @@
 <script lang="ts">
   export let chat;
-  // you could do actions?
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
+
+  const setChatSelected = () => {
+    console.log("dispatching!");
+    dispatch("message", {
+      ...chat
+    });
+  };
 </script>
 
 <div
   class={`flex items-start gap-2 hover:bg-base-200 bg-base-200 cursor-pointer p-2 ${
     chat.active ? "border-r-4 border-rose-900 " : "bg-white"
   }`}
+  on:click={setChatSelected}
 >
   <div class="avatar">
     <div class="w-10 rounded-full">

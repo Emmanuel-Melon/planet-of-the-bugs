@@ -25,7 +25,7 @@
 </script>
 
 <section class="mx-auto w-11/12 lg:w-3/4 space-y-2 p-2">
-  <div class="p-4 border-b-2 border-primary space-y-2">
+  <div class="py-2 border-b-2 border-primary space-y-2">
     <h1 class="text-2xl">Settings</h1>
     <p>
       Here, you have full control over customizing your experience and

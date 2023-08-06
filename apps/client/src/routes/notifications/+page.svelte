@@ -32,10 +32,10 @@
 
 <section class="p-2">
   <div class="w-4/5 mx-auto">
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center py-2 border-b-2 border-primary space-y-2">
       <div>
         <h1 class="flex items-center gap-2 text-xl">
-          <iconify-icon icon="ri:notification-line"  />
+
           Notifications
         </h1>
       </div>

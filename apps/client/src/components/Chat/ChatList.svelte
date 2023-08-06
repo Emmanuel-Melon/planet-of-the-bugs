@@ -1,10 +1,18 @@
 <script lang="ts">
   export let chats;
   export let loading;
-  export let onChatSelected;
+  import { createEventDispatcher, getContext } from "svelte";
   import autoAnimate from "@formkit/auto-animate";
   import NewConversationModal from "$components/Modals/NewConversationModal.svelte";
-  import Chat from "./Chat.svelte";
+  import ChatItemOverview from "./ChatItemOverview.svelte";
+  import { selectedChat } from "../../routes/messages/store";
+ 
+
+  const dispatch = createEventDispatcher();
+
+  const displayLatestChat = (event) => {
+    selectedChat.set(event.detail);
+  }
 </script>
 
 <div class="h-full w-full">
@@ -16,7 +24,7 @@
   </div>
   <div use:autoAnimate class="h-full space-y-2 p-2">
     {#each chats as chat}
-      <Chat {chat} />
+      <ChatItemOverview {chat} on:message|once={displayLatestChat} />
     {/each}
   </div>
 </div>

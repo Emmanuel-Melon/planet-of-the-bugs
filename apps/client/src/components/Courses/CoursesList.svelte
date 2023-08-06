@@ -33,8 +33,7 @@
     <div class="flex justify-between items-center">
       <h3 class="text-xl">Recommended Courses</h3>
       <div class="flex gap-2">
-        <button>Incremeent</button>
-        <button>Decremeent</button>
+
         <button class="btn btn-sm btn-square btn-outline"
           ><iconify-icon icon="ri:arrow-left-double-line" /></button
         >

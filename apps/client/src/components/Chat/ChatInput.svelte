@@ -8,7 +8,7 @@
   const user = getContext("user");
 </script>
 
-<form on:submit|preventDefault={handleMessage} use:enhance>
+<form on:submit|preventDefault={handleMessage} method="POST" use:enhance>
   <div class="flex justify-between gap-2 items-center px-2 py-4">
     <div class="flex gap-2 grow items-center">
       <button
