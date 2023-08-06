@@ -17,6 +17,7 @@ const httpLink = new HttpLink({
 
 type HttpCredentials = "include" | "omit" | "same-origin";
 
+// nuke github client
 const githubHttpLink = ({ Authorization, uri }) => {
   return new HttpLink({
     uri,
