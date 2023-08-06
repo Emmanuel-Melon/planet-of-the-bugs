@@ -4,9 +4,7 @@
   import { selectedItem } from "./store";
   import { Card } from "svelte-ui";
   import autoAnimate from "@formkit/auto-animate";
-  const user = getContext("user");
 
-  console.log(user);
   let selectedItemValue: number;
 
   const unsubscribe = selectedItem.subscribe((value) => {

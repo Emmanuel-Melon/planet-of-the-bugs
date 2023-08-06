@@ -23,13 +23,13 @@
   onDestroy(unsubscribe);
 </script>
 
-<section class="flex h-full min-h-full max-h-full  flex-grow">
+<section class="flex h-full min-h-full max-h-full flex-grow">
   <div class="basis-1/4 ">
     {#if $page.data.chats}
       <ChatList chats={$page.data.chats} loading={$page.data.loading} />
     {/if}
   </div>
   <div class="basis-3/4 ">
-    <slot chat={activeChat}/>
+    <slot />
   </div>
 </section>

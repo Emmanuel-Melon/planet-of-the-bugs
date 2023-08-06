@@ -1,7 +1,6 @@
 <script lang="ts">
   import { getContext } from "svelte";
-  import ChatMenu from "./ChatMenu.svelte";
-  import ChatInput from "./ChatInput.svelte";
+
   import { onMount, onDestroy } from "svelte";
   import { query } from "svelte-apollo";
   import { FETCH_CHAT_MESSAGES } from "$lib/graphql/queries/messages";
@@ -31,14 +30,14 @@
 </script>
 
 <div class="h-full">
-  <ChatMenu participants={chat?.chat_participants} />
+
   {#if $messages.data}
     <ListMessages messages={$messages?.data.message} />
   {:else if $messages.error}
     <div class="flex items-center justify-center h-full p-4">
-      <div class="prose prose-sm">
-        <h3>Failed to load messages</h3>
-        <p>Some description</p>
+      <div class="prose prose-md text-center">
+        <h3>🛑 Oops, There Seems to Be a Glitch! 🐞</h3>
+        <p>We apologize, but it seems that your messages are currently unable to load</p>
       </div>
     </div>
   {:else if $messages.loading}
@@ -46,5 +45,4 @@
       <h3>Loading</h3>
     </div>
   {/if}
-  <ChatInput />
 </div>

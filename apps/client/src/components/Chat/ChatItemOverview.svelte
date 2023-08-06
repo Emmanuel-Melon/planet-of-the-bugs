@@ -14,14 +14,14 @@
 </script>
 
 <div
-  class={`flex items-start gap-2 hover:bg-base-200 bg-base-200 cursor-pointer p-2 ${
+  class={`flex items-center gap-2 hover:bg-base-200 bg-base-200 cursor-pointer p-2 ${
     chat.active ? "border-r-4 border-rose-900 " : "bg-white"
   }`}
   on:click={setChatSelected}
 >
   {#if chat?.chat_participants.length === 1}
     <div class="avatar">
-      <div class="w-10 rounded-full">
+      <div class="w-12 rounded-full shadow-md">
         <img src={chat?.chat_participants[0].user?.avatar} alt={chat.name} />
       </div>
     </div>
@@ -31,7 +31,6 @@
           <h4 class="text-xl text-bold">
             {chat?.chat_participants[0].user?.name}
           </h4>
-          <p class="text-truncate">{chat.text}</p>
         </div>
       </div>
     </div>

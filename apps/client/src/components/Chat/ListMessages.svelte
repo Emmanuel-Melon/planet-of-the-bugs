@@ -6,10 +6,9 @@
 
 {#if messages.length === 0}
 <div class="flex items-center justify-center p-4">
-    <div class="prose prose-sm">
+    <div class="prose prose-md text-center">
       <h3>No Messages</h3>
-      <p>Some description</p>
-      <button class="btn btn-sm">New Chat</button>
+      <p>It looks like your inbox is currently empty!</p>
     </div>
 </div>
 {:else}
