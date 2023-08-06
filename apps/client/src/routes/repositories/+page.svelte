@@ -51,7 +51,8 @@
       component: SubscribedReposOverview,
       value: 2,
       props: {
-        name: "hello"
+        name: "hello",
+        repositories: user.subscribedRepos
       }
     },
     {

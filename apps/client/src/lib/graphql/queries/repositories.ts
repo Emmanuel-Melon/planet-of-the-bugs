@@ -7,6 +7,7 @@ export const GET_SUBSCRIBED_REPOS = gql`
       repo_name
       repo_owner
       repo_url
+      description
     }
   }
 `;
