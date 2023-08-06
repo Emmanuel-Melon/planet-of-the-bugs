@@ -29,7 +29,7 @@ export class GithubApi {
     });
   }
 
-  getGithubClient() {
+  getapolloClient() {
     return this.client;
   }
 

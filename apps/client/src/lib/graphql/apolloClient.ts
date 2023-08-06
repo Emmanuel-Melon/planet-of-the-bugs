@@ -28,7 +28,7 @@ const githubHttpLink = ({ Authorization, uri }) => {
   });
 };
 
-export const githubClient = (options) => {
+export const apolloClient = (options) => {
   return new ApolloClient({
     cache: new InMemoryCache(),
     credentials: "include",
@@ -58,7 +58,7 @@ export class GithubApi {
     });
   }
 
-  getGithubClient() {
+  getapolloClient() {
     return this.client;
   }
 
@@ -67,7 +67,7 @@ export class GithubApi {
       uri,
       credentials: "same-origin",
       headers: {
-        Authorization: `Bearer ${this.session}`,
+        Authorization: `Bearer ${PUBLIC_GITHUB_ACCESS_TOKEN}`,
       },
     });
   }

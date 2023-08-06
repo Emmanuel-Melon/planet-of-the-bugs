@@ -1,6 +1,5 @@
 import type { PageServerLoad, Actions } from "./$types";
 import { fail, redirect } from "@sveltejs/kit";
-import { GITHUB_API } from "$lib/github/githubGraphQLClient";
 import { destructureQueryResults } from "$lib/graphql/helpers";
 import apolloClient from "$lib/graphql/apolloClient";
 import {
@@ -35,8 +34,6 @@ export const load: PageServerLoad = async (event) => {
   let githubProfileData = null;
   const currentUser = sessionUser?.username === params?.username;
 
-  console.log(currentUser);
-
   if (!currentUser) {
     const { data } = await apolloClient.query({
       query: GET_USER_BY_USERNAME,
@@ -48,11 +45,8 @@ export const load: PageServerLoad = async (event) => {
     sessionUser = data.user[0];
   }
 
-  GITHUB_API.setSession(session?.token?.accessToken);
-  const githubClient = GITHUB_API.getGithubClient();
-
   const getUserPinnedItems = (gitHubUsername): Promise<any[]> => {
-    return githubClient.query({
+    return apolloClient.query({
       query: GET_USER_PINNED_ITEMS,
       variables: {
         username: "Emmanuel-Melon",
@@ -61,7 +55,7 @@ export const load: PageServerLoad = async (event) => {
   };
 
   const getRepoContributions = (): Promise<any[]> => {
-    return githubClient.query({
+    return apolloClient.query({
       query: GET_REPOS_CONTRIBUTED_TO,
       variables: {
         username: "Emmanuel-Melon",
@@ -79,7 +73,7 @@ export const load: PageServerLoad = async (event) => {
   };
 
   const getOwnedRepositories = (gitHubUsername): Promise<any[]> => {
-    return githubClient.query({
+    return apolloClient.query({
       query: GET_USER_REPOS_BY_GITHUB_USERNAME,
       variables: {
         username: "Emmanuel-Melon",
@@ -97,7 +91,7 @@ export const load: PageServerLoad = async (event) => {
   };
 
   const getGitHubAccountInfo = (gitHubLogin: String): Promise<any> => {
-    return githubClient.query({
+    return apolloClient.query({
       query: GET_USER_BY_GITHUB_LOGIN,
       variaables: {
         login: gitHubLogin,
