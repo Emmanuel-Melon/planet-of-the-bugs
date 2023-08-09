@@ -1,10 +1,7 @@
 <script lang="ts">
-  /** @type {import('./$types').PageData} */
   import { signIn, signOut } from '@auth/sveltekit/client';
   import { Card, Button } from 'svelte-ui';
   import { page } from '$app/stores';
-  import 'iconify-icon';
-  // import { PUBLIC_PASSAGE_APP_ID } from '$env/static/public';
 
   const handleGithubLogin = async () => {
     try {
@@ -48,7 +45,7 @@
               class="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
             >
               <img
-                src={$page.data.session.user.image}
+                src={$page.data.session.user?.image}
                 alt={$page.data.session.user?.name ?? 'User'}
               />
             </div>
@@ -94,13 +91,10 @@
         </form>
         <div class="divider">Sign In with</div>
         <div class="card-actions items-center justify-center gap-2">
-          <button
-            class="btn btn-sm btn-outline gap-2"
-            on:click={handleGithubLogin}
-          >
+          <a href="login/github" class="btn btn-sm btn-outline gap-2">
             <iconify-icon icon="ri:github-line" />
             GitHub
-          </button>
+          </a>
           <button
             class="btn btn-sm btn-outline gap-2"
             on:click={handleGoogleLogin}

@@ -71,13 +71,15 @@
   </div>
 
   <nav>
-    <ul
-      class="navbar-center hidden lg:flex items-center text-neutral-content"
-    >
+    <ul class="navbar-center hidden lg:flex items-center text-neutral-content">
       {#each menuLinks as { icon, text, path }}
         <li>
-          <a href={path} class={`btn btn-sm gap-2 hover:bg-rose-50 hover:text-black ${path === current ? "hidden lg:flex bg-rose-900"
-          : "hidden lg:flex"}`}><iconify-icon icon={icon}/> {text}</a>
+          <a
+            href={path}
+            class={`btn btn-sm gap-2 hover:bg-rose-50 hover:text-black ${
+              path === current ? 'hidden lg:flex bg-rose-900' : 'hidden lg:flex'
+            }`}><iconify-icon {icon} /> {text}</a
+          >
         </li>
       {/each}
     </ul>
@@ -90,7 +92,7 @@
     <Dropdown items={notifications}>
       <button class="btn btn-sm btn-circle">
         <div class="indicator">
-          <iconify-icon icon="ri:notification-line" width="20" height="20" /> 
+          <iconify-icon icon="ri:notification-line" width="20" height="20" />
           <span class="badge badge-sm bg-rose-900 indicator-item">2</span>
         </div>
       </button>
@@ -117,7 +119,7 @@
               ><iconify-icon icon="ri:logout-circle-line" /> Sign Out</button
             >
           {:else}
-            <a href="/auth">Sign In</a>
+            <a href="/login">Sign In</a>
           {/if}
         </li>
       </ul>
@@ -149,7 +151,7 @@
         </ul>
       {:else}
         <div class="flex gap-2 items-center">
-          <a href="/auth" class="btn btn-primary btn-sm gap-2"
+          <a href="/login" class="btn btn-primary btn-sm gap-2"
             ><iconify-icon icon="ri:login-circle-line" /> Sign In</a
           >
         </div>
