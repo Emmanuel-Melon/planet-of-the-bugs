@@ -19,7 +19,7 @@ Thank you for considering contributing to our project. Before you begin, please 
 
 ### Forking the Repository
 
-1. Navigate to the Planet Of The Bugs repository on GitHub: [https://github.com/yourusername/project-name](https://github.com/Emmanuel-Melon/planet-of-the-bugs)
+1. Navigate to the Planet Of The Bugs repository on GitHub: [https://github.com/Emmanuel-Melon/planet-of-the-bugs](https://github.com/Emmanuel-Melon/planet-of-the-bugs)
 2. Click the "Fork" button in the upper right corner of the repository page. This will create a copy of the repository in your GitHub account.
 
 ### Setting Up Your Local Environment
@@ -50,7 +50,6 @@ We welcome contributions from developers of all skill levels. Whether you're fix
 ### Submitting a Pull Request
 
 1. Push your changes to your forked repository: git push origin feature-or-bugfix-name
-
 
 2. Visit the original repository on GitHub and click the "Compare & pull request" button next to your branch.
 
