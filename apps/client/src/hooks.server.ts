@@ -3,11 +3,27 @@ import GitHub from '@auth/core/providers/github';
 import Google from '@auth/core/providers/google';
 import Linkedin from '@auth/core/providers/linkedin';
 import { sequence } from '@sveltejs/kit/hooks';
-import type { Handle } from '@sveltejs/kit';
 import BugsClientCustomAdapter from '$lib/auth/BugsClientCustomAdapter';
 import apolloClient from '$lib/graphql/apolloClient';
 import { GET_USER_BY_EMAIL } from '$lib/graphql/queries/user';
+
 import { auth } from '$lib/auth/lucia';
+import type { Handle } from '@sveltejs/kit';
+
+
+// // install deps
+// import { handleHooks } from "@lucia-auth/sveltekit";
+
+
+// export const handle: Handle = sequence(handleHooks(auth));
+
+
+// async ({ event, resolve }) => {
+//   // we can pass `event` because we used the SvelteKit middleware
+//   event.locals.auth = auth.handleRequest(event);
+//   return await resolve(event);
+// };
+
 
 // interface User {
 //   name: string | null;
@@ -121,8 +137,9 @@ import { auth } from '$lib/auth/lucia';
 
 // export const handle = sequence(handleAuth);
 
+
 export const handle: Handle = async ({ event, resolve }) => {
-  // we can pass `event` because we used the SvelteKit middleware
-  event.locals.auth = auth.handleRequest(event);
-  return await resolve(event);
+	// we can pass `event` because we used the SvelteKit middleware
+	event.locals.auth = auth.handleRequest(event);
+	return await resolve(event);
 };

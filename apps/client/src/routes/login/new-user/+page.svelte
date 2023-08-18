@@ -105,7 +105,7 @@
               <span class="label-text">Email Address</span>
             </label>
             <input
-              id="email"
+              
               type="email"
               bind:value={email}
               on:input={(event) => (email = event.target.value.toLowerCase())}

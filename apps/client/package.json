@@ -19,6 +19,7 @@
     "@sveltejs/adapter-vercel": "^2.4.3",
     "@sveltejs/kit": "^1.5.0",
     "@types/cookie": "^0.5.1",
+    "@types/pg": "^8.10.2",
     "@typescript-eslint/eslint-plugin": "^5.60.0",
     "@typescript-eslint/parser": "^5.60.0",
     "autoprefixer": "^10.4.14",
@@ -49,6 +50,7 @@
     "@lucia-auth/adapter-postgresql": "^2.0.0",
     "@lucia-auth/adapter-prisma": "^3.0.0",
     "@lucia-auth/oauth": "^2.1.0",
+    "@lucia-auth/sveltekit": "^0.6.11",
     "@sveltestack/svelte-query": "^1.6.0",
     "@svelteuidev/composables": "^0.10.0",
     "@svelteuidev/core": "^0.10.0",
@@ -66,10 +68,12 @@
     "graphql": "^16.6.0",
     "graphql-ws": "^5.6.2",
     "iconify-icon": "^1.0.7",
-    "lucia": "^2.1.0",
+    "lucia": "^2.3.0",
+    "lucia-auth": "^1.8.0",
     "monaco-editor": "^0.36.1",
     "sanitize-html": "^2.10.0",
     "socket.io": "^4.6.1",
-    "svelte-apollo": "^0.5.0"
+    "svelte-apollo": "^0.5.0",
+    "uuid": "^9.0.0"
   }
 }

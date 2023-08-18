@@ -3,23 +3,20 @@
 declare global {
   namespace App {
     interface Locals {
-      auth: import('lucia').AuthRequest;
+      auth: import('lucia').AuthRequest
     }
   }
 
   /// <reference types="lucia" />
-
   namespace Lucia {
-    type Auth = import('$lib/auth/lucia').Auth;
-    type DatabaseUserAttributes = {
+    type Auth = import('$lib/auth/lucia').Auth
+    type UserAttributes = {
       username: string;
       email: string;
       name: string;
-      hasConnectedGithub: boolean;
       githubUsername: string;
-      avatar: string;
     };
-    type DatabaseSessionAttributes = {};
+    type DatabaseSessionAttributes = Record<string, never>;
   }
 }
 

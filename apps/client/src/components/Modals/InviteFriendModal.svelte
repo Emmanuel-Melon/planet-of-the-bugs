@@ -16,7 +16,7 @@
           >Share Planet of the Bugs invitation with your friend via email</span
         >
       </label>
-      <input class="input input-sm input-bordered w-full" placeholder="Enter Friend's email" id="email" />
+      <input class="input input-sm input-bordered w-full" placeholder="Enter Friend's email" />
     </div>
     <button class="btn btn-sm btn-primary">Invite</button>
 
