@@ -3,30 +3,6 @@
   import { Card, Button } from "svelte-ui";
   import { page } from "$app/stores";
 
-  const handleGithubLogin = async () => {
-    try {
-      const result = await signIn("github", { callbackUrl: "/" });
-    } catch (err) {
-      console.log("error");
-    }
-  };
-
-  const handleGoogleLogin = async () => {
-    try {
-      const result = await signIn("google", { callbackUrl: "/" });
-    } catch (err) {
-      console.log("error");
-    }
-  };
-
-  const handleLinkedInLogin = async () => {
-    try {
-      const result = await signIn("linkedin", { callbackUrl: "/" });
-    } catch (err) {
-      console.log("error");
-    }
-  };
-
   const handleGithubLogout = async () => {
     await signOut("github");
   };

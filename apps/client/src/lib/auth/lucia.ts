@@ -11,21 +11,21 @@ const pool = new postgres.Pool({
 	connectionString: PUBLIC_DATA_BASE_URL
 });
 
+console.log(pool);
+
 export const auth = lucia({
-  env: dev ? 'DEV' : 'PROD',
-  middleware: sveltekit(),
   adapter: pg(pool, {
 		user: "users",
 		key: "user_key",
 		session: "user_session"
 	}),
+  env: dev ? 'DEV' : 'PROD',
+  middleware: sveltekit(),
   getUserAttributes: (data) => {
     console.log("got attrs", data);
     return {
-      username: data.username,
-      email: data.email,
-      name: data.name,
-      githubUsername: data.githubUsername
+      githubUsername: data.githubUsername,
+      username: data.username
     };
   },
 });

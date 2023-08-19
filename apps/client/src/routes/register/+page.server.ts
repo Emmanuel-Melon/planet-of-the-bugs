@@ -1,13 +1,10 @@
 import { redirect  } from "@sveltejs/kit";
 import type { Actions, PageServerLoad } from "./$types";
 import { auth } from "$lib/auth/lucia";
+import { v4 as uuidv4 } from 'uuid';
 
 export const load: PageServerLoad = async ({ locals }) => {
-    // console.log(locals);
-    // const session = await locals.validate();
-    // if(session) {
-    //     throw redirect(302, "/");
-    // }
+
 }
 
 export const actions: Actions = {
@@ -19,6 +16,7 @@ export const actions: Actions = {
 
         try {
 			const user = await auth.createUser({
+				userId: uuidv4(),
 				key: {
 					providerId: "username", // auth method
 					providerUserId: username?.toLowerCase(), // unique id when using "username" auth method

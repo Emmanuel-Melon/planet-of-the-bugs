@@ -10,11 +10,9 @@ declare global {
   /// <reference types="lucia" />
   namespace Lucia {
     type Auth = import('$lib/auth/lucia').Auth
-    type UserAttributes = {
-      username: string;
-      email: string;
-      name: string;
-      githubUsername: string;
+    type DatabaseUserAttributes = {
+      githubUsername?: string;
+      username?: string;
     };
     type DatabaseSessionAttributes = Record<string, never>;
   }
