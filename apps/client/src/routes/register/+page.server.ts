@@ -2,20 +2,20 @@ import { fail, redirect } from "@sveltejs/kit";
 import type { Actions, PageServerLoad } from "./$types";
 import { auth } from "$lib/auth/lucia";
 import { v4 as uuidv4 } from 'uuid';
+import { parseFormData } from "bugs-lib/parseFormData";
 
+// auth_session cookie not being set
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
-    console.log("session", session);
+	console.log("session", session);
 	if (!session) throw redirect(302, '/login');
 }
 
 export const actions: Actions = {
 	default: async ({ request, locals }) => {
 		console.log("we really got this?", locals);
-		const formData = await request.formData();
-		const { username, password } = Object.fromEntries(formData) as Record<string, string>;
+		const { username, password } = parseFormData(await request.formData());
 		try {
-
 			// create custom key via auth.createKey?
 			const user = await auth.createUser({
 				// change db value to userId

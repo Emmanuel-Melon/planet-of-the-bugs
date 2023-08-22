@@ -2,6 +2,7 @@
 import { auth } from "$lib/auth/lucia";
 import { fail, redirect } from "@sveltejs/kit";
 import type { Actions, PageServerLoad } from "./$types";
+import { parseFormData } from "bugs-lib/parseFormData";
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
@@ -12,8 +13,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 export const actions: Actions = {
 	default: async ({ request, locals }) => {
 		console.log("we really got this?", locals);
-		const formData = await request.formData();
-		const { username, password } = Object.fromEntries(formData) as Record<string, string>;
+		const { username, password } = parseFormData(await request.formData());
 		try {
 			const key = await auth.getKey("username", username);
 			const validatedKey = auth.useKey("username", username, password);
