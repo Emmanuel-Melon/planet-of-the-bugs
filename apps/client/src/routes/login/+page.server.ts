@@ -2,7 +2,13 @@
 import { auth } from "$lib/server/lucia";
 import { fail, redirect } from "@sveltejs/kit";
 import type { Actions, PageServerLoad } from "./$types";
-import { parseFormData } from "bugs-lib/parseFormData";
+import { parseFormData, validateFormData } from "bugs-lib/formData";
+import { z } from "zod";
+
+const loginSchema = z.object({
+	username: z.string({ required_error: "Username is required " }),
+	password: z.string()
+});
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
@@ -12,8 +18,12 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 export const actions: Actions = {
 	default: async ({ request, locals }) => {
-		console.log("we really got this?", locals);
-		const { username, password } = parseFormData(await request.formData());
+		const parsedFormData = parseFormData(await request.formData());
+		const { formData: { password, username }, errors } = validateFormData(parsedFormData, loginSchema);
+
+		if (errors) {
+			console.log("form data is invalid");
+		}
 		try {
 			const key = await auth.getKey("username", username);
 			const validatedKey = auth.useKey("username", username, password);

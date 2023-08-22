@@ -1,38 +1,34 @@
 <!-- routes/signup/+page.svelte -->
 <script lang="ts">
   import { enhance } from "$app/forms";
-  import { Card } from "svelte-ui";
+  import { Card, FormControl, Input } from "svelte-ui";
 </script>
 
 <section class="flex w-full gap-4 p-4 items-center justify-center">
   <div>
-    <Card title="Sign up">
+    <div class="w-1/4">
         <form method="post" use:enhance class="space-y-2">
-          <div class="form-control w-full">
-            <label class="label" for="username">
-              <span class="label-text text-neutral">Username</span>
-            </label>
-            <input
-              type="username"
-              placeholder="bug@planet.xyz"
-              class="input input-sm bg-white input-bordered w-full"
-              id="username"
-              name="username"
-            />
-          </div>
-          <div class="form-control w-full">
+          <FormControl ariaLabel="username" labelText="Username">
+            <Input
+            inputType="text"
+            placeholder="bug@planet.xyz"
+            id="username"
+            name="username"
+          />
+          </FormControl>
+          <FormControl ariaLabel="password" labelText="Password">
             <label class="label" for="password">
               <span class="label-text text-neutral">Password</span>
             </label>
-            <input
-              type="password"
-              name="password"
-              class="input input-sm bg-white input-bordered w-full"
-              id="password"
-            />
-          </div>
+            <Input
+            inputType="password"
+            placeholder="Your password"
+            id="password"
+            name="password"
+          />
+          </FormControl>
           <input type="submit" class="btn btn-sm btn-primary w-full" />
         </form>
-    </Card>
+    </div>
   </div>
 </section>

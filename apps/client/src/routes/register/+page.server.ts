@@ -2,7 +2,13 @@ import { fail, redirect } from "@sveltejs/kit";
 import type { Actions, PageServerLoad } from "./$types";
 import { auth } from "$lib/server/lucia";
 import { v4 as uuidv4 } from 'uuid';
-import { parseFormData } from "bugs-lib/parseFormData";
+import { parseFormData, validateFormData } from "bugs-lib/formData";
+import { z } from "zod";
+
+const registerSchema = z.object({
+	username: z.string({ required_error: "Username is required " }),
+	password: z.string()
+});
 
 // auth_session cookie not being set
 export const load: PageServerLoad = async ({ locals }) => {
@@ -13,8 +19,14 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 export const actions: Actions = {
 	default: async ({ request, locals }) => {
-		console.log("we really got this?", locals);
-		const { username, password } = parseFormData(await request.formData());
+		const parsedFormData = parseFormData(await request.formData());
+		const { formData: { password, username }, errors } = validateFormData(parsedFormData, registerSchema);
+
+		if (errors) {
+			console.log("form data is invalid");
+		}
+
+
 		try {
 			// create custom key via auth.createKey?
 			const user = await auth.createUser({
