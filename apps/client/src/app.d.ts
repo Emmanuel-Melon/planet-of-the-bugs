@@ -9,7 +9,7 @@ declare global {
 
   /// <reference types="lucia" />
   namespace Lucia {
-    type Auth = import('$lib/auth/lucia').Auth
+    type Auth = import('$lib/server/lucia').Auth
     type DatabaseUserAttributes = {
       githubUsername?: string;
       username?: string;

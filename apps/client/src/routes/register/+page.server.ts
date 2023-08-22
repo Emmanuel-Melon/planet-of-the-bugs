@@ -1,6 +1,6 @@
 import { fail, redirect } from "@sveltejs/kit";
 import type { Actions, PageServerLoad } from "./$types";
-import { auth } from "$lib/auth/lucia";
+import { auth } from "$lib/server/lucia";
 import { v4 as uuidv4 } from 'uuid';
 import { parseFormData } from "bugs-lib/parseFormData";
 

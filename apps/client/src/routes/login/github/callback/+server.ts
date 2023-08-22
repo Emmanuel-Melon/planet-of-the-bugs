@@ -1,5 +1,5 @@
 // routes/login/github/callback/+server.ts
-import { auth, githubAuth } from '$lib/auth/lucia.js';
+import { auth, githubAuth } from '$lib/server/lucia.js';
 import { OAuthRequestError } from '@lucia-auth/oauth';
 
 export const GET = async ({ url, cookies, locals }) => {

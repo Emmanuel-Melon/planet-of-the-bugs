@@ -1,5 +1,5 @@
 // routes/login/+page.server.ts
-import { auth } from "$lib/auth/lucia";
+import { auth } from "$lib/server/lucia";
 import { fail, redirect } from "@sveltejs/kit";
 import type { Actions, PageServerLoad } from "./$types";
 import { parseFormData } from "bugs-lib/parseFormData";
