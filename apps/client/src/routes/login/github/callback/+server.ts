@@ -3,6 +3,8 @@ import { auth, githubAuth } from '$lib/auth/lucia.js';
 import { OAuthRequestError } from '@lucia-auth/oauth';
 
 export const GET = async ({ url, cookies, locals }) => {
+
+  console.log("such a mess!");
   const storedState = cookies.get('github_oauth_state');
 
   console.log("storedState", storedState)

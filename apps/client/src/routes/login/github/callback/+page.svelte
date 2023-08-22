@@ -3,7 +3,7 @@
 
   export let data: PageData;
 
-  console.log(data)
+  console.log("github callback data", data)
 </script>
 
 Hello, world
