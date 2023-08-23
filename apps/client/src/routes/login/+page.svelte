@@ -3,10 +3,8 @@
   import { Card, Button, FormControl, Input } from "svelte-ui";
   import { page } from "$app/stores";
   import { enhance } from "$app/forms";
-
-  const handleGithubLogout = async () => {
-    await signOut("github");
-  };
+  import type { PageData } from './$types';
+  export let data: PageData;
 </script>
 
 <section class="flex w-full gap-4 p-4 justify-center">

@@ -3,38 +3,30 @@ import { auth, githubAuth } from '$lib/server/lucia.js';
 import { OAuthRequestError } from '@lucia-auth/oauth';
 
 export const GET = async ({ url, cookies, locals }) => {
-
-  console.log("such a mess!");
   const storedState = cookies.get('github_oauth_state');
-
-  console.log("storedState", storedState)
   const state = url.searchParams.get('state');
   const code = url.searchParams.get('code');
+
   // validate state
-  console.log('Starting...:');
   if (!storedState || !state || storedState !== state || !code) {
     return new Response(null, {
       status: 400,
     });
   }
   try {
-    console.log('validating...');
+    console.log('validating...', code);
 
-    const { existingUser, githubUser, createUser } =
-      await githubAuth.validateCallback(code);
+    const { existingUser, githubUser, createUser } = await githubAuth.validateCallback(code);
 
+    console.log("existingUser:", existingUser);
+    console.log("githubUser:", githubUser);
     const getUser = async () => {
       console.log('getting user:');
 
       if (existingUser) return existingUser;
       const user = await createUser({
         attributes: {
-          username: 'newuser',
-          email: githubUser.email || '',
-          hasConnectedGithub: true,
-          githubUsername: githubUser.githubUsername,
-          name: githubUser.name || '',
-          avatar: githubUser.avatar_url,
+          github_username: "githubUser.github_username"
         },
       });
       console.log('got user:');
@@ -42,10 +34,11 @@ export const GET = async ({ url, cookies, locals }) => {
 
       return user;
     };
-    console.log('auth error:');
+    // console.log('auth error:');
 
     const user = await getUser();
-    console.log('creating session:');
+    console.log("got it", user);
+    // console.log('creating session:');
 
     const session = await auth.createSession({
       userId: user.userId,

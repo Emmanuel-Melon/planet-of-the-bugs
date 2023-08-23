@@ -13,7 +13,7 @@ const loginSchema = z.object({
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
 	console.log("session", session);
-	if (session) throw redirect(302, "/");
+	// if (session) throw redirect(302, "/");
 };
 
 export const actions: Actions = {

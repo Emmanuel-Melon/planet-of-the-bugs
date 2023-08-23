@@ -37,7 +37,7 @@ export const actions: Actions = {
 					providerId: "username", // auth method
 					providerUserId: username?.toLowerCase(), // unique id when using "username" auth method
 					password, // hashed by Lucia
-					// user_id: uuidv4(),
+					user_id: uuidv4(),
 				},
 				// are we passing null attributes?
 				attributes: {

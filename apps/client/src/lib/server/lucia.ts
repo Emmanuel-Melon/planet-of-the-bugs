@@ -12,18 +12,17 @@ const pool = new postgres.Pool({
 
 export const auth = lucia({
   adapter: pg(pool, {
-		user: "users",
-		key: "user_key",
-		session: "user_session"
-	}),
+    user: "auth_user",
+    key: "user_key",
+    session: "user_session"
+  }),
   env: dev ? 'DEV' : 'PROD',
   middleware: sveltekit(),
   // transform userData
   getUserAttributes: (data) => {
     console.log("got attrs", data);
     return {
-      githubUsername: data.githubUsername,
-      username: data.username
+      githubUsername: data.github_username,
     };
   },
 });
