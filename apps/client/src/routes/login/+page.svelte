@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { signIn, signOut } from "@auth/sveltekit/client";
-  import { Card, Button, FormControl, Input } from "svelte-ui";
-  import { page } from "$app/stores";
+  import { FormControl, Input } from "svelte-ui";
   import { enhance } from "$app/forms";
   import type { PageData } from './$types';
   export let data: PageData;

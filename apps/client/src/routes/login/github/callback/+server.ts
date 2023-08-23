@@ -14,39 +14,21 @@ export const GET = async ({ url, cookies, locals }) => {
     });
   }
   try {
-    console.log('validating...', code);
-
     const { existingUser, githubUser, createUser } = await githubAuth.validateCallback(code);
-
-    console.log("existingUser:", existingUser);
-    console.log("githubUser:", githubUser);
     const getUser = async () => {
-      console.log('getting user:');
-
       if (existingUser) return existingUser;
       const user = await createUser({
         attributes: {
           github_username: "githubUser.github_username"
         },
       });
-      console.log('got user:');
-      console.log(user);
-
       return user;
     };
-    // console.log('auth error:');
-
     const user = await getUser();
-    console.log("got it", user);
-    // console.log('creating session:');
-
     const session = await auth.createSession({
       userId: user.userId,
       attributes: {},
     });
-    console.log('got session:');
-    console.log(session);
-
     locals.auth.setSession(session);
     return new Response(null, {
       status: 302,
