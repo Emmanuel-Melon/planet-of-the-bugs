@@ -26,7 +26,6 @@ export const actions: Actions = {
 			console.log("form data is invalid");
 		}
 
-
 		try {
 			// create custom key via auth.createKey?
 			const user = await auth.createUser({
@@ -45,11 +44,11 @@ export const actions: Actions = {
 				}
 			});
 			console.log(user);
-			// const session = await auth.createSession({
-			// 	userId: user.userId,
-			// 	attributes: {}
-			// });
-			// locals.auth.setSession(session); // set session cookie
+			const session = await auth.createSession({
+				userId: user.userId,
+				attributes: {}
+			});
+			locals.auth.setSession(session); // set session cookie
 			throw redirect(302, "/login");
 		} catch (error) {
 			console.log("failed to create user");

@@ -11,7 +11,9 @@ declare global {
   namespace Lucia {
     type Auth = import('$lib/server/lucia').Auth
     type DatabaseUserAttributes = {
-      github_username: string;
+      email?: string;
+      github_username?: string;
+      username?: string;
     };
     type DatabaseSessionAttributes = Record<string, never>;
   }

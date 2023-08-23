@@ -6,8 +6,8 @@ import { parseFormData, validateFormData } from "bugs-lib/formData";
 import { z } from "zod";
 
 const loginSchema = z.object({
-	username: z.string({ required_error: "Username is required " }),
-	password: z.string()
+	username: z.string({ required_error: "Username is required " }).trim(),
+	password: z.string().min(8, { message: "Must be 8 characters long "})
 });
 
 export const load: PageServerLoad = async ({ locals }) => {

@@ -3,6 +3,7 @@
   import { enhance } from "$app/forms";
   import type { PageData } from './$types';
   export let data: PageData;
+  export let form;
 </script>
 
 <section class="flex w-full gap-4 p-4 justify-center">
@@ -21,6 +22,7 @@
           placeholder="bug@planet.xyz"
           id="username"
           name="username"
+          value=""
         />
       </FormControl>
       <FormControl ariaLabel="password" labelText="Password">
@@ -29,6 +31,7 @@
           placeholder="Your password"
           id="password"
           name="password"
+          value=""
         />
       </FormControl>
       <input type="submit" class="btn btn-sm btn-primary w-full" />
