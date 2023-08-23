@@ -9,6 +9,6 @@ export const load: LayoutServerLoad = async ({ params, parent }) => {
   return {
     chats: data.chats,
     loading,
-    user: session?.user
+    user: session?.user,
   };
 };

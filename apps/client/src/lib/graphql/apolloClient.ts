@@ -16,7 +16,6 @@ const httpLink = new HttpLink({
 
 type HttpCredentials = "include" | "omit" | "same-origin";
 
-
 const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
   credentials: "include",

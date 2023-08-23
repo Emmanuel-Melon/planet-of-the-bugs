@@ -3,7 +3,6 @@ import { fail, redirect } from "@sveltejs/kit";
 import type { PageServerLoad, Actions } from "./$types";
 import { error } from "@sveltejs/kit";
 
-
 export const actions = {
   async sendChatMessage({ locals, request }) {
     const form_data = await request.formData();

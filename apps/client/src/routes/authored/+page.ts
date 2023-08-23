@@ -1,9 +1,7 @@
 import { GET_USER_BY_EMAIL } from "$lib/graphql/queries/user";
 import apolloClient from "$lib/graphql/apolloClient";
 import { destructureQueryResults } from "$lib/graphql/helpers";
-import {
-  redirectUnAuthenticatedUsers,
-} from "$lib/auth/helpers";
+import { redirectUnAuthenticatedUsers } from "$lib/auth/helpers";
 
 export const load = async (event) => {
   const { parent, data: pageData } = event;

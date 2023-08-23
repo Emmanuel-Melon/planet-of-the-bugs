@@ -107,17 +107,18 @@ export const load: PageServerLoad = async (event) => {
 
   const gitHubUser = await getGitHubAccountInfo(userInfo?.githubUsername);
 
-
   const output = destructureQueryResults(gitHubUser);
 
-  const { result: destructuredGithubUser, loading: gitHubrofileLoading } = output;
+  const { result: destructuredGithubUser, loading: gitHubrofileLoading } =
+    output;
 
-  const [contributedTo, pinnedItems, subscribedRepos, ownedRepos] = await Promise.all([
+  const [contributedTo, pinnedItems, subscribedRepos, ownedRepos] =
+    await Promise.all([
       getRepoContributions(),
       getUserPinnedItems(gitHubUser?.data?.user?.login),
       getRepoSubscriptions(userInfo.id),
-      getOwnedRepositories(gitHubUser?.data?.user?.login)
-  ]);
+      getOwnedRepositories(gitHubUser?.data?.user?.login),
+    ]);
 
   const { data: contributionData } = contributedTo;
   const { data: topRepoData } = pinnedItems;
@@ -131,6 +132,6 @@ export const load: PageServerLoad = async (event) => {
     contributionData,
     topRepoData,
     repositories,
-    subscribedTo
+    subscribedTo,
   };
 };

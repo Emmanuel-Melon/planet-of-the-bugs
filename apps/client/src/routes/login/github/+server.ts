@@ -1,13 +1,13 @@
-import { dev } from '$app/environment';
-import { githubAuth } from '$lib/server/lucia.js';
+import { dev } from "$app/environment";
+import { githubAuth } from "$lib/server/lucia.js";
 
 export const GET = async ({ cookies }) => {
   const [url, state] = await githubAuth.getAuthorizationUrl();
   // store state
-  cookies.set('github_oauth_state', state, {
+  cookies.set("github_oauth_state", state, {
     httpOnly: true,
     secure: !dev,
-    path: '/',
+    path: "/",
     maxAge: 60 * 60,
   });
   return new Response(null, {

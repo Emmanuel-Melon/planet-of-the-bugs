@@ -1,11 +1,11 @@
 import { gql } from "@apollo/client/core";
 
 export const INSERT_NEW_CHAT = gql`
-    mutation startNewChat($chatInput: course_chapters_insert_input!) {
-        insert_chats_one(object: $chatInput) {
-        id
-      }
+  mutation startNewChat($chatInput: course_chapters_insert_input!) {
+    insert_chats_one(object: $chatInput) {
+      id
     }
+  }
 `;
 
 export const INSERT_NEW_MESSAGE = gql`
