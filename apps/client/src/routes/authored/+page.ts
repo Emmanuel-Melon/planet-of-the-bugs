@@ -5,7 +5,6 @@ import { destructureQueryResults } from "$lib/graphql/helpers";
 export const load = async (event) => {
   const { parent, data: pageData } = event;
 
-
   let githubProfileData = null;
 
   const user = await apolloClient.query({

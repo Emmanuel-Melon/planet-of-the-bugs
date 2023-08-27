@@ -13,7 +13,6 @@ declare global {
     type DatabaseUserAttributes = {
       email?: string;
       github_username?: string;
-      username?: string;
     };
     type DatabaseSessionAttributes = Record<string, never>;
   }

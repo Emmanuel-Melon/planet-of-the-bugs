@@ -3,6 +3,4 @@ import { fail, redirect } from "@sveltejs/kit";
 import { error } from "@sveltejs/kit";
 import type { LayoutServerLoad } from "./$types";
 
-export const load: LayoutServerLoad = async ({ params, parent }) => {
-
-};
+export const load: LayoutServerLoad = async ({ params, parent }) => {};

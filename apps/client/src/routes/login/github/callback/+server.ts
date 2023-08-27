@@ -20,7 +20,8 @@ export const GET = async ({ url, cookies, locals }) => {
       if (existingUser) return existingUser;
       const user = await createUser({
         attributes: {
-          github_username: githubUser?.github_username,
+          github_username: githubUser?.login,
+          email: githubUser?.email ?? undefined,
         },
       });
       return user;

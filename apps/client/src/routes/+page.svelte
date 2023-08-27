@@ -1,5 +1,4 @@
 <script>
-  import { signIn, signOut } from "@auth/sveltekit/client";
   import { Card, Button, Tabs } from "svelte-ui";
   import { page } from "$app/stores";
   import { onMount, onDestroy } from "svelte";

@@ -2,7 +2,6 @@
   // @ts-nocheck
   import { page } from '$app/stores';
   import { onMount, onDestroy } from 'svelte';
-  import { signOut } from '@auth/sveltekit/client';
   import 'iconify-icon';
   import { Dropdown } from 'svelte-ui';
   import { createEventDispatcher } from 'svelte';

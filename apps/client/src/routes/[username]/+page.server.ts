@@ -21,7 +21,6 @@ import type { ApolloQueryResult } from "@apollo/client/core";
 export const load: PageServerLoad = async (event) => {
   const { params, parent } = event;
 
-
   let githubProfileData = null;
   // const currentUser = sessionUser?.username === params?.username;
 
@@ -36,7 +35,9 @@ export const load: PageServerLoad = async (event) => {
   //   sessionUser = data.user[0];
   // }
 
-  const getUserPinnedItems = (gitHubUsername: string): Promise<ApolloQueryResult<any[]>> => {
+  const getUserPinnedItems = (
+    gitHubUsername: string
+  ): Promise<ApolloQueryResult<any[]>> => {
     return apolloClient.query({
       query: GET_USER_PINNED_ITEMS,
       variables: {
@@ -54,7 +55,9 @@ export const load: PageServerLoad = async (event) => {
     });
   };
 
-  const getRepoSubscriptions = (userId: string): Promise<ApolloQueryResult<any[]>> => {
+  const getRepoSubscriptions = (
+    userId: string
+  ): Promise<ApolloQueryResult<any[]>> => {
     return apolloClient.query({
       query: GET_SUBSCRIBED_REPOS,
       variables: {
@@ -63,7 +66,9 @@ export const load: PageServerLoad = async (event) => {
     });
   };
 
-  const getOwnedRepositories = (gitHubUsername: string): Promise<ApolloQueryResult<any[]>> => {
+  const getOwnedRepositories = (
+    gitHubUsername: string
+  ): Promise<ApolloQueryResult<any[]>> => {
     return apolloClient.query({
       query: GET_USER_REPOS_BY_GITHUB_USERNAME,
       variables: {
@@ -81,7 +86,9 @@ export const load: PageServerLoad = async (event) => {
     });
   };
 
-  const getGitHubAccountInfo = (gitHubLogin: string): Promise<ApolloQueryResult<any[]>> => {
+  const getGitHubAccountInfo = (
+    gitHubLogin: string
+  ): Promise<ApolloQueryResult<any[]>> => {
     return apolloClient.query({
       query: GET_USER_BY_GITHUB_LOGIN,
       variables: {
