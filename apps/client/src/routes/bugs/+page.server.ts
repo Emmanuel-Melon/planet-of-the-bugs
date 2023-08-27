@@ -7,11 +7,6 @@ import {
 } from "$lib/graphql/queries/repositories.js";
 import { error } from "@sveltejs/kit";
 import { GET_USER_BY_EMAIL } from "$lib/graphql/queries/user";
-import {
-  redirectUnAuthenticatedUsers,
-  refreshGitHubAccessToken,
-  validateGitHubAccessToken,
-} from "$lib/auth/helpers";
 
 const issues = [
   {
