@@ -45,8 +45,6 @@
   "type": "module",
   "dependencies": {
     "@apollo/client": "^3.7.11",
-    "@auth/core": "^0.5.1",
-    "@auth/sveltekit": "^0.3.0",
     "@formkit/auto-animate": "^0.7.0",
     "@lucia-auth/adapter-postgresql": "^2.0.0",
     "@lucia-auth/adapter-prisma": "^3.0.0",

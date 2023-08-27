@@ -16,36 +16,27 @@ import {
   GET_CONTRIBUTIONS_BY_REPO,
   GET_USER_PULL_REQUEST_CONTRIBUTIONS,
 } from "$lib/graphql/queries/repositories";
+import type { ApolloQueryResult } from "@apollo/client/core";
 
 export const load: PageServerLoad = async (event) => {
   const { params, parent } = event;
-  const { session } = await parent();
-  let sessionUser = session.user;
-  if (!session?.token) {
-    return fail(400, {
-      error: "Unauthorized",
-    });
-  }
 
-  if (!sessionUser?.hasConnectedGithub) {
-    return;
-  }
 
   let githubProfileData = null;
-  const currentUser = sessionUser?.username === params?.username;
+  // const currentUser = sessionUser?.username === params?.username;
 
-  if (!currentUser) {
-    const { data } = await apolloClient.query({
-      query: GET_USER_BY_USERNAME,
-      variables: {
-        username: params?.username,
-      },
-    });
+  // if (!currentUser) {
+  //   const { data } = await apolloClient.query({
+  //     query: GET_USER_BY_USERNAME,
+  //     variables: {
+  //       username: params?.username,
+  //     },
+  //   });
 
-    sessionUser = data.user[0];
-  }
+  //   sessionUser = data.user[0];
+  // }
 
-  const getUserPinnedItems = (gitHubUsername): Promise<any[]> => {
+  const getUserPinnedItems = (gitHubUsername: string): Promise<ApolloQueryResult<any[]>> => {
     return apolloClient.query({
       query: GET_USER_PINNED_ITEMS,
       variables: {
@@ -54,7 +45,7 @@ export const load: PageServerLoad = async (event) => {
     });
   };
 
-  const getRepoContributions = (): Promise<any[]> => {
+  const getRepoContributions = (): Promise<ApolloQueryResult<any[]>> => {
     return apolloClient.query({
       query: GET_REPOS_CONTRIBUTED_TO,
       variables: {
@@ -63,7 +54,7 @@ export const load: PageServerLoad = async (event) => {
     });
   };
 
-  const getRepoSubscriptions = (userId): Promise<any[]> => {
+  const getRepoSubscriptions = (userId: string): Promise<ApolloQueryResult<any[]>> => {
     return apolloClient.query({
       query: GET_SUBSCRIBED_REPOS,
       variables: {
@@ -72,7 +63,7 @@ export const load: PageServerLoad = async (event) => {
     });
   };
 
-  const getOwnedRepositories = (gitHubUsername): Promise<any[]> => {
+  const getOwnedRepositories = (gitHubUsername: string): Promise<ApolloQueryResult<any[]>> => {
     return apolloClient.query({
       query: GET_USER_REPOS_BY_GITHUB_USERNAME,
       variables: {
@@ -81,7 +72,7 @@ export const load: PageServerLoad = async (event) => {
     });
   };
 
-  const getUserByEmail = (email): Promise<any> => {
+  const getUserByEmail = (email: string): Promise<ApolloQueryResult<any>> => {
     return apolloClient.query({
       query: GET_USER_BY_EMAIL,
       variables: {
@@ -90,7 +81,7 @@ export const load: PageServerLoad = async (event) => {
     });
   };
 
-  const getGitHubAccountInfo = (gitHubLogin: String): Promise<any> => {
+  const getGitHubAccountInfo = (gitHubLogin: string): Promise<ApolloQueryResult<any[]>> => {
     return apolloClient.query({
       query: GET_USER_BY_GITHUB_LOGIN,
       variables: {
@@ -99,7 +90,7 @@ export const load: PageServerLoad = async (event) => {
     });
   };
 
-  const user = await getUserByEmail(session?.user?.email);
+  const user = await getUserByEmail("emmanuelgatwech@gmail.com");
   const {
     data: { user: destructuredUserObject, loading: profileLoading },
   } = user;
@@ -115,9 +106,9 @@ export const load: PageServerLoad = async (event) => {
   const [contributedTo, pinnedItems, subscribedRepos, ownedRepos] =
     await Promise.all([
       getRepoContributions(),
-      getUserPinnedItems(gitHubUser?.data?.user?.login),
+      getUserPinnedItems("Emmanuel-Melon"),
       getRepoSubscriptions(userInfo.id),
-      getOwnedRepositories(gitHubUser?.data?.user?.login),
+      getOwnedRepositories("Emmanuel-Melon"),
     ]);
 
   const { data: contributionData } = contributedTo;
@@ -126,7 +117,6 @@ export const load: PageServerLoad = async (event) => {
   const { data: subscribedTo } = subscribedRepos;
 
   return {
-    currentUser,
     user,
     githubProfileData,
     contributionData,

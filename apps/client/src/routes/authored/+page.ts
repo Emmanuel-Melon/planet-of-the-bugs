@@ -6,21 +6,13 @@ import { redirectUnAuthenticatedUsers } from "$lib/auth/helpers";
 export const load = async (event) => {
   const { parent, data: pageData } = event;
 
-  const { session } = await parent();
 
-  redirectUnAuthenticatedUsers(session, [307, "/auth"]);
   let githubProfileData = null;
-
-  // const isTokenValid = validateGitHubAccessToken(session?.expires);
-
-  // if (!isTokenValid) {
-  //   refreshGitHubAccessToken(session);
-  // }
 
   const user = await apolloClient.query({
     query: GET_USER_BY_EMAIL,
     variables: {
-      email: session?.user?.email,
+      email: "emmanuelgatwech@gmail.com",
     },
   });
 

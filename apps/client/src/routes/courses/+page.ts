@@ -9,13 +9,10 @@ import {
 export const load = async (event) => {
   const { parent, data: pageData } = event;
 
-  const { session } = await parent();
-  redirectUnAuthenticatedUsers(session, [307, "/auth"]);
-
   const user = await apolloClient.query({
     query: GET_USER_BY_EMAIL,
     variables: {
-      email: session?.user?.email,
+      email: "emmanuelgatwech@gmail.com",
     },
   });
 
