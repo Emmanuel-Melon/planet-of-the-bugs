@@ -61,6 +61,10 @@
 
 
 <section class="p-4 space-y-2">
+
+  <form method="post" action="?/logout">
+    <input type="submit" value="Sign out" />
+  </form>
   <div class="stats shadow">
   
     <div class="stat">

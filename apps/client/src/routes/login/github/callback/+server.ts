@@ -20,7 +20,7 @@ export const GET = async ({ url, cookies, locals }) => {
       if (existingUser) return existingUser;
       const user = await createUser({
         attributes: {
-          github_username: "githubUser.github_username",
+          github_username: githubUser?.github_username,
         },
       });
       return user;
@@ -31,10 +31,11 @@ export const GET = async ({ url, cookies, locals }) => {
       attributes: {},
     });
     locals.auth.setSession(session);
+
     return new Response(null, {
       status: 302,
       headers: {
-        Location: "/",
+        Location: existingUser ? "/" : "/new-user",
       },
     });
   } catch (e) {

@@ -22,11 +22,9 @@ export const auth = lucia({
   }),
   env: dev ? "DEV" : "PROD",
   middleware: sveltekit(),
-  // transform userData
   getUserAttributes: (data) => {
-    console.log("got attrs", data);
     return {
-      githubUsername: data.github_username,
+      github_username: data.github_username,
     };
   },
 });
