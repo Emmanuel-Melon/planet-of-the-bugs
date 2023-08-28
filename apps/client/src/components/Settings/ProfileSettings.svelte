@@ -22,7 +22,7 @@
         type="email"
         placeholder="john@doe.xyz"
         class="input input-sm input-ghost input-bordered w-full"
-        id="email"
+        
       />
     </div>
     <div class="form-control w-full">

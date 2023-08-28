@@ -1,1 +1,1 @@
-export const autoScroll = () => {}
+export const autoScroll = () => {};

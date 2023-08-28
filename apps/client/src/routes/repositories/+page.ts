@@ -6,11 +6,6 @@ import {
 import apolloClient from "$lib/graphql/apolloClient";
 import { fail, redirect } from "@sveltejs/kit";
 import { GET_USER_BY_EMAIL } from "$lib/graphql/queries/user";
-import {
-  redirectUnAuthenticatedUsers,
-  refreshGitHubAccessToken,
-  validateGitHubAccessToken,
-} from "$lib/auth/helpers";
 import { stringifyTopics } from "bugs-lib";
 
 export const load = async (event) => {
@@ -24,13 +19,10 @@ export const load = async (event) => {
     data: pageData,
   } = event;
 
-  const { session } = await parent();
-
-  redirectUnAuthenticatedUsers(session, [307, "/auth"]);
   const { data } = await apolloClient.query({
     query: GET_USER_BY_EMAIL,
     variables: {
-      email: session?.user?.email,
+      email: "emmanuelgatwech@gmail.com",
     },
   });
 

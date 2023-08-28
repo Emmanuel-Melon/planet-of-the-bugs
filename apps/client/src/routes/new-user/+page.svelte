@@ -1,15 +1,16 @@
 <script>
   // @ts-nocheck
-  import { goto } from '$app/navigation';
-  import { page } from '$app/stores';
-  import { INSERT_NEW_USER } from '$lib/graphql/mutations/users';
-  import { onMount } from 'svelte';
-  import { mutation } from 'svelte-apollo';
-  import 'iconify-icon';
+  import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
+  import { INSERT_NEW_USER } from "$lib/graphql/mutations/users";
+  import { onMount } from "svelte";
+  import { mutation } from "svelte-apollo";
+  import { enhance } from "$app/forms";
+  import "iconify-icon";
 
-  let username = '';
-  let name = '';
-  let email = '';
+  let username = "";
+  let name = "";
+  let email = "";
 
   let usernamePattern = new RegExp(/^[a-zA-Z][a-zA-Z0-9_-]{3,19}$/);
   let emailPattern = new RegExp(
@@ -42,10 +43,10 @@
       });
 
       if (result.data.insert_users_one) {
-        console.log('Mutation successful!');
-        goto('/', { replaceState: false });
+        console.log("Mutation successful!");
+        goto("/", { replaceState: false });
       } else {
-        console.log('Mutation failed');
+        console.log("Mutation failed");
       }
     } catch (error) {
       console.log(error);
@@ -70,7 +71,7 @@
           Hey there! To get started on this awesome journey together, we'd love
           to learn a bit more about you.
         </p>
-        <form class="form-control gap-4 w-full">
+        <form class="form-control gap-4 w-full" method="post" use:enhance>
           <div>
             <label for="username" class="label">
               <span class="label-text">Username</span>
@@ -81,9 +82,9 @@
               bind:value={username}
               on:input={(event) =>
                 (username = event.target.value.toLowerCase())}
-              pattern={'^[a-zA-Z][a-zA-Z0-9_-]{3,19}$'}
+              pattern={"^[a-zA-Z][a-zA-Z0-9_-]{3,19}$"}
               title="Must start with a letter, have at least 4 characters and contain only letters, numbers, hyphens, or underscores."
-              class="input input-bordered w-full"
+              class="input input-sm input-bordered w-full"
               required
             />
           </div>
@@ -95,7 +96,7 @@
               id="name"
               type="text"
               bind:value={name}
-              class="input input-bordered w-full"
+              class="input input-sm input-bordered w-full"
               required
             />
           </div>
@@ -105,11 +106,10 @@
               <span class="label-text">Email Address</span>
             </label>
             <input
-              id="email"
               type="email"
               bind:value={email}
               on:input={(event) => (email = event.target.value.toLowerCase())}
-              class="input input-bordered w-full"
+              class="input input-sm input-bordered w-full"
               required
             />
           </div>
