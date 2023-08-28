@@ -9,6 +9,7 @@
         "^build"
       ]
     },
+    "format": {},
     "lint": {},
     "dev": {
       "cache": false

@@ -8,7 +8,9 @@
 	],
 	"scripts": {
 		"dev": "turbo run dev --parallel",
-		"build": "vite build"
+		"build": "vite build",
+		"format": "turbo run format --parallel",
+		"lint": "turbo run lint --parallel"
 	},
 	"devDependencies": {
 		"eslint-config-custom": "*",

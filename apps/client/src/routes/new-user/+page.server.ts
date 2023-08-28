@@ -7,13 +7,12 @@ import { INSERT_NEW_USER } from "$lib/graphql/mutations/users";
 import { mutation } from "svelte-apollo";
 
 export const load: PageServerLoad = async ({ locals }) => {
-    const session = await locals.auth.validate()
-    if (!session) throw redirect(302, "/login");
-    return {
-      ...session,
-    };
+  const session = await locals.auth.validate();
+  if (!session) throw redirect(302, "/login");
+  return {
+    ...session,
   };
-  
+};
 
 const userInfoSchema = z.object({
   email: z.string(),

@@ -22,7 +22,7 @@ export const GET = async ({ url, cookies, locals }): Promise<Response> => {
       const user = await createUser({
         attributes: {
           github_username: githubUser.login,
-          email: githubUser.email as string
+          email: githubUser.email as string,
         },
       });
       return user;
