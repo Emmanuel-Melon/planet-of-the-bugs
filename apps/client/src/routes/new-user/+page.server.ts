@@ -1,10 +1,19 @@
 import { auth } from "$lib/server/lucia";
 import { fail, redirect } from "@sveltejs/kit";
-import type { Actions } from "./$types";
+import type { Actions, PageServerLoad } from "./$types";
 import { parseFormData, validateFormData } from "bugs-lib/formData";
 import { z } from "zod";
 import { INSERT_NEW_USER } from "$lib/graphql/mutations/users";
 import { mutation } from "svelte-apollo";
+
+export const load: PageServerLoad = async ({ locals }) => {
+    const session = await locals.auth.validate()
+    if (!session) throw redirect(302, "/login");
+    return {
+      ...session,
+    };
+  };
+  
 
 const userInfoSchema = z.object({
   email: z.string(),
