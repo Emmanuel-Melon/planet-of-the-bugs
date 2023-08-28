@@ -1,7 +1,7 @@
 import { dev } from "$app/environment";
 import { githubAuth } from "$lib/server/lucia.js";
 
-export const GET = async ({ cookies }) => {
+export const GET = async ({ cookies }): Promise<Response> => {
   const [url, state] = await githubAuth.getAuthorizationUrl();
   // store state
   cookies.set("github_oauth_state", state, {

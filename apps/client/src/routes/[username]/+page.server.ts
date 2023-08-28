@@ -20,7 +20,6 @@ import type { ApolloQueryResult } from "@apollo/client/core";
 
 export const load: PageServerLoad = async (event) => {
   const { params, parent } = event;
-
   let githubProfileData = null;
   // const currentUser = sessionUser?.username === params?.username;
 
@@ -41,7 +40,7 @@ export const load: PageServerLoad = async (event) => {
     return apolloClient.query({
       query: GET_USER_PINNED_ITEMS,
       variables: {
-        username: "Emmanuel-Melon",
+        username: params?.username,
       },
     });
   };
@@ -50,7 +49,7 @@ export const load: PageServerLoad = async (event) => {
     return apolloClient.query({
       query: GET_REPOS_CONTRIBUTED_TO,
       variables: {
-        username: "Emmanuel-Melon",
+        username: params?.username,
       },
     });
   };
@@ -72,7 +71,7 @@ export const load: PageServerLoad = async (event) => {
     return apolloClient.query({
       query: GET_USER_REPOS_BY_GITHUB_USERNAME,
       variables: {
-        username: "Emmanuel-Melon",
+        username: params?.username,
       },
     });
   };
@@ -92,7 +91,7 @@ export const load: PageServerLoad = async (event) => {
     return apolloClient.query({
       query: GET_USER_BY_GITHUB_LOGIN,
       variables: {
-        login: gitHubLogin,
+        login: params?.username,
       },
     });
   };
@@ -113,9 +112,9 @@ export const load: PageServerLoad = async (event) => {
   const [contributedTo, pinnedItems, subscribedRepos, ownedRepos] =
     await Promise.all([
       getRepoContributions(),
-      getUserPinnedItems("Emmanuel-Melon"),
+      getUserPinnedItems(params?.username),
       getRepoSubscriptions(userInfo.id),
-      getOwnedRepositories("Emmanuel-Melon"),
+      getOwnedRepositories(params?.username),
     ]);
 
   const { data: contributionData } = contributedTo;

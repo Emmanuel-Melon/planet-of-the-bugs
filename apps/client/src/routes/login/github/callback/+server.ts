@@ -1,8 +1,9 @@
 // routes/login/github/callback/+server.ts
 import { auth, githubAuth } from "$lib/server/lucia.js";
+import type { GithubUser } from "@lucia-auth/oauth/providers";
 import { OAuthRequestError } from "@lucia-auth/oauth";
 
-export const GET = async ({ url, cookies, locals }) => {
+export const GET = async ({ url, cookies, locals }): Promise<Response> => {
   const storedState = cookies.get("github_oauth_state");
   const state = url.searchParams.get("state");
   const code = url.searchParams.get("code");
@@ -20,8 +21,8 @@ export const GET = async ({ url, cookies, locals }) => {
       if (existingUser) return existingUser;
       const user = await createUser({
         attributes: {
-          github_username: githubUser?.login,
-          email: githubUser?.email ?? undefined,
+          github_username: githubUser.login,
+          email: githubUser.email as string
         },
       });
       return user;
@@ -32,7 +33,6 @@ export const GET = async ({ url, cookies, locals }) => {
       attributes: {},
     });
     locals.auth.setSession(session);
-
     return new Response(null, {
       status: 302,
       headers: {
