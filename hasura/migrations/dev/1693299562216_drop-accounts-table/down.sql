@@ -1,3 +1,3 @@
-CREATE TABLE accounts (
+CREATE TABLE account (
     -- Define your table schema here
 );
