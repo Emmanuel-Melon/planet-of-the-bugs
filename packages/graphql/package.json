@@ -1,0 +1,17 @@
+{
+  "name": "graphql",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "license": "MIT",
+  "scripts": {
+    "generate": "graphql-codegen"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
+    "graphql-codegen": "^0.4.0",
+    "graphql-codegen-svelte-apollo": "^1.1.0"
+  }
+}
