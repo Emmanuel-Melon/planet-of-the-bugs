@@ -1,0 +1,26 @@
+table:
+  name: connection_request_status
+  schema: public
+is_enum: true
+array_relationships:
+  - name: connection_requests
+    using:
+      foreign_key_constraint_on:
+        column: status
+        table:
+          name: connection_requests
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - status
+    comment: ""
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - status
+      filter: {}
+    comment: ""

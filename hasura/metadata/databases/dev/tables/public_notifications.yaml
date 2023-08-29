@@ -1,0 +1,33 @@
+table:
+  name: notifications
+  schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - entity_url
+        - title
+        - delivery_status
+        - trigger_type
+        - created_at
+        - updated_at
+        - entity_id
+        - id
+        - triggered_by
+    comment: ""
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - entity_url
+        - title
+        - delivery_status
+        - trigger_type
+        - created_at
+        - updated_at
+        - entity_id
+        - id
+        - triggered_by
+      filter: {}
+    comment: ""

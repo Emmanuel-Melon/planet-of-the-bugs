@@ -1,0 +1,59 @@
+table:
+  name: account
+  schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - access_token
+        - provider
+        - providerAccountId
+        - refresh_token
+        - scope
+        - session_state
+        - token_type
+        - expires_at
+        - id_token
+        - created_at
+        - id
+        - userId
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - access_token
+        - provider
+        - providerAccountId
+        - refresh_token
+        - scope
+        - session_state
+        - token_type
+        - expires_at
+        - id_token
+        - created_at
+        - id
+        - userId
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - access_token
+        - provider
+        - providerAccountId
+        - refresh_token
+        - scope
+        - session_state
+        - token_type
+        - expires_at
+        - id_token
+        - created_at
+        - id
+        - userId
+      filter: {}
+      check: {}
+delete_permissions:
+  - role: user
+    permission:
+      filter: {}

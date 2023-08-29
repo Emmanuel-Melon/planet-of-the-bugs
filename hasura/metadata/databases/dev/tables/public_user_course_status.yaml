@@ -1,0 +1,3 @@
+table:
+  name: user_course_status
+  schema: public

@@ -1,0 +1,48 @@
+table:
+  name: exercises
+  schema: public
+object_relationships:
+  - name: exercise_submission_status
+    using:
+      foreign_key_constraint_on: source
+  - name: user
+    using:
+      manual_configuration:
+        column_mapping:
+          created_by: id
+        insertion_order: null
+        remote_table:
+          name: users
+          schema: public
+array_relationships:
+  - name: solutions
+    using:
+      manual_configuration:
+        column_mapping:
+          id: id
+        insertion_order: null
+        remote_table:
+          name: exercise_solution
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - XP
+        - source
+        - created_at
+        - created_by
+        - id
+    comment: ""
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - XP
+        - source
+        - created_at
+        - created_by
+        - id
+      filter: {}
+    comment: ""

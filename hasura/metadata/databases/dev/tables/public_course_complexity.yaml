@@ -1,0 +1,12 @@
+table:
+  name: course_complexity
+  schema: public
+is_enum: true
+array_relationships:
+  - name: courses
+    using:
+      foreign_key_constraint_on:
+        column: complexity
+        table:
+          name: courses
+          schema: public

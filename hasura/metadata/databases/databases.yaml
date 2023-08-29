@@ -1,1 +1,17 @@
-[]
+- name: dev
+  kind: postgres
+  configuration:
+    connection_info:
+      database_url: postgres://Emmanuel-Melon:EsZ8HhioKu2S@ep-long-bonus-807927.us-east-2.aws.neon.tech/neondb
+      isolation_level: read-committed
+      use_prepared_statements: false
+  tables: "!include dev/tables/tables.yaml"
+- name: prod
+  kind: postgres
+  configuration:
+    connection_info:
+      database_url:
+        from_env: PUBLIC_HASURA_GRAPHQL_DB_URI
+      isolation_level: read-committed
+      use_prepared_statements: false
+  tables: "!include prod/tables/tables.yaml"

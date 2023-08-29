@@ -1,0 +1,37 @@
+table:
+  name: chat_participants
+  schema: public
+object_relationships:
+  - name: chat
+    using:
+      foreign_key_constraint_on: chat_id
+  - name: user
+    using:
+      manual_configuration:
+        column_mapping:
+          user_id: id
+        insertion_order: null
+        remote_table:
+          name: users
+          schema: public
+array_relationships:
+  - name: participants
+    using:
+      manual_configuration:
+        column_mapping:
+          user_id: id
+        insertion_order: null
+        remote_table:
+          name: users
+          schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - created_at
+        - updated_at
+        - chat_id
+        - id
+        - user_id
+      filter: {}
+    comment: ""

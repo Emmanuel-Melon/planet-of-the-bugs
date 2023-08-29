@@ -1,0 +1,49 @@
+table:
+  name: courses
+  schema: public
+object_relationships:
+  - name: course_complexity
+    using:
+      foreign_key_constraint_on: complexity
+array_relationships:
+  - name: course_chapters
+    using:
+      foreign_key_constraint_on:
+        column: course_id
+        table:
+          name: course_chapters
+          schema: public
+  - name: user_courses
+    using:
+      foreign_key_constraint_on:
+        column: course_id
+        table:
+          name: user_courses
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - title
+        - complexity
+        - description
+        - created_at
+        - updated_at
+        - id
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - title
+        - id
+        - created_at
+        - updated_at
+        - description
+        - complexity
+        - slug
+        - creator
+        - bucketId
+        - cover
+      filter: {}
+      allow_aggregations: true
