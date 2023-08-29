@@ -1,0 +1,19 @@
+table:
+  name: notification_recepient
+  schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - id
+        - user_id
+    comment: ""
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - user_id
+      filter: {}
+    comment: ""

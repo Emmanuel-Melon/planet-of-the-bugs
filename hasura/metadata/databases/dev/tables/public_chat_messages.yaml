@@ -1,0 +1,3 @@
+table:
+  name: chat_messages
+  schema: public

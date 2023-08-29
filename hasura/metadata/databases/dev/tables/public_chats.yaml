@@ -1,0 +1,36 @@
+table:
+  name: chats
+  schema: public
+array_relationships:
+  - name: chat_participants
+    using:
+      foreign_key_constraint_on:
+        column: chat_id
+        table:
+          name: chat_participants
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - created_at
+        - updated_at
+        - id
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - created_at
+        - updated_at
+        - id
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - created_at
+        - updated_at
+        - id
+      filter: {}
+      check: null

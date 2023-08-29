@@ -1,0 +1,11 @@
+table:
+  name: exercise_source
+  schema: public
+is_enum: true
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - source
+      filter: {}
+    comment: ""

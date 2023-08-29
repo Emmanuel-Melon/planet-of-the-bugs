@@ -1,0 +1,19 @@
+table:
+  name: exercise_submission_status
+  schema: public
+is_enum: true
+array_relationships:
+  - name: exercises
+    using:
+      foreign_key_constraint_on:
+        column: source
+        table:
+          name: exercises
+          schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - status
+      filter: {}
+    comment: ""

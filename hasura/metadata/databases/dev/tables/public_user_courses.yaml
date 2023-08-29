@@ -1,0 +1,35 @@
+table:
+  name: user_courses
+  schema: public
+object_relationships:
+  - name: course
+    using:
+      foreign_key_constraint_on: course_id
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - progress
+        - completion_date
+        - created_at
+        - updated_at
+        - course_id
+        - id
+        - user_id
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - created_at
+        - updated_at
+        - user_id
+        - course_id
+        - progress
+        - completion_date
+        - status
+      filter: {}

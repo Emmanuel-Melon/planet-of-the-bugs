@@ -1,0 +1,46 @@
+table:
+  name: user_subscribed_repos
+  schema: public
+object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - id
+        - created_at
+        - updated_at
+        - description
+        - name
+        - user_id
+        - repo_name
+        - repo_owner
+        - repo_url
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - name
+        - repo_name
+        - repo_owner
+        - repo_url
+        - description
+        - created_at
+        - updated_at
+        - id
+        - user_id
+      filter: {}
+event_triggers:
+  - name: repo_subscription
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      interval_sec: 10
+      num_retries: 0
+      timeout_sec: 60
+    webhook: https://planetofthebugs.xyz/repositories/post
