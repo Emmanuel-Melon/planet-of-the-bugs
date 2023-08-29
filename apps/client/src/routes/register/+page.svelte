@@ -9,7 +9,6 @@
     <form method="post" use:enhance class="space-y-2">
       <FormControl ariaLabel="username" labelText="Username">
         <Input
-        inputType="text"
         placeholder="bug@planet.xyz"
         id="username"
         name="username"
@@ -17,7 +16,7 @@
       </FormControl>
       <FormControl ariaLabel="password" labelText="Password">
         <Input
-        inputType="password"
+        type="password"
         placeholder="Your password"
         id="password"
         name="password"

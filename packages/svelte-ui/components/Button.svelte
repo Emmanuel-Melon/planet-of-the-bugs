@@ -8,6 +8,7 @@
   export let ButtonSize: ButtonProps['ButtonSize'] = 'sm';
   export let state: ButtonProps['state'] = null;
   export let requestState: RequestState = 'idle';
+  export let type: ButtonProps['type'] = 'button'
 
   const dispatch = createEventDispatcher();
   const handleClick = () => {
@@ -23,6 +24,7 @@
   class={`btn btn-${ButtonSize} gap-2 ${
     state ? `btn-${state}` : `btn-${ButtonType}`
   }`}
+  type={type}
   on:click={handleClick}
 >
   {#if requestState === 'idle' || requestState === 'completed'}

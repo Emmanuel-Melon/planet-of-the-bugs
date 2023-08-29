@@ -11,6 +11,7 @@ export interface ButtonProps {
     | 'outline';
   ButtonSize?: 'xs' | 'sm' | 'base' | 'lg';
   state?: 'info' | 'success' | 'warning' | 'error';
+  type?: "button" | "submit";
   requestState?: RequestState;
   onClick?: () => void;
 }

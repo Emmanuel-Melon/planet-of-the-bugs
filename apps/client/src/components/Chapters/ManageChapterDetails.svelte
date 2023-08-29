@@ -5,6 +5,9 @@
   import { Button, Card } from 'svelte-ui';
   import type { RequestState } from 'svelte-ui/Types';
   import NewChapterModal from '$components/Modals/NewChapterModal.svelte';
+  import { enhance } from '$app/forms';
+  import FormControl from 'svelte-ui/components/FormControl.svelte';
+  import Input from 'svelte-ui/components/Input.svelte';
   export let courseId: string;
   export let chapters: Array<Object>;
 
@@ -13,9 +16,19 @@
   let isSelected: boolean = false;
   let selectedChapter: number;
 
-  const handleChapterChange = (event) => {
+  const handleChapterChange = (event: Event) => {
     isSelected = true;
-    selectedChapter = event.target.selectedIndex - 1;
+    selectedChapter = event.target?.selectedIndex - 1;
+  };
+
+  const updateCallback = () => {
+    requestState = 'processing';
+
+    return async ({ update, result  }) => {
+      await update();
+      console.log(result);
+      requestState = 'completed';
+    };
   };
 
   const handleNewChapterSubmit = async (event) => {
@@ -78,48 +91,57 @@
   {#if isSelected}
     <div class="card card-compact shadow space-y-4">
       <div class="card-body space-y-2">
-        <form class="w-full">
-          <div class="form-control w-full">
-            <label class="label" for="index">
-              <span class="label-text">Chapter Index:</span>
-            </label>
-            <input
+        <form
+          method="post"
+          use:enhance={() => updateCallback()}
+          action="?/updateChapter"
+          class="w-full"
+        >
+          <FormControl
+            ariaLabel="course id"
+            labelText="Chapter Id"
+            isHidden={true}
+          >
+            <Input value={courseId} name="courseId" id="courseId" size="md" />
+          </FormControl>
+          <FormControl ariaLabel="chapter index" labelText="Chapter Index">
+            <Input
               type="number"
-              disabled
-              bind:value={chapters[selectedChapter].index}
-              class="input input-md input-bordered w-full"
-              id="lessonIndex"
+              value={chapters[selectedChapter].index}
+              name="index"
+              id="index"
+              size="md bg-gray-300"
+              isReadonly={true}
             />
-          </div>
-          <div class="form-control w-full">
-            <label class="label" for="title">
-              <span class="label-text">Chapter Title:</span>
-            </label>
-            <input
-              type="text"
-              bind:value={chapters[selectedChapter].title}
-              placeholder="Type here"
-              class="input input-md input-bordered w-full"
-              id="lessonTitle"
+          </FormControl>
+          <FormControl ariaLabel="chapter title" labelText="Chapter Title">
+            <Input
+              value={chapters[selectedChapter].title}
+              name="title"
+              id="title"
+              size="md"
             />
-          </div>
-          <div class="form-control w-full">
-            <label class="label" for="title">
-              <span class="label-text">Chapter Description</span>
-            </label>
-            <textarea
-              bind:value={chapters[selectedChapter].description}
-              type="text"
-              placeholder="Type here"
-              class="input input-md input-bordered w-full h-32"
-              id="lessonDescription"
+          </FormControl>
+          <FormControl
+            ariaLabel="chapter description"
+            labelText="Chapter Description"
+          >
+            <Input
+              isTextArea={true}
+              value={chapters[selectedChapter].description}
+              name="description"
+              id="description"
+              size="md"
+              classes="h-32"
             />
-          </div>
+          </FormControl>
           <div class="card-actions justify-start mt-2 py-2">
             <Button
               CTA="Update Chapter Details"
               icon="ri:check-line"
-              on:buttonClick={() => {}}
+              type="submit"
+              {requestState}
+              
             />
           </div>
 

@@ -1,17 +1,36 @@
 <script lang="ts">
-  export let inputType = "text";
-  export let name = "";
-  export let placeholder = "";
-  export let id = "";
-  export let value = "";
-  export let classes = "";
+  export let type = 'text';
+  export let name = '';
+  export let placeholder = 'Type here';
+  export let id = '';
+  export let value = '';
+  export let classes = '';
+  export let size = 'sm';
+  export let disabled = false;
+  export let isReadonly = false;
+  export let isTextArea = false;
 </script>
 
-<input
-  type={inputType}
-  {placeholder}
-  class={`input input-sm bg-white input-bordered w-full ${classes}`}
-  {id}
-  {name}
-  {value}
-/>
+{#if isTextArea}
+  <textarea
+    {...{ type }}
+    {placeholder}
+    class={`input input-${size} input-bordered w-full ${classes}`}
+    {id}
+    {name}
+    bind:value
+    {disabled}
+    readonly={isReadonly}
+  />
+{:else}
+  <input
+    {...{ type }}
+    {placeholder}
+    class={`input input-${size} input-bordered w-full ${classes}`}
+    {id}
+    {name}
+    bind:value
+    {disabled}
+    readonly={isReadonly}
+  />
+{/if}
