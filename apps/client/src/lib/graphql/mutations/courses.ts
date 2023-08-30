@@ -69,11 +69,18 @@ export const START_COURSE = gql`
   }
 `;
 
-
 export const UPDATE_CHAPTER = gql`
-mutation MyMutation($courseId: uuid = "courseId", $chapterIndex: Int = 10, $description: String = "", $title: String = "") {
-  update_course_chapters(where: {course_id: {_eq: $courseId}, index: {_eq: $chapterIndex}}, _set: {description: $description, title: $title}) {
-    affected_rows
+  mutation MyMutation(
+    $courseId: uuid = "courseId"
+    $chapterIndex: Int = 10
+    $description: String = ""
+    $title: String = ""
+  ) {
+    update_course_chapters(
+      where: { course_id: { _eq: $courseId }, index: { _eq: $chapterIndex } }
+      _set: { description: $description, title: $title }
+    ) {
+      affected_rows
+    }
   }
-}
 `;

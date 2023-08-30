@@ -21,12 +21,20 @@ export const getLessonContent = async (lessonId: String) => {
   return data.lessons_by_pk;
 };
 
-export const updateCourseChapter = async (courseId: String, chapterIndex: number, title: String, description: String) => {
+export const updateCourseChapter = async (
+  courseId: String,
+  chapterIndex: number,
+  title: String,
+  description: String
+) => {
   const { data } = await apolloClient.mutate({
     mutation: UPDATE_CHAPTER,
     variables: {
-      courseId, chapterIndex, title, description
-    }
-  })
+      courseId,
+      chapterIndex,
+      title,
+      description,
+    },
+  });
   return data.update_course_chapters;
-}
+};

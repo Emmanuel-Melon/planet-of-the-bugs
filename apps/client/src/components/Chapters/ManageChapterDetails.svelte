@@ -2,12 +2,11 @@
   import { goto } from '$app/navigation';
   import { mutation } from 'svelte-apollo';
   import { ADD_CHAPTER } from '$lib/graphql/mutations/courses';
-  import { Button, Card } from 'svelte-ui';
+  import { Button, Card, FormControl, Input } from 'svelte-ui';
   import type { RequestState } from 'svelte-ui/Types';
   import NewChapterModal from '$components/Modals/NewChapterModal.svelte';
   import { enhance } from '$app/forms';
-  import FormControl from 'svelte-ui/components/FormControl.svelte';
-  import Input from 'svelte-ui/components/Input.svelte';
+  import toast, { Toaster } from 'svelte-french-toast';
   export let courseId: string;
   export let chapters: Array<Object>;
 
@@ -24,10 +23,15 @@
   const updateCallback = () => {
     requestState = 'processing';
 
-    return async ({ update, result  }) => {
+    return async ({ update, result }) => {
       await update();
       console.log(result);
       requestState = 'completed';
+      if (result.type == 'success') {
+        toast.success(result.data.message);
+      } else {
+        toast.error(result.data.message);
+      }
     };
   };
 
@@ -64,6 +68,7 @@
 </script>
 
 <div class="flex flex-col space-y-4 w-full">
+  <Toaster />
   <div class="h-max">
     <Card>
       <div class="card-body space-y-2">
@@ -141,7 +146,6 @@
               icon="ri:check-line"
               type="submit"
               {requestState}
-              
             />
           </div>
 

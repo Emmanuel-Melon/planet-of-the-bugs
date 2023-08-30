@@ -20,7 +20,7 @@ import type { ApolloQueryResult } from "@apollo/client/core";
 
 export const load: PageServerLoad = async (event) => {
   const { locals, params, parent } = event;
-  const session = await locals.auth.validate()
+  const session = await locals.auth.validate();
   if (!session) throw redirect(302, "/login");
   let githubProfileData = null;
   // const currentUser = sessionUser?.username === params?.username;
