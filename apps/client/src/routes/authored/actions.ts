@@ -1,8 +1,12 @@
-import { parseFormData, validateFormData } from 'bugs-lib/formData';
-import { z } from 'zod';
-import { updateCourseDetails, updateCourseChapter } from '$lib/data/courses';
-import { fail } from '@sveltejs/kit';
-import slugify from 'bugs-lib/slugify';
+import { parseFormData, validateFormData } from "bugs-lib/formData";
+import { z } from "zod";
+import {
+  updateCourseDetails,
+  updateCourseChapter,
+  updateLessonDetails,
+} from "$lib/data/courses";
+import { fail } from "@sveltejs/kit";
+import slugify from "bugs-lib/slugify";
 
 const courseSchema = z.object({
   id: z.string(),
@@ -19,13 +23,21 @@ const chapterSchema = z.object({
   description: z.string(),
 });
 
+const lessonSchema = z.object({
+  id: z.string(),
+  xp: z.number(),
+  title: z.string(),
+  description: z.string(),
+  type: z.string(),
+});
+
 export const updateCourseAction = async ({ request }) => {
   const parsedFormData = parseFormData(await request.formData());
   const {
     formData: { id, complexity, title, description, cover },
   } = validateFormData(parsedFormData, courseSchema);
 
-  console.log('data', { id, complexity, title, description });
+  console.log("data", { id, complexity, title, description });
   try {
     await updateCourseDetails(
       id,
@@ -37,13 +49,15 @@ export const updateCourseAction = async ({ request }) => {
     );
 
     return {
-      message: 'Course details updated successfully!',
+      message: "Course details updated successfully!",
     };
   } catch (e) {
     console.log(e);
-    return fail(400, { message: 'Course details update failed!' });
+    return fail(400, { message: "Course details update failed!" });
   }
 };
+
+export const deleteCourseAction = async ({ request }) => {};
 
 export const updateChapterAction = async ({ request }) => {
   const parsedFormData = parseFormData(await request.formData());
@@ -55,12 +69,32 @@ export const updateChapterAction = async ({ request }) => {
     await updateCourseChapter(courseId, parseInt(index), title, description);
 
     return {
-      message: 'Chapter details updated successfully!',
+      message: "Chapter details updated successfully!",
     };
   } catch (e) {
     console.log(e);
-    return fail(400, { message: 'Chapter details update failed!' });
+    return fail(400, { message: "Chapter details update failed!" });
   }
 };
 
 export const deleteChapterAction = async ({ request }) => {};
+
+export const updateLessonDetailsAction = async ({ request }) => {
+  const parsedFormData = parseFormData(await request.formData());
+  const {
+    formData: { id, xp, title, description, type },
+  } = validateFormData(parsedFormData, lessonSchema);
+
+  try {
+    await updateLessonDetails(id, parseInt(xp), title, description, type);
+
+    return {
+      message: "Lesson details updated successfully!",
+    };
+  } catch (e) {
+    console.log(e);
+    return fail(400, { message: "Lesson details update failed!" });
+  }
+};
+
+export const deleteLessonAction = async ({ request }) => {};

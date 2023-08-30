@@ -31,3 +31,19 @@ export const ADD_LESSON = gql`
     }
   }
 `;
+
+export const UPDATE_LESSON_DETAILS = gql`
+  mutation updateLessonByPK(
+    $id: uuid = ""
+    $description: String = ""
+    $title: String = ""
+    $type: String = ""
+  ) {
+    update_lessons_by_pk(
+      pk_columns: { id: $id }
+      _set: { XP: 10, description: $description, title: $title, type: $type }
+    ) {
+      title
+    }
+  }
+`;

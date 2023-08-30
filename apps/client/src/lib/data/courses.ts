@@ -1,7 +1,8 @@
-import apolloClient from '$lib/graphql/apolloClient';
-import { UPDATE_CHAPTER, UPDATE_COURSE } from '$lib/graphql/mutations/courses';
-import { FETCH_COURSE_BY_SLUG } from '$lib/graphql/queries/courses';
-import { FETCH_LESSON_BY_PK } from '$lib/graphql/queries/lessons';
+import apolloClient from "$lib/graphql/apolloClient";
+import { UPDATE_CHAPTER, UPDATE_COURSE } from "$lib/graphql/mutations/courses";
+import { UPDATE_LESSON_DETAILS } from "$lib/graphql/mutations/lessons";
+import { FETCH_COURSE_BY_SLUG } from "$lib/graphql/queries/courses";
+import { FETCH_LESSON_BY_PK } from "$lib/graphql/queries/lessons";
 
 export const getCourseData = async (slug: String) => {
   const { data } = await apolloClient.query({
@@ -56,6 +57,26 @@ export const updateCourseDetails = async (
       description,
       complexity,
       cover,
+    },
+  });
+  return data;
+};
+
+export const updateLessonDetails = async (
+  id: string,
+  XP: number,
+  title: string,
+  description: string,
+  type: string
+) => {
+  const { data } = await apolloClient.mutate({
+    mutation: UPDATE_LESSON_DETAILS,
+    variables: {
+      id,
+      XP,
+      title,
+      description,
+      type,
     },
   });
   return data;
