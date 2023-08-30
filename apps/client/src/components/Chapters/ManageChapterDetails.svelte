@@ -3,7 +3,7 @@
   import { mutation } from 'svelte-apollo';
   import { ADD_CHAPTER } from '$lib/graphql/mutations/courses';
   import { Button, Card, FormControl, Input } from 'svelte-ui';
-  import type { RequestState } from 'svelte-ui/Types';
+  import type { ButtonProps, RequestState } from 'svelte-ui/Types';
   import NewChapterModal from '$components/Modals/NewChapterModal.svelte';
   import { enhance } from '$app/forms';
   import toast, { Toaster } from 'svelte-french-toast';
@@ -20,13 +20,13 @@
     selectedChapter = event.target?.selectedIndex - 1;
   };
 
-  const updateCallback = () => {
-    requestState = 'processing';
+  const callback = (index: number) => {
+    buttons[index].requestState = 'processing';
 
     return async ({ update, result }) => {
       await update();
       console.log(result);
-      requestState = 'completed';
+      buttons[index].requestState = 'completed';
       if (result.type == 'success') {
         toast.success(result.data.message);
       } else {
@@ -64,6 +64,22 @@
 
   let requestState: RequestState = 'idle';
 
+  let buttons: ButtonProps[] = [
+    {
+      CTA: 'Update Chapter Details',
+      icon: 'ri:check-line',
+      type: 'submit',
+      requestState: 'idle',
+    },
+    {
+      CTA: 'Delete Chapter',
+      icon: 'ri:delete-bin-7-line',
+      state: 'error',
+      type: 'submit',
+      requestState: 'idle',
+    },
+  ];
+
   $: isSelected, selectedChapter;
 </script>
 
@@ -98,8 +114,8 @@
       <div class="card-body space-y-2">
         <form
           method="post"
-          use:enhance={() => updateCallback()}
-          action="?/updateChapter"
+          use:enhance={() => callback(0)}
+          action="?/updateChapterAction"
           class="w-full"
         >
           <FormControl
@@ -142,10 +158,10 @@
           </FormControl>
           <div class="card-actions justify-start mt-2 py-2">
             <Button
-              CTA="Update Chapter Details"
-              icon="ri:check-line"
-              type="submit"
-              {requestState}
+              CTA={buttons[0].CTA}
+              icon={buttons[0].icon}
+              type={buttons[0].type}
+              requestState={buttons[0].requestState}
             />
           </div>
 
@@ -175,7 +191,12 @@
     </div>
 
     <Card>
-      <div class="card-body">
+      <form
+        method="post"
+        use:enhance={() => callback(1)}
+        action="?/deleteChapterAction"
+        class="card-body"
+      >
         <h3 class="card-title">Delete Chapter</h3>
         <p>
           This option will remove the currently selected chapter from this
@@ -184,13 +205,14 @@
         </p>
         <div class="card-actions justify-start">
           <Button
-            CTA="Delete Chapter"
-            icon="ri:delete-bin-7-line"
-            state="error"
-            on:buttonClick={() => {}}
+            CTA={buttons[1].CTA}
+            icon={buttons[1].icon}
+            state={buttons[1].state}
+            type={buttons[1].type}
+            requestState={buttons[1].requestState}
           />
         </div>
-      </div>
+      </form>
     </Card>
   {:else}
     <div>Please Select a Chapter to edit</div>

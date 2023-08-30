@@ -1,7 +1,7 @@
 import type { Actions, PageServerLoad } from "./$types";
-import { handleDeleteChapter, handleUpdateChapter } from "../../actions";
+import { deleteChapterAction, updateChapterAction } from "../../actions";
 
 export const actions: Actions = {
-  updateChapter: handleUpdateChapter,
-  deleteChapter: handleDeleteChapter,
+  updateChapterAction,
+  deleteChapterAction,
 };

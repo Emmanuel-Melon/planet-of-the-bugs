@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client/core";
+import { gql } from '@apollo/client/core';
 
 export const ADD_CHAPTER = gql`
   mutation addNewChapter($chapterInput: course_chapters_insert_input!) {
@@ -70,11 +70,11 @@ export const START_COURSE = gql`
 `;
 
 export const UPDATE_CHAPTER = gql`
-  mutation MyMutation(
-    $courseId: uuid = "courseId"
-    $chapterIndex: Int = 10
-    $description: String = ""
-    $title: String = ""
+  mutation updateChapter(
+    $courseId: uuid
+    $chapterIndex: Int
+    $description: String
+    $title: String
   ) {
     update_course_chapters(
       where: { course_id: { _eq: $courseId }, index: { _eq: $chapterIndex } }
