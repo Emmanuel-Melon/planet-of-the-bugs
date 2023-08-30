@@ -9,6 +9,7 @@
   export let disabled = false;
   export let isReadonly = false;
   export let isTextArea = false;
+  export let fileAccept: string = '';
 </script>
 
 {#if isTextArea}
@@ -32,5 +33,6 @@
     bind:value
     {disabled}
     readonly={isReadonly}
+    accept={fileAccept}
   />
 {/if}
