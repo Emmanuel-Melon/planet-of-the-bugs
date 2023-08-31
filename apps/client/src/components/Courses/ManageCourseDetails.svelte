@@ -1,8 +1,11 @@
 <script lang="ts">
+  import { enhance } from '$app/forms';
   export let course: any;
   let title: string = course.title;
   let description: string = course.description;
-  import { Button, Card } from 'svelte-ui';
+  import { Button, Card, FormControl, Input } from 'svelte-ui';
+  import type { ButtonProps } from 'svelte-ui/Types';
+  import toast, { Toaster } from 'svelte-french-toast';
 
   const complexity = [
     { id: 0, name: 'Beginner' },
@@ -17,44 +20,75 @@
 
   $: index, title, description;
 
-  const deleteCourse = () => {};
-  const updateCourse = () => {};
+  let buttons: ButtonProps[] = [
+    {
+      CTA: 'Update Course Details',
+      icon: 'ri:check-line',
+      type: 'submit',
+      requestState: 'idle',
+    },
+    {
+      CTA: 'Delete Course',
+      icon: 'ri:delete-bin-7-line',
+      state: 'error',
+      type: 'submit',
+      requestState: 'idle',
+    },
+  ];
+
+  const callback = (index: number) => {
+    buttons[index].requestState = 'processing';
+
+    return async ({ update, result }) => {
+      await update();
+      console.log(result);
+      buttons[index].requestState = 'completed';
+      if (result.type == 'success') {
+        toast.success(result.data.message);
+      } else {
+        toast.error(result.data.message);
+      }
+    };
+  };
 </script>
 
 <section class="space-y-4">
+  <Toaster />
   <Card>
     <div class="card-body">
       <h2 class="card-title">Course Details</h2>
-      <form>
-        <div class="form-control w-full">
-          <label class="label" for="title">
-            <span class="label-text">Course Title:</span>
-          </label>
-          <input
-            type="text"
-            placeholder="Type here"
-            class="input input-md input-bordered w-full"
-            id="title"
-            value={title}
-          />
-        </div>
-
-        <div class="form-control w-full">
-          <label class="label" for="description">
-            <span class="label-text">Course Description</span>
-          </label>
-          <textarea
-            placeholder="Type here"
-            class="input input-md input-bordered w-full h-32"
-            id="description"
+      <form
+        method="post"
+        use:enhance={() => callback(0)}
+        action="?/updateCourseAction"
+      >
+        <FormControl
+          ariaLabel="course id"
+          labelText="Chapter Id"
+          isHidden={true}
+        >
+          <Input value={course.id} name="id" id="id" size="md" />
+        </FormControl>
+        <FormControl ariaLabel="course title" labelText="Course Title">
+          <Input value={title} id="title" name="title" size="md" />
+        </FormControl>
+        <FormControl
+          ariaLabel="course description"
+          labelText="Course Description"
+        >
+          <Input
+            isTextArea={true}
             value={description}
+            classes="h-32"
+            id="description"
+            name="description"
           />
-        </div>
+        </FormControl>
 
         <div class="w-full space-y-4 lg:basis-1/2">
           <div class="flex flex-col">
             <label class="label" for="title">
-              <span class="label-text">Course Difficulty</span>
+              <span class="label-text">Course Complexity</span>
             </label>
             <div class="flex justify-between">
               {#each complexity as { id, name }}
@@ -62,9 +96,10 @@
                   <label class="label cursor-pointer gap-2">
                     <input
                       type="radio"
-                      name="radio-10"
+                      name="complexity"
                       class="radio checked:bg-red-500"
                       checked={id === index}
+                      value={name}
                       on:click={() => changeComplexity(id)}
                     />
                     <span class="label-text">{name}</span>
@@ -74,23 +109,22 @@
             </div>
           </div>
 
-          <div class="form-control w-full max-w-xs">
-            <label class="label" for="cover">
-              <span class="label-text">Course Cover Image</span>
-            </label>
-            <input
+          <FormControl ariaLabel="cover image" labelText="Cover Image">
+            <Input
               type="file"
-              accept=".jpg,.jpeg,.png"
-              class="file-input file-input-bordered file-input-md w-full max-w-xs"
+              fileAccept=".jpg,.jpeg,.png"
+              size="md"
+              classes="file-input file-input-bordered w-full max-w-xs px-0"
             />
-          </div>
+          </FormControl>
         </div>
 
         <div class="card-actions justify-start mt-2 py-2">
           <Button
-            CTA="Update Course Details"
-            icon="ri:check-line"
-            on:buttonClick={updateCourse}
+            CTA={buttons[0].CTA}
+            icon={buttons[0].icon}
+            type={buttons[0].type}
+            requestState={buttons[0].requestState}
           />
         </div>
       </form>
@@ -98,7 +132,12 @@
   </Card>
 
   <Card>
-    <div class="card-body">
+    <form
+      method="post"
+      use:enhance={() => callback(1)}
+      action="?/deleteCourse"
+      class="card-body"
+    >
       <h3 class="card-title">Delete Course</h3>
       <p>
         This option will remove your course entirely from <span class="italic"
@@ -107,13 +146,13 @@
       </p>
       <div class="card-actions justify-start">
         <Button
-          state="error"
-          icon="ri:delete-bin-7-line"
-          on:buttonClick={deleteCourse}
-          CTA="Delete Course"
+          state={buttons[1].state}
+          icon={buttons[1].icon}
+          type={buttons[1].type}
+          CTA={buttons[1].CTA}
         />
       </div>
-    </div>
+    </form>
   </Card>
 </section>
 
