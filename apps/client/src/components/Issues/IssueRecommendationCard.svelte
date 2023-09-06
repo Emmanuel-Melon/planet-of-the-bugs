@@ -5,15 +5,18 @@
 
 <div>
   <Card>
-    <div class="flex flex-wrap flex-grow-0 gap-2 w-full lg:w-fit rounded">
-      {#each issue.labels as label}
-        <div class="badge badge-outline py-2 text-center">{label}</div>
-      {/each}
-    </div>
+
     <div class="flex flex-col w-full items-start justify-between">
-      <h2 class="card-title text-bold">
-        {issue.title}
-      </h2>
+      <div class="flex items-center gap-2">
+        <h2 class="card-title text-bold">
+          {issue.title}
+        </h2>
+        <div class="flex flex-wrap flex-grow-0 gap-2 w-full lg:w-fit rounded">
+          {#each issue.labels as label}
+            <div class="badge badge-outline py-2 text-center">{label}</div>
+          {/each}
+        </div>
+      </div>
       <div
         class="w-full flex justify-between lg:justify-start lg:space-x-8 text-xs"
       >
