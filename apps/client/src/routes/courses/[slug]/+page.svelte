@@ -13,7 +13,12 @@
 
 <section class="w-full bg-rose-900 h-fit p-4 text-primary-content">
   <div class="space-y-4 w-1/8 mx-auto p-4">
-    <h1 class="text-5xl">{course.title}</h1>
+    <div class="flex items-center gap-4">
+      <a href="/courses" class="btn btn-sm">
+        <iconify-icon icon="ri:arrow-left-line" class="text-xl" />
+      </a>
+      <h1 class="text-4xl lg:text-5xl">{course.title}</h1>
+    </div>
     <p>{course.description}</p>
     <StartCourseButton
       userId={session?.user?.id}

@@ -9,7 +9,7 @@
   let { user } = data;
   import autoAnimate from "@formkit/auto-animate";
   import CoursesList from "$components/Courses/CoursesList.svelte";
-  let offset = 2;
+  let offset = 0;
   let limit = 2;
 
   let courses = query(FETCH_COURSES, {
