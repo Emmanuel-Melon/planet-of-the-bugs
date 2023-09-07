@@ -35,8 +35,12 @@
 </script>
 
 <section class="">
-  <div class="text-sm breadcrumbs pl-8 my-4">
+  <div class="text-sm breadcrumbs pl-2 my-4 flex gap-2">
+    <a href={`/courses/${course.slug}`} class="btn btn-xs">
+      <iconify-icon icon="ri:arrow-left-line" class="text-xl" />
+    </a>
     <ul>
+      <li>{course.title}</li>
       <li>{course.course_chapters[nav.currentChapterIndex].title}</li>
       <li>{lesson.index}. {lesson.title}</li>
     </ul>
