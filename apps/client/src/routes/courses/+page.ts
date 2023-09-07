@@ -1,21 +1,12 @@
 import { GET_USER_BY_EMAIL } from "$lib/graphql/queries/user";
 import apolloClient from "$lib/graphql/apolloClient";
-import { destructureQueryResults } from "$lib/graphql/helpers";
-import {
-  redirectUnAuthenticatedUsers,
-  refreshGitHubAccessToken,
-  validateGitHubAccessToken,
-} from "$lib/auth/helpers";
 export const load = async (event) => {
   const { parent, data: pageData } = event;
-
-  const { session } = await parent();
-  redirectUnAuthenticatedUsers(session, [307, "/auth"]);
 
   const user = await apolloClient.query({
     query: GET_USER_BY_EMAIL,
     variables: {
-      email: session?.user?.email,
+      email: "emmanuelgatwech@gmail.com",
     },
   });
 

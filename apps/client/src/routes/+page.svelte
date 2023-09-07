@@ -1,5 +1,4 @@
 <script>
-  import { signIn, signOut } from "@auth/sveltekit/client";
   import { Card, Button, Tabs } from "svelte-ui";
   import { page } from "$app/stores";
   import { onMount, onDestroy } from "svelte";
@@ -61,6 +60,10 @@
 
 
 <section class="p-4 space-y-2">
+
+  <form method="post" action="?/logout">
+    <input type="submit" value="Sign out" />
+  </form>
   <div class="stats shadow">
   
     <div class="stat">

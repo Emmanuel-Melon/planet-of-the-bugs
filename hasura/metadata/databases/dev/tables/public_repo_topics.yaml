@@ -1,0 +1,3 @@
+table:
+  name: repo_topics
+  schema: public

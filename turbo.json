@@ -9,6 +9,8 @@
         "^build"
       ]
     },
+    "codegen": {},
+    "format": {},
     "lint": {},
     "dev": {
       "cache": false

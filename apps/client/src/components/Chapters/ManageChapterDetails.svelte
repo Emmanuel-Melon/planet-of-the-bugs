@@ -2,9 +2,11 @@
   import { goto } from '$app/navigation';
   import { mutation } from 'svelte-apollo';
   import { ADD_CHAPTER } from '$lib/graphql/mutations/courses';
-  import { Button, Card } from 'svelte-ui';
-  import type { RequestState } from 'svelte-ui/Types';
+  import { Button, Card, FormControl, Input } from 'svelte-ui';
+  import type { ButtonProps, RequestState } from 'svelte-ui/Types';
   import NewChapterModal from '$components/Modals/NewChapterModal.svelte';
+  import { enhance } from '$app/forms';
+  import toast, { Toaster } from 'svelte-french-toast';
   export let courseId: string;
   export let chapters: Array<Object>;
 
@@ -13,9 +15,24 @@
   let isSelected: boolean = false;
   let selectedChapter: number;
 
-  const handleChapterChange = (event) => {
+  const handleChapterChange = (event: Event) => {
     isSelected = true;
-    selectedChapter = event.target.selectedIndex - 1;
+    selectedChapter = event.target?.selectedIndex - 1;
+  };
+
+  const callback = (index: number) => {
+    buttons[index].requestState = 'processing';
+
+    return async ({ update, result }) => {
+      await update();
+      console.log(result);
+      buttons[index].requestState = 'completed';
+      if (result.type == 'success') {
+        toast.success(result.data.message);
+      } else {
+        toast.error(result.data.message);
+      }
+    };
   };
 
   const handleNewChapterSubmit = async (event) => {
@@ -47,10 +64,27 @@
 
   let requestState: RequestState = 'idle';
 
+  let buttons: ButtonProps[] = [
+    {
+      CTA: 'Update Chapter Details',
+      icon: 'ri:check-line',
+      type: 'submit',
+      requestState: 'idle',
+    },
+    {
+      CTA: 'Delete Chapter',
+      icon: 'ri:delete-bin-7-line',
+      state: 'error',
+      type: 'submit',
+      requestState: 'idle',
+    },
+  ];
+
   $: isSelected, selectedChapter;
 </script>
 
 <div class="flex flex-col space-y-4 w-full">
+  <Toaster />
   <div class="h-max">
     <Card>
       <div class="card-body space-y-2">
@@ -78,48 +112,56 @@
   {#if isSelected}
     <div class="card card-compact shadow space-y-4">
       <div class="card-body space-y-2">
-        <form class="w-full">
-          <div class="form-control w-full">
-            <label class="label" for="index">
-              <span class="label-text">Chapter Index:</span>
-            </label>
-            <input
+        <form
+          method="post"
+          use:enhance={() => callback(0)}
+          action="?/updateChapterAction"
+          class="w-full"
+        >
+          <FormControl
+            ariaLabel="course id"
+            labelText="Chapter Id"
+            isHidden={true}
+          >
+            <Input value={courseId} name="courseId" id="courseId" size="md" />
+          </FormControl>
+          <FormControl ariaLabel="chapter index" labelText="Chapter Index">
+            <Input
               type="number"
-              disabled
-              bind:value={chapters[selectedChapter].index}
-              class="input input-md input-bordered w-full"
-              id="lessonIndex"
+              value={chapters[selectedChapter].index}
+              name="index"
+              id="index"
+              size="md bg-gray-300"
+              isReadonly={true}
             />
-          </div>
-          <div class="form-control w-full">
-            <label class="label" for="title">
-              <span class="label-text">Chapter Title:</span>
-            </label>
-            <input
-              type="text"
-              bind:value={chapters[selectedChapter].title}
-              placeholder="Type here"
-              class="input input-md input-bordered w-full"
-              id="lessonTitle"
+          </FormControl>
+          <FormControl ariaLabel="chapter title" labelText="Chapter Title">
+            <Input
+              value={chapters[selectedChapter].title}
+              name="title"
+              id="title"
+              size="md"
             />
-          </div>
-          <div class="form-control w-full">
-            <label class="label" for="title">
-              <span class="label-text">Chapter Description</span>
-            </label>
-            <textarea
-              bind:value={chapters[selectedChapter].description}
-              type="text"
-              placeholder="Type here"
-              class="input input-md input-bordered w-full h-32"
-              id="lessonDescription"
+          </FormControl>
+          <FormControl
+            ariaLabel="chapter description"
+            labelText="Chapter Description"
+          >
+            <Input
+              isTextArea={true}
+              value={chapters[selectedChapter].description}
+              name="description"
+              id="description"
+              size="md"
+              classes="h-32"
             />
-          </div>
+          </FormControl>
           <div class="card-actions justify-start mt-2 py-2">
             <Button
-              CTA="Update Chapter Details"
-              icon="ri:check-line"
-              on:buttonClick={() => {}}
+              CTA={buttons[0].CTA}
+              icon={buttons[0].icon}
+              type={buttons[0].type}
+              requestState={buttons[0].requestState}
             />
           </div>
 
@@ -149,7 +191,12 @@
     </div>
 
     <Card>
-      <div class="card-body">
+      <form
+        method="post"
+        use:enhance={() => callback(1)}
+        action="?/deleteChapterAction"
+        class="card-body"
+      >
         <h3 class="card-title">Delete Chapter</h3>
         <p>
           This option will remove the currently selected chapter from this
@@ -158,13 +205,14 @@
         </p>
         <div class="card-actions justify-start">
           <Button
-            CTA="Delete Chapter"
-            icon="ri:delete-bin-7-line"
-            state="error"
-            on:buttonClick={() => {}}
+            CTA={buttons[1].CTA}
+            icon={buttons[1].icon}
+            state={buttons[1].state}
+            type={buttons[1].type}
+            requestState={buttons[1].requestState}
           />
         </div>
-      </div>
+      </form>
     </Card>
   {:else}
     <div>Please Select a Chapter to edit</div>

@@ -1,0 +1,98 @@
+table:
+  name: users
+  schema: public
+object_relationships:
+  - name: connectionRequestById
+    using:
+      foreign_key_constraint_on:
+        column: sender_id
+        table:
+          name: connection_requests
+          schema: public
+  - name: connection_request
+    using:
+      foreign_key_constraint_on:
+        column: receiver_id
+        table:
+          name: connection_requests
+          schema: public
+  - name: user_role
+    using:
+      foreign_key_constraint_on: role
+array_relationships:
+  - name: messages
+    using:
+      foreign_key_constraint_on:
+        column: sender_id
+        table:
+          name: messages
+          schema: public
+  - name: user_courses
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: user_courses
+          schema: public
+  - name: user_subscribed_repos
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: user_subscribed_repos
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - avatar
+        - created_at
+        - email
+        - githubUsername
+        - github_username
+        - hasConnectedGithub
+        - id
+        - name
+        - role
+        - updated_at
+        - userTopics
+        - username
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - avatar
+        - created_at
+        - email
+        - githubUsername
+        - github_username
+        - hasConnectedGithub
+        - id
+        - name
+        - role
+        - updated_at
+        - userTopics
+        - username
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - hasConnectedGithub
+        - email
+        - userTopics
+        - avatar
+        - githubUsername
+        - name
+        - role
+        - username
+        - created_at
+        - updated_at
+        - id
+      filter: {}
+      check: {}
+delete_permissions:
+  - role: user
+    permission:
+      filter: {}

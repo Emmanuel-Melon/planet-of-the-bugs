@@ -1,0 +1,10 @@
+table:
+  name: notification_channel
+  schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - channel
+      filter: {}
+    comment: ""

@@ -1,0 +1,32 @@
+table:
+  name: verification_token
+  schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - identifier
+        - token
+        - expires
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - identifier
+        - token
+        - expires
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - identifier
+        - token
+        - expires
+      filter: {}
+      check: {}
+delete_permissions:
+  - role: user
+    permission:
+      filter: {}

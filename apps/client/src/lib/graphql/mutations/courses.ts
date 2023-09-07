@@ -68,3 +68,43 @@ export const START_COURSE = gql`
     }
   }
 `;
+
+export const UPDATE_COURSE = gql`
+  mutation updateCourseByPK(
+    $id: uuid = ""
+    $slug: String = ""
+    $title: String = ""
+    $description: String = ""
+    $complexity: course_complexity_enum = Advanced
+    $cover: String = ""
+  ) {
+    update_courses_by_pk(
+      pk_columns: { id: $id }
+      _set: {
+        slug: $slug
+        title: $title
+        description: $description
+        complexity: $complexity
+        cover: $cover
+      }
+    ) {
+      slug
+    }
+  }
+`;
+
+export const UPDATE_CHAPTER = gql`
+  mutation updateChapter(
+    $courseId: uuid
+    $chapterIndex: Int
+    $description: String
+    $title: String
+  ) {
+    update_course_chapters(
+      where: { course_id: { _eq: $courseId }, index: { _eq: $chapterIndex } }
+      _set: { description: $description, title: $title }
+    ) {
+      affected_rows
+    }
+  }
+`;

@@ -1,0 +1,26 @@
+table:
+  name: course_chapters
+  schema: public
+object_relationships:
+  - name: course
+    using:
+      foreign_key_constraint_on: course_id
+array_relationships:
+  - name: lessons
+    using:
+      foreign_key_constraint_on:
+        column: chapter_id
+        table:
+          name: lessons
+          schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - title
+        - description
+        - created_at
+        - updated_at
+        - course_id
+        - id
+      filter: {}

@@ -1,0 +1,53 @@
+table:
+  name: lessons
+  schema: public
+object_relationships:
+  - name: course_chapter
+    using:
+      foreign_key_constraint_on: chapter_id
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - id
+        - title
+        - description
+        - created_at
+        - updated_at
+        - type
+        - XP
+        - index
+        - chapter_id
+        - content
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - title
+        - description
+        - created_at
+        - updated_at
+        - type
+        - XP
+        - index
+        - chapter_id
+        - content
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - title
+        - XP
+        - index
+        - content
+        - description
+        - type
+        - created_at
+        - updated_at
+        - chapter_id
+        - id
+      filter: {}
+      check: null

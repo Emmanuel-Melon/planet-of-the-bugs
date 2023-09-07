@@ -1,0 +1,10 @@
+table:
+  name: connection_status
+  schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - status
+      filter: {}
+    comment: ""
