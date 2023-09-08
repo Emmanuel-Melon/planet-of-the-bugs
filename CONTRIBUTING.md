@@ -52,11 +52,11 @@ We welcome contributions from developers of all skill levels. Whether you're fix
 
 1. Make your changes in the appropriate files within your local repository.
 
-2. Commit your changes with a descriptive commit message: git add . && git commit -m "Add a concise description of your changes"
+2. Commit your changes with a descriptive commit message: ```git add . && git commit -m``` "Add a concise description of your changes"
 
 ### Submitting a Pull Request
 
-1. Push your changes to your forked repository: git push origin feature-or-bugfix-name
+1. Push your changes to your forked repository: ```git push origin feature-or-bugfix-name```
 
 2. Visit the original repository on GitHub and click the "Compare & pull request" button next to your branch.
 
