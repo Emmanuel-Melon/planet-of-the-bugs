@@ -36,6 +36,8 @@ export const load = async (event) => {
     getUserRepositoryTopics(),
   ]);
 
+  
+  // console.log(repositories?.refetch);
   return {
     repositories: {
       data: repositories?.data?.search,
