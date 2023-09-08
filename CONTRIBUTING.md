@@ -39,7 +39,7 @@ We welcome contributions from developers of all skill levels. Whether you're fix
 1. Before starting any work, check the [Issues](https://github.com/Emmanuel-Melon/planet-of-the-bugs/issues) section to see if the feature or bugfix you're considering is already being discussed. If not, you can open a new issue to discuss your proposal.
 
 2. Once you have a clear idea of what you'd like to contribute, create a new branch from the `dev` branch: 
-   ```git checkout -b feature-or-bugfix-name``` 
+   ```git checkout -b feature-or-bugfix-name```
    <br>
 
   **IMPORTANT**
