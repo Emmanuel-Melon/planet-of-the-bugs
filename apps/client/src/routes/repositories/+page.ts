@@ -50,6 +50,7 @@ export const load = async (event) => {
   return {
     repositories: {
       data: repositories?.data?.search,
+      
     },
     user: {
       ...user,

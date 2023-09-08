@@ -138,7 +138,7 @@ export const GET_CONTRIBUTIONS_BY_REPO = gql`
     }
   }
 `;
-
+// 
 export const FETCH_REPOSITORIES_BY_TOPICS = gql`
   query fetchRepositoriesByTopics($topics: String = "") {
     search(query: $topics, type: REPOSITORY, first: 10) {
@@ -162,6 +162,11 @@ export const FETCH_REPOSITORIES_BY_TOPICS = gql`
             }
           }
         }
+        cursor
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
       }
     }
   }
