@@ -9,18 +9,6 @@ import {
 import apolloClient from "$lib/graphql/apolloClient";
 import { stringifyTopics } from "bugs-lib";
 
-
-export const searchRepositoriesByTopic = async (topics: Array<string>, limit: number) => {
-    const result = await apolloClient.query({
-        query: FETCH_REPOSITORIES_BY_TOPICS,
-        variables: {
-            topics: stringifyTopics(topics),
-            limit
-        },
-    });
-    return result;
-}
-
 export const getGithubRepo = async (repoName: string, owner: string) => {
   const { data } = await apolloClient.query({
     query: GET_GITHUB_REPO,
@@ -63,3 +51,14 @@ export const getGithubRepoPullRequests = async (
   });
   return data.repository.pullRequests.edges;
 };
+
+export const searchRepositoriesByTopic = async (topics: Array<string>, limit: number) => {
+    const result = await apolloClient.query({
+        query: FETCH_REPOSITORIES_BY_TOPICS,
+        variables: {
+            topics: stringifyTopics(topics),
+            limit
+        },
+    });
+    return result;
+}
