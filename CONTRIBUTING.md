@@ -5,7 +5,6 @@ Welcome to the contributing guidelines for the Planet Of The Bugs repository on 
 ## Table of Contents
 
 - [Getting Started](#getting-started)
-  - [Forking the Repository](#forking-the-repository)
   - [Setting Up Your Local Environment](#setting-up-your-local-environment)
 - [Contributing](#contributing)
   - [Creating a New Feature or Bugfix](#creating-a-new-feature-or-bugfix)
@@ -40,7 +39,9 @@ We welcome contributions from developers of all skill levels. Whether you're fix
 1. Before starting any work, check the [Issues](https://github.com/Emmanuel-Melon/planet-of-the-bugs/issues) section to see if the feature or bugfix you're considering is already being discussed. If not, you can open a new issue to discuss your proposal.
 
 2. Once you have a clear idea of what you'd like to contribute, create a new branch from the `dev` branch: 
-   ```git checkout -b feature-or-bugfix-name``` <br>
+   ```git checkout -b feature-or-bugfix-name``` 
+   <br>
+
   **IMPORTANT**
   * The naming convention for your branch should be as follows: 
    ```BUG-<ISSUE_NUMBER>```
