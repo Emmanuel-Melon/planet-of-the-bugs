@@ -11,6 +11,8 @@
   
   
   let { topics, user, repositories } = data;
+  const pageInfo = repositories?.data?.pageInfo;
+
 
   const items = [
     {

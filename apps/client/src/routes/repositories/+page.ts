@@ -1,21 +1,16 @@
 import {
-  FETCH_REPOSITORIES_BY_TOPICS,
   GET_AVAILABLE_TOPICS,
   GET_SUBSCRIBED_REPOS,
 } from "$lib/graphql/queries/repositories.js";
 import apolloClient from "$lib/graphql/apolloClient";
 import { fail, redirect } from "@sveltejs/kit";
 import { GET_USER_BY_EMAIL } from "$lib/graphql/queries/user";
-import { stringifyTopics } from "bugs-lib";
+import { searchRepositoriesByTopic } from "$lib/data/repositories.js";
 
 export const load = async (event) => {
   const {
     params,
     url,
-    setHeaders,
-    parent,
-    fetch,
-    depends,
     data: pageData,
   } = event;
 
@@ -29,13 +24,18 @@ export const load = async (event) => {
   const user = data?.user[0];
   const userTopics = JSON.parse(user?.userTopics) || [];
 
+  let queryString = url.searchParams.get("page") as string;
+  console.log(queryString);
+  let limit = 4;
+
+  if(queryString) {
+    
+    limit = parseInt(queryString);
+    console.log("yesssir!:", typeof limit);
+  }
+
   const [repositories, topics, subscribed] = await Promise.all([
-    apolloClient.query({
-      query: FETCH_REPOSITORIES_BY_TOPICS,
-      variables: {
-        topics: stringifyTopics(userTopics),
-      },
-    }),
+    searchRepositoriesByTopic(userTopics, limit),
     apolloClient.query({
       query: GET_AVAILABLE_TOPICS,
     }),
@@ -47,10 +47,11 @@ export const load = async (event) => {
     }),
   ]);
 
+  
+  // console.log(repositories?.refetch);
   return {
     repositories: {
       data: repositories?.data?.search,
-      
     },
     user: {
       ...user,

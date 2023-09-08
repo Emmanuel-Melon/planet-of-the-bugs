@@ -138,10 +138,10 @@ export const GET_CONTRIBUTIONS_BY_REPO = gql`
     }
   }
 `;
-// 
+
 export const FETCH_REPOSITORIES_BY_TOPICS = gql`
-  query fetchRepositoriesByTopics($topics: String = "") {
-    search(query: $topics, type: REPOSITORY, first: 10) {
+  query fetchRepositoriesByTopics($topics: String = "", $limit: Int) {
+    search(query: $topics, type: REPOSITORY, first: $limit) {
       edges {
         node {
           ... on Repository {
@@ -167,6 +167,7 @@ export const FETCH_REPOSITORIES_BY_TOPICS = gql`
       pageInfo {
         endCursor
         hasNextPage
+        startCursor
       }
     }
   }
