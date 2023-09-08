@@ -11,25 +11,8 @@
   
   
   let { topics, user, repositories } = data;
+  const pageInfo = repositories?.data?.pageInfo;
 
-  const criteria = [
-    {
-      id: 1,
-      title: 'By Stars',
-      icon: '',
-      
-    },
-    {
-      id: 2,
-      title: 'By Open Issues',
-      icon: 'material-symbols:lock-open',
-    },
-    {
-      id: 3,
-      title: 'By Pull Requests',
-      icon: 'ph:git-pull-request-duotone',
-    },
-  ];
 
   const items = [
     {

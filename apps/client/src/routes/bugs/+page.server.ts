@@ -1,12 +1,5 @@
 import { fail, redirect } from "@sveltejs/kit";
 import type { PageServerLoad, Actions } from "./$types";
-import {
-  FETCH_REPOSITORIES_BY_TOPICS,
-  GET_AVAILABLE_TOPICS,
-  GET_SUBSCRIBED_REPOS,
-} from "$lib/graphql/queries/repositories.js";
-import { error } from "@sveltejs/kit";
-import { GET_USER_BY_EMAIL } from "$lib/graphql/queries/user";
 
 const issues = [
   {
