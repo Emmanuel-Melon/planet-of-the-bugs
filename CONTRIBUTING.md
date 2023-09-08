@@ -17,18 +17,19 @@ Welcome to the contributing guidelines for the Planet Of The Bugs repository on 
 
 Thank you for considering contributing to our project. Before you begin, please make sure you have a GitHub account. If you don't have one, you can sign up [here](https://github.com/signup).
 
-### Forking the Repository
-
-1. Navigate to the Planet Of The Bugs repository on GitHub: [https://github.com/Emmanuel-Melon/planet-of-the-bugs](https://github.com/Emmanuel-Melon/planet-of-the-bugs)
-2. Click the "Fork" button in the upper right corner of the repository page. This will create a copy of the repository in your GitHub account.
-
 ### Setting Up Your Local Environment
 
-1. Clone your forked repository to your local machine: git clone https://github.com/Emmanuel-Melon/planet-of-the-bugs.git
-2. Navigate to the main branch: git checkout dev
-3. Install any necessary dependencies: yarn install && yarn dev
-4. Start the development server by running the following command in your terminal: Navigate to [http://localhost:3000](http://localhost:3000) in your web browser to view the app.
-5. To get started, copy the .example.env file to .env by running the following command in your terminal: cp .example.env .env
+1. Clone the repository to your local machine: git clone https://github.com/Emmanuel-Melon/planet-of-the-bugs.git
+2. Navigate to the main branch: 
+   ```git checkout dev```
+3. Navigate to the client app: 
+   ```cd apps/client```
+4. To get started, copy the .example.env file to .env by running the following command in your terminal: 
+   ```cp .example.env .env```
+5. Install any necessary dependencies: 
+   ```yarn && yarn dev```
+6. Start the development server by running the following command in your terminal: Navigate to [http://localhost:3000](http://localhost:3000) in your web browser to view the app.
+
 
 ## Contributing
 
@@ -38,7 +39,12 @@ We welcome contributions from developers of all skill levels. Whether you're fix
 
 1. Before starting any work, check the [Issues](https://github.com/Emmanuel-Melon/planet-of-the-bugs/issues) section to see if the feature or bugfix you're considering is already being discussed. If not, you can open a new issue to discuss your proposal.
 
-2. Once you have a clear idea of what you'd like to contribute, create a new branch from the `dev` branch: git checkout -b feature-or-bugfix-name.
+2. Once you have a clear idea of what you'd like to contribute, create a new branch from the `dev` branch: 
+   ```git checkout -b feature-or-bugfix-name``` <br>
+  **IMPORTANT**
+  * The naming convention for your branch should be as follows: 
+   ```BUG-<ISSUE_NUMBER>```
+  * The issue number should follow the ordered sequence.
 
 
 ### Making Changes
