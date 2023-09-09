@@ -42,9 +42,15 @@ Our app also features a job board for top contributors, so you can find exciting
 Our app offers a bounty hunting program to help companies crack bugs, so you can earn money while helping others.
 
 ## 🧑‍💻 How to Contribute
-We welcome contributions from developers of all skill levels! If you're interested in contributing to Planet of the Bugs, please clone our repository and submit a pull request with your changes. We're always looking for ways to improve our app, so your contributions are greatly appreciated.
+We welcome contributions from developers of all skill levels! If you're interested in contributing to Planet of the Bugs, please clone our repository and submit a pull request with your changes. We're always looking for ways to improve our app, so your contributions are greatly appreciated. 
 
-If you're not sure where to start, check out our [Contributing Guidelines](CONTRIBUTING.md) for more information on how to get involved. We also have a [Code of Conduct](CODE_OF_CONDUCT.md) that we expect all contributors to follow, so please take a few minutes to review it before getting started.
+If you're not sure where to start, check out our [Contributing Guidelines](CONTRIBUTING.md) for more information on how to get involved. It will provide with a step-by-step guide on how to: 
+
+- git Create a new feature or bugfix.
+- Make changes to the codebase.
+- Submit a pull request.
+
+We also have a [Code of Conduct](CODE_OF_CONDUCT.md) that we expect all contributors to follow, so please take a few minutes to review it before getting started.
 
 Thank you for your interest in Planet of the Bugs! We look forward to working with you.
 
