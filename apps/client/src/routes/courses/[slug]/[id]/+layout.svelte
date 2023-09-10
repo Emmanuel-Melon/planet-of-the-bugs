@@ -38,7 +38,9 @@
 
   // Cleanup the event listener on component destruction
   onDestroy(() => {
-    window.removeEventListener('resize', setToggleEditorBasedOnScreenSize);
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('resize', setToggleEditorBasedOnScreenSize);
+    }
   });
 
   $: currentLessonId = $page.url.pathname.split('/').pop();
