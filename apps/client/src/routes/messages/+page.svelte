@@ -1,5 +1,6 @@
 <script lang="ts">
   import "iconify-icon";
+  import ChatEmptyState from "$components/EmptyStates/ChatEmptyState.svelte";
   import { setContext } from "svelte";
   import { onDestroy, onMount } from "svelte";
   import { selectedChat } from "./store";
@@ -21,7 +22,11 @@
 </script>
 
 <div class="full">
-  <ChatMenu />
+  <ChatEmptyState />
+
+
+  <!--<ChatMenu />
   <ChatDetails />
-  <ChatInput />
+  <ChatInput />-->
+
 </div>
