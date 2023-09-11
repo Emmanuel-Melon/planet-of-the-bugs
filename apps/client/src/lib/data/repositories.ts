@@ -5,7 +5,7 @@ import {
   GET_GITHUB_REPO,
   GET_GITHUB_REPO_ISSUES,
   GET_GITHUB_REPO_PRS,
-} from "$lib/graphql/queries/repositories.js";
+} from "$lib/graphql/queries/repositories";
 import apolloClient from "$lib/graphql/apolloClient";
 import { stringifyTopics } from "bugs-lib";
 import type { ApolloQueryResult } from "@apollo/client/core";
