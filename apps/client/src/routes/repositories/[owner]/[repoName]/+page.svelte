@@ -30,13 +30,13 @@
         pullRequests,
       },
     },
-    {
-      label: 'Contributors 3',
-      value: 3,
-      icon: 'ri:group-line',
-      component: ContributorsOverview,
-      props: {},
-    },
+    // {
+    //   label: 'Contributors 3',
+    //   value: 3,
+    //   icon: 'ri:group-line',
+    //   component: ContributorsOverview,
+    //   props: {},
+    // },
   ];
 </script>
 

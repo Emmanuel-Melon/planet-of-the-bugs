@@ -16,7 +16,9 @@
           <div class="flex items-center gap-4 pl-2">
             <div class="flex items-center gap-1">
               <iconify-icon icon="ri:user-line" />
-              <time class="text-gray-600">{author.name ?? author.login}</time>
+              <span class="text-gray-600"
+                >{author?.name || author?.login || 'unknown'}</span
+              >
             </div>
             <div class="flex items-center gap-1">
               <iconify-icon icon="ri:calendar-2-line" />
