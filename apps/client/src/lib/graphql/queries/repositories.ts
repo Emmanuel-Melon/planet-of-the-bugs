@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client/core';
+import { gql } from "@apollo/client/core";
 
 export const GET_SUBSCRIBED_REPOS = gql`
   query SubscribedRepos($user_id: uuid) {
@@ -226,9 +226,6 @@ export const GET_GITHUB_REPO_ISSUES = gql`
             }
           }
         }
-      }
-      pullRequests {
-        totalCount
       }
     }
   }
