@@ -1,37 +1,42 @@
-<script>
-  export let contributors = [
-    {
-      name: "Emmanuel Gatwech",
-      bio: "Eman and the E is for Energy!",
-      avatar: "https://avatars.githubusercontent.com/u/21015204?v=4"
-    },
-    {
-      name: "Maged Faiz",
-      bio: "Software Developer",
-      avatar: "https://avatars.githubusercontent.com/u/91534137?v=4"
-    },
-    {
-      name: "Leona Magaya",
-      bio: "Data analyst with 2 years of experience. Python | SQL | Software Engineering Enthusiast | ALX Student",
-      avatar: "https://avatars.githubusercontent.com/u/111906246?v=4"
-    }
-  ];
+<script lang="ts">
+  import dayjs from 'dayjs';
+
+  export let issues: Object[];
 </script>
 
 <section>
   <div class="space-y-4">
-    {#each contributors as contributor}
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-2">
-            <div>
-                <h3 class="text-bold">{contributor.name}</h3>
-                <p class="text-gray-600">{contributor.bio}</p>
-                <div class="flex">
-                    <div class="badge badge-secondary gap-2"><iconify-icon icon="ri:git-pull-request-line" /> 56 PRs</div>
-                </div>
+    {#each issues as { node: { title, url, author, createdAt, labels } }}
+      <div class="flex items-center justify-between shadow p-2">
+        <div class="flex flex-col justify-center gap-2">
+          <h3 class="text-lg font-bold link-hover">
+            <a href={url}>{title}</a>
+          </h3>
+
+          <div class="flex items-center gap-4 pl-2">
+            <div class="flex items-center gap-1">
+              <iconify-icon icon="ri:user-line" />
+              <time class="text-gray-600">{author.name ?? author.login}</time>
             </div>
+            <div class="flex items-center gap-1">
+              <iconify-icon icon="ri:calendar-2-line" />
+              <time class="text-gray-600"
+                >{dayjs(createdAt).format('DD/MM/YYYY')}</time
+              >
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            {#each labels.nodes as { name, description, color }}
+              <div class="badge" style="background: #{color}">
+                {name}
+              </div>
+            {/each}
+          </div>
         </div>
       </div>
+    {:else}
+      <p>This Repo Has No Open Issues</p>
     {/each}
   </div>
 </section>

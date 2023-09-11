@@ -13,21 +13,21 @@
 
   const items = [
     {
-      label: `Pull Requests ${repo.pullRequests.totalCount}`,
-      value: 1,
-      icon: 'ri:git-pull-request-line',
-      component: PullRequestsOverview,
-      props: {
-        pullRequests,
-      },
-    },
-    {
       label: `Issues ${repo.issues.totalCount}`,
-      value: 2,
+      value: 1,
       icon: 'ri:focus-line',
       component: SubscribedRepoIssues,
       props: {
         issues,
+      },
+    },
+    {
+      label: `Pull Requests ${repo.pullRequests.totalCount}`,
+      value: 2,
+      icon: 'ri:git-pull-request-line',
+      component: PullRequestsOverview,
+      props: {
+        pullRequests,
       },
     },
     {

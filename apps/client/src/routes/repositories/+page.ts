@@ -17,7 +17,7 @@ export const load = async (event) => {
   const { data } = await apolloClient.query({
     query: GET_USER_BY_EMAIL,
     variables: {
-      email: "emmanuelgatwech@gmail.com",
+      email: "magedfaiz98@gmail.com",
     },
   });
 

@@ -50,6 +50,8 @@
           </div>
         </div>
       </div>
+    {:else}
+      <p>This Repo Has No Open Pull Requests</p>
     {/each}
   </div>
 </section>
