@@ -9,26 +9,33 @@
   import ContributorsOverview from '$components/Repositories/ContributorsOverview.svelte';
   import PullRequestsOverview from '$components/Repositories/PullRequestsOverview.svelte';
   const { repo, issues, pullRequests } = data;
-  console.log(repo);
+  // console.log(repo);
 
   const items = [
     {
-      label: 'Pull Requests 89',
+      label: `Pull Requests ${repo.pullRequests.totalCount}`,
       value: 1,
       icon: 'ri:git-pull-request-line',
       component: PullRequestsOverview,
+      props: {
+        pullRequests,
+      },
     },
     {
-      label: 'Issues 10',
+      label: `Issues ${repo.issues.totalCount}`,
       value: 2,
       icon: 'ri:focus-line',
       component: SubscribedRepoIssues,
+      props: {
+        issues,
+      },
     },
     {
       label: 'Contributors 3',
       value: 3,
       icon: 'ri:group-line',
       component: ContributorsOverview,
+      props: {},
     },
   ];
 </script>
@@ -46,10 +53,12 @@
   <p>{repo?.description}</p>
   <div class="flex flex-wrap gap-2">
     <div class="badge badge-outline gap-2">
-      <iconify-icon icon="ri:git-pull-request-line" /> 54 Pull Requests
+      <iconify-icon icon="ri:git-pull-request-line" />
+      {repo.pullRequests.totalCount} Pull Requests
     </div>
     <div class="badge badge-outline gap-2">
-      <iconify-icon icon="ri:focus-line" /> 43 Issues
+      <iconify-icon icon="ri:focus-line" />
+      {repo.issues.totalCount} Issues
     </div>
     <div class="badge badge-outline gap-2">
       <iconify-icon icon="ri:git-repository-line" />
@@ -61,7 +70,7 @@
     </div>
   </div>
 </div>
-<section class="p-2 flex gap-2">
+<section class="p-2 flex flex-col md:flex-row gap-2">
   <div class="basis-2/5 space-y-2">
     <Card title={repo.owner.login}>
       <div class="flex gap-2">
@@ -116,6 +125,6 @@
     </Card>
   </div>
   <div>
-    <Tabs {items} />
+    <Tabs {items} {...items.props} />
   </div>
 </section>
