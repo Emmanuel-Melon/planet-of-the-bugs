@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client/core";
+import { gql } from '@apollo/client/core';
 
 export const GET_SUBSCRIBED_REPOS = gql`
   query SubscribedRepos($user_id: uuid) {
@@ -173,12 +173,8 @@ export const FETCH_REPOSITORIES_BY_TOPICS = gql`
   }
 `;
 
-export const GET_REPO_WITH_LATEST_ISSUES = gql`
-  query GetRepoWithLatestIssues(
-    $repoName: String!
-    $issueCount: Int!
-    $owner: String!
-  ) {
+export const GET_GITHUB_REPO = gql`
+  query GetGithubRepo($repoName: String!, $owner: String!) {
     repository(name: $repoName, owner: $owner) {
       id
       name
@@ -191,6 +187,23 @@ export const GET_REPO_WITH_LATEST_ISSUES = gql`
         login
         url
       }
+      issues {
+        totalCount
+      }
+      pullRequests {
+        totalCount
+      }
+    }
+  }
+`;
+
+export const GET_GITHUB_REPO_ISSUES = gql`
+  query GetGithubRepoIssues(
+    $repoName: String!
+    $owner: String!
+    $issueCount: Int!
+  ) {
+    repository(name: $repoName, owner: $owner) {
       issues(
         first: $issueCount
         orderBy: { field: CREATED_AT, direction: DESC }
@@ -209,9 +222,101 @@ export const GET_REPO_WITH_LATEST_ISSUES = gql`
                 name
               }
             }
+            author {
+              login
+              avatarUrl
+              ... on User {
+                id
+                name
+              }
+            }
+          }
+        }
+      }
+      pullRequests {
+        totalCount
+      }
+    }
+  }
+`;
+
+export const GET_GITHUB_REPO_PRS = gql`
+  query GetGithubRepoPrs($repoName: String!, $owner: String!, $prCount: Int!) {
+    repository(name: $repoName, owner: $owner) {
+      pullRequests(first: $prCount) {
+        edges {
+          node {
+            bodyText
+            changedFiles
+            createdAt
+            id
+            title
+            url
+            totalCommentsCount
+            commits {
+              totalCount
+            }
+            labels(first: 7, orderBy: { direction: ASC, field: NAME }) {
+              nodes {
+                color
+                description
+                name
+              }
+            }
+            author {
+              login
+              avatarUrl
+              ... on User {
+                id
+                name
+              }
+            }
           }
         }
       }
     }
   }
 `;
+
+// export const GET_REPO_WITH_LATEST_ISSUES = gql`
+//   query GetGithubRepoIssues(
+//     $repoName: String!
+//     $issueCount: Int!
+//     $owner: String!
+//   ) {
+//     repository(name: $repoName, owner: $owner) {
+//       id
+//       name
+//       forkCount
+//       homepageUrl
+//       description
+//       stargazerCount
+//       url
+//       owner {
+//         login
+//         url
+//       }
+//       issues(
+//         first: $issueCount
+//         orderBy: { field: CREATED_AT, direction: DESC }
+//       ) {
+//         edges {
+//           node {
+//             id
+//             title
+//             createdAt
+//             bodyText
+//             url
+//             labels(first: 7, orderBy: { field: NAME, direction: ASC }) {
+//               nodes {
+//                 color
+//                 description
+//                 name
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
