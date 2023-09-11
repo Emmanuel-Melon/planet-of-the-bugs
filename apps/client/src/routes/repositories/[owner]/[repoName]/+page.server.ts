@@ -1,22 +1,18 @@
-import { GET_REPO_WITH_LATEST_ISSUES } from '$lib/graphql/queries/repositories.js';
-import apolloClient from '$lib/graphql/apolloClient';
-import type { PageServerLoad } from './$types';
+import type { PageServerLoad } from "./$types";
+import {
+  getGithubRepo,
+  getGithubRepoIssues,
+  getGithubRepoPullRequests,
+} from "$lib/data/repositories";
 
 export const load: PageServerLoad = async (event) => {
   const { params, parent } = event;
 
   const { owner, repoName } = params;
 
-  const { data } = await apolloClient.query({
-    query: GET_REPO_WITH_LATEST_ISSUES,
-    variables: {
-      owner: owner,
-      repoName: repoName,
-      issueCount: 10,
-    },
-  });
-
   return {
-    repo: data.repository,
+    repo: getGithubRepo(repoName, owner),
+    issues: getGithubRepoIssues(repoName, owner, 10),
+    pullRequests: getGithubRepoPullRequests(repoName, owner, 10),
   };
 };
