@@ -8,16 +8,13 @@
 
 [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/Emmanuel-Melon/planet-of-the-bugs/dev/LICENSE)
 
+Welcome to "Planet of the Bugs," an extraordinary app that harnesses the power of AI to revolutionize your debugging skills. Imagine a realm where AI conjures unique bug scenarios, providing an unending source of challenges to hone your expertise. Navigate an intuitive online editor, merging theory and practice seamlessly. But that's not all – brace yourself for a journey beyond imagination.
 
-Welcome to Planet of the Bugs, an innovative app that uses AI to generate unique bug scenarios for developers to practice and improve their debugging skills. The app also provides personalized training for teams, a built-in AI assistant for rubber-duck debugging, and many other exciting features.
+Delve into real-world issues sourced from the GitHub galaxy, where you'll decipher intricate problems, unravel complexities, and emerge as a debugging virtuoso. Need a sidekick in your debugging quest? Look no further than our AI assistant, a trusty companion offering insights and it’s perfect for rubber-duck debugging.
 
-Planet of the Bugs uses AI to generate fake bug scenarios for developers to learn debugging skills and the fundamentals of writing secure and robust software. Some of the key features of the app include:
+Whether you're a solo explorer or part of a dynamic team, "Planet of the Bugs" offers tailor-made training and team-building experiences. Visionaries can craft custom courses, guiding novices through the labyrinth of programming intricacies. Collaborate with your peers, unravel cryptic bugs together, and ascend the leaderboard ranks.
 
-- Endless supply of unique scenarios for practicing and honing skills
-- Online editor for practicing theoretical knowledge
-- Application of knowledge in solving real-world issues from GitHub
-- Ability for experts to create courses for new developers
-- Creating teams and courses to train on the company's stack
+Step into a universe where learning knows no bounds, where AI transforms novices into virtuosos, and where debugging challenges are gateways to mastery. Experience a new era in software education with "Planet of the Bugs." Your journey to becoming a debugging legend begins now.
 
 ## 🚀 Demo
 
@@ -46,7 +43,7 @@ Our app offers a bounty hunting program to help companies crack bugs, so you can
 ## 🧑‍💻 How to Contribute
 We welcome contributions from developers of all skill levels! If you're interested in contributing to Planet of the Bugs, please fork our repository and submit a pull request with your changes. We're always looking for ways to improve our app, so your contributions are greatly appreciated.
 
-If you're not sure where to start, check out our Contributing Guidelines for more information on how to get involved. We also have a Code of Conduct that we expect all contributors to follow, so please take a few minutes to review it before getting started.
+If you're not sure where to start, check out our [Contributing-Guidelines](CONTRIBUTING.md) for more information on how to get involved. We also have a [Code-of-Conduct](CODE-OF-CONDUCT.md)  that we expect all contributors to follow, so please take a few minutes to review it before getting started.
 
 Thank you for your interest in Planet of the Bugs! We look forward to working with you.
 
@@ -100,7 +97,7 @@ cp .example.env .env
 
 ### Thank You Note
 
-We would like to extend our gratitude to Hashnode and MindsDB for hosting this amazing Hackathon. It has been an incredible opportunity to learn and work on this project.
+We extend our heartfelt appreciation to the brilliant minds, tireless contributors, and visionary partners who have propelled this project's success. Thank you for reshaping how we learn and master debugging. Together, we're shaping the future of software education.
 
 ##
 License
