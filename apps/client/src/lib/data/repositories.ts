@@ -8,6 +8,7 @@ import {
 } from "$lib/graphql/queries/repositories.js";
 import apolloClient from "$lib/graphql/apolloClient";
 import { stringifyTopics } from "bugs-lib";
+import type { ApolloQueryResult } from "@apollo/client/core";
 
 export const getGithubRepo = async (repoName: string, owner: string) => {
   const { data } = await apolloClient.query({
@@ -52,7 +53,7 @@ export const getGithubRepoPullRequests = async (
   return data.repository.pullRequests.edges;
 };
 
-export const searchRepositoriesByTopic = async (topics: Array<string>, limit: number) => {
+export const searchRepositoriesByTopic = async (topics: Array<string>, limit: number): Promise<ApolloQueryResult<any>> => {
     const result = await apolloClient.query({
         query: FETCH_REPOSITORIES_BY_TOPICS,
         variables: {
@@ -61,4 +62,19 @@ export const searchRepositoriesByTopic = async (topics: Array<string>, limit: nu
         },
     });
     return result;
+}
+
+export const getUserRepositoryTopics = (): Promise<ApolloQueryResult<any>> => {
+    return apolloClient.query({
+        query: GET_AVAILABLE_TOPICS,
+    });
+}
+
+export const getSubscribedRepositories = (userId: string): Promise<ApolloQueryResult<any>> => {
+    return apolloClient.query({
+        query: GET_SUBSCRIBED_REPOS,
+        variables: {
+            user_id: userId,
+        },
+    })
 }
