@@ -2,6 +2,7 @@
   import dayjs from 'dayjs';
 
   export let pullRequests: Object[];
+  console.log(pullRequests);
 </script>
 
 <section>
@@ -16,7 +17,9 @@
           <div class="flex items-center gap-4 pl-2">
             <div class="flex items-center gap-1">
               <iconify-icon icon="ri:user-line" />
-              <time class="text-gray-600">{author.name ?? author.login}</time>
+              <time class="text-gray-600"
+                >{author?.name || author?.login || 'unknown'}</time
+              >
             </div>
             <div class="flex items-center gap-1">
               <iconify-icon icon="ri:calendar-2-line" />
