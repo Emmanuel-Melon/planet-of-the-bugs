@@ -187,10 +187,10 @@ export const GET_GITHUB_REPO = gql`
         login
         url
       }
-      issues {
+      issues(states: OPEN) {
         totalCount
       }
-      pullRequests {
+      pullRequests(states: OPEN) {
         totalCount
       }
     }
@@ -206,6 +206,7 @@ export const GET_GITHUB_REPO_ISSUES = gql`
     repository(name: $repoName, owner: $owner) {
       issues(
         first: $issueCount
+        states: OPEN
         orderBy: { field: CREATED_AT, direction: DESC }
       ) {
         edges {
@@ -240,10 +241,13 @@ export const GET_GITHUB_REPO_ISSUES = gql`
 export const GET_GITHUB_REPO_PRS = gql`
   query GetGithubRepoPrs($repoName: String!, $owner: String!, $prCount: Int!) {
     repository(name: $repoName, owner: $owner) {
-      pullRequests(first: $prCount) {
+      pullRequests(
+        first: $prCount
+        states: OPEN
+        orderBy: { direction: DESC, field: CREATED_AT }
+      ) {
         edges {
           node {
-            bodyText
             changedFiles
             createdAt
             id
