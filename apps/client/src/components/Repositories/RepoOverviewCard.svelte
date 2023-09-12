@@ -91,16 +91,16 @@
     <div class="badge badge-outline gap-2">
       
       <iconify-icon icon="ri:star-line" />
-      <p>{repo?.stargazerCount.toLocaleString()}</p>
+      <p>{repo?.stargazerCount.toLocaleString()} Stars</p>
     </div>
     <div class="badge badge-outline gap-2">
       <iconify-icon icon="ri:git-branch-line" />
-      <p>{repo?.forkCount.toLocaleString()}</p>
+      <p>{repo?.forkCount.toLocaleString()} Forks</p>
     </div>
   </div>
 
     <div class="flex flex-col items-start">
-      <div class="flex items-center justify-between w-full">
+      <div class="flex items-start justify-between w-full">
         <div class="flex items-center gap-2">
           <div class="avatar">
             <div class="w-10 rounded-md shadow">
@@ -119,6 +119,10 @@
 
         {#if isSubscribed}
         <ManageRepoSubscription />
+        {:else}
+        <button class="btn btn-sm btn-ghost">
+          <iconify-icon icon="ri:close-line" />
+          </button>
         {/if}
       </div>
 
@@ -133,7 +137,7 @@
       onClick={handleSubscribeToRepo}
       icon="ri:heart-add-line"
     />
-    <Button CTA="Skip" onClick={() => {}} icon="ri:close-line" ButtonType="ghost" />
+   
     </div>
   </Card>
 </div>
