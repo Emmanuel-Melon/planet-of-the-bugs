@@ -43,6 +43,10 @@
   let requestState = "idle";
 
   $: requestState;
+
+  const handlePagination = () => {
+    goto(`?page=${currentPage}`);
+  }
 </script>
 
 <div class="basis-4/5 space-y-2">

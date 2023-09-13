@@ -72,7 +72,6 @@
 </div>
 <section class="p-2 flex flex-col md:flex-row gap-2">
   <div class="basis-2/5 space-y-2">
-    <Card title={repo.owner.login}>
       <div class="flex gap-2">
         <a href="/"><iconify-icon icon="ri:global-line" /> Website</a>
         <a href={repo.url}
@@ -122,7 +121,6 @@
           <iconify-icon icon="logos:apollostack" /> Apollo
         </div>
       </div>
-    </Card>
   </div>
   <div>
     <Tabs {items} {...items.props} />
