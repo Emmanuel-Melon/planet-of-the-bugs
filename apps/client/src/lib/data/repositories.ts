@@ -54,8 +54,7 @@ export const getGithubRepoPullRequests = async (
   return data.repository.pullRequests.edges;
 };
 
-export const searchRepositoriesByTopic = async (topics: Array<string>, limit: number) => {
-
+export const searchRepositoriesByTopic = async (topics: Array<string>, limit: number): Promise<ApolloQueryResult<any>> => {
   try {
     const result = await apolloClient.query({
       query: FETCH_REPOSITORIES_BY_TOPICS,
@@ -64,13 +63,13 @@ export const searchRepositoriesByTopic = async (topics: Array<string>, limit: nu
         limit
       },
     });
-  
-    // console.log("result", result);
-    return result;
-  } catch (error) {
-    console.log("error:", error);
-  }
 
+    console.log("result", result);
+    return result;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch")
+  }
 }
 
 export const getUserRepositoryTopics = (): Promise<ApolloQueryResult<any>> => {

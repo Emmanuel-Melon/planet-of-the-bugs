@@ -48,9 +48,10 @@
       props: {
         name: "hello"
       }
-
-    }
+  }
   ];
+
+  // subscribedRepos.set(user?.subscribedRepos)
 
   onMount(() => {
     if ($page.error) {
