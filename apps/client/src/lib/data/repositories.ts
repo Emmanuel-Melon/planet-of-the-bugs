@@ -1,10 +1,10 @@
 import {
-    FETCH_REPOSITORIES_BY_TOPICS,
-    GET_AVAILABLE_TOPICS,
-    GET_SUBSCRIBED_REPOS,
-    GET_GITHUB_REPO,
-    GET_GITHUB_REPO_ISSUES,
-    GET_GITHUB_REPO_PRS,
+  FETCH_REPOSITORIES_BY_TOPICS,
+  GET_AVAILABLE_TOPICS,
+  GET_SUBSCRIBED_REPOS,
+  GET_GITHUB_REPO,
+  GET_GITHUB_REPO_ISSUES,
+  GET_GITHUB_REPO_PRS,
 } from "$lib/graphql/queries/repositories.js";
 import apolloClient from "$lib/graphql/apolloClient";
 import { stringifyTopics } from "bugs-lib";
@@ -54,27 +54,33 @@ export const getGithubRepoPullRequests = async (
 };
 
 export const searchRepositoriesByTopic = async (topics: Array<string>, limit: number): Promise<ApolloQueryResult<any>> => {
+  try {
     const result = await apolloClient.query({
-        query: FETCH_REPOSITORIES_BY_TOPICS,
-        variables: {
-            topics: stringifyTopics(topics),
-            limit
-        },
+      query: FETCH_REPOSITORIES_BY_TOPICS,
+      variables: {
+        topics: stringifyTopics(topics),
+        limit
+      },
     });
+
+    console.log("result", result);
     return result;
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 export const getUserRepositoryTopics = (): Promise<ApolloQueryResult<any>> => {
-    return apolloClient.query({
-        query: GET_AVAILABLE_TOPICS,
-    });
+  return apolloClient.query({
+    query: GET_AVAILABLE_TOPICS,
+  });
 }
 
 export const getSubscribedRepositories = (userId: string): Promise<ApolloQueryResult<any>> => {
-    return apolloClient.query({
-        query: GET_SUBSCRIBED_REPOS,
-        variables: {
-            user_id: userId,
-        },
-    })
+  return apolloClient.query({
+    query: GET_SUBSCRIBED_REPOS,
+    variables: {
+      user_id: userId,
+    },
+  })
 }

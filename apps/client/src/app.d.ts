@@ -2,6 +2,10 @@
 // for information about these interfaces
 declare global {
   namespace App {
+    interface Error {
+      message: string;
+      code: string;
+    }
     interface Locals {
       auth: import("lucia").AuthRequest;
     }
@@ -18,4 +22,4 @@ declare global {
   }
 }
 
-export {};
+export { };

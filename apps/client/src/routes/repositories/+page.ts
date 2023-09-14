@@ -1,5 +1,6 @@
 import apolloClient from "$lib/graphql/apolloClient";
-import { fail, redirect } from "@sveltejs/kit";
+import { error, fail, redirect } from "@sveltejs/kit";
+
 import { GET_USER_BY_EMAIL } from "$lib/graphql/queries/user";
 import { getSubscribedRepositories, getUserRepositoryTopics, searchRepositoriesByTopic } from "$lib/data/repositories.js";
 
@@ -13,7 +14,7 @@ export const load = async (event) => {
   const { data } = await apolloClient.query({
     query: GET_USER_BY_EMAIL,
     variables: {
-      email: "magedfaiz98@gmail.com",
+      email: "emmanuelgatwech@gmail.com",
     },
   });
 
@@ -27,21 +28,27 @@ export const load = async (event) => {
     limit = parseInt(queryString);
   }
 
-  const [repositories, topics, subscribed] = await Promise.all([
-    searchRepositoriesByTopic(userTopics, limit),
-    getUserRepositoryTopics(),
-    getSubscribedRepositories(user.id),
-  ]);
+  console.log(userTopics);
+
+  const repositories = await searchRepositoriesByTopic(userTopics, limit);
+
+
+  // const [repositories, topics, subscribed] = await Promise.all([
+  //   searchRepositoriesByTopic(userTopics, limit),
+  //   getUserRepositoryTopics(),
+  //   getSubscribedRepositories(user.id),
+  // ]);
+
+  // console.log("subscribed", subscribed);
 
   return {
-    repositories: {
-      data: repositories?.data?.search,
-    },
-    user: {
-      ...user,
-      userTopics: userTopics,
-      subscribedRepos: subscribed.data.user_subscribed_repos,
-    },
-    topics: topics.data.repo_topics,
+    // repositories: {
+    //   data: repositories?.data?.search,
+    // },
+    // user: {
+    //   ...user,
+    //   userTopics: userTopics
+    // },
+    // topics: topics.data.repo_topics,
   };
 };
