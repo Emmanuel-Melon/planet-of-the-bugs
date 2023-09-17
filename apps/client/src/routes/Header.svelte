@@ -117,7 +117,7 @@
     </a>
 
     <div
-      class="flex flex-col items-center lg:items-start gap-3 lg:w-52 bg-slate-900 p-2 rounded-xl text-sm"
+      class="flex flex-col items-center lg:items-start gap-3 lg:w-52 bg-slate-800/60 p-2 rounded-xl text-sm"
     >
       <iconify-icon icon="ri:notification-4-line" width={20} />
       <div class="hidden lg:block">
@@ -172,7 +172,8 @@
       {:else}
         <div class="flex gap-2 items-center">
           <a href="/login" class="btn btn-sm gap-2"
-            ><iconify-icon icon="ri:login-circle-line" /> Sign In</a
+            ><iconify-icon icon="ri:login-circle-line" />
+            <span class="hidden lg:block">Sign In</span></a
           >
         </div>
       {/if}
