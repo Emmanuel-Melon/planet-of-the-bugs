@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client/core";
+import { gql } from '@apollo/client/core';
 
 export const GET_SUBSCRIBED_REPOS = gql`
   query SubscribedRepos($user_id: uuid) {
@@ -61,13 +61,9 @@ export const GET_USER_REPOS_BY_GITHUB_USERNAME = gql`
             login
             url
           }
-          repositoryTopics(first: 10) {
-            edges {
-              node {
-                topic {
-                  name
-                }
-              }
+          languages(first: 10) {
+            nodes {
+              name
             }
           }
         }

@@ -4,7 +4,7 @@
   export let user;
   import 'iconify-icon';
   import ContributionsByRepo from './ContributionsByRepo.svelte';
-  import { Card } from "svelte-ui";
+  import { Card } from 'svelte-ui';
 
   function hexToHSL(hexColor) {
     // Remove the # if present
@@ -46,12 +46,13 @@
     return `(${hue}, ${saturation}, ${lightness})`;
   }
 
+  console.log(repositories.nodes[0]);
   onMount(() => {
     return () => {};
   });
 </script>
 
-<section class="flex gap-2 flex-wrap grow w-full">
+<section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
   {#each repositories.nodes as node}
     <div class="basis-2/5 grow">
       <Card>
@@ -59,13 +60,19 @@
           <h3 class="card-title">
             {node.nameWithOwner}
           </h3>
-          <div class="flex space-x-6">
+          <div class="flex flex-wrap justify-start space-x-4">
             <div class="flex items-center justify-center space-x-1">
               <iconify-icon icon="ri:git-repository-line" />
               <a href={node.url} target="_blank" class="underline"
                 >{node.name}</a
               >
             </div>
+            {#if node.homepageUrl}
+              <div class="flex items-center gap-1">
+                <iconify-icon icon="ri:global-line" />
+                <a href={node.homepageUrl} class="link opacity-50">Demo</a>
+              </div>
+            {/if}
             <div class="flex justify-center items-center space-x-1">
               <iconify-icon icon="ri:star-line" />
               <p>{node.stargazerCount}</p>
@@ -80,17 +87,14 @@
         <!-- <slot>
           <ContributionsByRepo repository={node} {user} />
         </slot> -->
-        <div class="divider">Tech Stack</div>
-        <div class="flex gap-2 flex-wrap">
+        <div class="flex flex-wrap items-end space-x-2">
           {#each node.languages.nodes as language}
-            <div class={`badge badge-outline badge-lg gap-2`}>
-              <iconify-icon icon="ri:code-s-slash-line" />
-              {language.name}
-            </div>
+            <span class="w-fit px-2 py-1 bg-base-100/50 rounded-full"
+              >{language.name}</span
+            >
           {/each}
         </div>
       </Card>
     </div>
-
   {/each}
 </section>

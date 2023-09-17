@@ -2,7 +2,6 @@
   export let repositories;
   import 'iconify-icon';
   import { Card } from 'svelte-ui';
-  console.log(repositories.nodes[0]);
 </script>
 
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -34,9 +33,9 @@
       <div class="divider">Description</div>
       <p>{repo.description || 'This repo has no description available.'}</p>
       <div class="flex flex-wrap items-end space-x-2">
-        {#each repo.repositoryTopics.edges as { node: { topic } }}
+        {#each repo.languages.nodes as language}
           <span class="w-fit px-2 py-1 bg-base-100/50 rounded-full"
-            >{topic.name}</span
+            >{language.name}</span
           >
         {/each}
       </div>
