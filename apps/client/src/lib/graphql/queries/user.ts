@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client/core";
+import { gql } from '@apollo/client/core';
 
 export const GET_USER_BY_GITHUB_LOGIN = gql`
   query ($login: String!) {
@@ -91,14 +91,12 @@ export const GET_REPOS_CONTRIBUTED_TO = gql`
           nameWithOwner
           mirrorUrl
           homepageUrl
-          languages(last: 10) {
+          languages(first: 10) {
             nodes {
-              color
-              id
               name
             }
-            totalCount
           }
+          forkCount
         }
       }
     }
