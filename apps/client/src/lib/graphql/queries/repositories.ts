@@ -61,6 +61,15 @@ export const GET_USER_REPOS_BY_GITHUB_USERNAME = gql`
             login
             url
           }
+          repositoryTopics(first: 10) {
+            edges {
+              node {
+                topic {
+                  name
+                }
+              }
+            }
+          }
         }
       }
     }

@@ -19,7 +19,7 @@ export const GET_USER_BY_GITHUB_LOGIN = gql`
       url
       twitterUsername
       pronouns
-      avatarUrl(size: 16)
+      avatarUrl
       createdAt
       followers {
         totalCount
