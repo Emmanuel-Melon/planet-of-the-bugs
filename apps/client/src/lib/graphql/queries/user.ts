@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client/core';
+import { gql } from "@apollo/client/core";
 
 export const GET_USER_BY_GITHUB_LOGIN = gql`
   query ($login: String!) {
@@ -54,6 +54,11 @@ export const GET_USER_PINNED_ITEMS = gql`
             url
             owner {
               login
+            }
+            languages(first: 10) {
+              nodes {
+                name
+              }
             }
           }
           ... on Gist {

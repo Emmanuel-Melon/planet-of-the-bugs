@@ -100,7 +100,7 @@
     </div>
     </div>
   </div> -->
-  <div class="bg-primary h-40 w-full">Cover</div>
+  <div class="bg-primary h-40 w-full" />
   <div class="px-6 lg:px-10">
     <div>
       <div class="flex justify-between items-center">
