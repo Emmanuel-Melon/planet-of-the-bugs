@@ -2,47 +2,44 @@
   export let repositories;
   import 'iconify-icon';
   import { Card } from 'svelte-ui';
+  console.log(repositories.nodes[0]);
 </script>
 
-<div class="flex gap-2 basis-4/5 flex-wrap">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
   {#each repositories.nodes as repo}
-    <div class="basis-2/5 grow">
-      <Card>
-        <div class="flex items-center justify-between">
-          <h3 class="card-title">{repo.name}</h3>
-          <div class="flex items-center justify-center gap-2">
-            <div
-              class="badge badge-lg py-2 badge-accent badge-outline flex gap-2 items-center"
-            >
-              <iconify-icon icon="ri:star-line" />
-              {repo.stargazerCount}
+    <Card>
+      <h3 class="card-title">{repo.name}</h3>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center justify-around gap-1 md:gap-4">
+          <div class="flex items-center gap-1">
+            <iconify-icon icon="ri:git-repository-line" />
+            <a href={repo.url} class="link">{repo.name}</a>
+          </div>
+          {#if repo.homepageUrl}
+            <div class="flex items-center gap-1">
+              <iconify-icon icon="ri:global-line" />
+              <a href={repo.homepageUrl} class="link opacity-50">Demo</a>
             </div>
-            <div
-              class="badge badge-lg py-2 badge-accent badge-outline flex gap-2 items-center"
-            >
-              <iconify-icon icon="iconoir:git-fork" />{repo.forkCount}
-            </div>
+          {/if}
+          <div class="flex items-center gap-1">
+            <iconify-icon icon="ri:star-s-line" />
+            <p>{repo.stargazerCount}</p>
+          </div>
+          <div class="flex items-center gap-1">
+            <iconify-icon icon="ri:git-branch-line" />
+            <p>{repo.forkCount}</p>
           </div>
         </div>
-        <div class="divider">Description</div>
-        <p>{repo.description || 'This repo has no description available.'}</p>
-        <div class="card-actions justify-start">
-          <a
-            href={repo.url}
-            class="btn btn-sm btn-outline link link-hover flex gap-2 items-center"
+      </div>
+      <div class="divider">Description</div>
+      <p>{repo.description || 'This repo has no description available.'}</p>
+      <div class="flex flex-wrap items-end space-x-2">
+        {#each repo.repositoryTopics.edges as { node: { topic } }}
+          <span class="w-fit px-2 py-1 bg-base-100/50 rounded-full"
+            >{topic.name}</span
           >
-            <iconify-icon icon="ri:github-line" />
-            Source</a
-          >
-          <a
-            href={repo.homepageUrl}
-            class="btn btn-sm btn-primary link link-hover flex gap-2 items-center"
-          >
-            <iconify-icon icon="ri:link" />
-            Live Demo</a
-          >
-        </div>
-      </Card>
-    </div>
+        {/each}
+      </div>
+    </Card>
   {/each}
 </div>

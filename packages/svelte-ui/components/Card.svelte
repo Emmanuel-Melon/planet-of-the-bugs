@@ -6,9 +6,7 @@
   export let height: 'full' | 'fit' = 'full';
 </script>
 
-<div
-  class={`card cursor-pointer card-compact bg-${bg} w-full h-${height} shadow`}
->
+<div class={`card card-compact bg-${bg} w-full h-${height} shadow`}>
   <div class={`card-body space-y-${bodyVerticalSpacing}`}>
     {#if title}
       {@html `<${titleTag} class="card-title">${title}</${titleTag}>`}
