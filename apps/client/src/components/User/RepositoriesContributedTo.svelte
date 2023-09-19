@@ -46,7 +46,6 @@
     return `(${hue}, ${saturation}, ${lightness})`;
   }
 
-  console.log(repositories.nodes[0]);
   onMount(() => {
     return () => {};
   });

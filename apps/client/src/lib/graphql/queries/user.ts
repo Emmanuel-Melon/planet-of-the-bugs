@@ -39,8 +39,8 @@ export const GET_USER_BY_GITHUB_LOGIN = gql`
 `;
 
 export const GET_USER_PINNED_ITEMS = gql`
-  query getUserPinnedItems($username: String!) {
-    user(login: $username) {
+  query getUserPinnedItems($login: String!) {
+    user(login: $login) {
       pinnedItems(first: 2) {
         totalCount
         nodes {
@@ -80,8 +80,8 @@ export const GET_USER_PINNED_ITEMS = gql`
 `;
 
 export const GET_REPOS_CONTRIBUTED_TO = gql`
-  query getReposContributedTo($username: String!) {
-    user(login: $username) {
+  query getReposContributedTo($login: String!) {
+    user(login: $login) {
       repositoriesContributedTo(last: 20) {
         totalCount
         nodes {
