@@ -2,7 +2,6 @@
   export let pinnedItems;
   import { Card } from 'svelte-ui';
   import 'iconify-icon';
-  console.log(pinnedItems);
 </script>
 
 <section>
@@ -43,7 +42,7 @@
             </div>
             <div class="flex items-center gap-1">
               <iconify-icon icon="ri:git-branch-line" />
-              <p>{pinnedItem.forkCount}</p>
+              <p>{pinnedItem.forks.totalCount}</p>
             </div>
           </div>
         </div>

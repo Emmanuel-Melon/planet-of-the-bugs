@@ -18,8 +18,6 @@
     pinned,
   } = data;
 
-  console.log(githubProfileData);
-
   type TabItem = {
     label?: string;
     value: number;
