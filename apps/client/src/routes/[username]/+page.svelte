@@ -154,6 +154,13 @@
         </div>
 
         <div class="flex flex-wrap gap-1 md:gap-4">
+          <div class="flex items-center gap-1">
+            <p>
+              69
+              <span class="opacity-50">Followers</span>
+            </p>
+          </div>
+
           {#if githubProfileData.repositories}
             <div class="flex items-center gap-1">
               <p>

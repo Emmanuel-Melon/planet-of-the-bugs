@@ -62,15 +62,33 @@
       active: false,
     },
   ];
+  let openMenu = false;
+
+  const toggleMenu = () => {
+    openMenu = !openMenu;
+  };
 </script>
 
 <header
-  class="h-screen fixed w-16 lg:w-fit max-w-[260px] p-4 flex flex-col justify-between items-center lg:items-start gap-2 shadow-2xl border-r border-white/60"
+  class={`h-screen fixed w-16 lg:w-fit md:left-0 max-w-[260px] bg-base-100 z-50 p-4 flex flex-col justify-between items-center lg:items-start gap-2 shadow-2xl border-r border-white/60 ${
+    openMenu ? 'left-1/6' : 'left-full'
+  }`}
 >
+  <div
+    class={`fixed text-white md:hidden ${
+      openMenu ? 'left-10 top-1/2' : '-left-2 top-1/2'
+    }`}
+  >
+    <button on:click={toggleMenu}>
+      {#if !openMenu}
+        <iconify-icon icon="ri:arrow-right-circle-line" width={25} />
+      {:else}
+        <iconify-icon icon="ri:arrow-left-circle-line" width={25} />
+      {/if}
+    </button>
+  </div>
   <div class="flex flex-col space-y-6">
-    <div>
-      <span class="text-lg">Planet Of The Bugs</span>
-    </div>
+    <span class="text-lg lg:text-2xl text-center lg:text-left">Bugs</span>
 
     <nav>
       <ul class="flex flex-col items-start gap-2">
@@ -96,7 +114,7 @@
     </nav>
   </div>
 
-  <div class="w-full flex flex-col gap-2 lg:gap-3">
+  <div class="w-full flex flex-col lg:gap-3">
     <!-- when there's a user display messages & notifications -->
     <a
       href="/messages"
