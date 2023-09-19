@@ -28,7 +28,7 @@
 
 <div class="app">
   <Header />
-  <div class="ml-16 lg:ml-60">
+  <div class="md:ml-16 lg:ml-60">
     <main class="min-h-screen-footer">
       <slot />
     </main>
