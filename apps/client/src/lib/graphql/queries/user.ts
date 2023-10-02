@@ -19,7 +19,7 @@ export const GET_USER_BY_GITHUB_LOGIN = gql`
       url
       twitterUsername
       pronouns
-      avatarUrl(size: 16)
+      avatarUrl
       createdAt
       followers {
         totalCount
@@ -39,8 +39,8 @@ export const GET_USER_BY_GITHUB_LOGIN = gql`
 `;
 
 export const GET_USER_PINNED_ITEMS = gql`
-  query getUserPinnedItems($username: String!) {
-    user(login: $username) {
+  query getUserPinnedItems($login: String!) {
+    user(login: $login) {
       pinnedItems(first: 2) {
         totalCount
         nodes {
@@ -54,6 +54,11 @@ export const GET_USER_PINNED_ITEMS = gql`
             url
             owner {
               login
+            }
+            languages(first: 10) {
+              nodes {
+                name
+              }
             }
           }
           ... on Gist {
@@ -75,8 +80,8 @@ export const GET_USER_PINNED_ITEMS = gql`
 `;
 
 export const GET_REPOS_CONTRIBUTED_TO = gql`
-  query getReposContributedTo($username: String!) {
-    user(login: $username) {
+  query getReposContributedTo($login: String!) {
+    user(login: $login) {
       repositoriesContributedTo(last: 20) {
         totalCount
         nodes {
@@ -91,14 +96,12 @@ export const GET_REPOS_CONTRIBUTED_TO = gql`
           nameWithOwner
           mirrorUrl
           homepageUrl
-          languages(last: 10) {
+          languages(first: 10) {
             nodes {
-              color
-              id
               name
             }
-            totalCount
           }
+          forkCount
         }
       }
     }

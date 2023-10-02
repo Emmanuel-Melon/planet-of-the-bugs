@@ -35,8 +35,8 @@ export const GET_AVAILABLE_TOPICS = gql`
 `;
 
 export const GET_USER_REPOS_BY_GITHUB_USERNAME = gql`
-  query GetUserRepositories($username: String!) {
-    user(login: $username) {
+  query GetUserRepositories($login: String!) {
+    user(login: $login) {
       repositories(
         last: 20
         privacy: PUBLIC
@@ -60,6 +60,11 @@ export const GET_USER_REPOS_BY_GITHUB_USERNAME = gql`
           owner {
             login
             url
+          }
+          languages(first: 10) {
+            nodes {
+              name
+            }
           }
         }
       }

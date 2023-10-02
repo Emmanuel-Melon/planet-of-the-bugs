@@ -1,11 +1,11 @@
 <script lang="ts">
-  import "./styles.css";
-  import "../app.css";
-  import Header from "./Header.svelte";
-  import { setClient } from "svelte-apollo";
-  import apolloClient from "$lib/graphql/apolloClient";
-  import "iconify-icon";
-  import Footer from "$components/Footer.svelte";
+  import './styles.css';
+  import '../app.css';
+  import Header from './Header.svelte';
+  import { setClient } from 'svelte-apollo';
+  import apolloClient from '$lib/graphql/apolloClient';
+  import 'iconify-icon';
+  import Footer from '$components/Footer.svelte';
   setClient(apolloClient);
 </script>
 
@@ -19,19 +19,21 @@
 
 <svelte:window
   on:sveltekit:navigation-start={() => {
-    console.log("Navigation started!");
+    console.log('Navigation started!');
   }}
   on:sveltekit:navigation-end={() => {
-    console.log("Navigation ended!");
+    console.log('Navigation ended!');
   }}
 />
 
 <div class="app">
   <Header />
-  <main class="space-y-4">
-    <slot />
-  </main>
-  <Footer />
+  <div class="md:ml-16 lg:ml-60">
+    <main class="min-h-screen-footer">
+      <slot />
+    </main>
+    <Footer />
+  </div>
 </div>
 
 <style>

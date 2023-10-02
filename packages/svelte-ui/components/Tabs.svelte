@@ -1,5 +1,5 @@
 <script lang="ts">
-  import "iconify-icon";
+  import 'iconify-icon';
   type TabItem = {
     label?: string;
     value: number;
@@ -9,21 +9,23 @@
   };
   export let items: TabItem[] = [];
   export let activeTabValue = 1;
-  export let icon = "ri:star-line";
-  const handleTabClick = (tabValue: TabItem["value"]) => () =>
+  export let icon = 'ri:star-line';
+  const handleTabClick = (tabValue: TabItem['value']) => () =>
     (activeTabValue = tabValue);
 </script>
 
-<div class="tabs tabs-boxed gap-2 w-full grow bg-base-100">
-  {#each items as item}
-    <button
-      class={`tab tab-lg gap-2 flex items-center hover:bg-base-100 ${
-        activeTabValue === item.value ? "tab-active" : ""
-      }`}
-      on:click={handleTabClick(item.value)}
-      ><iconify-icon icon={item.icon || icon} /> {item.label}</button
-    >
-  {/each}
+<div class=" gap-2 w-full grow bg-base-100">
+  <div class="w-full justify-around flex bg-slate-800/60 py-4 rounded-xl">
+    {#each items as item}
+      <button
+        class={` gap-2 flex items-center hover:text-primary ${
+          activeTabValue === item.value ? 'bg-neutral text-base-100' : ''
+        }`}
+        on:click={handleTabClick(item.value)}
+        ><iconify-icon icon={item.icon || icon} /> {item.label}</button
+      >
+    {/each}
+  </div>
   {#each items as item}
     {#if activeTabValue == item.value}
       <div class="w-full gap-2">

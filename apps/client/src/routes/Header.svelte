@@ -4,11 +4,12 @@
   import { onMount, onDestroy } from 'svelte';
   import 'iconify-icon';
   import { Dropdown } from 'svelte-ui';
-  import { createEventDispatcher } from 'svelte';
+  import Button from 'svelte-ui/components/Button.svelte';
 
   let user;
   $: current = $page.url.pathname;
   $: menuLinks = [
+    { text: 'Home', path: '/', icon: 'ri:home-4-line' },
     { text: 'Learn', path: '/courses', icon: 'ri:graduation-cap-line' },
     {
       text: 'Repositories',
@@ -16,7 +17,6 @@
       icon: 'ri:git-repository-line',
     },
     { text: 'BugsHub', path: '/bugs', icon: 'ri:bug-line' },
-    { text: 'Messages', path: '/messages', icon: 'ri:message-3-line' },
   ];
 
   $: dropdownLinks = [
@@ -62,80 +62,119 @@
       active: false,
     },
   ];
+  let openMenu = false;
+
+  const toggleMenu = () => {
+    openMenu = !openMenu;
+  };
 </script>
 
-<header class="navbar bg-neutral shadow">
-  <div class="navbar-start text-neutral-content">
-    <a href="/" class="normal-case text-md">Planet Of The Bugs</a>
-  </div>
-
-  <nav>
-    <ul class="navbar-center hidden lg:flex items-center text-neutral-content">
-      {#each menuLinks as { icon, text, path }}
-        <li>
-          <a
-            href={path}
-            class={`btn btn-sm gap-2 hover:bg-rose-50 hover:text-black ${
-              path === current ? 'hidden lg:flex bg-rose-900' : 'hidden lg:flex'
-            }`}><iconify-icon {icon} /> {text}</a
-          >
-        </li>
-      {/each}
-    </ul>
-  </nav>
-
-  <div class="navbar-end relative gap-2 items-center">
-    <button class="btn btn-sm btn-circle">
-      <iconify-icon icon="ri:search-line" width="20" height="20" />
+<header
+  class={`h-screen fixed w-16 lg:w-fit md:left-0 max-w-[260px] bg-base-100 z-50 p-4 flex flex-col justify-between items-center lg:items-start gap-2 shadow-2xl border-r border-white/60 ${
+    openMenu ? 'left-1/6' : 'left-full'
+  }`}
+>
+  <div
+    class={`fixed text-white md:hidden ${
+      openMenu ? 'left-10 top-1/2' : '-left-2 top-1/2'
+    }`}
+  >
+    <button on:click={toggleMenu}>
+      {#if !openMenu}
+        <iconify-icon icon="ri:arrow-right-circle-line" width={25} />
+      {:else}
+        <iconify-icon icon="ri:arrow-left-circle-line" width={25} />
+      {/if}
     </button>
-    <Dropdown items={notifications}>
-      <button class="btn btn-sm btn-circle">
-        <div class="indicator">
-          <iconify-icon icon="ri:notification-line" width="20" height="20" />
-          <span class="badge badge-sm bg-rose-900 indicator-item">2</span>
-        </div>
-      </button>
-    </Dropdown>
+  </div>
+  <div class="flex flex-col space-y-6">
+    <span class="text-lg lg:text-2xl text-center lg:text-left">Bugs</span>
 
-    <div class="dropdown dropdown-end lg:hidden">
-      <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-      <div tabindex="0" class="btn btn-square text-3xl">
-        <iconify-icon icon="ri:menu-line" />
-      </div>
-      <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-      <ul
-        tabindex="0"
-        class="menu menu-compact dropdown-content mt-3 p-2 shadow-lg w-52 bg-base-100"
-      >
-        {#each menuLinks as { text, path, icon }}
+    <nav>
+      <ul class="flex flex-col items-start gap-2">
+        {#each menuLinks as { icon, text, path }}
           <li>
-            <a href={path}><iconify-icon {icon} /> {text}</a>
+            <a
+              href={path}
+              class={`btn btn-ghost hover:bg-base-100 normal-case font-light gap-2 group transition-all ${
+                path === current && ' text-primary'
+              }`}
+              ><iconify-icon
+                {icon}
+                width={25}
+                class="group-hover:scale-125 group-hover:text-primary"
+              />
+              <span class="hidden lg:block group-hover:text-primary"
+                >{text}</span
+              ></a
+            >
           </li>
         {/each}
-        <li>
-          {#if user}
-            <button on:click|preventDefault={() => signOut()}
-              ><iconify-icon icon="ri:logout-circle-line" /> Sign Out</button
-            >
-          {:else}
-            <a href="/login">Sign In</a>
-          {/if}
-        </li>
       </ul>
+    </nav>
+  </div>
+
+  <div class="w-full flex flex-col lg:gap-3">
+    <!-- when there's a user display messages & notifications -->
+    <a
+      href="/messages"
+      class="flex justify-between items-center btn btn-ghost hover:bg-base-100 px-1 normal-case font-light group"
+    >
+      <div class="flex items-center gap-2">
+        <iconify-icon
+          icon="ri:message-3-line"
+          width={25}
+          class="group-hover:scale-125 group-hover:text-primary"
+        />
+        <span class="hidden lg:block group-hover:text-primary">Messages</span>
+      </div>
+      <span
+        class=" hidden lg:block bg-neutral rounded-full px-1 text-base-100 text-xs group-hover:text-primary"
+        >10</span
+      >
+    </a>
+
+    <div
+      class="flex flex-col items-center lg:items-start gap-3 lg:w-52 bg-slate-800/60 p-2 rounded-xl text-sm"
+    >
+      <iconify-icon icon="ri:notification-4-line" width={20} />
+      <div class="hidden lg:block">
+        <span class="font-semibold pb-1">Update your profile</span>
+        <p>To access all the features, be sure to update your profile now.</p>
+      </div>
+      <div class="hidden lg:flex justify-start items-center space-x-2">
+        <Button
+          CTA="Dismiss"
+          ButtonSize="xs"
+          ButtonType="ghost"
+          classes="normal-case"
+        />
+        <a href="/notifications" class="btn btn-xs btn-ghost normal-case"
+          >All Notifications</a
+        >
+      </div>
     </div>
 
-    <div class="dropdown dropdown-bottom dropdown-end">
+    <div class="divider before:bg-white/60 after:bg-white/60" />
+
+    <div class="dropdown dropdown-top">
       {#if user}
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-        <div tabindex="0" class="btn btn-secondary shadow btn-circle avatar">
-          <div class="w-10 rounded-full shadow">
-            <img src={user.image} alt={user.name} />
+        <div
+          tabindex="0"
+          class="flex flex-col lg:flex-row text-xs gap-4 items-center"
+        >
+          <div class="avatar btn btn-secondary shadow btn-circle">
+            <div class="w-10 rounded-full shadow">
+              <img src={user?.image} alt={user?.name} />
+            </div>
           </div>
+          <span class="hidden lg:block">Maged Faiz</span>
         </div>
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <ul
           tabindex="0"
-          class="menu menu-compact dropdown-content mt-3 p-2 shadow w-52 bg-base-100"
+          class="menu menu-compact dropdown-content mt-3 p-2 shadow w-52 bg-base-100 border border-white/60 rounded-xl"
         >
           {#each dropdownLinks as { text, path, icon }}
             <li>
@@ -150,8 +189,9 @@
         </ul>
       {:else}
         <div class="flex gap-2 items-center">
-          <a href="/login" class="btn btn-primary btn-sm gap-2"
-            ><iconify-icon icon="ri:login-circle-line" /> Sign In</a
+          <a href="/login" class="btn btn-sm gap-2"
+            ><iconify-icon icon="ri:login-circle-line" />
+            <span class="hidden lg:block">Sign In</span></a
           >
         </div>
       {/if}
