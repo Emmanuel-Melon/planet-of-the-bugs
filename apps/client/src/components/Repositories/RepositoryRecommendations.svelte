@@ -20,7 +20,6 @@
   }
 
   const queryString = $page.url.searchParams.get("page");
-  console.log(queryString);
   
   const updateUserTopics = async (event) => {
     requestState = "processing";

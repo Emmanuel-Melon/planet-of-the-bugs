@@ -28,27 +28,22 @@ export const load = async (event) => {
     limit = parseInt(queryString);
   }
 
-  console.log(userTopics);
-
-  const repositories = await searchRepositoriesByTopic(userTopics, limit);
+  // const repositories = await searchRepositoriesByTopic(userTopics, limit);
 
 
-  // const [repositories, topics, subscribed] = await Promise.all([
-  //   searchRepositoriesByTopic(userTopics, limit),
-  //   getUserRepositoryTopics(),
-  //   getSubscribedRepositories(user.id),
-  // ]);
-
-  // console.log("subscribed", subscribed);
+  const [repositories, topics] = await Promise.all([
+    searchRepositoriesByTopic(userTopics, limit),
+    getUserRepositoryTopics(),
+  ]);
 
   return {
-    // repositories: {
-    //   data: repositories?.data?.search,
-    // },
-    // user: {
-    //   ...user,
-    //   userTopics: userTopics
-    // },
-    // topics: topics.data.repo_topics,
+    repositories: {
+      data: repositories?.data?.search,
+    },
+    user: {
+      ...user,
+      userTopics: userTopics
+    },
+    topics: topics.data.repo_topics,
   };
 };
