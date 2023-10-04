@@ -32,16 +32,14 @@ export const load = async (event) => {
   const [repositories, topics] = await Promise.all([
     searchRepositoriesByTopic(userTopics, {
       cursor,
-      limit: parseInt(limit)
+      limit: parseInt(limit) || 6
     }),
     getUserRepositoryTopics(),
   ]);
-  // console.log(repositories);
 
   return {
     repositories: {
-      data: repositories?.data?.search,
-      pageInfo: repositories?.data
+      data: repositories?.data?.search
     },
     user: {
       ...user,

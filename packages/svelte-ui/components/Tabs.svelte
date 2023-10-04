@@ -14,7 +14,7 @@
     (activeTabValue = tabValue);
 </script>
 
-<div class=" gap-2 w-full grow bg-base-100">
+<div class=" gap-2 w-full grow bg-base-100 space-y-2">
   <div class="w-full flex gap-4 bg-slate-800/60 p-2 rounded-xl">
     {#each items as item}
       <button

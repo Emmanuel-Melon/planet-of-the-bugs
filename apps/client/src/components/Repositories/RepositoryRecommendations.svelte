@@ -13,14 +13,12 @@
 
   let currentPage = 1;
   let perPage = 2;
+  let cursor: string;
   function getCurrentPageItems() {
     const startIndex = (currentPage - 1) * perPage;
     const endIndex = startIndex + perPage;
     return repositories.slice(startIndex, endIndex);
   }
-
-  const queryString = $page.url.searchParams.get("page");
-  console.log(queryString);
   
   const updateUserTopics = async (event) => {
     requestState = "processing";
@@ -41,25 +39,24 @@
   };
 
   let requestState = "idle";
-
   $: requestState;
+  $: cursor;
 
-  const handlePagination = () => {
-    goto(`?page=${currentPage}`);
+  const handlePagination = (direction: string) => {
+    const pageInfo = $page.data?.repositories?.data?.pageInfo;
+    if(direction === "end" && pageInfo.hasNextPage) {
+      cursor = pageInfo.endCursor;
+      currentPage++;
+    } else if (direction === "start") {
+      cursor = pageInfo.startCursor;
+      currentPage--;
+    }
+    goto(`?page=${currentPage}&cursor=${cursor}`);
   }
 </script>
 
 <div class="basis-4/5 space-y-2">
-  <div class="flex justify-between items-center rounded-md">
-    <div class="flex justify-start">
-      <ManageReposTopicsModal
-        {topics}
-        {user}
-        {requestState}
-        on:buttonClick={updateUserTopics}
-      />
-    </div>
-  </div>
+
   <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-2">
     {#each repositories as edge}
       <RepoOverviewCard repo={edge?.node} {user} />
@@ -68,7 +65,7 @@
     {/each}
   </div>
   <div class="flex gap-2 items-center">
-    <button class="btn btn-sm btn-outline">Previous</button>
-    <button class="btn btn-sm btn-outline">Next</button>
+    <button class="btn btn-sm btn-outline" on:click={() => handlePagination("start")}>Previous</button>
+    <button class="btn btn-sm btn-outline" on:click={() => handlePagination("end")}>Next</button>
   </div>
 </div>

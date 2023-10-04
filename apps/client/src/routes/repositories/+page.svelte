@@ -4,18 +4,11 @@
   import { onMount } from "svelte";
   import toast, { Toaster } from "svelte-french-toast";
   import { PageHeader, Tabs } from "svelte-ui";
-  import autoAnimate from "@formkit/auto-animate";
-  import SidebarFilter from "$components/SidebarFilter.svelte";
   import RepositoryRecommendations from "$components/Repositories/RepositoryRecommendations.svelte";
-  import { subscribedRepos } from "./subscribedRepos.js";
-  // import SubscribedRepositories from '$components/Repositories/SubscribedRepositories.svelte';
   import SubscribedRepoInsights from "$components/Repositories/Subscribed/SubscribedRepoInsights.svelte";
   import SubscribedReposOverview from "$components/Repositories/Subscribed/SubscribedReposOverview.svelte";
-  import type { from } from "@apollo/client/core";
 
   let { repositories, topics, user } = data;
-  const pageInfo = repositories?.data?.pageInfo;
-  console.log(pageInfo);
 
   const items = [
     {
@@ -62,14 +55,6 @@
     }
   });
 </script>
-
-<PageHeader
-  description="Take your newly learned skills to the next level by practicing on
-real-world issues from Github? By subscribing to a Github repo, you
-can receive issues with labels that match your interests such as
-language, bug, good-first-issue, or even bounty."
-  heading="Practice makes perfect!"
-/>
 
 <section class="p-2">
   <div class="flex flex-col lg:flex-row gap-2">

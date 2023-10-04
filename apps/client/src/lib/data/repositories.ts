@@ -54,7 +54,7 @@ export const getGithubRepoPullRequests = async (
   return data.repository.pullRequests.edges;
 };
 
-export const searchRepositoriesByTopic = async (topics: Array<string>, { limit = 10, cursor }): Promise<ApolloQueryResult<any>> => {
+export const searchRepositoriesByTopic = async (topics: Array<string>, { limit, cursor }): Promise<ApolloQueryResult<any>> => {
   try {
     console.log(cursor);
     const result = await apolloClient.query({
