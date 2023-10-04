@@ -40,7 +40,7 @@
   ];
 </script>
 
-<div class="bg-rose-900 text-white p-4 space-y-2">
+<div class="bg-base-200 text-white p-4 space-y-2">
   <button class="btn btn-sm">Back</button>
   <div class="text-sm breadcrumbs">
     <ul>
@@ -77,29 +77,6 @@
         <a href={repo.url}
           ><iconify-icon icon="ri:git-repository-line" /> Next.js</a
         >
-      </div>
-      <h3 class="text-xl">Contributors</h3>
-      <div class="avatar-group -space-x-6">
-        <div class="avatar">
-          <div class="w-12">
-            <img src="https://avatars.githubusercontent.com/u/21015204?v=4" />
-          </div>
-        </div>
-        <div class="avatar">
-          <div class="w-12">
-            <img src="https://avatars.githubusercontent.com/u/21015204?v=4" />
-          </div>
-        </div>
-        <div class="avatar">
-          <div class="w-12">
-            <img src="https://avatars.githubusercontent.com/u/21015204?v=4" />
-          </div>
-        </div>
-        <div class="avatar placeholder">
-          <div class="w-12 bg-neutral-focus text-neutral-content">
-            <span>+99</span>
-          </div>
-        </div>
       </div>
       <div class="flex justify-between items-center">
         <h3 class="text-xl">Topics</h3>

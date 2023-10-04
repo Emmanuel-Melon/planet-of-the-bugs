@@ -145,8 +145,8 @@ export const GET_CONTRIBUTIONS_BY_REPO = gql`
 `;
 
 export const FETCH_REPOSITORIES_BY_TOPICS = gql`
-  query fetchRepositoriesByTopics($topics: String = "", $limit: Int) {
-    search(query: $topics, type: REPOSITORY, first: $limit) {
+  query fetchRepositoriesByTopics($topics: String = "", $limit: Int, $cursor: String) {
+    search(query: $topics, type: REPOSITORY, last: $limit, after: $cursor) {
       edges {
         node {
           ... on Repository {

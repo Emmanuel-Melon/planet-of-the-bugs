@@ -88,7 +88,7 @@
     </button>
   </div>
   <div class="flex flex-col space-y-6">
-    <span class="text-lg lg:text-2xl text-center lg:text-left">Bugs</span>
+    <span class="text-lg lg:text-2xl text-center lg:text-left">Planet of the Bugs</span>
 
     <nav>
       <ul class="flex flex-col items-start gap-2">

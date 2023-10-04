@@ -21,24 +21,27 @@ export const load = async (event) => {
   const user = data?.user[0];
   const userTopics = JSON.parse(user?.userTopics) || [];
 
-  let queryString = url.searchParams.get("page") as string;
-  let limit = 4;
+  let queryString = url.searchParams.get("cursor") as string;
+  let limit = url.searchParams.get("limit") as string;
+  let cursor;
 
   if(queryString) {
-    limit = parseInt(queryString);
+    cursor = queryString;
   }
 
-  // const repositories = await searchRepositoriesByTopic(userTopics, limit);
-
-
   const [repositories, topics] = await Promise.all([
-    searchRepositoriesByTopic(userTopics, limit),
+    searchRepositoriesByTopic(userTopics, {
+      cursor,
+      limit: parseInt(limit)
+    }),
     getUserRepositoryTopics(),
   ]);
+  // console.log(repositories);
 
   return {
     repositories: {
       data: repositories?.data?.search,
+      pageInfo: repositories?.data
     },
     user: {
       ...user,

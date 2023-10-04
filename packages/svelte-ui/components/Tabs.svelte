@@ -15,11 +15,11 @@
 </script>
 
 <div class=" gap-2 w-full grow bg-base-100">
-  <div class="w-full justify-around flex bg-slate-800/60 py-4 rounded-xl">
+  <div class="w-full flex gap-4 bg-slate-800/60 p-2 rounded-xl">
     {#each items as item}
       <button
         class={` gap-2 flex items-center hover:text-primary ${
-          activeTabValue === item.value ? 'bg-neutral text-base-100' : ''
+          activeTabValue === item.value ? 'bg-neutral text-base-100 px-2 rounded-md' : ''
         }`}
         on:click={handleTabClick(item.value)}
         ><iconify-icon icon={item.icon || icon} /> {item.label}</button

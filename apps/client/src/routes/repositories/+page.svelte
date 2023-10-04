@@ -12,43 +12,44 @@
   import SubscribedRepoInsights from "$components/Repositories/Subscribed/SubscribedRepoInsights.svelte";
   import SubscribedReposOverview from "$components/Repositories/Subscribed/SubscribedReposOverview.svelte";
   import type { from } from "@apollo/client/core";
-  
+
   let { repositories, topics, user } = data;
   const pageInfo = repositories?.data?.pageInfo;
+  console.log(pageInfo);
 
   const items = [
     {
       id: 1,
-      label: 'Recommendations',
-      icon: 'ri:git-repository-line',
+      label: "Recommendations",
+      icon: "ri:git-repository-line",
       component: RepositoryRecommendations,
       value: 1,
       props: {
         repositories: repositories?.data?.edges,
         user,
-        topics
-      }
+        topics,
+      },
     },
     {
       id: 2,
-      label: 'Subscribed',
-      icon: 'ri:heart-line',
+      label: "Subscribed",
+      icon: "ri:heart-line",
       component: SubscribedReposOverview,
       value: 2,
       props: {
-        name: "hello"
-      }
+        name: "hello",
+      },
     },
     {
       id: 3,
-      label: 'Insights',
-      icon: 'ri:bubble-chart-line',
+      label: "Insights",
+      icon: "ri:bubble-chart-line",
       component: SubscribedRepoInsights,
       value: 3,
       props: {
-        name: "hello"
-      }
-  }
+        name: "hello",
+      },
+    },
   ];
 
   // subscribedRepos.set(user?.subscribedRepos)
@@ -71,8 +72,8 @@ language, bug, good-first-issue, or even bounty."
 />
 
 <section class="p-2">
-  <div class="flex flex-col lg:flex-row gap-2 w-4/5 mx-auto">
+  <div class="flex flex-col lg:flex-row gap-2">
     <Tabs {items} />
-    </div>
+  </div>
 </section>
 <Toaster />
