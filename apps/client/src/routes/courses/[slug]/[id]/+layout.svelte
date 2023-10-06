@@ -68,7 +68,7 @@
     <!-- Page content here -->
     <div class="flex flex-col lg:flex-row">
       <div class="lg:w-1/2">
-        <div class="h-12 flex w-full border border-neutral bg-base-200">
+        <div class="h-12 flex w-full bg-base-200">
           <label
             for="my-drawer"
             class="drawer-button text-3xl cursor-pointer grid place-items-center max-w-fit"

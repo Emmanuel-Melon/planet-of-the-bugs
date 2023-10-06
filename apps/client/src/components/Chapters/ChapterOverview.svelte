@@ -19,7 +19,7 @@
   }
 </script>
 
-<div class="w-full space-y-4">
+<div class="w-full space-y-4 bg-base-200 shadow rounded p-2">
   <div
     class="w-full flex flex-col md:flex-row justify-between items-center space-y-4"
   >

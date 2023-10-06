@@ -48,14 +48,6 @@
 
   <div class="p-2 space-y-2">
     <LessonTextContent {lesson} />
-    <!-- {#if lesson.type === 'text' || lesson.type === 'Text'}
-      <LessonTextContent lesson={lesson} />
-    {:else if lesson.type === 'video' || lesson.type === 'Video'}
-      <LessonVideoContent lesson={lesson} />
-    {:else if lesson.type === 'Interactive' || lesson.type === 'interactive'}
-      <LessonInteractiveContent lesson={lesson} />
-    {/if} -->
-
     <div class="flex justify-between items-center">
       <NextPrev
         slug={course.slug}

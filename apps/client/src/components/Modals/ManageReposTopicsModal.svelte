@@ -52,7 +52,7 @@
 </script>
 
 <Modal
-  CTA=""
+  CTA="Prefrences"
   icon="ri:equalizer-line"
   id="manage-topics"
   heading="Manage Topics"

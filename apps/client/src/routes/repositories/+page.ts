@@ -25,17 +25,16 @@ export const load = async (event) => {
   let limit = url.searchParams.get("limit") as string;
   let cursor;
 
-  if(queryString) {
+  if (queryString) {
     cursor = queryString;
   }
 
-  const [repositories, topics] = await Promise.all([
-    searchRepositoriesByTopic(userTopics, {
-      cursor,
-      limit: parseInt(limit) || 6
-    }),
-    getUserRepositoryTopics(),
-  ]);
+  const topics = await getUserRepositoryTopics();
+
+  const repositories = await searchRepositoriesByTopic(userTopics, {
+    cursor,
+    limit: parseInt(limit) || 6
+  });
 
   return {
     repositories: {

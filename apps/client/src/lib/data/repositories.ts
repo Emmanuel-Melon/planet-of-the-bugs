@@ -10,6 +10,7 @@ import {
 import apolloClient from "$lib/graphql/apolloClient";
 import { stringifyTopics } from "bugs-lib";
 import type { ApolloQueryResult } from "@apollo/client/core";
+import { error } from "@sveltejs/kit";
 
 export const getGithubRepo = async (repoName: string, owner: string) => {
   const { data } = await apolloClient.query({
@@ -57,6 +58,12 @@ export const getGithubRepoPullRequests = async (
 export const searchRepositoriesByTopic = async (topics: Array<string>, { limit, cursor }): Promise<ApolloQueryResult<any>> => {
   try {
     console.log(cursor);
+
+    if(limit > 50) {
+      throw error(400, {
+        message: "Bad Request"
+      });
+    }
     const result = await apolloClient.query({
       query: FETCH_REPOSITORIES_BY_TOPICS,
       variables: {

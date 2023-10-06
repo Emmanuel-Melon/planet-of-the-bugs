@@ -6,10 +6,10 @@
   export let height: 'full' | 'fit' = 'full';
 </script>
 
-<div class={`card card-compact bg-${bg} w-full h-${height} shadow`}>
+<div class={`card card-compact bg-${bg} w-full h-${height} shadow-xl`}>
   <div class={`card-body space-y-${bodyVerticalSpacing}`}>
     {#if title}
-      {@html `<${titleTag} class="card-title">${title}</${titleTag}>`}
+      {@html `<${titleTag} class="card-title text-bold">${title}</${titleTag}>`}
     {/if}
     <slot />
   </div>

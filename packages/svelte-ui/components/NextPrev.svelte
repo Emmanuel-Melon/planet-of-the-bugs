@@ -9,18 +9,24 @@
 
 <div class="flex flex-col md:flex-row gap-4 md:gap-0 justify-between w-full">
   {#if prev}
+  <div class="space-y-2">
     <a
-      href={`/courses/${slug}/${prev.id}`}
-      class="btn btn-sm btn-outline gap-2 normal-case"
-      ><iconify-icon icon="ri:arrow-left-circle-line" /> Previous: {prev.title}</a
-    >
+    href={`/courses/${slug}/${prev.id}`}
+    class="btn btn-sm btn-outline gap-2 normal-case"
+    ><iconify-icon icon="ri:arrow-left-circle-line" /> Previous</a
+  >
+  <p>{prev.title}</p>
+  </div>
   {/if}
 
   {#if next}
+  <div class="space-y-2">
     <a
-      href={`/courses/${slug}/${next.id}`}
-      class="btn btn-sm btn-outline btn-accent gap-2 normal-case"
-      >Next: {next.title}<iconify-icon icon="ri:arrow-right-circle-line" /></a
-    >
+    href={`/courses/${slug}/${next.id}`}
+    class="btn btn-sm btn-outline btn-accent gap-2 normal-case"
+    >Next<iconify-icon icon="ri:arrow-right-circle-line" /></a
+  >
+  <p>{next.title}</p>
+  </div>
   {/if}
 </div>

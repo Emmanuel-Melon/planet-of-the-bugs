@@ -3,7 +3,6 @@
   export let user;
   import "iconify-icon";
   import { Card, Button } from "svelte-ui";
-  console.log(repo);
   // import {
   //   SUBSCRIBE_TO_REPO,
   //   UNSUBSCRIBE_FROM_REPO,
@@ -86,15 +85,11 @@
 <div class="basis-2/5 grow">
   <Card>
     <div class="flex gap-2">
-      <div class="badge badge-outline gap-2">
-        <iconify-icon icon="ri:git-repository-line" />
-        <a href={repo?.url} target="_blank" class="link link-hover">GitHub</a>
-      </div>
-      <div class="badge badge-outline gap-2">
+      <div class="badge badge-outline py-2 gap-2">
         <iconify-icon icon="ri:star-line" />
         <p>{repo?.stargazerCount.toLocaleString()} Stars</p>
       </div>
-      <div class="badge badge-outline gap-2">
+      <div class="badge badge-outline py-2 gap-2">
         <iconify-icon icon="ri:git-branch-line" />
         <p>{repo?.forkCount.toLocaleString()} Forks</p>
       </div>
@@ -103,29 +98,30 @@
       <div class="flex items-center justify-between w-full">
         <div class="flex items-center gap-2">
           <div class="avatar">
-            <div class="w-10 rounded-md shadow">
+            <div class="w-12 rounded-md shadow">
               <img src={repo?.owner?.avatarUrl} alt="repo" />
             </div>
           </div>
-          <a
-            href={`repositories/${repo?.owner?.login}/${repo?.name}`}
-            class="hover:underline"
-          >
-            <h2 class="card-title">
-              {repo?.name}
-            </h2>
-          </a>
+          <div>
+            <a
+              href={`repositories/${repo?.owner?.login}/${repo?.name}`}
+              class="hover:underline"
+            >
+              <h2 class="card-title">
+                {repo?.name}
+              </h2>
+            </a>
+            <p>{repo?.owner?.login}</p>
+          </div>
         </div>
+        <button class="btn btn-sm btn-square btn-ghost">
+          <iconify-icon icon="ri:close-line" height="15" width="15" />
+        </button>
       </div>
     </div>
     <p>{repo?.description}</p>
     <div class="card-actions items-center justify-start gap-2">
-      <Button
-      CTA="Subscribe"
-      onClick={() => {}}
-      icon="ri:heart-add-line"
-    />
-    <Button CTA="Skip" onClick={() => {}} icon="ri:close-line" ButtonType="ghost" />
+      <Button CTA="Subscribe" icon="ri:heart-add-line" />
     </div>
   </Card>
 </div>

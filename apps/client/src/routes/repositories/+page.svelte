@@ -13,7 +13,7 @@
   const items = [
     {
       id: 1,
-      label: "Recommendations",
+      label: `${repositories?.data?.repositoryCount} Recommendations`,
       icon: "ri:git-repository-line",
       component: RepositoryRecommendations,
       value: 1,
@@ -21,6 +21,7 @@
         repositories: repositories?.data?.edges,
         user,
         topics,
+        repositoryCount: repositories?.data?.repositoryCount,
       },
     },
     {
@@ -56,6 +57,13 @@
   });
 </script>
 
+<PageHeader
+  description="Take your newly learned skills to the next level by practicing on
+real-world issues from Github? By subscribing to a Github repo, you
+can receive issues with labels that match your interests such as
+language, bug, good-first-issue, or even bounty."
+  heading="Practice makes perfect!"
+/>
 <section class="p-2">
   <div class="flex flex-col lg:flex-row gap-2">
     <Tabs {items} />
